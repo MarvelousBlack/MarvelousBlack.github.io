@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>惠狐之书</title>
+    <link>https://blog.megumifox.com/public/</link>
+    <description>Recent content on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Sat, 13 Apr 2024 20:53:52 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 systemd-nspawn 容器下构建 Armbian 镜像文件</title>
+      <link>https://blog.megumifox.com/public/posts/build-armbian-in-systemd-nspawn/</link>
+      <pubDate>Sat, 13 Apr 2024 20:53:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/build-armbian-in-systemd-nspawn/</guid>
+      <description>简单的来说就是创建个 systemd-nspawn 的容器，然后跑就完事了。但问题远远没有这么简单（x&#xA;0x00 前言/需求 最近买了个小玩具，这个开发板呢没有 Armbian 官方的预构建支持（就是不能直接下到 Armbian 构建好的镜像），只能手动用 Armbian Linux Build Framework 来构建需要的开发板镜像文件。问题来了，正如预览所写的，使用这个构建工具需要使用 Debian 或 Ubuntu ，但我现在使用的系统是 Arch Linux ，没有办法直接运行这个东西。当然可以用他们提供的其中一个方法使用 docker ，但这样也太不优雅了。还不如直接起个 systemd-nspawn 容器来的方便，所有就有了这个记录。&#xA;0x01 准备工作 既然要用 systemd-nspawn 了，那我们的宿主当然需要一个使用 systemd 把底裤卖掉 的发行版，好要准备一个 Debian 或者 Ubuntu 的 rootfs。当然直接 debootstrap 一个就行。&#xA;注意：&#xA;systemd-nspawn 要求容器中的作業系統以 PID 1 運行systemd init，並且 systemd-nspawn 要安裝在容器中。為了完善依賴，需確保在容器中安裝 debian 軟件包 systemd-container，debian 包 systemd-container 依賴 dbus，但是 dbus 不會被默認安裝。所以還要確保 dbus 或 dbus-broker 這些 debian 包被安裝在容器內系統中。&#xA;直接 debootstrap 一个 Ubuntu(jammy) 这里容器的名称为 ubuntu：</description>
+    </item>
+    <item>
+      <title>i3wm 下使用視頻動壁紙（帶硬件加速）</title>
+      <link>https://blog.megumifox.com/public/posts/video-wallpaper/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/video-wallpaper/</guid>
+      <description>嘛，不知道怎麼開頭，因爲只是沒事幹去搞了一下，只是怕忘記了就先寫下來了，說不上那天就用上了呢(x。&#xA;日常使用的話，我是不會去碰動態壁紙之類的東西，因爲這些東西很影響我的注意力，而且這也沒多大的必要。但你十分喜歡這種十分炫酷的視頻動態壁紙的話，希望這篇東西可能可以幫到你吧。&#xA;0x00 怎麼整？ i3wm 只是個 WM （窗管）他是沒有壁紙之類的亂七八糟的東西的，他只負責管理窗口。既然沒有東西專門負責壁紙，那麼我們的視頻壁紙要怎麼搞呢？&#xA;看起來很麻煩，仔細想一下那不就是個視頻播放器在放無聲視頻。視頻播放的話，那就要考慮要支持硬解了，讓 CPU 來解碼的話那會佔用不少的資源，在一些配置比較垃圾的電腦上，可能會造成新的卡頓，因此我們需要使用顯卡來加速解碼，減少不必要的卡頓，你也不想開個壁紙就大幅度影響你的桌面使用體驗吧。要用可以硬解又不這麼折騰而且還支持 nvdec 的視頻播放器，那直接用 mpv 好了。接下來就好辦了，開個視頻播放器然後讓它把視頻塞到根窗口，這就完事了。那確實簡單，但現實往往沒有這麼簡單，你會發現啥事都沒發生。出於各種目的，解決撕裂，窗口透明，美觀，炫酷動畫等等，你可能會使用 compositor ，例如 picom。這時候你會發現讓視頻播放器塞到根窗口根本不管用。因此我們還需要一個東西xwinwrap[1],它可以讓你在啓用 compositor 的情況下,可以實現視頻壁紙的願望。&#xA;0x01 開整！ 其實上面就已經把要做的事情說完了，那麼現在剩下的只是敲敲鍵盤的事情了。&#xA;舉個例子：&#xA;我的屏幕大小是 3440 x 1440 ，使用 這個視頻 作爲動態壁紙&#xA;命令如下:（參數就看你需求改就是了這裏只是演示一下）&#xA;xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &amp;#34;https://www.youtube.com/watch?v=n9w_hZkbfoo&amp;#34; （注：因爲 youtube-dl 下載太慢這裏使用 youtube-dl 的一個 fork yt-dlp[2]）&#xA;如果你是要播放本地視頻，那麼改爲：&#xA;xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no $VIDEO_PATH 在終端中跑完，看見沒問題就可以把這命令扔到 i3wm 的 config 下隨 i3 啓動了。</description>
+    </item>
+    <item>
+      <title>安信可 ESP32-C3 開發板工程樣品開箱</title>
+      <link>https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/</link>
+      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/</guid>
+      <description>額，canokey 的那篇在寫了，因爲中間斷斷續續，所以可能還要再等等。&#xA;這次買到的模塊和開發板都是工程樣品，可能和最後的版本有點區別。&#xA;0x00 爲啥買 ESP32-C3 很簡單，便宜，幾塊錢，而且還是新品（x&#xA;當然買之前還是要看一下之後能不能用的上，所以咱還翻了一下 Datasheet。 這東西提供的引腳很少，感覺是個 esp8266 的替代品，但它多了一個 BLE(LE) ，多個 BLE（LE）就可以多很多玩法了，而且 ESP32C3 支持 IOMUX 也就是可以自由的分配引腳功能，還是方便的，綜上先搞點來玩玩看。&#xA;0x01 開箱圖 拿到手之後是這樣的，這次買的是安信可的模塊,所以有個殼子，而咱可以工具打開，所以湊合着看吧。 包裝裝的很好，都拿防靜電袋子裝着。 可以看見開發板上面有兩個單色的 LED 燈和一個 5050 RGB 燈。單色的 LED 接在了 IO 18 和 IO 19 上，5050 RGB 的顏色接在 IO 3 4 5 上， LDO 用的是 AMS1117-3.3 , 串口使用的是 CH340C。&#xA;0x02 上電 由於模塊咱沒有底板也懶得焊接，所以留着日後使用。直接拿開發板插電腦。先找個簡單的例子少進去，按照 esp32c3/get-started 的步驟，設置好環境然後燒錄就好了。然後打開 monitor 看見輸出：&#xA;Restarting now. x���ESP-ROM:esp32c3-20200918 Build:Sep 18 2020 rst:0xc (RTC_SW_CPU_RST),boot:0xc (SPI_FAST_FLASH_BOOT) Saved PC:0x40381f4e 0x40381f4e: esp_restart_noos at /home/megumi/Mw/esp/esp-idf/components/esp32c3/system_api_esp32c3.</description>
+    </item>
+    <item>
+      <title>車燈（忻風隨身 PM2.5 檢測儀）折騰筆記</title>
+      <link>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor-note/</link>
+      <pubDate>Wed, 27 Jan 2021 12:56:34 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor-note/</guid>
+      <description>A,距離上一片應該過去好幾個月了，重寫這車燈是不太可能的了，咱是不太想繼續弄了，現在最多只是做到了，把數據發回和電量顯示，這已經滿足咱的日常需求了，所以可能就不會繼續弄下去。而且隔壁羣友已經重新畫了塊pcb,把主控換成了esp8266，燈換成了 R! G！ B！ (炫彩車燈）,甚至還把上面的巨大按鈕換成了某智能燈的開關，做到了半夜起牀也不怕找不到按鈕，所以重寫也沒什麼意義了。 那這篇東西就是講咱折騰這玩意遇到的問題，當然都是一些很簡單的問題，但最近沒什麼可以水，那就把這個寫一些吧。&#xA;0x01 點燈 之前提到了車燈這個東西是用的主控是 nRF51822 , 而開發這個最快的方法是使用 SDK 進行開發。恩，配置好環境，先點個燈,找到裏面的示例文件， make 然後刷入。誒，怎麼還是黑的什麼反應都沒有。仔細的閱讀了 SDK 的文檔之後發現有下面的一段話。&#xA;Enabling support for a board To enable support for an older Nordic Semiconductor board or a custom board, you must include a define statement for the board that you want to use before you compile the code.&#xA;According to the define statement, the suitable board support file is selected. The board support file defines the peripherals, thus the location of LEDs and buttons, for the selected platform.</description>
+    </item>
+    <item>
+      <title>忻風隨身 PM2.5 檢測儀開箱和拆解</title>
+      <link>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor/</link>
+      <pubDate>Fri, 04 Sep 2020 18:27:22 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor/</guid>
+      <description>喫個飯？&#xA;忍住！要省錢&#xA;買個衣服？&#xA;忍住！要省錢&#xA;換個手機？&#xA;忍住！要省錢&#xA;來買電子垃圾！ 來來來！多少錢&#xA;0x00 買 一大早起來看見有人發了一個神祕鏈接給咱，咱一看隨身 pm2.5 檢測儀，而且還只需要12元一個。擺明了是那種陳年的貨，連接用的 app 都是年久失修的那種，賣這麼低就是當電子垃圾賣的嘛。看了一下評價，好東西，這裏面的傳感器要70一個。嘛，之前就打算買一個這種傳感器來康康，馬上下單了兩個。咱沒有空氣淨化機，所以說實話這東西其實並沒多大用處。但後面弄了一下才發現賣汝12元都是虧了。忻風隨身 PM2.5 檢測儀這個名字太長了，在咱購買的那家 X 寶店鋪的評論，下面有人把這東西當成自行車車燈使用，於是下文將此檢測設備稱爲自行車車燈，簡稱車燈。&#xA;0x01 開箱 過了幾天車燈就到了咱的手上了。包裝是這樣的，兩個都是白色的。這部分咱就只放圖了。開機之後那個圈會亮燈，看燈就可以知道空氣pm2.5大概的狀態了。值得一提的是這個是使用是激光進行測定，所以這東西適合家用或者當一個玩具，數值可能沒那麼的準確，但確實可以在一定的程度上反應汝周圍的空氣質量。 0x02 拆 車燈沒有螺絲口，都是卡扣，直接拿個敲棒翹就是了。用力滑一圈就打開了。 然後看見傳感器和電池直接放在一個架子上，架子也是用東西卡住，直接壓一下抽出來既可。 在拔掉了電池和傳感器後就可以看見主板了。可以看見是一個 nRF51822 的藍牙芯片。 卸掉板上的螺絲，就可以把正面的按鈕拆下來了，把主板反過來可以看見一排的 LED。 好這就是全部了。因爲傳感器還要用所以傳感器就不拆了。&#xA;0x03 獲取數據 嘛，那個 app 和之前一樣，咱是不敢用的了，既然它是藍牙的那麼就說明咱們可以拿到數據了。那麼直接拿電腦連接，先不管有沒有加密，先試試可以拿到什麼再說。掃描的時候可以發現這個車燈，沒有像之前米家的那個一樣使用廣播，那就直接連吧。（順便記錄一下使用方法，免得下次又忘了）&#xA;直接使用電腦連過去，那麼就直接用工具 bluetoothctl 。(下面和 mac 地址有關的將被替換爲 xx）。&#xA;先進行掃描，然後估計可以發現這麼一個 device&#xA;Device C2:FD:DA:xx:xx:xx 测霾单品 然後鏈接它，接着提示符會變爲[测霾单品]#，並且噴出一大堆內容。接着使用menu gatt進入 submenu。&#xA;[测霾单品]# menu gatt Menu gatt: Available commands: ------------------- list-attributes [dev/local] List attributes select-attribute &amp;lt;attribute/UUID&amp;gt; Select attribute attribute-info [attribute/UUID] Select attribute read [offset] Read attribute value write &amp;lt;data=xx xx .</description>
+    </item>
+    <item>
+      <title>從小米溫溼度計2(LYWSD03MMC)記錄數據</title>
+      <link>https://blog.megumifox.com/public/posts/lywsd03mmc/</link>
+      <pubDate>Mon, 20 Jul 2020 16:43:59 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/lywsd03mmc/</guid>
+      <description>太久沒寫 blog 了，都忘了要怎麼寫了，工具怎麼用都忘了 = = 先讓咱回憶一下～&#xA;0x00 背景 之前有過人發過9元購買小米溫度計的消息，咱確實點進去了但沒看懂要怎麼買就放棄了，而且也沒啥用，於是就忘了這件事。直到前幾天（？），咱和朋友去逛了一下小米之家，看見這個溫度計還是比較小巧，而且沒有什麼奇奇怪怪的功能，就純粹的顯示溫度和溼度，於是就想買一只了。但看了看店裏需要39元一個，想了想之前見到9元一個，或許某寶上更便宜點於是回來就在某寶上畫14元購入了一只。&#xA;當然咱是不太喜歡市面上的智能家居的，可以說因爲他們都太“智能“，很多都需要聯網而且需要一臺手機來控制。因此某些十分簡單操作就變的需要使用手機，例如查看溫溼度數據，再例如開關燈。與此同時很多設備也不能隨意的獲得它們的傳感器採集的數據（可能走的是自己的協議並且有加密，沒法直接採集並記錄），這些數據在可視化之後還是可以幫助優化一下居住環境的（主要是畫出來的圖會很好康）。但是這次會買這個溫溼度計還是因爲小，漂亮，只有藍牙（不會聯網也就不存在一些擔心的問題）看了一下之前的小米的溫溼度計還是能很方便的獲取信息的，就算這個沒法獲取數據，還能粘牆上看，所以還是挺滿意的。&#xA;那先說說這個方形的小溫度計，這東西很簡潔，只顯示溫度和溼度，使用的是 cr2032 電池，據說能用幾年。當然還是小，咱需要的也只有溫度和溼度，基本上不看時間或者時間用別的東西顯示，這就非常的符合要求了，他只做一件事，那就是顯示溫度。 0x01 獲取數據 嘛，最簡單的當然是用米家app（x 。但很快汝會發現這個圖，它是以一個小時爲一個點，而且不能拖動來看。&#xA;所以問題來了，咱們要自己獲取數據。那就先搜一下吧，找到[1] 這個 issue 裏面提到了這個溫度計會使用低功耗廣播，每10min 會發送一次溫溼度數據，這是這個溫度計的默認行爲，也就是說如果利用這個方法來獲取數據的話看起來確實是是一個不錯的選擇，因爲這對電池的損耗幾乎是沒有影響的。恩，打開了 wireshark 看了看確實會發送一些東西。值得注意的是，這些廣播是加密了的，而 key 是要從米家的 app 裏面導出。咱想了一下，如果要通過這個方法，那麼就要從米家的app那獲取 key， 然後再抓。這太麻煩了。爲什麼不直接用 custom-components/sensor.mitemp_bt 這個項目？ 嘛，這項目包含的東西有點多懶得配，而且看了一下這個項目是模擬 hcidump 來獲取對應的廣播幀，emmm，感覺不太合適。&#xA;那有沒有別的辦法呢，有的，搜索小米的溫度計的時候發現了這樣的一篇[2] （都是俄文，谷歌翻譯能大概看得懂）。在同類的米家溫度計是可以直接利用藍牙連過去然後訂閱獲取數據的，那 LYWSD03MMC 是不是也可以呢，利用這篇東西提到的代碼，咱發現確實是可以的，甚至可以直接拿到，沒有加密。利用這篇文章裏面提到的代碼會拿到了一串東西，而這串的前面兩位是溼度，中間的兩位是電池電壓，後面的是溫度。因此全部的數據都拿到了。&#xA;之後選擇後面的方法來獲取數據，咱只需要獲取這個一個溫度計的數據，因此簡單是最重要的，接着如果使用的是抓廣播的方法獲取的話，那麼密度就會限制在了 10min ，而且如果這一次出現了些什麼意外抓不到錯過了，那麼中間的間隔將會變的非常的大。而直接鏈接藍牙用訂閱的方法，這個方法相比起抓廣播會非常的耗電，但可以做到比第一種方法還要高的密度。嘛，最後搜了一下某寶，有充電的電池賣，不貴，用完了買就好了。於是就用第二種方法來存了。&#xA;0x02 踩坑 在搞清楚怎麼拿數據之後就簡單了，寫個死循環一直獲取然後隨便找個地方存起來就好了，對吧。但問題就出現在了這個小腳本用到的 bluepy 庫上面。這個庫有點小問題，他會跑飛，具體現象就是 p.disconnect 之後會卡死在那不退出，然後那個進程會把一個核心吃滿。解決方法也簡單，開個進程等一段時間，一段時間之後如果這東西還在的話就把他 kill 了，值得注意的是可能不止在跑的這一個小腳本再用着一個 bluepy。 所以要用 psutil 來找是屬於這個小腳本的 bluepy-helper 然後 kill。這個問題陸陸續續的弄了幾天，咱一開始也沒搞懂要怎麼弄，怎麼會在一段時間之後就沒數據了，後來才發現這個東西跑一半會卡死 ´_&amp;gt;`。&#xA;0x03 最後 然後在解決上面的問題之後,這 LYWSD03MMC.py 就是咱現在在用的腳本了，已經跑了好幾天了都沒啥問題。填好溫度計的那個 mac 地址，跑就好了，如果汝有多個溫度計那需要修改一下。之後咱要解決的問題估計就是換到用influxdb 存吧，這個等設備多起來再說了。畫圖？那個隨便拿 matplot 湊合一下就好了。至於用來 24×7 跑這個腳本的機器？那當然是韭菜 n1 盒子了，這個盒子帶了個和樹莓派一樣的藍牙芯片，用起來效果不錯，至於那個的藍牙要怎麼弄就是另外的一篇了。</description>
+    </item>
+    <item>
+      <title>qliveplayer 用 mpv 看直播的好助手</title>
+      <link>https://blog.megumifox.com/public/posts/qliveplayer/</link>
+      <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/qliveplayer/</guid>
+      <description>嘛，好久沒水 blog 了，那今天就來水一篇吧。最近不是春節嗎？都快過完了！！！&#xA;那麼宅在家沒事幹做什麼好呢，當然是看 vtuber 直播啊。&#xA;因爲這篇是推薦所以會很短所以咱就不分章節了。先說說爲什麼會推薦這個軟體吧，這個軟體也是三頭怪寫的，是個縫合怪，作用是把彈幕實時的拖下來然後轉換成 ass 再餵給 mpv。嘛，直播嘛，有彈幕才能看見大家和主播的互動，而一般使用 mpv 來放直播是沒有彈幕的，於是就有了這個。汝問咱爲啥不直接看？沒有硬解啊，電腦風扇在哪轉多吵啊，而且瀏覽器直接放cpu溫度下不來啊。&#xA;這個是運行圖，下面 qliveplayer , 整體的界面十分簡潔，還能記錄你上次看了什麼，可以有10個歷史，還有收藏功能十分方便。 下面這是 mpv 的運行圖，可以看見有彈幕還是實時的。（圖是隨手截的） 使用的方法也很簡單 ,拿看 bilibili 的直播爲例子，直接在那個框輸入bi-房間號就好了，這樣就能打開 bi 站的對應的直播間了，例如 bi-11588230。而且只需要一次，下一次汝就可以在歷史裏面找到了，還能直接加收藏夾，下次點一下就好了。目前只支持斗鱼、虎牙与B站，嘛，經常看 Shirakami Fubuki 的話，支持 bi 站就夠了（笑。&#xA;順帶一提，對應 arch 用戶在 AUR 和 archlinuxcn 可以直接找到安裝。至於其他發行版，可以參考項目裏面的提示，自行編譯就好了。&#xA;項目地址： https://github.com/IsoaSFlus/QLivePlayer</description>
+    </item>
+    <item>
+      <title>I3wm 配置(僞)</title>
+      <link>https://blog.megumifox.com/public/posts/i3wm/</link>
+      <pubDate>Wed, 07 Aug 2019 21:56:00 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/i3wm/</guid>
+      <description>之前提過了 KDE 但實際上咱平時用的是 i3wm，但就像名字說的那樣這個就是個 wm ，窗口管理器，所以別期望 i3 給汝全套的服務。說實話咱也不知道要怎麼寫，那就隨便寫寫吧。以下內容以基本上爲解釋咱的配置文件，汝如果想得到和咱一樣的效果直接複製就好了，不過咱還是建議汝康康不要直接複製。其實這篇東西是用來水的，因爲暫時不知道些什麼，emmm，這不就是複製粘貼p配置文件的事情嗎？有什麼好寫的（摔&#xA;咱的配置文件在 這裏 汝只需要對照修改汝的 ~/.config/i3/config 就好了。下面開始解釋這份文件。&#xA;exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 exec --no-startup-id fcitx exec --no-startup-id udiskie -snA&amp;amp; exec --no-startup-id sleep 3 &amp;amp;&amp;amp; exec feh --bg-fill background_desktop.png background_desktop.jpg exec --no-startup-id compton -CGb --backend glx --paint-on-overlay --glx-no-stencil --unredir-if-possible exec --no-startup-id termite exec --no-startup-id kdeconnect-indicator&amp;amp; exec --no-startup-id klipper&amp;amp; exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unlock-indicator -i background.png &amp;amp; 這一段是啓動項，前文說了 i3 只是一個窗口管理器，有很多東西都需要汝自己去配置，這裏從上倒下依次爲啓動 kde 的 polkit 驗證的那個東西，也就是在部分需要提權的地方跳出來讓汝輸入密碼的那個框。fcitx 是輸入法， udiskie 是自動掛載 u 盤的小程序，feh 是用來設置壁紙的（爲了方便咱直接吧圖片命名爲 background_desktop.</description>
+    </item>
+    <item>
+      <title>U 盤 wifi 縫合鉅作 AR9331 32G</title>
+      <link>https://blog.megumifox.com/public/posts/ar9331-32g/</link>
+      <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/ar9331-32g/</guid>
+      <description>0x00 前言 說是 U 盤和 wifi 的縫合鉅作，實際上就是個十分便宜，從x寶淘回來的辣雞。&#xA;0x01 爲什麼要購買這個？ 其實是在某一天在羣裏看見了這個&#xA;咱看了看，正好缺個隨身碟，所以就買了下來。（買之前看了看評論似乎可以魔改，加個網口什麼的。&#xA;而且最最最令咱感到興趣的是這個隨身碟是怎麼工作的呢？到底是怎麼判斷兩個 host 訪問一個盤的問題？那只好買一個咯。恰好是 618 ，可以用。。。額沒有，什麼劵咱都沒有，直接買好了。&#xA;0x02 開箱和隨身碟的玉照 嘛，快遞很快就到了，從東莞發過來的。然後拿出包裹的時候發現，怎麼除了那一包泡沫紙，好像還有點什麼？全部倒出來，發現賣家送了一包毛巾，在同一家店裏可以找到，賣6元。=。= 擦桌子用剛剛好。 下面是圖：（由於這個 blog 的模板問題,咱不知道圖片要怎麼處理所以直接貼好了）&#xA;隨身碟的圖（請忽略下面那塊 keyboard） 0x03 上面的元件 這個可以看由大風車（@dfceaef ）寫的 USB缝合巨作赏析，咱就不重複了。（裏面還有魔改教程&#xA;0x04 前世 這個隨身碟很容易讓人想起之在前 11 年到 14 年左右，有一大堆帶 wifi 的 U 盤產品。那麼這個東西的前世是不是這種東西裏面的某一個呢？打開開關，鏈接這小傢伙的wifi，然後訪問頁面 192.168.222.254, emmm，熟悉的界面和品勝之前的移動電源差不多，只是沒品勝的字樣，應該是同一個方案。在頁面中可以看見 airdisk 的字樣，於是隨手搜一下，可以發現是一個叫 AirDisk 存宝 A4-加密无线U盘 的東西，而且還能在某網站找到這個產品的拆解，這個拆解圖和咱手上的板子一模一樣，還帶電池（就是前面的圖中USB隔壁的那兩個巨大的孔的用途），於是可以確認是這個東西了。&#xA;0x05 使用和體驗 先說缺點，由於是幾年前的產品，無線傳輸速度嘛，能用就行。但由於這個東西實在是太肥了，會擋住其他的接口，可以看下圖：&#xA;這個一個 usb hub 咱拿來插手機，用來用三星 dex ，汝可以看見，這個盤實在是太肥了，HDMI 接口被擋住了。QAQ 插電腦上就是佔了兩個 usb 口。目前看來還是只有這個缺點。&#xA;U盤嘛，容量是正常的,但這個盤到手的時候是空的，就是連分區表都沒有。直接插 windows 的話會直接提示是否格式化，直接格式化就好了。格式化成 NTFS 也是可以的，無線鏈接也是能讀NTFS格式的。這塊盤宣稱 80 寫 40 ，於是咱測了一下手上的，看圖吧：</description>
+    </item>
+    <item>
+      <title>让我康康电脑版网页</title>
+      <link>https://blog.megumifox.com/public/posts/show-me-the-desktop-website/</link>
+      <pubDate>Tue, 04 Jun 2019 12:58:12 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/show-me-the-desktop-website/</guid>
+      <description>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。&#xA;背景 前兩天咱還想起咱網費還沒交，快要停網了，於是去交一下。本來也沒什麼事情的，但是，當我在 Arch Linux 下打開 chromium 打開繳費頁面，它展示了一個手機頁面給咱。嘛，手機就手機頁面嘛，沒什麼問題，趕緊交完就完事了。But，汝覺得就真的這麼簡單就完事了嗎？對沒錯，咱學校的那個繳費頁面只能在電腦端繳費，而手機端確實可以提交訂單，但不能選擇任何一個支付方式，對沒看錯，確實有訂單，但咱就是支付不了。這個還是咱問了一下同學才知道，只有電腦端頁面才能打開，那麼就打開電腦端唄。&#xA;尋找原因 於是咱想，應該是判斷了 UA 於是把 UA 換成了 IE10 的 UA 心想這個應該沒問題吧，刷新之後依舊，這就說明不是靠 UA 做判斷的，但爲了先繳費還是先回到 windows 下繳費，在 win 下用 chrome 打開,居然顯示了正確的電腦端的頁面，說明肯定有些奇怪的東西。於是按下 F12 開始找那堆js看，終於被咱找到了一個叫 common.js 的文件，在這個文件裏面有幾行神奇（真的神奇）的代碼。這就是罪魁禍首。下面是這個文件的截取（註釋不是咱寫的而是本來就有的）：&#xA;//手机页面自动跳转手机版收费平台 function mobile_device_detect(url) { var thisOS = navigator.platform; var os = new Array(&amp;#34;iPhone&amp;#34;, &amp;#34;iPod&amp;#34;, &amp;#34;iPad&amp;#34;, &amp;#34;android&amp;#34;, &amp;#34;Nokia&amp;#34;, &amp;#34;SymbianOS&amp;#34;, &amp;#34;Symbian&amp;#34;, &amp;#34;Windows Phone&amp;#34;, &amp;#34;Phone&amp;#34;, &amp;#34;Linux armv71&amp;#34;, &amp;#34;MAUI&amp;#34;, &amp;#34;UNTRUSTED/1.0&amp;#34;, &amp;#34;Windows CE&amp;#34;, &amp;#34;BlackBerry&amp;#34;, &amp;#34;IEMobile&amp;#34;); for (var i = 0; i &amp;lt; os.length; i++) { if (thisOS.</description>
+    </item>
+    <item>
+      <title>Make Your Kde More Colorful</title>
+      <link>https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/</link>
+      <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/</guid>
+      <description>想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 kcm-colorful 的小程序吧！先放張我自己的桌面截圖吧。 軟件介紹和食用方法 這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：&#xA;方便你直觀的直接選取備用顏色和看見你的壁紙。當然這個界面已經支持暗色主題了。汝可能發現了咱這裏的預覽圖和咱的壁紙不一樣啊，那是因爲咱有兩個顯示器，而兩個顯示器設置的壁紙不一樣於是這裏顯示的就是另一個顯示器的壁紙了。那咱就沒法選了另一張圖了啊，先別慌，作者還提供了一個叫 kcmcolorfulhelper 這個名字的 cli 工具用於這種情況的處理。讓咱們先看看幫助吧&#xA;[marvelous@Vanilla ~]$ kcmcolorfulhelper -h Usage: kcmcolorfulhelper [options] Helper for kcm-colorful. Project address: https://github.com/IsoaSFlus/kcm-colorful Options: -h, --help Displays this help. -p, --picture &amp;lt;file&amp;gt; Picture to extract color. -c, --color &amp;lt;colorcode&amp;gt; Set color manually, eg: #1234ef. -s, --set-as-wallpaper Set picture specified by &amp;#34;-p&amp;#34; as wallpaper. -d, --debug Show debug info. -n, --number &amp;lt;int&amp;gt; Select the Nth color in candidate list. Default is 1.</description>
+    </item>
+    <item>
+      <title>關於 USB OTG 的一些思考</title>
+      <link>https://blog.megumifox.com/public/posts/thinking-about-otg/</link>
+      <pubDate>Mon, 22 Apr 2019 21:30:30 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/thinking-about-otg/</guid>
+      <description>之前整了個寨版於是就在淘寶上面買了一個據稱可以一遍充電一遍使用 otg 的轉換頭。看了一下結構，於是就在這裏記錄一下。其實咱也不知道咱在說些啥。&#xA;OTG 是個啥？ 根據 wiki 上面的描述, OTG 是個這個東西。&#xA;USB On-The-Go, often abbreviated to USB OTG or just OTG, is a specification first used in late 2001 that allows USB devices, such as tablets or smartphones, to act as a host, allowing other USB devices, such as USB flash drives, digital cameras, mice or keyboards, to be attached to them. Use of USB OTG allows those devices to switch back and forth between the roles of host and device.</description>
+    </item>
+    <item>
+      <title>Google Chinese Handwriting IME 简单了解和使用</title>
+      <link>https://blog.megumifox.com/public/posts/chinese-handwriting-ime/</link>
+      <pubDate>Wed, 06 Feb 2019 23:35:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/chinese-handwriting-ime/</guid>
+      <description>在一个月黑风高的晚上，一位不愿意透露姓名的 fc 老师请求 打一个叫做google-chinese-handwriting-ime的包，于是咱去看了看，看起来很不错的样子，于是试了一下这个神奇的用 Electron 写的利用 google translate 的手写输入法。这个输入法的利用的是笔记本的触摸板来当做手写输入，十分适合有手写输入需求的人。而且写这篇东西的时候，恰好是春节，可以回家装一个给父母老人使用，十分的简单易操作。好像有什么不对劲的地方&#xA;打包 这个软件其实已经有aur的包，但汝会发现这个包其实是打不出来的，因为 depends 少了一个 git，然后咱尝试直接使用 Release 里面的 v3.0.7 进行打包，打完出来之后发现是一闪一闪的无法使用，看了一下 commits 有个更新，于是直接打了个 -git 包，恩，这个不闪，能用了。这个包已经在 cn 源里面了，可以直接安装 google-chinese-handwriting-ime-git 来使用。&#xA;咱的理解 正如那个软件的描述所说这是一个用Electron 写的手写输入法。它十分巧妙的利用了 google translate 的手写识别，从而做到了比较高的识别率。为什么说巧妙的利用了呢？ 汝用过 google translate 的话就会发现那个手写识别只在那个网页有效，但用了这个汝可以在其他地方使用。而且这里利用到了触摸板，不要以为触摸板的移动是相对的就认为这个是个相对输入设备，其实人家是绝对定位的啦，部分人可能见过有人用触摸板来玩 osu！吧。对，因为部分的触摸板是绝对定位，所以可以做到和手写笔差不多的光标移动。而且手写输入法不要求压感，于是就可以用来做手写输入。&#xA;安装和配置 arch 的话直接用 cn 源里面那个就好了，可是要用这个输入法需要配置许多的东西。先将汝添加到 input 组里面，然后开始配置触摸板，修改 /opt/google-chinese-handwriting-ime/config.js。运行 evtest 选择你的触摸板找到最左上角和最右下角的坐标，然后修改对应的 touchpad_support.touchpad_coords.max.x和touchpad_support.touchpad_coords.max.y 数字可以适当的调整一下，咱当时测试的时候发现这个数值要比测出来的大好多才能正常的工作，所以调整到汝适合的大小。还要将如下字段中的 null 换成对应的设备数字。&#xA;preferred_device_id: { xinput: null, dev_event: null }, 可以分别用 xinput list 和 evtest 查看。这样就大概配置好了， 如果是 kwin 的话还需要将焦点策略调整为点击以取得焦点。&#xA;使用体验 配置好之后直接运行这个输入法就好了，直接在触摸板上面写字，还是蛮方便的，准确率是比较高的。但咱在测试完可以使用之后就没在用过了，因为焦点策略不能是跟随鼠标所以和咱的习惯冲突了。但这个可以利用触控板来手写，可以少买一个手写设备了，而且大多数人笔记本都是外接鼠标的，直接使用触控板是非常的方便的，可以再一次利用笔记本上的触摸板，还是蛮推荐有手写输入需求的人使用的。&#xA;软件地址 Google Chinese Handwriting IME 输入法：https://github.</description>
+    </item>
+    <item>
+      <title>用PulseAudio将电脑的声音用手机放出来</title>
+      <link>https://blog.megumifox.com/public/posts/pulseaudio-over-tcp-play-on-phone/</link>
+      <pubDate>Wed, 06 Feb 2019 22:30:57 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/pulseaudio-over-tcp-play-on-phone/</guid>
+      <description>恩，咱之前啊，在咸鱼上收了一个树霉派1B，是的，一个老旧的版本。那和今天咱要说的题目有什么关系呢？关系大着呢，如果没有这个小玩意，咱也不知道还能这样玩呢。&#xA;缘由 这个东西，其实咱一开始买回来也不知道用来做什么，直到那天我找到了大量的歌曲存到了U盘，于是想这个东西有音频接口那为什么不直接拿来当个播放器呢？于是熟练的装好了咱最爱的 moc 播放器，插上耳机。额。。。。似乎声音不太对啊，是的，树霉派的音频电路真的很差。汝可能会问，咱为什么不直接用手机播放呢？那是因为啊，咱手机的空间太小了存不下辣么多的歌曲。可咱还是想用这个小东西来做播放器，难道就没有办法了吗？&#xA;PulseAudio Over TCP 在 linux 上有个叫 pulseaudio 的东西，没错就是它。它可以使用网络来把声音送出去，具体怎么做的汝可以去搜一下 pulseaudio over tcp ，咱也不太清楚。但既然有这么方便的功能，岂不是可以解决上面提到的问题？咱们就开始配置吧。&#xA;配置过程 手机端 手机这边咱用的是 android 。所以去play士多，直接安装 Simple Protocol Player ，安装好之后可以看见一个十分简单的界面，上面有几个选项这样的。接着咱们只需要修改 ip 和 port 就行了，ip 为汝电脑的 ip ，端口可以取 12345 ，也可以随你喜欢。其他默认就好，如果汝在后面设置好之后发现有些卡顿，还可以适当的调整一下 buffer size。&#xA;电脑端 先安装好 pulseaudio ，接着使用pactl list sources short列出源，例如咱是这样的&#xA;0&#x9;alsa_output.pci-0000_00_1f.3.analog-stereo.monitor&#x9;module-alsa-card.c&#x9;s16le 2ch 48000Hz&#x9;SUSPENDED 1&#x9;alsa_input.pci-0000_00_1f.3.analog-stereo&#x9;module-alsa-card.c&#x9;s16le 2ch 48000Hz&#x9;SUSPENDED 找到输出的那个，然后输入(假设 source=0，如果不是请参照汝机器将0换为对应数值，port和上面设置的port一样)&#xA;pactl load-module module-simple-protocol-tcp source=0 record=true port=12345 恩，接着在手机那边点一下那个播放键就可以用了。如果汝还想持久化这个设置，可以修改 /etc/pulse/default.pa 并追加&#xA;load-module module-simple-protocol-tcp source=0 record=true port=12345 其实就是 pactl 后面那堆东西啦。然后重启一下 pulseaudio 就ok了。</description>
+    </item>
+    <item>
+      <title>寨板折腾笔记</title>
+      <link>https://blog.megumifox.com/public/posts/things-about-x80plus/</link>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/things-about-x80plus/</guid>
+      <description>emmm， 上次我提到了要给收回来的那块寨版 X80PLUS 装上 ArchLinux ，但是过了好多天都没写，其实我早在几天之前就装好了，但是发生了一些小插曲，于是就拖到了现在。那现在就开始聊一聊发生了什么吧。&#xA;0x00 概况 用 Intel cpu 的寨板基本上是可以安装 ArchLinux 的，但是不是所有的元件都能 work 的，这个要看运气。嘛，我只有一块板，下面先列出我手上这块xx80plus板子安装好之后各个能工作的原件吧。这个平板是个 z8300+2G+32G的常见配置。如果是其他的板子的话，我也不清楚是不是可以用，大家可以先 google 一下。&#xA;X80PLUS(H5C5) 显示：working（xf86-video-intel） 触屏：working (goodix) WiFi：working（存在一定问题）(rt8723bs) 蓝牙：working (rt8723bs) 声卡：working (ALSA) 电源状态：working 充电：working OTG：working SD卡读卡器：Unknown(我手上没卡所以没有测试) 加速的传感器：working(需要修改hwdb文件) 音量按钮：Not working （能检测的到） 屏幕背光调节：working 摄像头：Not working（一个叫 ov2680 的东西，没驱动） 大部分都是开箱即用，不需要什么设置，也就是坑已经被前人踩完了。&#xA;0x01 安装 ArchLinux 和设置 嘛，如何安装 archlinux 这个问题，萌狼已经写过了，所以我在这里就只写和这个板子有关和一些剩下的一些问题。汝如果想看如何安装请看这里,咱可是照着这个做了一遍十分简单易懂。值得注意的是这个平板只有一个 usb 口的说，汝只能选择只充电，或者是只 OTG ，所以要先充满电然后再开始哦。&#xA;网络 咱在上面提到了一件事就是 wifi 是存在问题的，这个 wifi 模块的名字是 rt8723bs 驱动已经包含在了新的 linux 内核中了，但是，我已经用了最新的稳定内核了，但还是遇到了玄学问题。表现的现象是这样的，能够扫描到 wifi 但是连接的话会被拒绝。也就是能扫不能连，这个故障比较玄学换了路由器又可以了。而且我还查看了路由器和平板的log均没有收获遂放弃。但由于我当时没有其他的路由器和网卡，于是只能把手机连上去，用usb共享功能，来完成安装。安装完之后去淘宝买了个usb有线网卡，才想起来咱手上有个 wifi 放大器可以试试，可以连，于是就这样将就着用了。&#xA;杂项 设置 locale 编辑/etc/locale.</description>
+    </item>
+    <item>
+      <title>往 x80plus 里面塞 windows 和近期的碎碎念</title>
+      <link>https://blog.megumifox.com/public/posts/install-windows-in-x80plus/</link>
+      <pubDate>Mon, 31 Dec 2018 21:16:33 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/install-windows-in-x80plus/</guid>
+      <description>先在这里说一声新年快乐啦，估计你看见本文的时候已经是2019年了。blog 大概有两个星期没更过了呢，其实最近也不是太忙的样子，但不知道写些什么，于是就一直拖着啦。&#xA;板子的由来 嘛，我一直都很想搞块寨版来玩玩。平板有很多啊。为什么，要寨版呢？主要是要那个 cpu 啦，那个 cpu 可 x86 的，也就是说，可以在上面跑 win10， linux 。注意是完整的 win10 啊， 不是通过模拟出来的，而 linux 可以直接使用主线内核，而且可玩性非常的高。而且我主要是想用来当作一个终端来用，兼顾康康视频啊，康康网页啊（桌面端的）什么的。而且可以方便的带出去，性能也相对较高（和某些同价位平板来比的话）。但是，我看了差不多3个月的咸鱼，z8300 的板子差不多要 300 多，而 z3735f 这种用的是32位的 efi ，如果装 linux 还要骚操作一下，而且大概要 150 左右，所以一直都没有买。&#xA;直到那一天的到来。那天在#archlinux-cn-offtopic里面聊起寨板， 雨寒说了这么一句，我果断的回了一句50收。下面是群聊记录的截取：&#xA;ArielAxionL · 艾雨寒 🎷, [16.12.18 15:25] 我那個辣雞台電的平板裝了 AOSC OS，之後電池就壞了 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:25] 差不多可以扔了 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:26] [In reply to Megumi_fox (惠)] 真？ ArielAxionL · 艾雨寒 🎷, [16.12.18 15:26] 不帶 sd 卡） Megumi_fox (惠), [16.</description>
+    </item>
+    <item>
+      <title>Wacom Bamboo Slate Review</title>
+      <link>https://blog.megumifox.com/public/posts/wacom-bamboo-slate-review/</link>
+      <pubDate>Fri, 07 Dec 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/wacom-bamboo-slate-review/</guid>
+      <description>雙十一的時候我下單了這個叫 Wacom Bamboo Slate 的數位本。手好痛，嘛，快遞還是很快的，第二天就到了。但是爲什麼爲什麼現在才發呢？嘛，從這個博客的第一篇的日期就可以知道那個時候我還沒把這個 blog 建立起來，而且是剛剛拿到手，跟本就不熟這個是怎麼用的，所以現在才寫下此文。&#xA;簡單介紹 其實 Wacom Bamboo Slate 發佈很久了，是 2016 年的產品，其前一代產品是 Bamboo Spark。同時還有個叫 Bamboo Folio的產品是 Slate 的同期產品，主要的區別是有個蓋子，然後貴大概兩百多。下文中均省略 Wacom Bamboo 直接稱產品名稱。Slate 是數位本，使用專用的電磁手寫筆可以方便的把筆跡轉化爲數字資料存儲起來。可以導出爲PDF和SVG等文件，是學生黨用來記筆記的一大利器。或者是畫師的話，可以先用你習慣的筆先在紙上，起稿作畫，然後再用那根專用的筆勾一次，然後直接傳送到電腦繼續接下來的作畫或者編輯，導出的爲矢量文件，完全不用擔心像掃描之後的圖像不能拉伸放大的問題。同時支持100多頁的存儲。&#xA;買的動機 作爲一個學生，那麼上課就要記筆記的啦，但這樣就會面臨一個問題，記在哪，怎麼保存的問題。有很多選擇，記在書上，記在本子上，或者直接用蘇菲等直接記在 onenote 之類的軟件上。大可分爲兩類，紙質記錄和電子記錄，二者各有各的優點，前者是印象深刻，後者方便保存和搜索。一開始我是寫在紙上的後來我發現我需要把筆記電子化，我放東西太亂了，很容易不見，哪怕是一大本本子。我知道許多人可以直接用 LaTex 直接記筆記，而且十分時候我們這種工科筆記有大量公式方程的。但考慮我不能很快的寫出對應的代碼，遂放棄使用 LaTex 在課堂上記錄， 轉而用筆手寫，這樣我可以更自由，而剩下看情況再整理。而在手寫這個選項下面又可以選擇使用蘇菲直接手寫和先寫在紙上再掃描，我覺得掃描太花時間了於是放棄，每一次都掃描要花好多時間，而蘇菲的話我會忍不住水羣，所以折中下選擇了這種方案。&#xA;實物圖 就是下面這東西了。&#xA;本體 自帶了一個筆芯，說明書，保修卡，一個本子，數據線。（這些我就不發圖了）&#xA;軟件和板子配對後 使用體驗 感受 上課記筆記很方便，而且我使用的是 A5 大小的，可以塞進包裏面，而且不是很大可以放到包包裏面。藍牙的連接是十分的簡單，只需要按一下就好了。每一次寫完一頁就按一下，基本上和平時沒什麼區別。我手機電池有點問題，但完全不用擔心，Slate 可以保存很多頁，並且關機還能保存，直到下一次連上手機的時候可以再同步。因爲在手機上，可以給文件加 tag 所以很快就可以找到那個筆記，這個適合突然要用但是筆記沒帶的情況。而且不挑紙，可以隨便用。使用的體驗還是比較好的，軟件那邊只需要註冊一個帳號，就可以使用全部的功能，加錢的話還能享受更大的雲儲存空間，但我覺得免費的已經很堪用了。不過 Wacom 的服務器好像很爛，你可能在使用部分附帶軟件的時候需要一些技巧才能正常的連上服務器使用。唯一一件比較尷尬的事情是，這個數位本是電磁感應技術的，會誤觸發圖書館出門的防盜機，那個會響，每次都需要先把這玩意放過去，然後取回。&#xA;筆跡效果（這是隨手截的一張圖 看得見還是十分清晰的，我寫字比較重，但壓感還是明顯可以看得出來還是有的。（字寫的不好輕噴）&#xA;優點 優點還是有很多的&#xA;所見即所得 自帶的圓珠筆筆芯十分的順滑，雖然圓珠筆的顏色沒普通水筆深。 可以一次性寫滿再同步，不需要有設備一直鏈接。 充電一次可以用一天，寫完一天再回去充電，不怕沒電。 可以分頁和合頁，如果忘記分頁可以在軟件後期在分頁，完全不擔心忘記分頁 同步到手機端可以馬上修改，我以電子版爲最終版，所以很方便修改紙上出現的錯誤，不帶到電子版上。 實時模式下可以臨時做一些演示，在板子上寫的東西馬上可以傳到手機上預覽。 對比部分同類產品，你可以採用任意的紙張，而且不需要考慮周圍的磁場干擾。 缺點 先說說缺點&#xA;自帶的筆手感還行，但是因爲是旋轉的，會在書寫的過程中旋轉進去，需要旋轉出來。 自帶的軟件 Incspace 好像沒寫好，會在部分情況下出現奇怪的bug，例如部分頁不顯示不同步，而且這個程序在三個平臺（Window Android 和 Web）上面功能有部分不一樣，有的有有的沒有。而且 Android 端，在合頁和分頁的時候界面會被卡住，此時不能退出程序要等待操作完成，不然會丟頁。 導出文件的時候速度比較慢，不清楚是怎麼情況。 同步比較慢，在一頁上面有很多筆的時候就會出現這種現象，我試過在只同步一頁的情況下同步了5 min，但可以一次性同步，而且如果設備一直連着設備這個可能不會感覺到。 同步模式需要先同步才能用。而且在同步模式下不用雙擊屏幕的方式退出，直接按按鈕就可能會出現丟頁的現象。 還有個問題是你可能寫到一半筆就沒墨水了。這個比較麻煩。但換起來挺快的。 只有單色，需要多色可以使用其他程序來後期處理。 關於配件 沒有筆芯了怎麼辦？ 你可以上淘寶買替換芯，搜D1笔芯就好了。</description>
+    </item>
+    <item>
+      <title>關於圖書館佔座</title>
+      <link>https://blog.megumifox.com/public/posts/about-library-seat-occupancy/</link>
+      <pubDate>Tue, 04 Dec 2018 21:53:58 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/about-library-seat-occupancy/</guid>
+      <description>學校圖書館是個好地方，那又安靜，又多書，還有空調，自然是個學習的好地方，一到考試月人就會多起來。於是就發生我在摘要中提到的情況。（下文的圖書館均指學校圖書館，其他地方我不瞭解所以指明爲學校圖書館。&#xA;爲什麼我喜歡在圖書館自習？ 你可能會問，既然每次都要繞幾圈，走幾層樓才能找到位置，爲什麼不去課室之類的地方學習呢？那人又少，而且肯定有位置，那也是一個學習的好地方啊。但對於我來說，只有圖書館才能保持相對的安靜，而且累了我可以去找找雜誌來看之類的。嘛，相對於其他選項來說，那更容易沉浸下去。所以我選擇去圖書館學習。&#xA;現在的狀況 寫這一篇博文的時候已經是12月了，也就是說大家都開始複習準備考試了。自然去圖書館的人多了起來，同時本來自習的座位也不多了，我每次去的有點晚，於是就出現了每次都要走幾圈找位置的情況。那真的是沒位置？不，有位置。而且有很多，但是都是被一堆書佔住了。等等，惠狐，可能真的是人家臨時走開，很快就回來了。對，確實出現這種情況。但是，很明顯有許多的位置是常駐的。什麼還有常駐的？是的，我甚至找了連續幾個下午和晚上在那邊觀察了一下，（早上我在睡覺，沒法早上去）。每次那幾個位置都是固定的人。有時我等了一天吧，好幾個位置根本沒人去，書倒是放在那了。要不就是十分晚纔來，先把位置佔着先。而且，桌子上的數小山堆一樣多，還有快遞合，這顯然不是一次帶過去的，先然是幾次帶過去的。更有甚者，直接吧枕頭帶了過去，已經成爲了私人的位置一樣了。然後我只好從2樓開始，一層一層的開始往上走找位置，每次找到位置都被佔住了。&#xA;碎碎念 嘛，其實很多人都寫過了，但我還是要寫一下。對於一種佔用公共資源的行爲，哪怕圖書館方面放個牌子在提示不要佔座也未必有人去聽。本來位置這種東西，是爲了每一個到館的人設置的，是爲了方便學生學習的。很多人早早的去圖書館就是爲了有個位置，可以好好的在那看書和自習。但是，很多人爲了自己的私利，完全不顧他人，一直長期站着變成私人專用的。對沒錯是的，你是需要考研，你需要安靜的環境，那就每天早起啊，早點來，不要這樣佔着，一天都見不到人。誰不是去學習去考研的呢。剛剛開學的那幾個月還好，畢竟平時並沒有這麼多人會去那邊自習。但一到考試月，座位不夠就十分突出和嚴重。大家互相換位思考一下，換你佔着的人來遇到這情況你會怎麼樣。&#xA;我建議的解決方案 既然提及了佔座也有說了不聽的人那怎麼辦，那隻好規定和技術一起上了。提出問題那就順便提出解決方案吧。對於這種無視其他人佔用的情況，圖書館完全有理由直接清理些物品，並且將這些人列入黑名單。並且可以開發一個程序來追蹤座位的佔用率，哪裏空着哪裏有人，可以使用計算機視覺來完成這個任務。完全都是有可能的，而且可以建立讓學生反饋的機制，因爲長期佔座位置是固定，只要清理一下就好了，一個合理的反饋機制，可以保證合理的座位利用率。當然我希望的是可以自覺的讓出這些公共資源，大家都可以用嘛。畢竟誰不想有個好的環境學習呢，但必要的還是要學校圖書館這邊介入處理此事，採取必要的措施。</description>
+    </item>
+    <item>
+      <title>用hugo搭建一个博客</title>
+      <link>https://blog.megumifox.com/public/posts/buildablogwithhugo/</link>
+      <pubDate>Fri, 30 Nov 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/buildablogwithhugo/</guid>
+      <description>距离上次写有一个星期了，嘛，这次就来写写怎么搭个 blog 好了。（不完全笔记&#xA;0x00 准备 工欲善其事必先利其器。搭建一个 blog 你需要准备：&#xA;一个空间用来存放你的blog hugo 简单的 markdown 语法知识 0x01 关于hugo和安装 hugo是最受欢迎的开源的静态页面生成器，用go语言书写的。拥有令人令人惊讶的速度和可塑性。可以让你更加专注于写作，而且拥有大量十分好看的主题可选。 那么要怎么安装呢？&#xA;在 archlinux下只需要一句 pacman -Syu hugo就好了。窗户的话，只需要去 官网 下载对应的可执行文件就好了。&#xA;0x02 开始创建并装饰你的网页 创建网页文件 创建一个网页文件很简单只需要&#xA;hugo new site （文件夹名称） 然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。&#xA;安装主题 hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在这里选择一个你喜欢的主题。 注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档 惠狐之书使用的是 hyde-Y 主题，这个主题看起来有点像比特垃圾桶 , 所以下文将以这个主题为示例。&#xA;按照主题写的命令&#xA;$ cd your_site_repo/ $ mkdir themes $ cd themes $ git clone https://github.com/enten/hyde-y 这样就安装好主题了，但还没开始配置&#xA;主配置文件 编辑 config.toml (如果没有则新建）按照下面的模板开始修改。&#xA;# hostname (and path) to the root eg. http://spf13.</description>
+    </item>
+    <item>
+      <title>Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记</title>
+      <link>https://blog.megumifox.com/public/posts/archlinux%E4%B8%8Bintel%E5%92%8Cnvidia%E5%8F%8C%E6%98%BE%E5%8D%A1de%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/archlinux%E4%B8%8Bintel%E5%92%8Cnvidia%E5%8F%8C%E6%98%BE%E5%8D%A1de%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <description>嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。默认你是 ArchLinux 用户，如果是其他发行版，请自行变通。&#xA;0x00 本教程的主要内容 如何正常的进入 live cd 如何设置并安装私有 NVIDIA 驱动（仅使用n卡渲染然后使用intel输出） 设置 Nvidia 相关的视频硬解加速选项 （追加內容）使用 bumblebee 進行切換 與上面內容使用的方法不同上面提及的顯卡加速設置無效 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。 （追加內容）目前有新的 nvidia-prime 的配置方案，這個可以使你在需要的時候使用 n 卡，而一般的時候使用 intel 核顯。是一個比 bumblebee 更好用的方案，配置過程可以見依雲的 blog -&amp;gt; 傳送門 0x01 开始之前 本文针对的是 Nvida 和 intel 双显卡的笔记本，如果是其他奇怪的配置本文可能不适用。 这个设置使用了 N 卡渲染，所以只能使用 Nvidia ，在N卡渲染的时候，不能再使用 intel 来进行视频硬解。 由于N卡对 wayland 的支持出奇的差，所以这里只使用Xorg。（已经默认你使用并会在之后安装Xorg） 本文适用于有硬线连接外屏，但内屏是连接在 intel 显卡上，且 intel显卡无法关闭。或者是你想用 Nvidia 独显来渲染获得更好的性能的同学。 对于部分搭载了 Nvidia MX150 和 Nvidia 940MX 的笔记本，不推荐使用这种方式。因为这个没有预想中的这么好。更加的耗电，而且这两张卡均不支持 NVDEC 视频硬解，还不如使用核显，提升续航和使用 intel 的 vaapi 视频硬解。所以建议使用 bumblebee 或者使用 nvida-xrun在必要的时候获得更好的性能。 优点是可以获得更好的显示性能和使用和 N 卡直接相连的显示器。缺点是续航大幅度的降低。 0x02 我使用的机器 因为本文是以我的经验作为参看，所以下面先列出我的配置，其余的双卡的机器都差不多。 不是太旧的配置都应该没问题</description>
+    </item>
+    <item>
+      <title>一个尝试</title>
+      <link>https://blog.megumifox.com/public/posts/%E4%B8%80%E4%B8%AA%E5%B0%9D%E8%AF%95/</link>
+      <pubDate>Sat, 24 Nov 2018 23:29:18 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/%E4%B8%80%E4%B8%AA%E5%B0%9D%E8%AF%95/</guid>
+      <description>大家好，我是惠狐，突然想建一个博客来玩玩。嘛，看见群里面的大佬们都有博客，于是我也想搭一个来玩玩。也不仅仅只是玩玩拉，更想通过博客来记录生活，来记录学习的过程，顺便分享。我的大学专业是电气工程及其自动化，所以没法像其他的人一样分享大量和计算机有关的技术性文章，但我会在这里记录和自己专业有关的学习心得，或者是一些小技巧什么的。我并不是什么大佬，我是一个小白。所以，请多多指教。</description>
+    </item>
+    <item>
+      <title>Friends</title>
+      <link>https://blog.megumifox.com/public/friends/</link>
+      <pubDate>Sat, 24 Nov 2018 22:41:38 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/friends/</guid>
+      <description>这里是惠狐的朋友们：&#xA;Farseerfc的小窩 专修精修btrfs,职业安装Archlinux的fc教授。 Pyon Pyon Today 是有很多老婆 (塑料小人) 的卡夫，Blog 內有高清大圖。 初等記憶體 自称是个美术生，温柔可爱会做饭写诗de艾雨寒，名句是初学不看 wiki 安装的人迟早是要还的（x Xuanwo&amp;rsquo;s Blog 厲害的後端工程師,圆角圆角圆角，漩涡大大, 老婆是加藤惠 。 Hi! 上天不? 新一大大带你上天！ 正品大猫 狮子 自由港 忘记续费的大猫 约伊兹的萌狼乡手札 萌狼，说起来我好像是她的食物。（逃 Bruce Z Non-Sense Blog 不撸死兔兔，撸不死兔兔。 QianQian&amp;rsquo;s Blog 千千千千千千！ OriginCode 札記 源码酱，初中生。是个大佬。 Typeblog 彼得大大，超萌的彼得！ 依云&amp;rsquo;s Blog 百合仙子，#archlinuxcn 社區管理者之一。 VOID001&amp;rsquo;S WOWO 頭像是夏娜，/dev/horo 絕讚開發中。 Goddess Unknown 黑动图老师的碎碎念。 icebox 奎宁，密码学大佬，同时也是#archlinux-cn-offtopic里面的起名专家。 FiveYellowMice&amp;rsquo;s Blog 五黄鼠，是食物的说，是个中二少年，同时也是技术大佬。 Kiri kiri: 这个人很懒，没有什么介绍. JuniX Blog 據他本人描述：不想成为像上面几位一样的大佬的小白不是好小白～ （嘛，希望他能快速的成長起來吧。 脫毛貓 脫毛貓，tomcat。 Untitled 一條鹹魚, 和老鹹魚是不同的品種呢。應該也很好吃的說 Welcome to wzhd 胖次王子幻,目前文章不可见。進去估計可以看見胖次守護進程已啓動。 S.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>https://blog.megumifox.com/public/about/</link>
+      <pubDate>Sat, 24 Nov 2018 22:35:07 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/about/</guid>
+      <description>惠狐 一只可爱的小狐狸。&#xA;Tag Arch Linux User 联系方式 PGP: AE62 544C 5560 9060 Fingerprint: 21E3 47C4 7A6A 13CD E647 13CB AE62 544C 5560 9060 PGP:9C0F C915 92CE F9C1 107A 1A98 03BA 58A5 C653 940C link Telegram：@MarvelousBlack Email: Galaxyhappy5@gmail.com Email: i@megumifox.com Github: MarvelousBlack </description>
+    </item>
+    <item>
+      <title>License</title>
+      <link>https://blog.megumifox.com/public/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/license/</guid>
+      <description>creative commons Attribution-NonCommercial-ShareAlike 4.0 International Creative Commons Corporation (“Creative Commons”) is not a law firm and does not provide legal services or legal advice. Distribution of Creative Commons public licenses does not create a lawyer-client or other relationship. Creative Commons makes its licenses and related information available on an “as-is” basis. Creative Commons gives no warranties regarding its licenses, any material licensed under their terms and conditions, or any related information.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>車燈（忻風隨身 PM2.5 檢測儀）折騰筆記 - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="對！沒錯，這就是上一篇文章的後續。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="車燈（忻風隨身 PM2.5 檢測儀）折騰筆記" />
+<meta property="og:description" content="對！沒錯，這就是上一篇文章的後續。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/mosp-air-quality-sensor-note/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-27T12:56:34+08:00" />
+<meta property="article:modified_time" content="2021-01-27T12:56:34+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="車燈（忻風隨身 PM2.5 檢測儀）折騰筆記"/>
+<meta name="twitter:description" content="對！沒錯，這就是上一篇文章的後續。"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">車燈（忻風隨身 PM2.5 檢測儀）折騰筆記</h1>
+			<div class="meta">Posted on Jan 27, 2021</div>
+		</div>
+		
+
+		<section class="body">
+			<p>A,距離上一片應該過去好幾個月了，重寫這車燈是不太可能的了，咱是不太想繼續弄了，現在最多只是做到了，把數據發回和電量顯示，這已經滿足咱的日常需求了，所以可能就不會繼續弄下去。而且隔壁羣友已經重新畫了塊pcb,把主控換成了esp8266，燈換成了 R! G！ B！ (炫彩車燈）,甚至還把上面的巨大按鈕換成了某智能燈的開關，做到了半夜起牀也不怕找不到按鈕，所以重寫也沒什麼意義了。 那這篇東西就是講咱折騰這玩意遇到的問題，當然都是一些很簡單的問題，但最近沒什麼可以水，那就把這個寫一些吧。</p>
+<h1 id="0x01-點燈">0x01 點燈</h1>
+<p>之前提到了車燈這個東西是用的主控是 nRF51822 , 而開發這個最快的方法是使用 SDK 進行開發。恩，配置好環境，先點個燈,找到裏面的示例文件， make 然後刷入。誒，怎麼還是黑的什麼反應都沒有。仔細的閱讀了 SDK 的文檔之後發現有下面的一段話。</p>
+<blockquote>
+<p>Enabling support for a board
+To enable support for an older Nordic Semiconductor board or a custom board, you must include a define statement for the board that you want to use before you compile the code.</p>
+</blockquote>
+<blockquote>
+<p>According to the define statement, the suitable board support file is selected. The board support file defines the peripherals, thus the location of LEDs and buttons, for the selected platform. The header files for supported boards are located in the directory examples\bsp. The actual selection of the file according to the define statement is done in boards.h.</p>
+</blockquote>
+<blockquote>
+<p>Depending on the device on the legacy board, you might need to change the memory layout. For example, all nRF51 examples assume that you are using the 32 kB variant of nRF51, so if you are using a variant with 16 kB RAM, you must decrease the size of IRAM1 by 16 kB (0x4000 in hex). In Keil, click Project &gt; Options for Target &lsquo;&hellip;&rsquo; and modify the values for &ldquo;Read/Write Memory Area&rdquo;. For GCC, change the linked *.ld file in the Makefile.</p>
+</blockquote>
+<p>根據 SDK 裏面的描述，也就是 nRF51 有多個型號，而示例文件假定使用的是 32kB 的版本，如果是使用的是 16kB 的版本則需要修改地址的位置。查看數據手冊， nRF51822 有 AA 和 AC 版本， 車燈上面的是 AA 是最低配的，只有 16 kB 的 RAM 。因此需要修改 ld 文件。把 MEMORY 這段修改爲下面這樣。重新 make 然後 flash ，終於把燈點起來了。不得不說這車燈，用的乞丐版的 nRF51822 的內存實在是太小了！</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>MEMORY
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  FLASH (rx) : ORIGIN = 0x1b000, LENGTH = 0x25000
+</span></span><span style="display:flex;"><span>  RAM (rwx) :  ORIGIN = 0x20001fe8, LENGTH = 0x2018
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="0x02-ble">0x02 BLE</h1>
+<p>燈點起來了，那再試試藍牙點燈，打開示例文件修改好 ld 文件， make ，flash ！ 怎麼又黑了，找了一下，是停在了藍牙初始化。搜了一下，發現了另一個硬件的差異。在上一篇的文章裏面可以中在高清大圖中，可以看見這個芯片的 P0.26 P0.27 兩個腳鏈接到了空焊盤上了，這兩個腳從數據手冊中看是用於鏈接一個外部的 32.768kHz 的晶振用的。看代碼註釋知道 SoftDevice 需要低頻時鐘，因此需要用到一個 32.768 kHz 的時鐘，而 SDK 的示例默認使用的是外部時鐘。爲了確認官方開發板上是有這個外部晶振了，咱特地搜了一下官方開發版的圖，發現確實是有這個晶振的。所以咱們用默認的代碼去使用這個車燈不存在外部的晶振，當然起不來。知道有這個問題就簡單了，因爲拿到手的時候這個藍牙是可以使用的，那麼就說明有辦法解決這個問題。翻數據手冊，可以使用內部時鐘，因此修改對應的 config 頭文件，把 NRF_CLOCK_LFCLKSRC.source 改爲 NRF_CLOCK_LF_CLK_RC 像下面這個。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#75715e">// Low frequency clock source to be used by the SoftDevice
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#75715e">#ifdef S210
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define NRF_CLOCK_LFCLKSRC      NRF_CLOCK_LFCLKSRC_XTAL_20_PPM
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#else
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define NRF_CLOCK_LFCLKSRC      {.source        = NRF_CLOCK_LF_SRC_RC,            \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                                 .rc_ctiv       = 16,                                \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                                 .rc_temp_ctiv  = 1,                                \
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">                                 .xtal_accuracy = NRF_CLOCK_LF_XTAL_ACCURACY_20_PPM}
+</span></span></span></code></pre></div><p>重新編譯然後刷入，完成！可以用藍牙了。</p>
+<h1 id="0x03-adc-部分">0x03 ADC 部分</h1>
+<p>其實這個只是咱沒注意看，電池的電量是直接對電池的電壓進行測定得出的，對於這個使用的鋰電池，滿電壓測的應該是 4.2V 左右，那測用於電池輸入的應那邊的引腳，可以發現電壓大概爲2點多，也就已經進行過一次分壓了，但是去看數據手冊可以發現 ADC 的對比電壓是 1.3V ，也就是只要高於 1.3V 就沒法測出。 但仔細的看數據手冊實際上是有個內部的分壓電阻選項的，有好幾個選項，1/3 分壓 2/3 分壓。rg 了一下 SDK 可以發現對應的註釋，按照註釋的說明設置一下對應的量，之後就可以重新算出電池的電壓爲多少了。</p>
+<h1 id="0x04-總結">0x04 總結</h1>
+<p>嘛，總的來說還是挺好玩的，雖然這個芯片的 SDK 真的有點難用，但這也算是咱第一次接觸到這種藍牙的芯片。雖然最後因爲懶不想繼續做下去了，但在這個過程中還是學到很多東西，最最最重要的是好好讀數據手冊！這個真的可以減少很多低級的問題。</p>
+<hr>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/ble">ble</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

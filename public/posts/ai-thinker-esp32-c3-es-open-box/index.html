@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>安信可 ESP32-C3 開發板工程樣品開箱 - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="淘寶上搜了一下發現有就下單了，等了十幾天終於到手了。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="安信可 ESP32-C3 開發板工程樣品開箱" />
+<meta property="og:description" content="淘寶上搜了一下發現有就下單了，等了十幾天終於到手了。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-05-04T10:26:47+08:00" />
+<meta property="article:modified_time" content="2021-05-04T10:26:47+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="安信可 ESP32-C3 開發板工程樣品開箱"/>
+<meta name="twitter:description" content="淘寶上搜了一下發現有就下單了，等了十幾天終於到手了。"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">安信可 ESP32-C3 開發板工程樣品開箱</h1>
+			<div class="meta">Posted on May 4, 2021</div>
+		</div>
+		
+
+		<section class="body">
+			<p>額，canokey 的那篇在寫了，因爲中間斷斷續續，所以可能還要再等等。<br>
+這次買到的模塊和開發板都是工程樣品，可能和最後的版本有點區別。</p>
+<h2 id="0x00-爲啥買-esp32-c3">0x00 爲啥買 ESP32-C3</h2>
+<p>很簡單，便宜，幾塊錢，而且還是新品（x<br>
+當然買之前還是要看一下之後能不能用的上，所以咱還翻了一下 Datasheet。 這東西提供的引腳很少，感覺是個 esp8266 的替代品，但它多了一個 BLE(LE) ，多個 BLE（LE）就可以多很多玩法了，而且 ESP32C3 支持 IOMUX 也就是可以自由的分配引腳功能，還是方便的，綜上先搞點來玩玩看。</p>
+<h2 id="0x01-開箱圖">0x01 開箱圖</h2>
+<p>拿到手之後是這樣的，這次買的是安信可的模塊,所以有個殼子，而咱可以工具打開，所以湊合着看吧。
+包裝裝的很好，都拿防靜電袋子裝着。
+<img src="/public/pic/ai-thinker-esp32-c3-es-open-box_0.jpg" alt="ai-thinker-esp32-c3-es-open-box_0">
+<img src="/public/pic/ai-thinker-esp32-c3-es-open-box_1.jpg" alt="ai-thinker-esp32-c3-es-open-box_1">
+<img src="/public/pic/ai-thinker-esp32-c3-es-open-box_2.jpg" alt="ai-thinker-esp32-c3-es-open-box_2">
+<img src="/public/pic/ai-thinker-esp32-c3-es-open-box_3.jpg" alt="ai-thinker-esp32-c3-es-open-box_3">
+<img src="/public/pic/ai-thinker-esp32-c3-es-open-box_4.jpg" alt="ai-thinker-esp32-c3-es-open-box_4">
+可以看見開發板上面有兩個單色的 LED 燈和一個 5050 <strong>RGB</strong> 燈。單色的 LED 接在了 IO 18 和 IO 19 上，5050 RGB 的顏色接在 IO 3 4 5 上， LDO 用的是 AMS1117-3.3 , 串口使用的是 CH340C。</p>
+<h2 id="0x02-上電">0x02 上電</h2>
+<p>由於模塊咱沒有底板也懶得焊接，所以留着日後使用。直接拿開發板插電腦。先找個簡單的例子少進去，按照 <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/index.html">esp32c3/get-started</a> 的步驟，設置好環境然後燒錄就好了。然後打開 monitor 看見輸出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>Restarting now<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>x<span style="color:#960050;background-color:#1e0010">���</span>ESP<span style="color:#f92672">-</span>ROM:esp32c3<span style="color:#f92672">-</span><span style="color:#ae81ff">20200918</span>
+</span></span><span style="display:flex;"><span>Build:Sep <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>rst:<span style="color:#ae81ff">0xc</span> (RTC_SW_CPU_RST),boot:<span style="color:#ae81ff">0xc</span> (SPI_FAST_FLASH_BOOT)
+</span></span><span style="display:flex;"><span>Saved PC:<span style="color:#ae81ff">0x40381f4e</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x40381f4e</span>: esp_restart_noos at <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>megumi<span style="color:#f92672">/</span>Mw<span style="color:#f92672">/</span>esp<span style="color:#f92672">/</span>esp<span style="color:#f92672">-</span>idf<span style="color:#f92672">/</span>components<span style="color:#f92672">/</span>esp32c3<span style="color:#f92672">/</span>system_api_esp32c3<span style="color:#f92672">.</span>c:<span style="color:#ae81ff">130</span> (discriminator <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>SPIWP:<span style="color:#ae81ff">0xee</span>
+</span></span><span style="display:flex;"><span>mode:DIO, clock div:<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x3fcd6100</span>,len:<span style="color:#ae81ff">0x14</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x3fcd6114</span>,len:<span style="color:#ae81ff">0x1750</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x403ce000</span>,len:<span style="color:#ae81ff">0x878</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x403d0000</span>,len:<span style="color:#ae81ff">0x2bdc</span>
+</span></span><span style="display:flex;"><span>entry <span style="color:#ae81ff">0x403ce000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">59</span>) boot: ESP<span style="color:#f92672">-</span>IDF v4<span style="color:#f92672">.</span><span style="color:#ae81ff">3</span><span style="color:#f92672">-</span>dev<span style="color:#f92672">-</span><span style="color:#ae81ff">2586</span><span style="color:#f92672">-</span>g526f68239 <span style="color:#ae81ff">2</span>nd stage bootloader
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">59</span>) boot: compile time <span style="color:#ae81ff">21</span>:<span style="color:#ae81ff">59</span>:<span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">59</span>) boot: chip revision: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">62</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Speed      : <span style="color:#ae81ff">80</span>MHz
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">67</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Mode       : DIO
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">72</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Flash Size : <span style="color:#ae81ff">2</span>MB
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">77</span>) boot: Enabling RNG early entropy source<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">82</span>) boot: Partition Table:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">86</span>) boot: <span style="color:#75715e">## Label            Usage          Type ST Offset   Length</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">93</span>) boot:  <span style="color:#ae81ff">0</span> nvs              WiFi data        <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">02</span> <span style="color:#ae81ff">00009000</span> <span style="color:#ae81ff">00006000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">100</span>) boot:  <span style="color:#ae81ff">1</span> phy_init         RF data          <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">0000</span>f000 <span style="color:#ae81ff">00001000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">108</span>) boot:  <span style="color:#ae81ff">2</span> factory          factory app      <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00010000</span> <span style="color:#ae81ff">00100000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">115</span>) boot: End of partition table
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">120</span>) esp_image: segment <span style="color:#ae81ff">0</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00010020</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>c020020 size<span style="color:#f92672">=</span><span style="color:#ae81ff">04</span>be0h ( <span style="color:#ae81ff">19424</span>) map
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">131</span>) esp_image: segment <span style="color:#ae81ff">1</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00014</span>c08 vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>fc89470 size<span style="color:#f92672">=</span><span style="color:#ae81ff">01888</span>h (  <span style="color:#ae81ff">6280</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">138</span>) esp_image: segment <span style="color:#ae81ff">2</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00016498</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">40380000</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">09464</span>h ( <span style="color:#ae81ff">37988</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">152</span>) esp_image: segment <span style="color:#ae81ff">3</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">0001</span>f904 vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00000000</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">00714</span>h (  <span style="color:#ae81ff">1812</span>)
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">154</span>) esp_image: segment <span style="color:#ae81ff">4</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00020020</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">42000020</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">13944</span>h ( <span style="color:#ae81ff">80196</span>) map
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">177</span>) boot: Loaded app from partition at offset <span style="color:#ae81ff">0x10000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">177</span>) boot: Disabling RNG early entropy source<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">188</span>) cpu_start: Pro cpu up<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">245</span>) cpu_start: Pro cpu start user code
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">245</span>) cpu_start: cpu freq: <span style="color:#ae81ff">160000000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">245</span>) cpu_start: Application information:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">248</span>) cpu_start: Project name:     hello<span style="color:#f92672">-</span>world
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">253</span>) cpu_start: App version:      <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">257</span>) cpu_start: Compile time:     Apr <span style="color:#ae81ff">27</span> <span style="color:#ae81ff">2021</span> <span style="color:#ae81ff">21</span>:<span style="color:#ae81ff">58</span>:<span style="color:#ae81ff">56</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">264</span>) cpu_start: ELF file SHA256:  <span style="color:#ae81ff">0</span>c9fd42d85362f6e<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">270</span>) cpu_start: ESP<span style="color:#f92672">-</span>IDF:          v4<span style="color:#f92672">.</span><span style="color:#ae81ff">3</span><span style="color:#f92672">-</span>dev<span style="color:#f92672">-</span><span style="color:#ae81ff">2586</span><span style="color:#f92672">-</span>g526f68239
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">276</span>) heap_init: Initializing<span style="color:#f92672">.</span> RAM available <span style="color:#66d9ef">for</span> dynamic allocation:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">283</span>) heap_init: At <span style="color:#ae81ff">3</span>FC8BB30 len <span style="color:#ae81ff">000344</span>D0 (<span style="color:#ae81ff">209</span> KiB): D<span style="color:#f92672">/</span>IRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">290</span>) heap_init: At <span style="color:#ae81ff">3</span>FCC0000 len <span style="color:#ae81ff">0001</span>F260 (<span style="color:#ae81ff">124</span> KiB): STACK<span style="color:#f92672">/</span>DRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">296</span>) heap_init: At <span style="color:#ae81ff">50000000</span> len <span style="color:#ae81ff">00002000</span> (<span style="color:#ae81ff">8</span> KiB): FAKEDRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">303</span>) spi_flash: detected chip: generic
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">308</span>) spi_flash: flash io: dio
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">312</span>) cpu_start: Starting scheduler<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>Hello world<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>This is esp32c3 chip with <span style="color:#ae81ff">1</span> CPU core(s), WiFi<span style="color:#f92672">/</span>BLE, silicon revision <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>MB external flash
+</span></span><span style="display:flex;"><span>Minimum free heap size: <span style="color:#ae81ff">331716</span> bytes
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">10</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">9</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">8</span> seconds<span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>這個是 idf4.3 編譯之後的輸出。當時還試了一下藍牙發現缺少頭文件，於是就算了。<br>
+過了幾天之後咱找到個風水好一點的地方把 SDK 更新了一下。然後直接燒進去，然後可以看見</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>E (38) boot_comm: This chip is revision 2 but the application is configured for minimum revision 3. Can&#39;t run.
+</span></span></code></pre></div><p>對的，咱買的是工程樣品，芯片的版本是2,這裏要改一下編譯設置。在 menuconfig ，找到 component config 然後進入 ESP32C3 specific 把 minimal version 改成2 就好了。</p>
+<p>下面是 hello_world 例程的輸出：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">�</span>ESP<span style="color:#f92672">-</span>ROM:esp32c3<span style="color:#f92672">-</span><span style="color:#ae81ff">20200918</span>
+</span></span><span style="display:flex;"><span>Build:Sep <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>rst:<span style="color:#ae81ff">0x1</span> (POWERON),boot:<span style="color:#ae81ff">0xc</span> (SPI_FAST_FLASH_BOOT)
+</span></span><span style="display:flex;"><span>SPIWP:<span style="color:#ae81ff">0xee</span>
+</span></span><span style="display:flex;"><span>mode:DIO, clock div:<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x3fcd6100</span>,len:<span style="color:#ae81ff">0x1654</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x403ce000</span>,len:<span style="color:#ae81ff">0x8b4</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x403d0000</span>,len:<span style="color:#ae81ff">0x2ba4</span>
+</span></span><span style="display:flex;"><span>entry <span style="color:#ae81ff">0x403ce000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">32</span>) boot: ESP<span style="color:#f92672">-</span>IDF v4<span style="color:#f92672">.</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>dev<span style="color:#f92672">-</span><span style="color:#ae81ff">1183</span><span style="color:#f92672">-</span>g9d34a1cd4 <span style="color:#ae81ff">2</span>nd stage bootloader
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">32</span>) boot: compile time <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">25</span>:<span style="color:#ae81ff">59</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">32</span>) boot: chip revision: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">35</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Speed      : <span style="color:#ae81ff">80</span>MHz
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">40</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Mode       : DIO
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">45</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Flash Size : <span style="color:#ae81ff">2</span>MB
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">50</span>) boot: Enabling RNG early entropy source<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">55</span>) boot: Partition Table:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">59</span>) boot: <span style="color:#75715e">## Label            Usage          Type ST Offset   Length</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">66</span>) boot:  <span style="color:#ae81ff">0</span> nvs              WiFi data        <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">02</span> <span style="color:#ae81ff">00009000</span> <span style="color:#ae81ff">00006000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">73</span>) boot:  <span style="color:#ae81ff">1</span> phy_init         RF data          <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">0000</span>f000 <span style="color:#ae81ff">00001000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">81</span>) boot:  <span style="color:#ae81ff">2</span> factory          factory app      <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00010000</span> <span style="color:#ae81ff">00100000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">88</span>) boot: End of partition table
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">93</span>) esp_image: segment <span style="color:#ae81ff">0</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00010020</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>c020020 size<span style="color:#f92672">=</span><span style="color:#ae81ff">06440</span>h ( <span style="color:#ae81ff">25664</span>) map
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">105</span>) esp_image: segment <span style="color:#ae81ff">1</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00016468</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>fc89800 size<span style="color:#f92672">=</span><span style="color:#ae81ff">013</span>d4h (  <span style="color:#ae81ff">5076</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">110</span>) esp_image: segment <span style="color:#ae81ff">2</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00017844</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">40380000</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">087</span>d4h ( <span style="color:#ae81ff">34772</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">124</span>) esp_image: segment <span style="color:#ae81ff">3</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00020020</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">42000020</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">1591</span>ch ( <span style="color:#ae81ff">88348</span>) map
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">140</span>) esp_image: segment <span style="color:#ae81ff">4</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00035944</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">403887</span>d4 size<span style="color:#f92672">=</span><span style="color:#ae81ff">00e5</span>ch (  <span style="color:#ae81ff">3676</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">141</span>) esp_image: segment <span style="color:#ae81ff">5</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">000367</span>a8 vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">50000000</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">00010</span>h (    <span style="color:#ae81ff">16</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">149</span>) boot: Loaded app from partition at offset <span style="color:#ae81ff">0x10000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">152</span>) boot: Disabling RNG early entropy source<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">169</span>) cpu_start: Pro cpu up<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">177</span>) cpu_start: Pro cpu start user code
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">177</span>) cpu_start: cpu freq: <span style="color:#ae81ff">160000000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">177</span>) cpu_start: Application information:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">180</span>) cpu_start: Project name:     hello<span style="color:#f92672">-</span>world
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">185</span>) cpu_start: App version:      <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">189</span>) cpu_start: Compile time:     May  <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">2021</span> <span style="color:#ae81ff">11</span>:<span style="color:#ae81ff">25</span>:<span style="color:#ae81ff">56</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">195</span>) cpu_start: ELF file SHA256:  <span style="color:#ae81ff">8</span>eae1b200ad945b9<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">201</span>) cpu_start: ESP<span style="color:#f92672">-</span>IDF:          v4<span style="color:#f92672">.</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>dev<span style="color:#f92672">-</span><span style="color:#ae81ff">1183</span><span style="color:#f92672">-</span>g9d34a1cd4
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">208</span>) heap_init: Initializing<span style="color:#f92672">.</span> RAM available <span style="color:#66d9ef">for</span> dynamic allocation:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">215</span>) heap_init: At <span style="color:#ae81ff">3</span>FC8BA40 len <span style="color:#ae81ff">000345</span>C0 (<span style="color:#ae81ff">209</span> KiB): DRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">221</span>) heap_init: At <span style="color:#ae81ff">3</span>FCC0000 len <span style="color:#ae81ff">0001</span>F260 (<span style="color:#ae81ff">124</span> KiB): STACK<span style="color:#f92672">/</span>DRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">228</span>) heap_init: At <span style="color:#ae81ff">50000010</span> len <span style="color:#ae81ff">00001</span>FF0 (<span style="color:#ae81ff">7</span> KiB): RTCRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">235</span>) spi_flash: detected chip: generic
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">239</span>) spi_flash: flash io: dio
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">243</span>) sleep: Configure to isolate all GPIO pins <span style="color:#f92672">in</span> sleep state
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">250</span>) sleep: Enable automatic switching of GPIO sleep configuration
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">257</span>) cpu_start: Starting scheduler<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>Hello world<span style="color:#f92672">!</span>
+</span></span><span style="display:flex;"><span>This is esp32c3 chip with <span style="color:#ae81ff">1</span> CPU core(s), WiFi<span style="color:#f92672">/</span>BLE, silicon revision <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>MB external flash
+</span></span><span style="display:flex;"><span>Minimum free heap size: <span style="color:#ae81ff">331876</span> bytes
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">10</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">9</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">8</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">7</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">6</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">5</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">4</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">3</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">2</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">1</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting <span style="color:#f92672">in</span> <span style="color:#ae81ff">0</span> seconds<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>Restarting now<span style="color:#f92672">.</span>
+</span></span></code></pre></div><p>下面是 hci/ble_adv_scan_combined 例程的輸出（MAC地址已經刪除）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#f92672">---</span> idf_monitor on <span style="color:#f92672">/</span>dev<span style="color:#f92672">/</span>ttyUSB0 <span style="color:#ae81ff">115200</span> <span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">---</span> Quit: Ctrl<span style="color:#f92672">+</span>] <span style="color:#f92672">|</span> Menu: Ctrl<span style="color:#f92672">+</span>T <span style="color:#f92672">|</span> Help: Ctrl<span style="color:#f92672">+</span>T followed by Ctrl<span style="color:#f92672">+</span>H <span style="color:#f92672">---</span>
+</span></span><span style="display:flex;"><span>ESP<span style="color:#f92672">-</span>ROM:esp32c3<span style="color:#f92672">-</span><span style="color:#ae81ff">20200918</span>
+</span></span><span style="display:flex;"><span>Build:Sep <span style="color:#ae81ff">18</span> <span style="color:#ae81ff">2020</span>
+</span></span><span style="display:flex;"><span>rst:<span style="color:#ae81ff">0x1</span> (POWERON),boot:<span style="color:#ae81ff">0xc</span> (SPI_FAST_FLASH_BOOT)
+</span></span><span style="display:flex;"><span>SPIWP:<span style="color:#ae81ff">0xee</span>
+</span></span><span style="display:flex;"><span>mode:DIO, clock div:<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x3fcd6100</span>,len:<span style="color:#ae81ff">0x1658</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x403ce000</span>,len:<span style="color:#ae81ff">0x8b4</span>
+</span></span><span style="display:flex;"><span>load:<span style="color:#ae81ff">0x403d0000</span>,len:<span style="color:#ae81ff">0x2ba4</span>
+</span></span><span style="display:flex;"><span>entry <span style="color:#ae81ff">0x403ce000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">32</span>) boot: ESP<span style="color:#f92672">-</span>IDF v4<span style="color:#f92672">.</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>dev<span style="color:#f92672">-</span><span style="color:#ae81ff">1183</span><span style="color:#f92672">-</span>g9d34a1cd4<span style="color:#f92672">-</span>dirty <span style="color:#ae81ff">2</span>nd stage bootloader
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">32</span>) boot: compile time <span style="color:#ae81ff">23</span>:<span style="color:#ae81ff">10</span>:<span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">32</span>) boot: chip revision: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">36</span>) boot_comm: chip revision: <span style="color:#ae81ff">2</span>, min<span style="color:#f92672">.</span> bootloader chip revision: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">43</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Speed      : <span style="color:#ae81ff">80</span>MHz
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">48</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Mode       : DIO
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">53</span>) boot<span style="color:#f92672">.</span>esp32c3: SPI Flash Size : <span style="color:#ae81ff">2</span>MB
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">57</span>) boot: Enabling RNG early entropy source<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">63</span>) boot: Partition Table:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">66</span>) boot: <span style="color:#75715e">## Label            Usage          Type ST Offset   Length</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">74</span>) boot:  <span style="color:#ae81ff">0</span> nvs              WiFi data        <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">02</span> <span style="color:#ae81ff">00009000</span> <span style="color:#ae81ff">00006000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">81</span>) boot:  <span style="color:#ae81ff">1</span> phy_init         RF data          <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">01</span> <span style="color:#ae81ff">0000</span>f000 <span style="color:#ae81ff">00001000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">88</span>) boot:  <span style="color:#ae81ff">2</span> factory          factory app      <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00</span> <span style="color:#ae81ff">00010000</span> <span style="color:#ae81ff">00100000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">96</span>) boot: End of partition table
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">100</span>) boot_comm: chip revision: <span style="color:#ae81ff">2</span>, min<span style="color:#f92672">.</span> application chip revision: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">107</span>) esp_image: segment <span style="color:#ae81ff">0</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00010020</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>c040020 size<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>ae70h ( <span style="color:#ae81ff">44656</span>) map
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">123</span>) esp_image: segment <span style="color:#ae81ff">1</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">0001</span>ae98 vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>fc8c800 size<span style="color:#f92672">=</span><span style="color:#ae81ff">02238</span>h (  <span style="color:#ae81ff">8760</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">126</span>) esp_image: segment <span style="color:#ae81ff">2</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">0001</span>d0d8 vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">40380000</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">02</span>f40h ( <span style="color:#ae81ff">12096</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">135</span>) esp_image: segment <span style="color:#ae81ff">3</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">00020020</span> vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">42000020</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">32464</span>h (<span style="color:#ae81ff">205924</span>) map
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">173</span>) esp_image: segment <span style="color:#ae81ff">4</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">0005248</span>c vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">40382</span>f40 size<span style="color:#f92672">=</span><span style="color:#ae81ff">0987</span>ch ( <span style="color:#ae81ff">39036</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">181</span>) esp_image: segment <span style="color:#ae81ff">5</span>: paddr<span style="color:#f92672">=</span><span style="color:#ae81ff">0005</span>bd10 vaddr<span style="color:#f92672">=</span><span style="color:#ae81ff">50000000</span> size<span style="color:#f92672">=</span><span style="color:#ae81ff">00010</span>h (    <span style="color:#ae81ff">16</span>) load
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">184</span>) boot: Loaded app from partition at offset <span style="color:#ae81ff">0x10000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">185</span>) boot: Disabling RNG early entropy source<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">202</span>) cpu_start: Pro cpu up<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">210</span>) cpu_start: Pro cpu start user code
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">210</span>) cpu_start: cpu freq: <span style="color:#ae81ff">160000000</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">210</span>) cpu_start: Application information:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">213</span>) cpu_start: Project name:     ble_adv_scan
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">218</span>) cpu_start: App version:      <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">223</span>) cpu_start: Compile time:     Apr <span style="color:#ae81ff">29</span> <span style="color:#ae81ff">2021</span> <span style="color:#ae81ff">23</span>:<span style="color:#ae81ff">09</span>:<span style="color:#ae81ff">57</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">229</span>) cpu_start: ELF file SHA256:  b486e59458a0b098<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">235</span>) cpu_start: ESP<span style="color:#f92672">-</span>IDF:          v4<span style="color:#f92672">.</span><span style="color:#ae81ff">4</span><span style="color:#f92672">-</span>dev<span style="color:#f92672">-</span><span style="color:#ae81ff">1183</span><span style="color:#f92672">-</span>g9d34a1cd4<span style="color:#f92672">-</span>dirty
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">242</span>) heap_init: Initializing<span style="color:#f92672">.</span> RAM available <span style="color:#66d9ef">for</span> dynamic allocation:
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">249</span>) heap_init: At <span style="color:#ae81ff">3</span>FC8FC10 len <span style="color:#ae81ff">000303</span>F0 (<span style="color:#ae81ff">192</span> KiB): DRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">255</span>) heap_init: At <span style="color:#ae81ff">3</span>FCC0000 len <span style="color:#ae81ff">0001</span>F260 (<span style="color:#ae81ff">124</span> KiB): STACK<span style="color:#f92672">/</span>DRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">262</span>) heap_init: At <span style="color:#ae81ff">50000010</span> len <span style="color:#ae81ff">00001</span>FF0 (<span style="color:#ae81ff">7</span> KiB): RTCRAM
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">268</span>) spi_flash: detected chip: generic
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">273</span>) spi_flash: flash io: dio
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">277</span>) sleep: Configure to isolate all GPIO pins <span style="color:#f92672">in</span> sleep state
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">283</span>) sleep: Enable automatic switching of GPIO sleep configuration
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">291</span>) cpu_start: Starting scheduler<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>W (<span style="color:#ae81ff">305</span>) BTDM_INIT: esp_bt_controller_mem_release <span style="color:#f92672">not</span> implemented, <span style="color:#66d9ef">return</span> OK
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">315</span>) BTDM_INIT: BT controller compile version [<span style="color:#ae81ff">6</span>ab3130]
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">315</span>) coexist: coexist rom version <span style="color:#ae81ff">8459080</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">315</span>) phy_init: phy_version <span style="color:#ae81ff">500</span>,<span style="color:#ae81ff">985899</span>c,Apr <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">2021</span>,<span style="color:#ae81ff">16</span>:<span style="color:#ae81ff">05</span>:<span style="color:#ae81ff">08</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">435</span>) system_api: Base MAC address is <span style="color:#f92672">not</span> set
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">435</span>) system_api: read default base MAC address from EFUSE
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">435</span>) BTDM_INIT: Bluetooth MAC: 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">445</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">445</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x03</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">455</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">1455</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">1455</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x01</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">1455</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">2455</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">2455</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x06</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">2455</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">3455</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">3455</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x08</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">3455</span>) BLE_ADV_SCAN: Starting BLE advertising with name <span style="color:#e6db74">&#34;ESP-BLE-1&#34;</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">3455</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">4465</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">4465</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x0a</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">4465</span>) BLE_ADV_SCAN: BLE Advertising started<span style="color:#f92672">..</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">4465</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">5305</span>) BLE_ADV_SCAN: Number of received advertising reports: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">5475</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">5475</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x0b</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">5475</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">6475</span>) BLE_ADV_SCAN: controller rcv pkt ready
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">6475</span>) BLE_ADV_SCAN: Event opcode <span style="color:#ae81ff">0x0c</span> success<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">6475</span>) BLE_ADV_SCAN: BLE Scanning started<span style="color:#f92672">..</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">6475</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">7475</span>) BLE_ADV_SCAN: BLE Advertise, cmd_sent: <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">10305</span>) BLE_ADV_SCAN: Number of received advertising reports: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">********</span> Response <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">********</span>
+</span></span><span style="display:flex;"><span>Event type: <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>Address type: <span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>Address:
+</span></span><span style="display:flex;"><span>Data length: <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>Advertisement Name: LYWSD03MMC
+</span></span><span style="display:flex;"><span>RSSI: <span style="color:#f92672">-</span><span style="color:#ae81ff">90</span>dB
+</span></span><span style="display:flex;"><span>I (<span style="color:#ae81ff">15305</span>) BLE_ADV_SCAN: Number of received advertising reports: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">********</span> Response <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">********</span>
+</span></span><span style="display:flex;"><span>Event type: <span style="color:#ae81ff">04</span>
+</span></span><span style="display:flex;"><span>Address type: <span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span>Address: 
+</span></span><span style="display:flex;"><span>Data length: <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>Advertisement Name: LYWSD03MMC
+</span></span><span style="display:flex;"><span>RSSI: <span style="color:#f92672">-</span><span style="color:#ae81ff">88</span>dB
+</span></span></code></pre></div><h2 id="0x03-總結">0x03 總結</h2>
+<p>因爲沒啥時間弄，所以這篇主要是開箱，感覺還是挺好玩的，因爲多了一個藍牙，而且看起來很多可以用 esp8266 的地方都可以用這個，是個不錯的選擇。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/esp32c3">ESP32C3</a></li>
+					
+					<li><a href="/public/tags/ble">ble</a></li>
+					
+					<li><a href="/public/tags/wifi">wifi</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

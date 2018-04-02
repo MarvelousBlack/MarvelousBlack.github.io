@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ble on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/ble/</link>
+    <description>Recent content in Ble on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Tue, 04 May 2021 10:26:47 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/ble/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安信可 ESP32-C3 開發板工程樣品開箱</title>
+      <link>https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/</link>
+      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/</guid>
+      <description>額，canokey 的那篇在寫了，因爲中間斷斷續續，所以可能還要再等等。&#xA;這次買到的模塊和開發板都是工程樣品，可能和最後的版本有點區別。&#xA;0x00 爲啥買 ESP32-C3 很簡單，便宜，幾塊錢，而且還是新品（x&#xA;當然買之前還是要看一下之後能不能用的上，所以咱還翻了一下 Datasheet。 這東西提供的引腳很少，感覺是個 esp8266 的替代品，但它多了一個 BLE(LE) ，多個 BLE（LE）就可以多很多玩法了，而且 ESP32C3 支持 IOMUX 也就是可以自由的分配引腳功能，還是方便的，綜上先搞點來玩玩看。&#xA;0x01 開箱圖 拿到手之後是這樣的，這次買的是安信可的模塊,所以有個殼子，而咱可以工具打開，所以湊合着看吧。 包裝裝的很好，都拿防靜電袋子裝着。 可以看見開發板上面有兩個單色的 LED 燈和一個 5050 RGB 燈。單色的 LED 接在了 IO 18 和 IO 19 上，5050 RGB 的顏色接在 IO 3 4 5 上， LDO 用的是 AMS1117-3.3 , 串口使用的是 CH340C。&#xA;0x02 上電 由於模塊咱沒有底板也懶得焊接，所以留着日後使用。直接拿開發板插電腦。先找個簡單的例子少進去，按照 esp32c3/get-started 的步驟，設置好環境然後燒錄就好了。然後打開 monitor 看見輸出：&#xA;Restarting now. x���ESP-ROM:esp32c3-20200918 Build:Sep 18 2020 rst:0xc (RTC_SW_CPU_RST),boot:0xc (SPI_FAST_FLASH_BOOT) Saved PC:0x40381f4e 0x40381f4e: esp_restart_noos at /home/megumi/Mw/esp/esp-idf/components/esp32c3/system_api_esp32c3.</description>
+    </item>
+    <item>
+      <title>車燈（忻風隨身 PM2.5 檢測儀）折騰筆記</title>
+      <link>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor-note/</link>
+      <pubDate>Wed, 27 Jan 2021 12:56:34 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor-note/</guid>
+      <description>A,距離上一片應該過去好幾個月了，重寫這車燈是不太可能的了，咱是不太想繼續弄了，現在最多只是做到了，把數據發回和電量顯示，這已經滿足咱的日常需求了，所以可能就不會繼續弄下去。而且隔壁羣友已經重新畫了塊pcb,把主控換成了esp8266，燈換成了 R! G！ B！ (炫彩車燈）,甚至還把上面的巨大按鈕換成了某智能燈的開關，做到了半夜起牀也不怕找不到按鈕，所以重寫也沒什麼意義了。 那這篇東西就是講咱折騰這玩意遇到的問題，當然都是一些很簡單的問題，但最近沒什麼可以水，那就把這個寫一些吧。&#xA;0x01 點燈 之前提到了車燈這個東西是用的主控是 nRF51822 , 而開發這個最快的方法是使用 SDK 進行開發。恩，配置好環境，先點個燈,找到裏面的示例文件， make 然後刷入。誒，怎麼還是黑的什麼反應都沒有。仔細的閱讀了 SDK 的文檔之後發現有下面的一段話。&#xA;Enabling support for a board To enable support for an older Nordic Semiconductor board or a custom board, you must include a define statement for the board that you want to use before you compile the code.&#xA;According to the define statement, the suitable board support file is selected. The board support file defines the peripherals, thus the location of LEDs and buttons, for the selected platform.</description>
+    </item>
+    <item>
+      <title>忻風隨身 PM2.5 檢測儀開箱和拆解</title>
+      <link>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor/</link>
+      <pubDate>Fri, 04 Sep 2020 18:27:22 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/mosp-air-quality-sensor/</guid>
+      <description>喫個飯？&#xA;忍住！要省錢&#xA;買個衣服？&#xA;忍住！要省錢&#xA;換個手機？&#xA;忍住！要省錢&#xA;來買電子垃圾！ 來來來！多少錢&#xA;0x00 買 一大早起來看見有人發了一個神祕鏈接給咱，咱一看隨身 pm2.5 檢測儀，而且還只需要12元一個。擺明了是那種陳年的貨，連接用的 app 都是年久失修的那種，賣這麼低就是當電子垃圾賣的嘛。看了一下評價，好東西，這裏面的傳感器要70一個。嘛，之前就打算買一個這種傳感器來康康，馬上下單了兩個。咱沒有空氣淨化機，所以說實話這東西其實並沒多大用處。但後面弄了一下才發現賣汝12元都是虧了。忻風隨身 PM2.5 檢測儀這個名字太長了，在咱購買的那家 X 寶店鋪的評論，下面有人把這東西當成自行車車燈使用，於是下文將此檢測設備稱爲自行車車燈，簡稱車燈。&#xA;0x01 開箱 過了幾天車燈就到了咱的手上了。包裝是這樣的，兩個都是白色的。這部分咱就只放圖了。開機之後那個圈會亮燈，看燈就可以知道空氣pm2.5大概的狀態了。值得一提的是這個是使用是激光進行測定，所以這東西適合家用或者當一個玩具，數值可能沒那麼的準確，但確實可以在一定的程度上反應汝周圍的空氣質量。 0x02 拆 車燈沒有螺絲口，都是卡扣，直接拿個敲棒翹就是了。用力滑一圈就打開了。 然後看見傳感器和電池直接放在一個架子上，架子也是用東西卡住，直接壓一下抽出來既可。 在拔掉了電池和傳感器後就可以看見主板了。可以看見是一個 nRF51822 的藍牙芯片。 卸掉板上的螺絲，就可以把正面的按鈕拆下來了，把主板反過來可以看見一排的 LED。 好這就是全部了。因爲傳感器還要用所以傳感器就不拆了。&#xA;0x03 獲取數據 嘛，那個 app 和之前一樣，咱是不敢用的了，既然它是藍牙的那麼就說明咱們可以拿到數據了。那麼直接拿電腦連接，先不管有沒有加密，先試試可以拿到什麼再說。掃描的時候可以發現這個車燈，沒有像之前米家的那個一樣使用廣播，那就直接連吧。（順便記錄一下使用方法，免得下次又忘了）&#xA;直接使用電腦連過去，那麼就直接用工具 bluetoothctl 。(下面和 mac 地址有關的將被替換爲 xx）。&#xA;先進行掃描，然後估計可以發現這麼一個 device&#xA;Device C2:FD:DA:xx:xx:xx 测霾单品 然後鏈接它，接着提示符會變爲[测霾单品]#，並且噴出一大堆內容。接着使用menu gatt進入 submenu。&#xA;[测霾单品]# menu gatt Menu gatt: Available commands: ------------------- list-attributes [dev/local] List attributes select-attribute &amp;lt;attribute/UUID&amp;gt; Select attribute attribute-info [attribute/UUID] Select attribute read [offset] Read attribute value write &amp;lt;data=xx xx .</description>
+    </item>
+  </channel>
+</rss>

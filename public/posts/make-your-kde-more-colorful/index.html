@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Make Your Kde More Colorful - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="想要想某個桌面一樣自動根據顏色變化的 KDE 嗎？那就跟着做吧。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Make Your Kde More Colorful" />
+<meta property="og:description" content="想要想某個桌面一樣自動根據顏色變化的 KDE 嗎？那就跟着做吧。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-04-22T21:31:27+08:00" />
+<meta property="article:modified_time" content="2019-04-22T21:31:27+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Make Your Kde More Colorful"/>
+<meta name="twitter:description" content="想要想某個桌面一樣自動根據顏色變化的 KDE 嗎？那就跟着做吧。"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Make Your Kde More Colorful</h1>
+			<div class="meta">Posted on Apr 22, 2019</div>
+		</div>
+		
+
+		<section class="body">
+			<p>想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 <a href="https://github.com/IsoaSFlus/kcm-colorful">kcm-colorful</a> 的小程序吧！先放張我自己的桌面截圖吧。
+<img src="/public/pic/make-your-kde-more-colorful.png" alt="make-your-kde-more-colorful"></p>
+<h2 id="軟件介紹和食用方法">軟件介紹和食用方法</h2>
+<p>這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：<br>
+<img src="/public/pic/make-your-kde-more-colorful1.png" alt="make-your-kde-more-colorful1">
+方便你直觀的直接選取備用顏色和看見你的壁紙。當然這個界面已經支持暗色主題了。汝可能發現了咱這裏的預覽圖和咱的壁紙不一樣啊，那是因爲咱有兩個顯示器，而兩個顯示器設置的壁紙不一樣於是這裏顯示的就是另一個顯示器的壁紙了。那咱就沒法選了另一張圖了啊，先別慌，作者還提供了一個叫 <code>kcmcolorfulhelper</code> 這個名字的 cli 工具用於這種情況的處理。讓咱們先看看幫助吧</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ kcmcolorfulhelper -h
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Usage: kcmcolorfulhelper <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Helper <span style="color:#66d9ef">for</span> kcm-colorful.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Project address: https://github.com/IsoaSFlus/kcm-colorful
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Options:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  -h, --help               Displays this help.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  -p, --picture &lt;file&gt;     Picture to extract color.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  -c, --color &lt;colorcode&gt;  Set color manually, eg: <span style="color:#75715e">#1234ef.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  -s, --set-as-wallpaper   Set picture specified by <span style="color:#e6db74">&#34;-p&#34;</span> as wallpaper.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  -d, --debug              Show debug info.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  -n, --number &lt;int&gt;       Select the Nth color in candidate list. Default is
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                           1.
+</span></span></code></pre></div><p>使用上也很簡單，直接加 <code>-p</code> 和圖片就好了，會自動應用可以順便加上 <code>-s</code> 一次性把畫布也設置上。</p>
+<h2 id="安裝">安裝</h2>
+<p>這個就簡單了，如果添加了 CN 源，汝可以直接</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -S kcm-colorful-git
+</span></span></code></pre></div><p>如果沒有，那麼汝還能從 aur 中找到這個包安裝。
+抱歉，我不是 Arch 。 沒事，咱們還能手動安裝啊。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>git clone --recursive https://github.com/IsoaSFlus/kcm-colorful.git
+</span></span><span style="display:flex;"><span>cd kcm-colorful
+</span></span><span style="display:flex;"><span>mkdir build
+</span></span><span style="display:flex;"><span>cd ./build
+</span></span><span style="display:flex;"><span>cmake ../
+</span></span><span style="display:flex;"><span>make
+</span></span><span style="display:flex;"><span>sudo make install
+</span></span><span style="display:flex;"><span>#Then set your plasma desktop theme to &#34;Colorful&#34; for best experience.
+</span></span></code></pre></div><h2 id="後續配置">後續配置</h2>
+<p>好了，配置好了怎麼似乎有些不太一樣啊，因爲上面只是說了用法和安裝並沒有說怎麼配置啊。首先在 KDE <code>系统设置-&gt;桌面行为-&gt;桌面特效</code>，找到“模糊”项并使能。之後打開 <code>系统设置-&gt;工作空间主题-&gt;桌面主题</code>，设置主题为<code>Colorful</code>。恩，估計汝已經可以看見效果了，如果需要像上面的截圖那樣那就需要繼續調整了。安裝 <a href="https://github.com/alex47/BreezeBlurred">BreezeBlurred</a> 這個主題，CN源也對這個主題打包了，名字可能有一點點變化，汝可以搜索一下。接着 <code>系统设置-&gt;应用程序风格-&gt;窗口装饰</code> 找到一個叫微風的主題，那個預覽圖透明的那個，打開設置一下透明度就完成了。這一步的圖文教程可以在<a href="https://github.com/IsoaSFlus/kcm-colorful/blob/master/README.md">戳這裏</a>找到。</p>
+<hr>
+<h4 id="引用以及參考">引用以及參考</h4>
+<p><a href="https://github.com/IsoaSFlus/kcm-colorful">https://github.com/IsoaSFlus/kcm-colorful</a></p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/kde">KDE</a></li>
+					
+					<li><a href="/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6">軟體推薦</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

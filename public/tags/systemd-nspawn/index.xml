@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Systemd-Nspawn on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/systemd-nspawn/</link>
+    <description>Recent content in Systemd-Nspawn on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Sat, 13 Apr 2024 20:53:52 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/systemd-nspawn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>在 systemd-nspawn 容器下构建 Armbian 镜像文件</title>
+      <link>https://blog.megumifox.com/public/posts/build-armbian-in-systemd-nspawn/</link>
+      <pubDate>Sat, 13 Apr 2024 20:53:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/build-armbian-in-systemd-nspawn/</guid>
+      <description>简单的来说就是创建个 systemd-nspawn 的容器，然后跑就完事了。但问题远远没有这么简单（x&#xA;0x00 前言/需求 最近买了个小玩具，这个开发板呢没有 Armbian 官方的预构建支持（就是不能直接下到 Armbian 构建好的镜像），只能手动用 Armbian Linux Build Framework 来构建需要的开发板镜像文件。问题来了，正如预览所写的，使用这个构建工具需要使用 Debian 或 Ubuntu ，但我现在使用的系统是 Arch Linux ，没有办法直接运行这个东西。当然可以用他们提供的其中一个方法使用 docker ，但这样也太不优雅了。还不如直接起个 systemd-nspawn 容器来的方便，所有就有了这个记录。&#xA;0x01 准备工作 既然要用 systemd-nspawn 了，那我们的宿主当然需要一个使用 systemd 把底裤卖掉 的发行版，好要准备一个 Debian 或者 Ubuntu 的 rootfs。当然直接 debootstrap 一个就行。&#xA;注意：&#xA;systemd-nspawn 要求容器中的作業系統以 PID 1 運行systemd init，並且 systemd-nspawn 要安裝在容器中。為了完善依賴，需確保在容器中安裝 debian 軟件包 systemd-container，debian 包 systemd-container 依賴 dbus，但是 dbus 不會被默認安裝。所以還要確保 dbus 或 dbus-broker 這些 debian 包被安裝在容器內系統中。&#xA;直接 debootstrap 一个 Ubuntu(jammy) 这里容器的名称为 ubuntu：</description>
+    </item>
+  </channel>
+</rss>

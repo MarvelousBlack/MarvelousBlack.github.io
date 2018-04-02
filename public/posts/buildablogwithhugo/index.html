@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>用hugo搭建一个博客 - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="blog 刚刚建起来，那就记录一下建立的过程吧。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="用hugo搭建一个博客" />
+<meta property="og:description" content="blog 刚刚建起来，那就记录一下建立的过程吧。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/buildablogwithhugo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2018-11-30T20:24:52+08:00" />
+<meta property="article:modified_time" content="2018-11-30T20:24:52+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="用hugo搭建一个博客"/>
+<meta name="twitter:description" content="blog 刚刚建起来，那就记录一下建立的过程吧。"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">用hugo搭建一个博客</h1>
+			<div class="meta">Posted on Nov 30, 2018</div>
+		</div>
+		
+
+		<section class="body">
+			<p>距离上次写有一个星期了，嘛，这次就来写写怎么搭个 blog 好了。（不完全笔记</p>
+<h2 id="0x00-准备">0x00 准备</h2>
+<p>工欲善其事必先利其器。搭建一个 blog 你需要准备：</p>
+<ul>
+<li>一个空间用来存放你的blog</li>
+<li>hugo</li>
+<li>简单的 markdown 语法知识</li>
+</ul>
+<h2 id="0x01-关于hugo和安装">0x01 关于hugo和安装</h2>
+<p>hugo是最受欢迎的开源的静态页面生成器，用go语言书写的。拥有令人令人惊讶的速度和可塑性。可以让你更加专注于写作，而且拥有大量十分好看的主题可选。 那么要怎么安装呢？<br>
+在 archlinux下只需要一句 <code>pacman -Syu hugo</code>就好了。窗户的话，只需要去 <a href="https://gohugo.io/">官网</a> 下载对应的可执行文件就好了。</p>
+<h2 id="0x02-开始创建并装饰你的网页">0x02 开始创建并装饰你的网页</h2>
+<h3 id="创建网页文件">创建网页文件</h3>
+<p>创建一个网页文件很简单只需要</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site （文件夹名称）
+</span></span></code></pre></div><p>然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。</p>
+<h3 id="安装主题">安装主题</h3>
+<p>hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在<a href="https://themes.gohugo.io/">这里</a>选择一个你喜欢的主题。 <strong>注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档</strong> 惠狐之书使用的是 hyde-Y 主题，<del>这个主题看起来有点像比特垃圾桶</del> , 所以下文将以这个主题为示例。<br>
+按照主题写的命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd your_site_repo/
+</span></span><span style="display:flex;"><span>$ mkdir themes
+</span></span><span style="display:flex;"><span>$ cd themes
+</span></span><span style="display:flex;"><span>$ git clone https://github.com/enten/hyde-y
+</span></span></code></pre></div><p>这样就安装好主题了，但还没开始配置</p>
+<h4 id="主配置文件">主配置文件</h4>
+<p>编辑 <code>config.toml</code> (如果没有则新建）按照下面的模板开始修改。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># hostname (and path) to the root eg. http://spf13.com/
+</span></span><span style="display:flex;"><span>baseurl = &#34;http://www.example.com&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Site title
+</span></span><span style="display:flex;"><span>title = &#34;sitename&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Copyright
+</span></span><span style="display:flex;"><span>copyright = &#34;(c) 2015 yourname.&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Language
+</span></span><span style="display:flex;"><span>languageCode = &#34;en-EN&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Metadata format
+</span></span><span style="display:flex;"><span># &#34;yaml&#34;, &#34;toml&#34;, &#34;json&#34;
+</span></span><span style="display:flex;"><span>metaDataFormat = &#34;yaml&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Theme to use (located in /themes/THEMENAME/)
+</span></span><span style="display:flex;"><span>theme = &#34;hyde-y&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Pagination
+</span></span><span style="display:flex;"><span>paginate = 10
+</span></span><span style="display:flex;"><span>paginatePath = &#34;page&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Enable Disqus integration
+</span></span><span style="display:flex;"><span>disqusShortname = &#34;your_disqus_shortname&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[permalinks]
+</span></span><span style="display:flex;"><span>    post = &#34;/:year/:month/:day/:slug/&#34;
+</span></span><span style="display:flex;"><span>    code = &#34;/:slug/&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[taxonomies]
+</span></span><span style="display:flex;"><span>    tag = &#34;tags&#34;
+</span></span><span style="display:flex;"><span>    topic = &#34;topics&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[author]
+</span></span><span style="display:flex;"><span>    name = &#34;yourname&#34;
+</span></span><span style="display:flex;"><span>    email = &#34;yourname@example.com&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span># All parameters below here are optional and can be mixed and matched.
+</span></span><span style="display:flex;"><span>#
+</span></span><span style="display:flex;"><span>[params]
+</span></span><span style="display:flex;"><span>    # You can use markdown here.
+</span></span><span style="display:flex;"><span>    brand = &#34;foobar&#34;
+</span></span><span style="display:flex;"><span>    topline = &#34;few words about your site&#34;
+</span></span><span style="display:flex;"><span>    footline = &#34;code with &lt;i class=&#39;fa fa-heart&#39;&gt;&lt;/i&gt;&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # Sidebar position
+</span></span><span style="display:flex;"><span>    # false, true, &#34;left&#34;, &#34;right&#34;
+</span></span><span style="display:flex;"><span>    sidebar = &#34;left&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # Text for the top menu link, which goes the root URL for the site.
+</span></span><span style="display:flex;"><span>    # Default (if omitted) is &#34;Home&#34;.
+</span></span><span style="display:flex;"><span>    home = &#34;home&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # Select a syntax highight for highlight.js
+</span></span><span style="display:flex;"><span>    # Check the static/css/highlight directory for options.
+</span></span><span style="display:flex;"><span>    # Leave unset to fall back to default hugo highlighter instead of highlight.js
+</span></span><span style="display:flex;"><span>    highlight = &#34;default&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # Google Analytics.
+</span></span><span style="display:flex;"><span>    googleAnalytics = &#34;Your Google Analytics tracking code&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # Sidebar social links.
+</span></span><span style="display:flex;"><span>    github = &#34;enten/hugo-boilerplate&#34; # Your Github profile ID
+</span></span><span style="display:flex;"><span>    bitbucket = &#34;&#34; # Your Bitbucket profile ID
+</span></span><span style="display:flex;"><span>    linkedin = &#34;&#34; # Your LinkedIn profile ID (from public URL)
+</span></span><span style="display:flex;"><span>    googleplus = &#34;&#34; # Your Google+ profile ID
+</span></span><span style="display:flex;"><span>    facebook = &#34;&#34; # Your Facebook profile ID
+</span></span><span style="display:flex;"><span>    twitter = &#34;&#34; # Your Twitter profile ID
+</span></span><span style="display:flex;"><span>    youtube = &#34;&#34;  # Your Youtube channel ID
+</span></span><span style="display:flex;"><span>    flattr = &#34;&#34;  # populate with your flattr uid
+</span></span><span style="display:flex;"><span>    flickr = &#34;&#34; # Your Flickr profile ID
+</span></span><span style="display:flex;"><span>    vimeo = &#34;&#34; # Your Vimeo profile ID
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    # Sidebar RSS link: will only show up if there is a RSS feed
+</span></span><span style="display:flex;"><span>    # associated with the current page
+</span></span><span style="display:flex;"><span>    rss = true
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[blackfriday]
+</span></span><span style="display:flex;"><span>    angledQuotes = true
+</span></span><span style="display:flex;"><span>    fractions = false
+</span></span><span style="display:flex;"><span>    hrefTargetBlank = false
+</span></span><span style="display:flex;"><span>    latexDashes = true
+</span></span><span style="display:flex;"><span>    plainIdAnchors = true
+</span></span><span style="display:flex;"><span>    extensions = []
+</span></span><span style="display:flex;"><span>    extensionmask = []
+</span></span></code></pre></div><p>上面都有注释就不解释了。接着是配置侧边栏。</p>
+<h4 id="侧边栏">侧边栏</h4>
+<p>创建<code>data/Menu.toml</code>这个文件，下面是示例（不需要删掉就好了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[about]
+</span></span><span style="display:flex;"><span>    Name = &#34;About&#34;
+</span></span><span style="display:flex;"><span>    URL = &#34;/about&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[posts]
+</span></span><span style="display:flex;"><span>    Name = &#34;Posts&#34;
+</span></span><span style="display:flex;"><span>    Title = &#34;Show list of posts&#34;
+</span></span><span style="display:flex;"><span>    URL = &#34;/post&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[tags]
+</span></span><span style="display:flex;"><span>    Name = &#34;Tags&#34;
+</span></span><span style="display:flex;"><span>    Title = &#34;Show list of tags&#34;
+</span></span><span style="display:flex;"><span>    URL = &#34;/tags&#34;
+</span></span></code></pre></div><h4 id="页脚链接">页脚链接</h4>
+<p>创建<code>data/FootMenu.toml</code>不需要可以跳过这一步</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>[license]
+</span></span><span style="display:flex;"><span>    Name = &#34;license&#34;
+</span></span><span style="display:flex;"><span>    URL = &#34;/license&#34;
+</span></span></code></pre></div><h4 id="完整页面">完整页面</h4>
+<p>接着是创建刚刚侧边栏的 about 和页脚的 license 了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>$hugo new about.md
+</span></span><span style="display:flex;"><span>$hugo new license.md
+</span></span></code></pre></div><p>然后进入 <code>content</code> 目录编辑刚刚创建的两个文件。文件里面使用 markdown 语法。关于 markdown 的语法，请自行谷歌。</p>
+<h4 id="网页图标">网页图标</h4>
+<p>这个主题支持 favicon 只需要放入 <code>static/favicon.png</code> 和 <code>static/touch-icon-144-precomposed.png</code> 这两个文件就好了。</p>
+<h2 id="0x03-开始写作">0x03 开始写作</h2>
+<p>创建新的文章只需要使用</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new post/xxx.md
+</span></span></code></pre></div><p>这样就会自动创建一个新文件，接着你需要编辑<code>content/post/</code>下面刚刚创建的文件。开始愉快的写文章吧！<br>
+你可能需要添加一些 tag 之类的，这个很简单只需要在文件一开始写成像下面这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>title: &#34;用hugo搭建一个博客&#34;
+</span></span><span style="display:flex;"><span>date: 2018-11-30T20:24:52+08:00
+</span></span><span style="display:flex;"><span>description: &#34;blog 刚刚建起来，那就记录一下建立的过程吧。&#34;
+</span></span><span style="display:flex;"><span>topics:
+</span></span><span style="display:flex;"><span>  - 新手教程
+</span></span><span style="display:flex;"><span>  - 杂乱的笔记
+</span></span><span style="display:flex;"><span>tags:
+</span></span><span style="display:flex;"><span>  - blog
+</span></span><span style="display:flex;"><span>  - hugo
+</span></span><span style="display:flex;"><span>draft:  false
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><p>这样就可以添加 tag 和 topics 。这里的 draft 项是草稿，当后面为 ture 的时候，这个文章是不会出现在最后的页面里面的。但在预览的时候可以看见。</p>
+<h2 id="0x04-预览和生成站点">0x04 预览和生成站点</h2>
+<h4 id="预览">预览</h4>
+<p>预览的话只需要</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo server -D
+</span></span></code></pre></div><p>这样就可以在自己的机器上预览文章的效果了</p>
+<h4 id="生成">生成</h4>
+<p>生成的话命令就更简单了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo
+</span></span></code></pre></div><p>最后生成的文件在 <code>public/</code> 下面。</p>
+<h2 id="0x05-发布最后一步">0x05 发布（最后一步）</h2>
+<p>发布的话你只需要把，这一个 <code>public</code> 文件夹里面的内容全部复制到你空间对应的地方就好了。</p>
+<h2 id="0x06-剩下的事情">0x06 剩下的事情</h2>
+<p>设置评论区什么的，还有让谷歌百度收录之类的。那些就不再本文中介绍了，请参看对应网站的说明。最后感谢你把此文看到最后，如有疑问可以直接在评论区回复。汝如果发现文章有误，请联系我，我会及时更改的。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/blog">blog</a></li>
+					
+					<li><a href="/public/tags/hugo">hugo</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

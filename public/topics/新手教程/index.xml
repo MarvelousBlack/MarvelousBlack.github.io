@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>新手教程 on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</link>
+    <description>Recent content in 新手教程 on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Tue, 01 Feb 2022 20:33:39 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>i3wm 下使用視頻動壁紙（帶硬件加速）</title>
+      <link>https://blog.megumifox.com/public/posts/video-wallpaper/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/video-wallpaper/</guid>
+      <description>嘛，不知道怎麼開頭，因爲只是沒事幹去搞了一下，只是怕忘記了就先寫下來了，說不上那天就用上了呢(x。&#xA;日常使用的話，我是不會去碰動態壁紙之類的東西，因爲這些東西很影響我的注意力，而且這也沒多大的必要。但你十分喜歡這種十分炫酷的視頻動態壁紙的話，希望這篇東西可能可以幫到你吧。&#xA;0x00 怎麼整？ i3wm 只是個 WM （窗管）他是沒有壁紙之類的亂七八糟的東西的，他只負責管理窗口。既然沒有東西專門負責壁紙，那麼我們的視頻壁紙要怎麼搞呢？&#xA;看起來很麻煩，仔細想一下那不就是個視頻播放器在放無聲視頻。視頻播放的話，那就要考慮要支持硬解了，讓 CPU 來解碼的話那會佔用不少的資源，在一些配置比較垃圾的電腦上，可能會造成新的卡頓，因此我們需要使用顯卡來加速解碼，減少不必要的卡頓，你也不想開個壁紙就大幅度影響你的桌面使用體驗吧。要用可以硬解又不這麼折騰而且還支持 nvdec 的視頻播放器，那直接用 mpv 好了。接下來就好辦了，開個視頻播放器然後讓它把視頻塞到根窗口，這就完事了。那確實簡單，但現實往往沒有這麼簡單，你會發現啥事都沒發生。出於各種目的，解決撕裂，窗口透明，美觀，炫酷動畫等等，你可能會使用 compositor ，例如 picom。這時候你會發現讓視頻播放器塞到根窗口根本不管用。因此我們還需要一個東西xwinwrap[1],它可以讓你在啓用 compositor 的情況下,可以實現視頻壁紙的願望。&#xA;0x01 開整！ 其實上面就已經把要做的事情說完了，那麼現在剩下的只是敲敲鍵盤的事情了。&#xA;舉個例子：&#xA;我的屏幕大小是 3440 x 1440 ，使用 這個視頻 作爲動態壁紙&#xA;命令如下:（參數就看你需求改就是了這裏只是演示一下）&#xA;xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &amp;#34;https://www.youtube.com/watch?v=n9w_hZkbfoo&amp;#34; （注：因爲 youtube-dl 下載太慢這裏使用 youtube-dl 的一個 fork yt-dlp[2]）&#xA;如果你是要播放本地視頻，那麼改爲：&#xA;xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no $VIDEO_PATH 在終端中跑完，看見沒問題就可以把這命令扔到 i3wm 的 config 下隨 i3 啓動了。</description>
+    </item>
+    <item>
+      <title>I3wm 配置(僞)</title>
+      <link>https://blog.megumifox.com/public/posts/i3wm/</link>
+      <pubDate>Wed, 07 Aug 2019 21:56:00 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/i3wm/</guid>
+      <description>之前提過了 KDE 但實際上咱平時用的是 i3wm，但就像名字說的那樣這個就是個 wm ，窗口管理器，所以別期望 i3 給汝全套的服務。說實話咱也不知道要怎麼寫，那就隨便寫寫吧。以下內容以基本上爲解釋咱的配置文件，汝如果想得到和咱一樣的效果直接複製就好了，不過咱還是建議汝康康不要直接複製。其實這篇東西是用來水的，因爲暫時不知道些什麼，emmm，這不就是複製粘貼p配置文件的事情嗎？有什麼好寫的（摔&#xA;咱的配置文件在 這裏 汝只需要對照修改汝的 ~/.config/i3/config 就好了。下面開始解釋這份文件。&#xA;exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 exec --no-startup-id fcitx exec --no-startup-id udiskie -snA&amp;amp; exec --no-startup-id sleep 3 &amp;amp;&amp;amp; exec feh --bg-fill background_desktop.png background_desktop.jpg exec --no-startup-id compton -CGb --backend glx --paint-on-overlay --glx-no-stencil --unredir-if-possible exec --no-startup-id termite exec --no-startup-id kdeconnect-indicator&amp;amp; exec --no-startup-id klipper&amp;amp; exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unlock-indicator -i background.png &amp;amp; 這一段是啓動項，前文說了 i3 只是一個窗口管理器，有很多東西都需要汝自己去配置，這裏從上倒下依次爲啓動 kde 的 polkit 驗證的那個東西，也就是在部分需要提權的地方跳出來讓汝輸入密碼的那個框。fcitx 是輸入法， udiskie 是自動掛載 u 盤的小程序，feh 是用來設置壁紙的（爲了方便咱直接吧圖片命名爲 background_desktop.</description>
+    </item>
+    <item>
+      <title>Make Your Kde More Colorful</title>
+      <link>https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/</link>
+      <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/</guid>
+      <description>想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 kcm-colorful 的小程序吧！先放張我自己的桌面截圖吧。 軟件介紹和食用方法 這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：&#xA;方便你直觀的直接選取備用顏色和看見你的壁紙。當然這個界面已經支持暗色主題了。汝可能發現了咱這裏的預覽圖和咱的壁紙不一樣啊，那是因爲咱有兩個顯示器，而兩個顯示器設置的壁紙不一樣於是這裏顯示的就是另一個顯示器的壁紙了。那咱就沒法選了另一張圖了啊，先別慌，作者還提供了一個叫 kcmcolorfulhelper 這個名字的 cli 工具用於這種情況的處理。讓咱們先看看幫助吧&#xA;[marvelous@Vanilla ~]$ kcmcolorfulhelper -h Usage: kcmcolorfulhelper [options] Helper for kcm-colorful. Project address: https://github.com/IsoaSFlus/kcm-colorful Options: -h, --help Displays this help. -p, --picture &amp;lt;file&amp;gt; Picture to extract color. -c, --color &amp;lt;colorcode&amp;gt; Set color manually, eg: #1234ef. -s, --set-as-wallpaper Set picture specified by &amp;#34;-p&amp;#34; as wallpaper. -d, --debug Show debug info. -n, --number &amp;lt;int&amp;gt; Select the Nth color in candidate list. Default is 1.</description>
+    </item>
+    <item>
+      <title>用PulseAudio将电脑的声音用手机放出来</title>
+      <link>https://blog.megumifox.com/public/posts/pulseaudio-over-tcp-play-on-phone/</link>
+      <pubDate>Wed, 06 Feb 2019 22:30:57 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/pulseaudio-over-tcp-play-on-phone/</guid>
+      <description>恩，咱之前啊，在咸鱼上收了一个树霉派1B，是的，一个老旧的版本。那和今天咱要说的题目有什么关系呢？关系大着呢，如果没有这个小玩意，咱也不知道还能这样玩呢。&#xA;缘由 这个东西，其实咱一开始买回来也不知道用来做什么，直到那天我找到了大量的歌曲存到了U盘，于是想这个东西有音频接口那为什么不直接拿来当个播放器呢？于是熟练的装好了咱最爱的 moc 播放器，插上耳机。额。。。。似乎声音不太对啊，是的，树霉派的音频电路真的很差。汝可能会问，咱为什么不直接用手机播放呢？那是因为啊，咱手机的空间太小了存不下辣么多的歌曲。可咱还是想用这个小东西来做播放器，难道就没有办法了吗？&#xA;PulseAudio Over TCP 在 linux 上有个叫 pulseaudio 的东西，没错就是它。它可以使用网络来把声音送出去，具体怎么做的汝可以去搜一下 pulseaudio over tcp ，咱也不太清楚。但既然有这么方便的功能，岂不是可以解决上面提到的问题？咱们就开始配置吧。&#xA;配置过程 手机端 手机这边咱用的是 android 。所以去play士多，直接安装 Simple Protocol Player ，安装好之后可以看见一个十分简单的界面，上面有几个选项这样的。接着咱们只需要修改 ip 和 port 就行了，ip 为汝电脑的 ip ，端口可以取 12345 ，也可以随你喜欢。其他默认就好，如果汝在后面设置好之后发现有些卡顿，还可以适当的调整一下 buffer size。&#xA;电脑端 先安装好 pulseaudio ，接着使用pactl list sources short列出源，例如咱是这样的&#xA;0&#x9;alsa_output.pci-0000_00_1f.3.analog-stereo.monitor&#x9;module-alsa-card.c&#x9;s16le 2ch 48000Hz&#x9;SUSPENDED 1&#x9;alsa_input.pci-0000_00_1f.3.analog-stereo&#x9;module-alsa-card.c&#x9;s16le 2ch 48000Hz&#x9;SUSPENDED 找到输出的那个，然后输入(假设 source=0，如果不是请参照汝机器将0换为对应数值，port和上面设置的port一样)&#xA;pactl load-module module-simple-protocol-tcp source=0 record=true port=12345 恩，接着在手机那边点一下那个播放键就可以用了。如果汝还想持久化这个设置，可以修改 /etc/pulse/default.pa 并追加&#xA;load-module module-simple-protocol-tcp source=0 record=true port=12345 其实就是 pactl 后面那堆东西啦。然后重启一下 pulseaudio 就ok了。</description>
+    </item>
+    <item>
+      <title>用hugo搭建一个博客</title>
+      <link>https://blog.megumifox.com/public/posts/buildablogwithhugo/</link>
+      <pubDate>Fri, 30 Nov 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/buildablogwithhugo/</guid>
+      <description>距离上次写有一个星期了，嘛，这次就来写写怎么搭个 blog 好了。（不完全笔记&#xA;0x00 准备 工欲善其事必先利其器。搭建一个 blog 你需要准备：&#xA;一个空间用来存放你的blog hugo 简单的 markdown 语法知识 0x01 关于hugo和安装 hugo是最受欢迎的开源的静态页面生成器，用go语言书写的。拥有令人令人惊讶的速度和可塑性。可以让你更加专注于写作，而且拥有大量十分好看的主题可选。 那么要怎么安装呢？&#xA;在 archlinux下只需要一句 pacman -Syu hugo就好了。窗户的话，只需要去 官网 下载对应的可执行文件就好了。&#xA;0x02 开始创建并装饰你的网页 创建网页文件 创建一个网页文件很简单只需要&#xA;hugo new site （文件夹名称） 然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。&#xA;安装主题 hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在这里选择一个你喜欢的主题。 注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档 惠狐之书使用的是 hyde-Y 主题，这个主题看起来有点像比特垃圾桶 , 所以下文将以这个主题为示例。&#xA;按照主题写的命令&#xA;$ cd your_site_repo/ $ mkdir themes $ cd themes $ git clone https://github.com/enten/hyde-y 这样就安装好主题了，但还没开始配置&#xA;主配置文件 编辑 config.toml (如果没有则新建）按照下面的模板开始修改。&#xA;# hostname (and path) to the root eg. http://spf13.</description>
+    </item>
+    <item>
+      <title>Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记</title>
+      <link>https://blog.megumifox.com/public/posts/archlinux%E4%B8%8Bintel%E5%92%8Cnvidia%E5%8F%8C%E6%98%BE%E5%8D%A1de%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/archlinux%E4%B8%8Bintel%E5%92%8Cnvidia%E5%8F%8C%E6%98%BE%E5%8D%A1de%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <description>嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。默认你是 ArchLinux 用户，如果是其他发行版，请自行变通。&#xA;0x00 本教程的主要内容 如何正常的进入 live cd 如何设置并安装私有 NVIDIA 驱动（仅使用n卡渲染然后使用intel输出） 设置 Nvidia 相关的视频硬解加速选项 （追加內容）使用 bumblebee 進行切換 與上面內容使用的方法不同上面提及的顯卡加速設置無效 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。 （追加內容）目前有新的 nvidia-prime 的配置方案，這個可以使你在需要的時候使用 n 卡，而一般的時候使用 intel 核顯。是一個比 bumblebee 更好用的方案，配置過程可以見依雲的 blog -&amp;gt; 傳送門 0x01 开始之前 本文针对的是 Nvida 和 intel 双显卡的笔记本，如果是其他奇怪的配置本文可能不适用。 这个设置使用了 N 卡渲染，所以只能使用 Nvidia ，在N卡渲染的时候，不能再使用 intel 来进行视频硬解。 由于N卡对 wayland 的支持出奇的差，所以这里只使用Xorg。（已经默认你使用并会在之后安装Xorg） 本文适用于有硬线连接外屏，但内屏是连接在 intel 显卡上，且 intel显卡无法关闭。或者是你想用 Nvidia 独显来渲染获得更好的性能的同学。 对于部分搭载了 Nvidia MX150 和 Nvidia 940MX 的笔记本，不推荐使用这种方式。因为这个没有预想中的这么好。更加的耗电，而且这两张卡均不支持 NVDEC 视频硬解，还不如使用核显，提升续航和使用 intel 的 vaapi 视频硬解。所以建议使用 bumblebee 或者使用 nvida-xrun在必要的时候获得更好的性能。 优点是可以获得更好的显示性能和使用和 N 卡直接相连的显示器。缺点是续航大幅度的降低。 0x02 我使用的机器 因为本文是以我的经验作为参看，所以下面先列出我的配置，其余的双卡的机器都差不多。 不是太旧的配置都应该没问题</description>
+    </item>
+  </channel>
+</rss>

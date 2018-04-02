@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>i3wm 下使用視頻動壁紙（帶硬件加速） - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="無聊的時候整了一下視頻動他壁紙。那是真的無聊，畢竟我也不喜歡這種花哨的東西，雖然說資源就是拿來浪費的（x" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="i3wm 下使用視頻動壁紙（帶硬件加速）" />
+<meta property="og:description" content="無聊的時候整了一下視頻動他壁紙。那是真的無聊，畢竟我也不喜歡這種花哨的東西，雖然說資源就是拿來浪費的（x" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/video-wallpaper/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-02-01T20:33:39+08:00" />
+<meta property="article:modified_time" content="2022-02-01T20:33:39+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="i3wm 下使用視頻動壁紙（帶硬件加速）"/>
+<meta name="twitter:description" content="無聊的時候整了一下視頻動他壁紙。那是真的無聊，畢竟我也不喜歡這種花哨的東西，雖然說資源就是拿來浪費的（x"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">i3wm 下使用視頻動壁紙（帶硬件加速）</h1>
+			<div class="meta">Posted on Feb 1, 2022</div>
+		</div>
+		
+
+		<section class="body">
+			<p>嘛，不知道怎麼開頭，因爲只是沒事幹去搞了一下，只是怕忘記了就先寫下來了，<del>說不上那天就用上了呢(x</del>。<br>
+日常使用的話，我是不會去碰動態壁紙之類的東西，因爲這些東西很影響我的注意力，而且這也沒多大的必要。但你十分喜歡這種十分炫酷的視頻動態壁紙的話，希望這篇東西可能可以幫到你吧。</p>
+<h2 id="0x00-怎麼整">0x00 怎麼整？</h2>
+<p>i3wm 只是個 WM （窗管）他是沒有壁紙之類的亂七八糟的東西的，他只負責管理窗口。既然沒有東西專門負責壁紙，那麼我們的視頻壁紙要怎麼搞呢？<br>
+看起來很麻煩，仔細想一下那不就是個視頻播放器在放無聲視頻。視頻播放的話，那就要考慮要支持硬解了，讓 CPU 來解碼的話那會佔用不少的資源，在一些配置比較垃圾的電腦上，可能會造成新的卡頓，因此我們需要使用顯卡來加速解碼，減少不必要的卡頓，你也不想開個壁紙就大幅度影響你的桌面使用體驗吧。要用可以硬解又不這麼折騰而且還支持 nvdec 的視頻播放器，那直接用 mpv 好了。接下來就好辦了，開個視頻播放器然後讓它把視頻塞到根窗口，這就完事了。那確實簡單，但現實往往沒有這麼簡單，你會發現啥事都沒發生。出於各種目的，解決撕裂，窗口透明，美觀，炫酷動畫等等，你可能會使用 compositor ，例如 picom。這時候你會發現讓視頻播放器塞到根窗口根本不管用。因此我們還需要一個東西<code>xwinwrap</code>[1],它可以讓你在啓用 compositor 的情況下,可以實現視頻壁紙的願望。</p>
+<h2 id="0x01-開整">0x01 開整！</h2>
+<p>其實上面就已經把要做的事情說完了，那麼現在剩下的只是敲敲鍵盤的事情了。<br>
+舉個例子：<br>
+我的屏幕大小是 3440 x 1440 ，使用 <a href="https://www.youtube.com/watch?v=n9w_hZkbfoo">這個視頻</a> 作爲動態壁紙<br>
+命令如下:（參數就看你需求改就是了這裏只是演示一下）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &#34;https://www.youtube.com/watch?v=n9w_hZkbfoo&#34;
+</span></span></code></pre></div><p>（注：因爲 youtube-dl 下載太慢這裏使用 youtube-dl 的一個 fork <code>yt-dlp</code>[2]）<br>
+如果你是要播放本地視頻，那麼改爲：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no $VIDEO_PATH
+</span></span></code></pre></div><p>在終端中跑完，看見沒問題就可以把這命令扔到 i3wm 的 config 下隨 i3 啓動了。<br>
+在我的機器( i7-7700HQ + GTX 1050 Ti Mobile )上，這樣配置使用 mpv 做動態桌面 cpu 佔用率基本上沒變化。<br>
+效果圖我就不放了，效果也沒法截圖放出來，你可以自己去折騰看看，效果確實挺好的。</p>
+<h2 id="0x02-結束語">0x02 結束語</h2>
+<p>前面說了我只是怕忘記寫而把這記下來,我很多東西具體沒有去深究，只是知道這樣他工作。因此這篇文章可能會有什麼錯漏，歡迎指出，我會去修改完善的。</p>
+<hr>
+<h2 id="參考資料以及鏈接">參考資料以及鏈接</h2>
+<p>[1] <a href="https://github.com/ujjwal96/xwinwrap">https://github.com/ujjwal96/xwinwrap</a><br>
+[2] <a href="https://github.com/yt-dlp/yt-dlp">https://github.com/yt-dlp/yt-dlp</a></p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/xwinwrap">xwinwrap</a></li>
+					
+					<li><a href="/public/tags/mpv">mpv</a></li>
+					
+					<li><a href="/public/tags/i3wm">i3wm</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

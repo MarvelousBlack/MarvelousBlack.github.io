@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ESP32C3 on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/esp32c3/</link>
+    <description>Recent content in ESP32C3 on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Tue, 04 May 2021 10:26:47 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/esp32c3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>安信可 ESP32-C3 開發板工程樣品開箱</title>
+      <link>https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/</link>
+      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/ai-thinker-esp32-c3-es-open-box/</guid>
+      <description>額，canokey 的那篇在寫了，因爲中間斷斷續續，所以可能還要再等等。&#xA;這次買到的模塊和開發板都是工程樣品，可能和最後的版本有點區別。&#xA;0x00 爲啥買 ESP32-C3 很簡單，便宜，幾塊錢，而且還是新品（x&#xA;當然買之前還是要看一下之後能不能用的上，所以咱還翻了一下 Datasheet。 這東西提供的引腳很少，感覺是個 esp8266 的替代品，但它多了一個 BLE(LE) ，多個 BLE（LE）就可以多很多玩法了，而且 ESP32C3 支持 IOMUX 也就是可以自由的分配引腳功能，還是方便的，綜上先搞點來玩玩看。&#xA;0x01 開箱圖 拿到手之後是這樣的，這次買的是安信可的模塊,所以有個殼子，而咱可以工具打開，所以湊合着看吧。 包裝裝的很好，都拿防靜電袋子裝着。 可以看見開發板上面有兩個單色的 LED 燈和一個 5050 RGB 燈。單色的 LED 接在了 IO 18 和 IO 19 上，5050 RGB 的顏色接在 IO 3 4 5 上， LDO 用的是 AMS1117-3.3 , 串口使用的是 CH340C。&#xA;0x02 上電 由於模塊咱沒有底板也懶得焊接，所以留着日後使用。直接拿開發板插電腦。先找個簡單的例子少進去，按照 esp32c3/get-started 的步驟，設置好環境然後燒錄就好了。然後打開 monitor 看見輸出：&#xA;Restarting now. x���ESP-ROM:esp32c3-20200918 Build:Sep 18 2020 rst:0xc (RTC_SW_CPU_RST),boot:0xc (SPI_FAST_FLASH_BOOT) Saved PC:0x40381f4e 0x40381f4e: esp_restart_noos at /home/megumi/Mw/esp/esp-idf/components/esp32c3/system_api_esp32c3.</description>
+    </item>
+  </channel>
+</rss>

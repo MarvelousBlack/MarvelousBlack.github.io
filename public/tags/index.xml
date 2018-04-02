@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/</link>
+    <description>Recent content in Tags on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Sat, 13 Apr 2024 20:53:52 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Armbian</title>
+      <link>https://blog.megumifox.com/public/tags/armbian/</link>
+      <pubDate>Sat, 13 Apr 2024 20:53:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/armbian/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Systemd-Nspawn</title>
+      <link>https://blog.megumifox.com/public/tags/systemd-nspawn/</link>
+      <pubDate>Sat, 13 Apr 2024 20:53:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/systemd-nspawn/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>I3wm</title>
+      <link>https://blog.megumifox.com/public/tags/i3wm/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/i3wm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mpv</title>
+      <link>https://blog.megumifox.com/public/tags/mpv/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/mpv/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xwinwrap</title>
+      <link>https://blog.megumifox.com/public/tags/xwinwrap/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/xwinwrap/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ble</title>
+      <link>https://blog.megumifox.com/public/tags/ble/</link>
+      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/ble/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ESP32C3</title>
+      <link>https://blog.megumifox.com/public/tags/esp32c3/</link>
+      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/esp32c3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wifi</title>
+      <link>https://blog.megumifox.com/public/tags/wifi/</link>
+      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/wifi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LYWSD03MMC</title>
+      <link>https://blog.megumifox.com/public/tags/lywsd03mmc/</link>
+      <pubDate>Mon, 20 Jul 2020 16:43:59 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/lywsd03mmc/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Mijia</title>
+      <link>https://blog.megumifox.com/public/tags/mijia/</link>
+      <pubDate>Mon, 20 Jul 2020 16:43:59 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/mijia/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xiaomi</title>
+      <link>https://blog.megumifox.com/public/tags/xiaomi/</link>
+      <pubDate>Mon, 20 Jul 2020 16:43:59 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/xiaomi/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>軟體推薦</title>
+      <link>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</link>
+      <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Ar9331</title>
+      <link>https://blog.megumifox.com/public/tags/ar9331/</link>
+      <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/ar9331/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>USB</title>
+      <link>https://blog.megumifox.com/public/tags/usb/</link>
+      <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/usb/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>碎碎念</title>
+      <link>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+      <pubDate>Tue, 04 Jun 2019 12:58:12 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KDE</title>
+      <link>https://blog.megumifox.com/public/tags/kde/</link>
+      <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/kde/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Handwriting Input</title>
+      <link>https://blog.megumifox.com/public/tags/handwriting-input/</link>
+      <pubDate>Wed, 06 Feb 2019 23:35:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/handwriting-input/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Pulseaudio</title>
+      <link>https://blog.megumifox.com/public/tags/pulseaudio/</link>
+      <pubDate>Wed, 06 Feb 2019 22:30:57 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/pulseaudio/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Archlinux</title>
+      <link>https://blog.megumifox.com/public/tags/archlinux/</link>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/archlinux/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tablet</title>
+      <link>https://blog.megumifox.com/public/tags/tablet/</link>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/tablet/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Usb Chager</title>
+      <link>https://blog.megumifox.com/public/tags/usb-chager/</link>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/usb-chager/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Review</title>
+      <link>https://blog.megumifox.com/public/tags/review/</link>
+      <pubDate>Fri, 07 Dec 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Wacom</title>
+      <link>https://blog.megumifox.com/public/tags/wacom/</link>
+      <pubDate>Fri, 07 Dec 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/wacom/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>https://blog.megumifox.com/public/tags/blog/</link>
+      <pubDate>Fri, 30 Nov 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://blog.megumifox.com/public/tags/hugo/</link>
+      <pubDate>Fri, 30 Nov 2018 20:24:52 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Nvida</title>
+      <link>https://blog.megumifox.com/public/tags/nvida/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/nvida/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Xorg</title>
+      <link>https://blog.megumifox.com/public/tags/xorg/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/xorg/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Helloworld</title>
+      <link>https://blog.megumifox.com/public/tags/helloworld/</link>
+      <pubDate>Sat, 24 Nov 2018 23:29:18 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/tags/helloworld/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

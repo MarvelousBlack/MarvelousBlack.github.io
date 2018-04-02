@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>軟體推薦 on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</link>
+    <description>Recent content in 軟體推薦 on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Mon, 03 Feb 2020 19:25:48 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>qliveplayer 用 mpv 看直播的好助手</title>
+      <link>https://blog.megumifox.com/public/posts/qliveplayer/</link>
+      <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/qliveplayer/</guid>
+      <description>嘛，好久沒水 blog 了，那今天就來水一篇吧。最近不是春節嗎？都快過完了！！！&#xA;那麼宅在家沒事幹做什麼好呢，當然是看 vtuber 直播啊。&#xA;因爲這篇是推薦所以會很短所以咱就不分章節了。先說說爲什麼會推薦這個軟體吧，這個軟體也是三頭怪寫的，是個縫合怪，作用是把彈幕實時的拖下來然後轉換成 ass 再餵給 mpv。嘛，直播嘛，有彈幕才能看見大家和主播的互動，而一般使用 mpv 來放直播是沒有彈幕的，於是就有了這個。汝問咱爲啥不直接看？沒有硬解啊，電腦風扇在哪轉多吵啊，而且瀏覽器直接放cpu溫度下不來啊。&#xA;這個是運行圖，下面 qliveplayer , 整體的界面十分簡潔，還能記錄你上次看了什麼，可以有10個歷史，還有收藏功能十分方便。 下面這是 mpv 的運行圖，可以看見有彈幕還是實時的。（圖是隨手截的） 使用的方法也很簡單 ,拿看 bilibili 的直播爲例子，直接在那個框輸入bi-房間號就好了，這樣就能打開 bi 站的對應的直播間了，例如 bi-11588230。而且只需要一次，下一次汝就可以在歷史裏面找到了，還能直接加收藏夾，下次點一下就好了。目前只支持斗鱼、虎牙与B站，嘛，經常看 Shirakami Fubuki 的話，支持 bi 站就夠了（笑。&#xA;順帶一提，對應 arch 用戶在 AUR 和 archlinuxcn 可以直接找到安裝。至於其他發行版，可以參考項目裏面的提示，自行編譯就好了。&#xA;項目地址： https://github.com/IsoaSFlus/QLivePlayer</description>
+    </item>
+    <item>
+      <title>Make Your Kde More Colorful</title>
+      <link>https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/</link>
+      <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/make-your-kde-more-colorful/</guid>
+      <description>想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 kcm-colorful 的小程序吧！先放張我自己的桌面截圖吧。 軟件介紹和食用方法 這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：&#xA;方便你直觀的直接選取備用顏色和看見你的壁紙。當然這個界面已經支持暗色主題了。汝可能發現了咱這裏的預覽圖和咱的壁紙不一樣啊，那是因爲咱有兩個顯示器，而兩個顯示器設置的壁紙不一樣於是這裏顯示的就是另一個顯示器的壁紙了。那咱就沒法選了另一張圖了啊，先別慌，作者還提供了一個叫 kcmcolorfulhelper 這個名字的 cli 工具用於這種情況的處理。讓咱們先看看幫助吧&#xA;[marvelous@Vanilla ~]$ kcmcolorfulhelper -h Usage: kcmcolorfulhelper [options] Helper for kcm-colorful. Project address: https://github.com/IsoaSFlus/kcm-colorful Options: -h, --help Displays this help. -p, --picture &amp;lt;file&amp;gt; Picture to extract color. -c, --color &amp;lt;colorcode&amp;gt; Set color manually, eg: #1234ef. -s, --set-as-wallpaper Set picture specified by &amp;#34;-p&amp;#34; as wallpaper. -d, --debug Show debug info. -n, --number &amp;lt;int&amp;gt; Select the Nth color in candidate list. Default is 1.</description>
+    </item>
+  </channel>
+</rss>

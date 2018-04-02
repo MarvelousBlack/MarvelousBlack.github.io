@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>让我康康电脑版网页 - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="最近交网费的时候遇到一个神奇的现象，无论咱怎么开都显示手机页面，于是寻找了一下原因接着就写一下。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="让我康康电脑版网页" />
+<meta property="og:description" content="最近交网费的时候遇到一个神奇的现象，无论咱怎么开都显示手机页面，于是寻找了一下原因接着就写一下。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/show-me-the-desktop-website/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-06-04T12:58:12+08:00" />
+<meta property="article:modified_time" content="2019-06-04T12:58:12+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="让我康康电脑版网页"/>
+<meta name="twitter:description" content="最近交网费的时候遇到一个神奇的现象，无论咱怎么开都显示手机页面，于是寻找了一下原因接着就写一下。"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">让我康康电脑版网页</h1>
+			<div class="meta">Posted on Jun 4, 2019</div>
+		</div>
+		
+
+		<section class="body">
+			<p><del>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。</del></p>
+<h2 id="背景">背景</h2>
+<p>前兩天咱還想起咱網費還沒交，快要停網了，於是去交一下。本來也沒什麼事情的，但是，當我在 <strong>Arch Linux</strong> 下打開 <strong>chromium</strong> 打開繳費頁面，它展示了一個手機頁面給咱。嘛，手機就手機頁面嘛，沒什麼問題，趕緊交完就完事了。But，汝覺得就真的這麼簡單就完事了嗎？對沒錯，咱學校的那個繳費頁面只能在電腦端繳費，而手機端確實可以提交訂單，但不能選擇任何一個支付方式，對沒看錯，確實有訂單，但咱就是支付不了。這個還是咱問了一下同學才知道，只有電腦端頁面才能打開，那麼就打開電腦端唄。</p>
+<h2 id="尋找原因">尋找原因</h2>
+<p>於是咱想，應該是判斷了 UA 於是把 UA 換成了 IE10 的 UA 心想這個應該沒問題吧，刷新之後依舊，這就說明不是靠 UA 做判斷的，但爲了先繳費還是先回到 windows 下繳費，在 win 下用 chrome 打開,居然顯示了正確的電腦端的頁面，說明肯定有些奇怪的東西。於是按下 F12 開始找那堆js看，終於被咱找到了一個叫 <code>common.js</code> 的文件，在這個文件裏面有幾行神奇（真的神奇）的代碼。這就是罪魁禍首。下面是這個文件的截取（註釋不是咱寫的而是本來就有的）：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span><span style="color:#f92672">//</span><span style="color:#960050;background-color:#1e0010">手机页面自动跳转手机版收费平台</span>
+</span></span><span style="display:flex;"><span>function mobile_device_detect(url) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> thisOS <span style="color:#f92672">=</span> navigator<span style="color:#f92672">.</span>platform;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> os <span style="color:#f92672">=</span> new <span style="color:#a6e22e">Array</span>(<span style="color:#e6db74">&#34;iPhone&#34;</span>, <span style="color:#e6db74">&#34;iPod&#34;</span>, <span style="color:#e6db74">&#34;iPad&#34;</span>, <span style="color:#e6db74">&#34;android&#34;</span>, <span style="color:#e6db74">&#34;Nokia&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;SymbianOS&#34;</span>, <span style="color:#e6db74">&#34;Symbian&#34;</span>, <span style="color:#e6db74">&#34;Windows Phone&#34;</span>, <span style="color:#e6db74">&#34;Phone&#34;</span>, <span style="color:#e6db74">&#34;Linux armv71&#34;</span>,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;MAUI&#34;</span>, <span style="color:#e6db74">&#34;UNTRUSTED/1.0&#34;</span>, <span style="color:#e6db74">&#34;Windows CE&#34;</span>, <span style="color:#e6db74">&#34;BlackBerry&#34;</span>, <span style="color:#e6db74">&#34;IEMobile&#34;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">var</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> os<span style="color:#f92672">.</span>length; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (thisOS<span style="color:#f92672">.</span>match(os[i])) {
+</span></span><span style="display:flex;"><span>			window<span style="color:#f92672">.</span>location <span style="color:#f92672">=</span> url;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">因为相当部分的手机系统不知道信息</span>,<span style="color:#960050;background-color:#1e0010">这里是做临时性特殊辨认</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (navigator<span style="color:#f92672">.</span>platform<span style="color:#f92672">.</span>indexOf(<span style="color:#e6db74">&#39;iPad&#39;</span>) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>		window<span style="color:#f92672">.</span>location <span style="color:#f92672">=</span> url;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">做这一部分是因为</span>Android手机的内核也是Linux
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">但是</span>navigator<span style="color:#f92672">.</span>platform显示信息不尽相同情况繁多,<span style="color:#960050;background-color:#1e0010">因此从浏览器下手，即用</span>navigator<span style="color:#f92672">.</span>appVersion信息做判断
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">var</span> check <span style="color:#f92672">=</span> navigator<span style="color:#f92672">.</span>appVersion;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (check<span style="color:#f92672">.</span>match(<span style="color:#f92672">/</span>linux<span style="color:#f92672">/</span>i)) {
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">//</span> X11是UC浏览器的平台 <span style="color:#960050;background-color:#1e0010">，如果有其他特殊浏览器也可以附加上条件</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (check<span style="color:#f92672">.</span>match(<span style="color:#f92672">/</span>mobile<span style="color:#f92672">/</span>i) <span style="color:#f92672">||</span> check<span style="color:#f92672">.</span>match(<span style="color:#f92672">/</span>X11<span style="color:#f92672">/</span>i)) {
+</span></span><span style="display:flex;"><span>			window<span style="color:#f92672">.</span>location <span style="color:#f92672">=</span> url;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">//</span> <span style="color:#960050;background-color:#1e0010">类</span>in_array函数
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">Array</span><span style="color:#f92672">.</span>prototype<span style="color:#f92672">.</span>in_array <span style="color:#f92672">=</span> function(e) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> this<span style="color:#f92672">.</span>length; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (this[i] <span style="color:#f92672">==</span> e)
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>這是啥噢，還記得咱前面加粗了 linux 嗎？對沒錯這個代碼真的是坑人，有 linux 關鍵字下面還判斷了一下 x11 。誰告訴汝 X11 是 UC 瀏覽器！！！X11是個啥東東？可以康康<a href="https://en.wikipedia.org/wiki/X_Window_System">wiki</a> 是這個東西：</p>
+<blockquote>
+<p>The X Window System (X11, or simply X) is a windowing system for bitmap displays, common on Unix-like operating systems.</p>
+</blockquote>
+<p>也就是說，在一般的 linux 桌面環境下，只要瀏覽器給出了正確的值，基本上都會被這個判斷爲手機頁面。但這個支付網頁的手機頁面跟本就不能用的，因爲最最最最基本的功能都沒有，這個手機頁面只能看，沒法支付啊。咱還看了一下這個文件有兩個地址<code>http://xxxxxx/js/common.js</code>和<code>http://xxxxxx/NetWorkUI/js/common.js</code>（因爲某些原因咱用 xxxxxx 代替了原有的域名），而且這文件上面還有一些其他的函數是頁面需要的，因此不能直接的將整個 js 文件屏蔽掉。真的麻煩惹，而調用這個函數的js是直接嵌在 html 中的，於是頁面加載的時候就開始跳轉了，油猴似乎沒辦法對付這種情況，咱還想不到有什麼辦法可以跳過這個噁心的代碼。</p>
+<h2 id="後記">後記</h2>
+<p>如果有詳細的解決方案可以留言給咱。如果上面的解釋有什麼錯誤的地方也請及時反饋給咱，咱會馬上更正過來，因爲咱也不太懂網頁這些東西。但確實遇到了這樣的問題，於是就先記錄下來了。</p>
+<hr>
+<h2 id="更新">更新</h2>
+<p>十分感謝依雲。在依雲的提示下，咱最後用了 Tampermonkey 新建了一個用戶腳本來解決這個問題，大概是這樣的：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>// ==UserScript==
+</span></span><span style="display:flex;"><span>// @name         讓我康康網頁版
+</span></span><span style="display:flex;"><span>// @namespace    http://xxxxxx/
+</span></span><span style="display:flex;"><span>// @version      0.1
+</span></span><span style="display:flex;"><span>// @description  讓學校繳費頁面顯示網頁版!
+</span></span><span style="display:flex;"><span>// @author       Megumifox
+</span></span><span style="display:flex;"><span>// @match        http://xxxxxx/*
+</span></span><span style="display:flex;"><span>// @run-at       document-start
+</span></span><span style="display:flex;"><span>// @grant        none
+</span></span><span style="display:flex;"><span>// ==/UserScript==
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(function() {
+</span></span><span style="display:flex;"><span>    &#39;use strict&#39;;
+</span></span><span style="display:flex;"><span>    Object.defineProperty(navigator, &#39;appVersion&#39;, {get: function(){ return &#39;5.0 Linux&#39; }})
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><p>就是在一開始執行 Object.defineProperty 來修改 navigator.appVersion 的返回值來使得上面的判斷匹配不到 X11 關鍵字，於是就不跳轉手機頁面了。加入<code>// @run-at       document-start</code>可以讓腳本儘可能早的加載，使問題解決。最後再一次感謝依雲。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5">碎碎念</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

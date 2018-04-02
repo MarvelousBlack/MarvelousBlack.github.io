@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>I3wm 配置(僞) - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="emmm，不就是個複製粘貼的事情嗎？" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="I3wm 配置(僞)" />
+<meta property="og:description" content="emmm，不就是個複製粘貼的事情嗎？" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/i3wm/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-08-07T21:56:00+08:00" />
+<meta property="article:modified_time" content="2019-08-07T21:56:00+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="I3wm 配置(僞)"/>
+<meta name="twitter:description" content="emmm，不就是個複製粘貼的事情嗎？"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">I3wm 配置(僞)</h1>
+			<div class="meta">Posted on Aug 7, 2019</div>
+		</div>
+		
+
+		<section class="body">
+			<p>之前提過了 KDE 但實際上咱平時用的是 i3wm，但就像名字說的那樣這個就是個 wm ，窗口管理器，所以別期望 i3 給汝全套的服務。說實話咱也不知道要怎麼寫，那就隨便寫寫吧。以下內容以基本上爲解釋咱的配置文件，汝如果想得到和咱一樣的效果直接複製就好了，不過咱還是建議汝康康不要直接複製。<del>其實這篇東西是用來水的，因爲暫時不知道些什麼，emmm，這不就是複製粘貼p配置文件的事情嗎？有什麼好寫的（摔</del></p>
+<p>咱的配置文件在 <a href="https://github.com/MarvelousBlack/Vanilla/blob/Vanilla/i3/.config/i3/config">這裏</a> 汝只需要對照修改汝的 <code>~/.config/i3/config</code> 就好了。下面開始解釋這份文件。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+</span></span><span style="display:flex;"><span>exec --no-startup-id fcitx
+</span></span><span style="display:flex;"><span>exec --no-startup-id udiskie -snA&amp;
+</span></span><span style="display:flex;"><span>exec --no-startup-id sleep 3 &amp;&amp; exec feh --bg-fill background_desktop.png background_desktop.jpg
+</span></span><span style="display:flex;"><span>exec --no-startup-id compton -CGb --backend glx --paint-on-overlay --glx-no-stencil  --unredir-if-possible
+</span></span><span style="display:flex;"><span>exec --no-startup-id termite
+</span></span><span style="display:flex;"><span>exec --no-startup-id kdeconnect-indicator&amp;
+</span></span><span style="display:flex;"><span>exec --no-startup-id klipper&amp;
+</span></span><span style="display:flex;"><span>exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unlock-indicator  -i background.png &amp;
+</span></span></code></pre></div><p>這一段是啓動項，前文說了 i3 只是一個窗口管理器，有很多東西都需要汝自己去配置，這裏從上倒下依次爲啓動 kde 的 polkit
+驗證的那個東西，也就是在部分需要提權的地方跳出來讓汝輸入密碼的那個框。fcitx 是輸入法， udiskie 是自動掛載 u 盤的小程序，feh 是用來設置壁紙的（爲了方便咱直接吧圖片命名爲 <code>background_desktop.png</code> 和 <code>background_desktop.jpg</code> 並存於家目錄下如果使用的是咱的這份文件，那麼汝需要將汝自己的圖片放到家目錄下並重命名爲這兩個。）compton 混成器，程序的透明等都是他完成的，termite 那個是個終端，咱想開機就直接開個終端，klipper 是剪貼板工具，最後那個是設置 i3lock 爲鎖屏。<br>
+設置焦點跟隨光標</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>focus_follows_mouse yes
+</span></span></code></pre></div><p>設置 mod 鍵爲 super 鍵 就是那個常說 win 鍵。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>set $mod Mod4
+</span></span></code></pre></div><p>下面是設置截圖使用 import 這個工具和 scrot 來截圖，快捷鍵是 Print 和 <code>$mod+Print</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Take a screenshot upon pressing $mod+print (select an area)
+</span></span><span style="display:flex;"><span>bindsym --release Print exec --no-startup-id &#34;import /home/marvelous/latest-screenshot.png &amp;&amp; xclip -selection clipoard -t &#39;image/png&#39; /home/marvelous/latest-screenshot.png&#34;
+</span></span><span style="display:flex;"><span>bindsym $mod+Print exec scrot
+</span></span></code></pre></div><p>設置窗口邊框字體</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>font pango:Droid Sans Mono 7.3
+</span></span></code></pre></div><p>下面就是綁定鍵打開對應的程序了，就不一一寫出來了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bindsym XF86HomePage exec chromium
+</span></span><span style="display:flex;"><span>bindsym $mod+Return exec termite
+</span></span><span style="display:flex;"><span>bindsym $mod+t exec thunar
+</span></span></code></pre></div><p>按下 <code>$mod+m</code> 窗口透明</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bindsym --release $mod+m exec transset-df 0.8
+</span></span></code></pre></div><p>設置按住 mod 鍵可以拖動窗口移動和改變大小</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>floating_modifier $mod
+</span></span></code></pre></div><p>使用 <code>$mod+d</code> 呼出應用啓動發射器（咱用的是 j4 ）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu=&#34;dmenu -i -fn &#39;Droid Sans Mono-9&#39;&#34; --term=&#34;xfce4-terminal&#34; --display-binary
+</span></span></code></pre></div><p>接着就是改變窗口的焦點和移動窗口用的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># change focus
+</span></span><span style="display:flex;"><span>bindsym $mod+h focus left
+</span></span><span style="display:flex;"><span>bindsym $mod+j focus down
+</span></span><span style="display:flex;"><span>bindsym $mod+k focus up
+</span></span><span style="display:flex;"><span>bindsym $mod+l focus right
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># alternatively, you can use the cursor keys:
+</span></span><span style="display:flex;"><span>bindsym $mod+Left focus left
+</span></span><span style="display:flex;"><span>bindsym $mod+Down focus down
+</span></span><span style="display:flex;"><span>bindsym $mod+Up focus up
+</span></span><span style="display:flex;"><span>bindsym $mod+Right focus right
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># change focus between tiling / floating windows
+</span></span><span style="display:flex;"><span>bindsym $mod+space focus mode_toggle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># focus the parent container
+</span></span><span style="display:flex;"><span>bindsym $mod+a focus parent
+</span></span><span style="display:flex;"><span>bindsym $mod+x [urgent=latest] focus
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># move focused window
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+h move left
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+j move down
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+k move up
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+l move right
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># alternatively, you can use the cursor keys:
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+Left move left
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+Down move down
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+Up move up
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+Right move right
+</span></span></code></pre></div><p>下一次窗口出現所使用的分屏方式 mod+g 是左右分，mod+v 是上下分</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bindsym $mod+g split h
+</span></span><span style="display:flex;"><span>bindsym $mod+v split v
+</span></span></code></pre></div><p>全屏的和容器樣式轉換</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># enter fullscreen mode for the focused container
+</span></span><span style="display:flex;"><span>bindsym $mod+f fullscreen toggle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># change container layout (stacked, tabbed, toggle split)
+</span></span><span style="display:flex;"><span>bindsym $mod+s layout stacking
+</span></span><span style="display:flex;"><span>bindsym $mod+w layout tabbed
+</span></span><span style="display:flex;"><span>bindsym $mod+e layout toggle split
+</span></span></code></pre></div><p>開關焦點窗口是否懸浮</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># toggle tiling / floating
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+space floating toggle
+</span></span></code></pre></div><p>隱藏和顯示窗口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bindsym $mod+minus move scratchpad
+</span></span><span style="display:flex;"><span>bindsym $mod+plus scratchpad show
+</span></span></code></pre></div><p>改變邊框</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bindsym $mod+u border none
+</span></span><span style="display:flex;"><span>bindsym $mod+n border normal
+</span></span><span style="display:flex;"><span>bindsym $mod+o border 1pixel
+</span></span><span style="display:flex;"><span>bindsym $mod+b border toggle
+</span></span></code></pre></div><p>修改 workspace 名稱，並綁定到對應的顯示器（咱這裏寫死了，汝需要根據汝的需要更改）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># Workspace names
+</span></span><span style="display:flex;"><span>workspace &#34;11&#34; output DP-1
+</span></span><span style="display:flex;"><span>workspace &#34;12&#34; output DP-1
+</span></span><span style="display:flex;"><span>workspace &#34;13&#34; output DP-1
+</span></span><span style="display:flex;"><span>workspace &#34;1&#34; output eDP-1-1
+</span></span></code></pre></div><p>切換 workspace</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># switch to near workspace
+</span></span><span style="display:flex;"><span>bindsym $mod+Tab workspace next
+</span></span><span style="display:flex;"><span>bindsym mod1+Tab workspace prev
+</span></span><span style="display:flex;"><span># switch to workspace
+</span></span><span style="display:flex;"><span>bindsym $mod+1 workspace 1
+</span></span><span style="display:flex;"><span>bindsym $mod+2 workspace 2
+</span></span><span style="display:flex;"><span>bindsym $mod+3 workspace 3
+</span></span><span style="display:flex;"><span>bindsym $mod+4 workspace 4
+</span></span><span style="display:flex;"><span>bindsym $mod+5 workspace 5
+</span></span><span style="display:flex;"><span>bindsym $mod+6 workspace 6
+</span></span><span style="display:flex;"><span>bindsym $mod+7 workspace 7
+</span></span><span style="display:flex;"><span>bindsym $mod+8 workspace 8
+</span></span><span style="display:flex;"><span>bindsym $mod+9 workspace 9
+</span></span><span style="display:flex;"><span>bindsym $mod+0 workspace 10
+</span></span><span style="display:flex;"><span>bindsym $mod+F1 workspace 11
+</span></span><span style="display:flex;"><span>bindsym $mod+F2 workspace 12
+</span></span><span style="display:flex;"><span>bindsym $mod+F3 workspace 13
+</span></span><span style="display:flex;"><span>bindsym $mod+F4 workspace 14
+</span></span><span style="display:flex;"><span>bindsym $mod+F5 workspace 15
+</span></span><span style="display:flex;"><span>bindsym $mod+F6 workspace 16
+</span></span><span style="display:flex;"><span>bindsym $mod+F7 workspace 17
+</span></span><span style="display:flex;"><span>bindsym $mod+F8 workspace 18
+</span></span><span style="display:flex;"><span>bindsym $mod+F9 workspace 19
+</span></span><span style="display:flex;"><span>bindsym $mod+F10 workspace 20
+</span></span></code></pre></div><p>移動焦點到對應的 workspace</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># move focused container to workspace
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+1 move container to workspace 1
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+2 move container to workspace 2
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+3 move container to workspace 3
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+4 move container to workspace 4
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+5 move container to workspace 5
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+6 move container to workspace 6
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+7 move container to workspace 7
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+8 move container to workspace 8
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+9 move container to workspace 9
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+0 move container to workspace 10
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F1 move container to workspace 11
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F2 move container to workspace 12
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F3 move container to workspace 13
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F4 move container to workspace 14
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F5 move container to workspace 15
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F6 move container to workspace 16
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F7 move container to workspace 17
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F8 move container to workspace 18
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F9 move container to workspace 19
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+F10 move container to workspace 20
+</span></span></code></pre></div><p>設置重新載入配置和i3用的按鍵</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-gdscript3" data-lang="gdscript3"><span style="display:flex;"><span>bindsym <span style="color:#f92672">$</span>mod<span style="color:#f92672">+</span>Shift<span style="color:#f92672">+</span>c reload
+</span></span><span style="display:flex;"><span>bindsym <span style="color:#f92672">$</span>mod<span style="color:#f92672">+</span>Shift<span style="color:#f92672">+</span>r restart
+</span></span></code></pre></div><p>改變窗口大小</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># resize window (you can also use the mouse for that)
+</span></span><span style="display:flex;"><span>mode &#34;resize&#34; {
+</span></span><span style="display:flex;"><span>        # These bindings trigger as soon as you enter the resize mode
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        # Pressing left will shrink the window’s width.
+</span></span><span style="display:flex;"><span>        # Pressing right will grow the window’s width.
+</span></span><span style="display:flex;"><span>        # Pressing up will shrink the window’s height.
+</span></span><span style="display:flex;"><span>        # Pressing down will grow the window’s height.
+</span></span><span style="display:flex;"><span>        bindsym h resize shrink width 5 px or 5 ppt
+</span></span><span style="display:flex;"><span>        bindsym j resize grow height 5 px or 5 ppt
+</span></span><span style="display:flex;"><span>        bindsym k resize shrink height 5 px or 5 ppt
+</span></span><span style="display:flex;"><span>        bindsym l resize grow width 5 px or 5 ppt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        # same bindings, but for the arrow keys and 10
+</span></span><span style="display:flex;"><span>        bindsym Left resize shrink width 10 px or 10 ppt
+</span></span><span style="display:flex;"><span>        bindsym Down resize grow height 10 px or 10 ppt
+</span></span><span style="display:flex;"><span>        bindsym Up resize shrink height 10 px or 10 ppt
+</span></span><span style="display:flex;"><span>        bindsym Right resize grow width 10 px or 10 ppt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        # back to normal: Enter or Escape
+</span></span><span style="display:flex;"><span>        bindsym Return mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>        bindsym Escape mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>bindsym $mod+r mode &#34;resize&#34;u
+</span></span></code></pre></div><p>設置是否顯示 i3bar</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># Start i3bar to display a workspace bar (plus the system information i3status
+</span></span><span style="display:flex;"><span># i3bar toggle
+</span></span><span style="display:flex;"><span>bindsym $mod+i bar mode toggle
+</span></span><span style="display:flex;"><span># finds out, if available)
+</span></span></code></pre></div><p>設置 bar 的顏色等，和使用的命令等等（咱這裏的用一個改過的腳本來顯示bar的，在上面的鏈接中可以找到）</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>bar {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   status_command ~/.config/i3/net-speed.sh
+</span></span><span style="display:flex;"><span>   i3bar_command i3bar -t
+</span></span><span style="display:flex;"><span>   position top
+</span></span><span style="display:flex;"><span>   tray_output primary
+</span></span><span style="display:flex;"><span>	colors {
+</span></span><span style="display:flex;"><span>		statusline #000000
+</span></span><span style="display:flex;"><span>		background #F4ADD96B
+</span></span><span style="display:flex;"><span>		separator #2D2D2D
+</span></span><span style="display:flex;"><span>		focused_workspace #636e88 #285de7 #dedfdg
+</span></span><span style="display:flex;"><span>		active_workspace #556677 #234567 #56ef67
+</span></span><span style="display:flex;"><span>		inactive_workspace #636d72 #2d2d2d #dedede
+</span></span><span style="display:flex;"><span>		urgent_workspace #ffffff #900000 #d23d32
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>設置窗口樣式，顏色之類的。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#---window style---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># new window
+</span></span><span style="display:flex;"><span>new_window none
+</span></span><span style="display:flex;"><span>new_float normal
+</span></span><span style="display:flex;"><span>hide_edge_borders both
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># window colors
+</span></span><span style="display:flex;"><span>#  class                 border   backgr.  text  indicator  child_border
+</span></span><span style="display:flex;"><span>client.focused          #4c7899  #285577  #ffffff  #2e9ef4   #285577
+</span></span><span style="display:flex;"><span>client.focused_inactive #81c2d6  #5f676a  #ffffff  #484e50   #0b6e48
+</span></span><span style="display:flex;"><span>client.unfocused        #c9cabb  #222222  #888888  #292d2e   #222222
+</span></span><span style="display:flex;"><span>client.urgent           #2f343a  #900000  #ffffff  #199475   #900000
+</span></span><span style="display:flex;"><span>client.placeholder      #a2b4ba  #0c0c0c  #ffffff  #1793d0   #0c0c0c
+</span></span><span style="display:flex;"><span>client.background       #82abba
+</span></span></code></pre></div><p>設置彈出和讓部分軟體在啓動的時候就是懸浮狀態</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span># popups
+</span></span><span style="display:flex;"><span>for_window [window_role=&#34;pop-up&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [window_role=&#34;task_dialog&#34;] floating enable
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span># float programs(find the programs&#39;names in &#34;/usr/share/applictions&#34;)
+</span></span><span style="display:flex;"><span>for_window [class=&#34;Gpicview&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;mpv&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;Gimp&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;Xarchiver&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;Genymotion&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;VirtualBox&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;shadowsocks-qt5&#34;] floating enable
+</span></span><span style="display:flex;"><span>for_window [class=&#34;netease-cloud-music&#34;] floating enable
+</span></span></code></pre></div><p>固定部分軟體出現的容器</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>assign [class=&#34;VirtualBox&#34;] 10
+</span></span></code></pre></div><p>音量控制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#===volume control===
+</span></span><span style="display:flex;"><span>bindsym XF86AudioRaiseVolume exec --no-startup-id amixer  set Master 5%+ unmute
+</span></span><span style="display:flex;"><span>bindsym XF86AudioLowerVolume exec --no-startup-id amixer  set Master 5%- unmute
+</span></span><span style="display:flex;"><span>bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+</span></span><span style="display:flex;"><span>#&amp; amixer set Headphone toggle &amp;amixer set Speaker toggle
+</span></span></code></pre></div><p>背光控制</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#===balcklight control==
+</span></span><span style="display:flex;"><span>bindsym $mod+XF86AudioRaiseVolume exec xbacklight +10
+</span></span><span style="display:flex;"><span>bindsym $mod+XF86AudioLowerVolume exec xbacklight -10
+</span></span><span style="display:flex;"><span>bindsym XF86MonBrightnessUp exec xbacklight +10
+</span></span><span style="display:flex;"><span>bindsym XF86MonBrightnessDown exec xbacklight -10
+</span></span></code></pre></div><p>電源開關機按鈕</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>#===power manager===
+</span></span><span style="display:flex;"><span>set $mode_system select: lock(L) exit(E) reboot(R) poweroff(O) suspend(S) hybrid-sleep(Y) hibernate(H) cancel(Esc)
+</span></span><span style="display:flex;"><span>bindsym $mod+Shift+e mode &#34;$mode_system&#34;
+</span></span><span style="display:flex;"><span>mode &#34;$mode_system&#34; {
+</span></span><span style="display:flex;"><span>    bindsym l exec --no-startup-id i3lock -n -t --ignore-empty-password --no-unlock-indicator  -i background.png  , mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>   bindsym e exec --no-startup-id i3-msg exit, mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>   bindsym s exec --no-startup-id systemctl suspend, mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>   bindsym y exec --no-startup-id systemctl hybrid-sleep, mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>   bindsym h exec --no-startup-id systemctl hibernate, mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>   bindsym r exec --no-startup-id systemctl reboot, mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>   bindsym o exec --no-startup-id systemctl poweroff, mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>    bindsym Escape mode &#34;default&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>大概隨便的寫解釋了一下，說是美化整個文件看下來，汝可以動的只有顏色是否有窗邊框等等，沒有多少是可以變動的。咱並不在乎是不是好看，好用就可以了，所以就這樣隨便的用着了。</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/i3wm">i3wm</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

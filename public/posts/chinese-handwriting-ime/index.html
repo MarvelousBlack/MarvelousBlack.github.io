@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Google Chinese Handwriting IME 简单了解和使用 - 惠狐之书</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="突然接到一位不愿意透露姓名的人士请求打包，于是了解了一下这个神奇的用Electron 寫的利用 Google Translate 的手寫輸入法。" />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Google Chinese Handwriting IME 简单了解和使用" />
+<meta property="og:description" content="突然接到一位不愿意透露姓名的人士请求打包，于是了解了一下这个神奇的用Electron 寫的利用 Google Translate 的手寫輸入法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.megumifox.com/public/posts/chinese-handwriting-ime/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-02-06T23:35:39+08:00" />
+<meta property="article:modified_time" content="2019-02-06T23:35:39+08:00" />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Google Chinese Handwriting IME 简单了解和使用"/>
+<meta name="twitter:description" content="突然接到一位不愿意透露姓名的人士请求打包，于是了解了一下这个神奇的用Electron 寫的利用 Google Translate 的手寫輸入法。"/>
+<script src="https://blog.megumifox.com/public/js/feather.min.js"></script>
+	
+	
+        <link href="https://blog.megumifox.com/public/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://blog.megumifox.com/public/css/main.ac08a4c9714baa859217f92f051deb58df2938ec352b506df655005dcaf98cc0.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://blog.megumifox.com/public/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+
+	
+	
+	
+	
+
+       
+       
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HM61C25V9Q"></script>
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-HM61C25V9Q', { 'anonymize_ip': false });
+}
+</script>
+
+       
+
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://blog.megumifox.com/public/">惠狐之书</a>
+	</div>
+	<nav>
+		
+		<a href="/public/">Home</a>
+		
+		<a href="/public/posts">All posts</a>
+		
+		<a href="/public/topics">Topics</a>
+		
+		<a href="/public/about">About</a>
+		
+		<a href="/public/friends">Friends</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://blog.megumifox.com/public/js/themetoggle.js"></script>
+		
+	</nav>
+
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Google Chinese Handwriting IME 简单了解和使用</h1>
+			<div class="meta">Posted on Feb 6, 2019</div>
+		</div>
+		
+
+		<section class="body">
+			<p>在一个月黑风高的晚上，一位不愿意透露姓名的 fc 老师<a href="https://github.com/archlinuxcn/repo/issues/1032">请求</a> 打一个叫做<code>google-chinese-handwriting-ime</code>的包，于是咱去看了看，看起来很不错的样子，于是试了一下这个神奇的用 Electron 写的利用 google translate 的手写输入法。这个输入法的利用的是笔记本的触摸板来当做手写输入，十分适合有手写输入需求的人。而且写这篇东西的时候，恰好是春节，可以回家装一个给父母老人使用，十分的简单易操作。<del>好像有什么不对劲的地方</del></p>
+<h2 id="打包">打包</h2>
+<p>这个<a href="https://github.com/Saren-Arterius/google-chinese-handwriting-ime">软件</a>其实已经有<a href="https://aur.archlinux.org/packages/google-chinese-handwriting-ime/">aur</a>的包，但汝会发现这个包其实是打不出来的，因为 depends 少了一个 <code>git</code>，然后咱尝试直接使用 Release 里面的 v3.0.7 进行打包，打完出来之后发现是一闪一闪的无法使用，看了一下 commits 有个更新，于是直接打了个 -git 包，恩，这个不闪，能用了。这个包已经在 cn 源里面了，可以直接安装 <code>google-chinese-handwriting-ime-git</code> 来使用。</p>
+<h2 id="咱的理解">咱的理解</h2>
+<p>正如那个软件的描述所说这是一个用Electron 写的手写输入法。它十分巧妙的利用了 google translate 的手写识别，从而做到了比较高的识别率。为什么说巧妙的利用了呢？ 汝用过 google translate 的话就会发现那个手写识别只在那个网页有效，但用了这个汝可以在其他地方使用。而且这里利用到了触摸板，不要以为触摸板的移动是相对的就认为这个是个相对输入设备，其实人家是绝对定位的啦，部分人可能见过有人用触摸板来玩 osu！吧。对，因为部分的触摸板是绝对定位，所以可以做到和手写笔差不多的光标移动。而且手写输入法不要求压感，于是就可以用来做手写输入。</p>
+<h2 id="安装和配置">安装和配置</h2>
+<p>arch 的话直接用 cn 源里面那个就好了，可是要用这个输入法需要配置许多的东西。先将汝添加到 <code>input</code> 组里面，然后开始配置触摸板，修改 <code>/opt/google-chinese-handwriting-ime/config.js</code>。运行 <code>evtest</code> 选择你的触摸板找到最左上角和最右下角的坐标，然后修改对应的 <code>touchpad_support.touchpad_coords.max.x</code>和<code>touchpad_support.touchpad_coords.max.y</code> 数字可以适当的调整一下，咱当时测试的时候发现这个数值要比测出来的大好多才能正常的工作，所以调整到汝适合的大小。还要将如下字段中的 null 换成对应的设备数字。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>    preferred_device_id: {
+</span></span><span style="display:flex;"><span>      xinput: null,
+</span></span><span style="display:flex;"><span>      dev_event: null
+</span></span><span style="display:flex;"><span>    },
+</span></span></code></pre></div><p>可以分别用 <code>xinput list</code> 和 <code>evtest</code> 查看。这样就大概配置好了， <strong>如果是 kwin 的话还需要将焦点策略调整为点击以取得焦点。</strong></p>
+<h2 id="使用体验">使用体验</h2>
+<p>配置好之后直接运行这个输入法就好了，直接在触摸板上面写字，还是蛮方便的，准确率是比较高的。但咱在测试完可以使用之后就没在用过了，因为焦点策略不能是跟随鼠标所以和咱的习惯冲突了。但这个可以利用触控板来手写，可以少买一个手写设备了，而且大多数人笔记本都是外接鼠标的，直接使用触控板是非常的方便的，可以再一次利用笔记本上的触摸板，还是蛮推荐有手写输入需求的人使用的。</p>
+<hr>
+<h2 id="软件地址">软件地址</h2>
+<p>Google Chinese Handwriting IME 输入法：https://github.com/Saren-Arterius/google-chinese-handwriting-ime</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/public/tags/handwriting-input">Handwriting input</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		<div id="disqus_thread"></div>
+<script type="text/javascript">
+    (function () {
+        
+        
+        if (window.location.hostname == "localhost")
+            return;
+
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        var disqus_shortname = 'megumifox';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+        Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="/public/index.xml" rel="me" title=""><i data-feather="rss"></i></a>
+    <a class="border"></a><a class="soc" href="https://github.com/MarvelousBlack" rel="me" title=""><i data-feather="github"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  © 惠狐之书 |  <a
+      href="https://github.com/athul/archie">Archie Theme</a> | 所有的文章除特别声明外，均使用 <a href="https://blog.megumifox.com/public/license">CC BY-NC-SA 4.0</a>。
+  </div>
+</footer><script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

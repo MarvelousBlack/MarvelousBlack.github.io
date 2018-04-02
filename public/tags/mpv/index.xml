@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mpv on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/mpv/</link>
+    <description>Recent content in Mpv on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Tue, 01 Feb 2022 20:33:39 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/mpv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>i3wm 下使用視頻動壁紙（帶硬件加速）</title>
+      <link>https://blog.megumifox.com/public/posts/video-wallpaper/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/video-wallpaper/</guid>
+      <description>嘛，不知道怎麼開頭，因爲只是沒事幹去搞了一下，只是怕忘記了就先寫下來了，說不上那天就用上了呢(x。&#xA;日常使用的話，我是不會去碰動態壁紙之類的東西，因爲這些東西很影響我的注意力，而且這也沒多大的必要。但你十分喜歡這種十分炫酷的視頻動態壁紙的話，希望這篇東西可能可以幫到你吧。&#xA;0x00 怎麼整？ i3wm 只是個 WM （窗管）他是沒有壁紙之類的亂七八糟的東西的，他只負責管理窗口。既然沒有東西專門負責壁紙，那麼我們的視頻壁紙要怎麼搞呢？&#xA;看起來很麻煩，仔細想一下那不就是個視頻播放器在放無聲視頻。視頻播放的話，那就要考慮要支持硬解了，讓 CPU 來解碼的話那會佔用不少的資源，在一些配置比較垃圾的電腦上，可能會造成新的卡頓，因此我們需要使用顯卡來加速解碼，減少不必要的卡頓，你也不想開個壁紙就大幅度影響你的桌面使用體驗吧。要用可以硬解又不這麼折騰而且還支持 nvdec 的視頻播放器，那直接用 mpv 好了。接下來就好辦了，開個視頻播放器然後讓它把視頻塞到根窗口，這就完事了。那確實簡單，但現實往往沒有這麼簡單，你會發現啥事都沒發生。出於各種目的，解決撕裂，窗口透明，美觀，炫酷動畫等等，你可能會使用 compositor ，例如 picom。這時候你會發現讓視頻播放器塞到根窗口根本不管用。因此我們還需要一個東西xwinwrap[1],它可以讓你在啓用 compositor 的情況下,可以實現視頻壁紙的願望。&#xA;0x01 開整！ 其實上面就已經把要做的事情說完了，那麼現在剩下的只是敲敲鍵盤的事情了。&#xA;舉個例子：&#xA;我的屏幕大小是 3440 x 1440 ，使用 這個視頻 作爲動態壁紙&#xA;命令如下:（參數就看你需求改就是了這裏只是演示一下）&#xA;xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &amp;#34;https://www.youtube.com/watch?v=n9w_hZkbfoo&amp;#34; （注：因爲 youtube-dl 下載太慢這裏使用 youtube-dl 的一個 fork yt-dlp[2]）&#xA;如果你是要播放本地視頻，那麼改爲：&#xA;xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no $VIDEO_PATH 在終端中跑完，看見沒問題就可以把這命令扔到 i3wm 的 config 下隨 i3 啓動了。</description>
+    </item>
+    <item>
+      <title>qliveplayer 用 mpv 看直播的好助手</title>
+      <link>https://blog.megumifox.com/public/posts/qliveplayer/</link>
+      <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/qliveplayer/</guid>
+      <description>嘛，好久沒水 blog 了，那今天就來水一篇吧。最近不是春節嗎？都快過完了！！！&#xA;那麼宅在家沒事幹做什麼好呢，當然是看 vtuber 直播啊。&#xA;因爲這篇是推薦所以會很短所以咱就不分章節了。先說說爲什麼會推薦這個軟體吧，這個軟體也是三頭怪寫的，是個縫合怪，作用是把彈幕實時的拖下來然後轉換成 ass 再餵給 mpv。嘛，直播嘛，有彈幕才能看見大家和主播的互動，而一般使用 mpv 來放直播是沒有彈幕的，於是就有了這個。汝問咱爲啥不直接看？沒有硬解啊，電腦風扇在哪轉多吵啊，而且瀏覽器直接放cpu溫度下不來啊。&#xA;這個是運行圖，下面 qliveplayer , 整體的界面十分簡潔，還能記錄你上次看了什麼，可以有10個歷史，還有收藏功能十分方便。 下面這是 mpv 的運行圖，可以看見有彈幕還是實時的。（圖是隨手截的） 使用的方法也很簡單 ,拿看 bilibili 的直播爲例子，直接在那個框輸入bi-房間號就好了，這樣就能打開 bi 站的對應的直播間了，例如 bi-11588230。而且只需要一次，下一次汝就可以在歷史裏面找到了，還能直接加收藏夾，下次點一下就好了。目前只支持斗鱼、虎牙与B站，嘛，經常看 Shirakami Fubuki 的話，支持 bi 站就夠了（笑。&#xA;順帶一提，對應 arch 用戶在 AUR 和 archlinuxcn 可以直接找到安裝。至於其他發行版，可以參考項目裏面的提示，自行編譯就好了。&#xA;項目地址： https://github.com/IsoaSFlus/QLivePlayer</description>
+    </item>
+  </channel>
+</rss>

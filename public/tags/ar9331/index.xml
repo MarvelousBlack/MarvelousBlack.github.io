@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ar9331 on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/ar9331/</link>
+    <description>Recent content in Ar9331 on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Fri, 28 Jun 2019 11:06:58 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/ar9331/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>U 盤 wifi 縫合鉅作 AR9331 32G</title>
+      <link>https://blog.megumifox.com/public/posts/ar9331-32g/</link>
+      <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/ar9331-32g/</guid>
+      <description>0x00 前言 說是 U 盤和 wifi 的縫合鉅作，實際上就是個十分便宜，從x寶淘回來的辣雞。&#xA;0x01 爲什麼要購買這個？ 其實是在某一天在羣裏看見了這個&#xA;咱看了看，正好缺個隨身碟，所以就買了下來。（買之前看了看評論似乎可以魔改，加個網口什麼的。&#xA;而且最最最令咱感到興趣的是這個隨身碟是怎麼工作的呢？到底是怎麼判斷兩個 host 訪問一個盤的問題？那只好買一個咯。恰好是 618 ，可以用。。。額沒有，什麼劵咱都沒有，直接買好了。&#xA;0x02 開箱和隨身碟的玉照 嘛，快遞很快就到了，從東莞發過來的。然後拿出包裹的時候發現，怎麼除了那一包泡沫紙，好像還有點什麼？全部倒出來，發現賣家送了一包毛巾，在同一家店裏可以找到，賣6元。=。= 擦桌子用剛剛好。 下面是圖：（由於這個 blog 的模板問題,咱不知道圖片要怎麼處理所以直接貼好了）&#xA;隨身碟的圖（請忽略下面那塊 keyboard） 0x03 上面的元件 這個可以看由大風車（@dfceaef ）寫的 USB缝合巨作赏析，咱就不重複了。（裏面還有魔改教程&#xA;0x04 前世 這個隨身碟很容易讓人想起之在前 11 年到 14 年左右，有一大堆帶 wifi 的 U 盤產品。那麼這個東西的前世是不是這種東西裏面的某一個呢？打開開關，鏈接這小傢伙的wifi，然後訪問頁面 192.168.222.254, emmm，熟悉的界面和品勝之前的移動電源差不多，只是沒品勝的字樣，應該是同一個方案。在頁面中可以看見 airdisk 的字樣，於是隨手搜一下，可以發現是一個叫 AirDisk 存宝 A4-加密无线U盘 的東西，而且還能在某網站找到這個產品的拆解，這個拆解圖和咱手上的板子一模一樣，還帶電池（就是前面的圖中USB隔壁的那兩個巨大的孔的用途），於是可以確認是這個東西了。&#xA;0x05 使用和體驗 先說缺點，由於是幾年前的產品，無線傳輸速度嘛，能用就行。但由於這個東西實在是太肥了，會擋住其他的接口，可以看下圖：&#xA;這個一個 usb hub 咱拿來插手機，用來用三星 dex ，汝可以看見，這個盤實在是太肥了，HDMI 接口被擋住了。QAQ 插電腦上就是佔了兩個 usb 口。目前看來還是只有這個缺點。&#xA;U盤嘛，容量是正常的,但這個盤到手的時候是空的，就是連分區表都沒有。直接插 windows 的話會直接提示是否格式化，直接格式化就好了。格式化成 NTFS 也是可以的，無線鏈接也是能讀NTFS格式的。這塊盤宣稱 80 寫 40 ，於是咱測了一下手上的，看圖吧：</description>
+    </item>
+  </channel>
+</rss>

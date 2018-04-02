@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Helloworld on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/helloworld/</link>
+    <description>Recent content in Helloworld on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-Hant</language>
+    <managingEditor>i@megumifox.com (Megumifox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumifox)</webMaster>
+    <copyright>© 惠狐之书</copyright>
+    <lastBuildDate>Sat, 24 Nov 2018 23:29:18 +0800</lastBuildDate>
+    <atom:link href="https://blog.megumifox.com/public/tags/helloworld/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一个尝试</title>
+      <link>https://blog.megumifox.com/public/posts/%E4%B8%80%E4%B8%AA%E5%B0%9D%E8%AF%95/</link>
+      <pubDate>Sat, 24 Nov 2018 23:29:18 +0800</pubDate><author>i@megumifox.com (Megumifox)</author>
+      <guid>https://blog.megumifox.com/public/posts/%E4%B8%80%E4%B8%AA%E5%B0%9D%E8%AF%95/</guid>
+      <description>大家好，我是惠狐，突然想建一个博客来玩玩。嘛，看见群里面的大佬们都有博客，于是我也想搭一个来玩玩。也不仅仅只是玩玩拉，更想通过博客来记录生活，来记录学习的过程，顺便分享。我的大学专业是电气工程及其自动化，所以没法像其他的人一样分享大量和计算机有关的技术性文章，但我会在这里记录和自己专业有关的学习心得，或者是一些小技巧什么的。我并不是什么大佬，我是一个小白。所以，请多多指教。</description>
+    </item>
+  </channel>
+</rss>
