@@ -3,17 +3,44 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.megumifox.com/publish/tags/</loc>
+    <loc>https://blog.megumifox.com/public/2018/11/24/%E4%B8%80%E4%B8%AA%E5%B0%9D%E8%AF%95/</loc>
+    <lastmod>2018-11-24T23:29:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/friends/</loc>
+    <lastmod>2018-11-24T22:41:38+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/tags/</loc>
+    <lastmod>2018-11-24T22:38:08+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/about/</loc>
+    <lastmod>2018-11-24T22:35:07+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/post/</loc>
+    <lastmod>2018-11-24T23:29:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.megumifox.com/publish/topics/</loc>
+    <loc>https://blog.megumifox.com/public/tags/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://blog.megumifox.com/publish/</loc>
+    <loc>https://blog.megumifox.com/public/topics/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/</loc>
+    <lastmod>2018-11-24T23:29:18+08:00</lastmod>
     <priority>0</priority>
   </url>
   

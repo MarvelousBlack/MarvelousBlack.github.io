@@ -2,15 +2,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 惠狐之书</title>
-    <link>https://blog.megumifox.com/publish/tags/</link>
+    <link>https://blog.megumifox.com/public/tags/</link>
     <description>Recent content in Tags on 惠狐之书</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
-    <copyright>(c) 2018 Megumi_fox.</copyright>
+    <copyright>(c) 2018 惠狐之书 written by Megumi_fox.</copyright>
     
-	<atom:link href="https://blog.megumifox.com/publish/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
