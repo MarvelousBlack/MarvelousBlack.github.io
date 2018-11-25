@@ -33,21 +33,22 @@
     </item>
     
     <item>
-      <title>Tags</title>
-      <link>https://blog.megumifox.com/public/tags/</link>
-      <pubDate>Sat, 24 Nov 2018 22:38:08 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/tags/</guid>
-      <description>建设中</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>https://blog.megumifox.com/public/about/</link>
       <pubDate>Sat, 24 Nov 2018 22:35:07 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/about/</guid>
       <description>惠狐 建设中</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.megumifox.com/public/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/license/</guid>
+      <description>Simple Public License (SimPL-2.0) Preamble This Simple Public License 2.0 (SimPL-2.0 for short) is a plain language implementation of GPL 2.0. The words are different, but the goal is the same - to guarantee for all users the freedom to share and change software. If anyone wonders about the meaning of the SimPL, they should interpret it as consistent with GPL 2.0.
+Simple Public License (SimPL) 2.0 The SimPL applies to the software&amp;rsquo;s source and object code and comes with any rights that I have in it (other than trademarks).</description>
     </item>
     
   </channel>
