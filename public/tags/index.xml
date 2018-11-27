@@ -9,10 +9,19 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Sat, 24 Nov 2018 23:29:18 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 Nov 2018 14:50:56 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Archlinux</title>
+      <link>https://blog.megumifox.com/public/tags/archlinux/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/archlinux/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Helloworld</title>
@@ -20,6 +29,24 @@
       <pubDate>Sat, 24 Nov 2018 23:29:18 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/helloworld/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nvida</title>
+      <link>https://blog.megumifox.com/public/tags/nvida/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/nvida/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Xorg</title>
+      <link>https://blog.megumifox.com/public/tags/xorg/</link>
+      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/xorg/</guid>
       <description></description>
     </item>
     

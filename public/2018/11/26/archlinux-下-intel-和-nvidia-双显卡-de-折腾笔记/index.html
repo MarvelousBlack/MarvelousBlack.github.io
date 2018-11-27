@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记  &middot; 惠狐之书</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。" />
+
+<meta name="keywords" content="Archlinux, Nvida, Xorg, ">
+
+
+<meta property="og:title" content="Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记  &middot; 惠狐之书 ">
+<meta property="og:site_name" content="惠狐之书"/>
+<meta property="og:url" content="https://blog.megumifox.com/public/2018/11/26/archlinux-%E4%B8%8B-intel-%E5%92%8C-nvidia-%E5%8F%8C%E6%98%BE%E5%8D%A1-de-%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。"/>
+<meta property="og:article:published_time" content="2018-11-26T14:50:56&#43;08:00" />
+<meta property="og:article:modified_time" content="2018-11-26T14:50:56&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="Archlinux">
+    
+<meta property="og:article:tag" content="Nvida">
+    
+<meta property="og:article:tag" content="Xorg">
+    
+  
+
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-11-26",
+    "description": "嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。",
+    "wordCount": 832
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://blog.megumifox.com/public/2018/11/26/archlinux-%E4%B8%8B-intel-%E5%92%8C-nvidia-%E5%8F%8C%E6%98%BE%E5%8D%A1-de-%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
+<link href="https://blog.megumifox.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.51" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/public/css/font-awesome.min.css">
+<link rel="stylesheet" href="/public/css/style.css">
+<link rel="stylesheet" href="/public/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-129670705-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://blog.megumifox.com/public/">
+  Megumi fox
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  A fox called Megumi
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://blog.megumifox.com/public/">home</a>
+
+
+  
+<a href="https://blog.megumifox.com/public/about">about</a>
+
+<a href="https://blog.megumifox.com/public/friends" title="惠狐的朋友们">friends</a>
+
+<a href="https://blog.megumifox.com/public/post" title="Show list of posts">posts</a>
+
+<a href="https://blog.megumifox.com/public/tags" title="Show list of tags">tags</a>
+
+<a href="https://blog.megumifox.com/public/topics" title="Show list of topics">topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:i@megumifox.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/MarvelousBlack">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记
+</h1>
+
+  <div class="metas">
+<time datetime="2018-11-26">26 Nov, 2018</time>
+
+
+  
+  &middot; Read in about 4 min
+  &middot; (832 Words)
+  <br>
+  
+<a class="label" href="https://blog.megumifox.com/public/tags/archlinux">Archlinux</a>
+
+<a class="label" href="https://blog.megumifox.com/public/tags/nvida">Nvida</a>
+
+<a class="label" href="https://blog.megumifox.com/public/tags/xorg">Xorg</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p>嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。默认你是 ArchLinux 用户，如果是其他发行版，请自行变通。</p>
+
+<h2 id="0x00-本教程的主要内容">0x00 本教程的主要内容</h2>
+
+<ul>
+<li>如何在正常的进入 live cd</li>
+<li>如何设置并安装闭源的 NVIDIA驱动（仅使用n卡渲染然后使用intel输出）</li>
+<li>设置 Nvidia 相关的视频硬解加速选项</li>
+</ul>
+
+<h2 id="0x01-开始之前">0x01 开始之前</h2>
+
+<ul>
+<li>本文针对的是 Nvida 和 intel 双显卡的笔记本，如果是其他奇怪的配置本文可能不适用。</li>
+<li>这个设置使用了 N 卡渲染，所以只能使用 Nvidia ，在N卡渲染的时候，不能再使用 intel 来进行视频硬解。</li>
+<li>由于N卡对 wayland 的支持出奇的差，所以这里只使用Xorg。（已经默认你使用并会在之后安装Xorg）</li>
+<li>本文适用于有硬线连接外屏，但内屏是连接在 intel 显卡上，且 intel显卡无法关闭。或者是你想用 Nvidia 独显来渲染获得更好的性能的同学。</li>
+<li>对于部分搭载了 <strong>Nvidia MX150</strong> 和 <strong>Nvidia 940MX</strong> 的笔记本，不推荐使用这种方式。因为这个没有预想中的这么好。更加的耗电，而且这两张卡均不支持 NVDEC 视频硬解，还不如使用核显，提升续航和使用 intel 的 vaapi 视频硬解。所以建议使用 <code>bumblebee</code> 或者使用 <code>nvida-xrun</code>在必要的时候获得更好的性能。</li>
+<li>优点是可以获得更好的显示性能和使用和 N 卡直接相连的显示器。缺点是续航大幅度的降低。</li>
+</ul>
+
+<h2 id="0x02-我使用的机器">0x02 我使用的机器</h2>
+
+<p>因为本文是以我的经验作为参看，所以下面先列出我的配置，其余的双卡的机器都差不多。 <strong>不是太旧的配置都应该没问题</strong></p>
+
+<ul>
+<li>CPU: Intel i7-7700HQ (8) @ 3.800GHz</li>
+<li>GPU: Intel Device 591b （HD630）</li>
+<li>GPU: NVIDIA GeForce GTX 1050 Ti Mobile</li>
+</ul>
+
+<h2 id="0x03-正常的进入live-cd">0x03 正常的进入live cd</h2>
+
+<p>我想很多同学，在安装的时候就已经遇到了问题。使用 <code>lspci</code> 之后会发现机器卡死，或者是关机的时候无法关机，更或者在 live cd 加载时候就已经出现了相关的错误提示。这是因为默认 linux 会加载一个叫 <strong>nouveau</strong> 的开源 N 卡驱动这也是出现问题的原因。 你可以 live cd 启动的时候，在选单处按 <code>e</code> 然后在启动选项上添加内核参数 <code>modprobe.blacklist=nouveau</code> 以暂时禁用导致问题的，nouveau 驱动，然后你就可以继续你的安装了。记得装上 Nvidia的闭源驱动哦。 &gt;.&lt;</p>
+
+<h2 id="0x04-设置并安装闭源的-nvidia驱动">0x04 设置并安装闭源的 NVIDIA驱动</h2>
+
+<p>你可能会问，我装好系统之后还需要这样来开机吗？答案是要，在你没有安装 Nvidia 闭源驱动之前，你都需要做这一步，当安装完之后就不需要这一步了，因为闭源驱动在安装的时候会把这个写入文件里面，自动帮你做了这一步处理，你就不需要再每次开机都添加这一条参数了。</p>
+
+<h4 id="安装nvidia-驱动">安装NVIDIA 驱动</h4>
+
+<p>这个很简单，只需要使用Arch的<del>调教工具</del>包管理器，吃豆人。</p>
+
+<pre><code class="language-bash">sudo pacman -Syu nvidia nvidia-settings xorg-xrandr 
+</code></pre>
+
+<p>如果你需要使用dkms 请把上面的 <code>nvidia</code> 替换为 <code>nvidia-dkms</code>。如果使用官方内核装<code>nvidia</code>就好了。</p>
+
+<h4 id="设置早期kms启动并启用dmr">设置早期KMS启动并启用DMR</h4>
+
+<p>这一步你需要做两件事，添加内核参数和 initramfs 模块。</p>
+
+<h5 id="添加内核参数">添加内核参数</h5>
+
+<p>你需要把 <code>nvidia-drm.modeset=1</code> 加入 <a href="https://wiki.archlinux.org/index.php/Kernel_parameters">kernel parameter</a>,下面的例子以 systemd-boot 和 GRUB 为例子
+<strong>请不要直接复制，这只是个例子</strong></p>
+
+<h6 id="systemd-boot">systemd-boot</h6>
+
+<p>修改<code>/boot/loader/entries/arch.conf</code>，在<code>options</code>后面加入<code>nvidia-drm.modeset=1</code>。 例如这样：</p>
+
+<pre><code class="language-bash">options root=/dev/sda2 quiet splash nvidia-drm.modeset=1
+</code></pre>
+
+<h6 id="grub">GRUB</h6>
+
+<p>修改 <code>/etc/default/grub</code> 找到 <code>GRUB_CMDLINE_LINUX_DEFAULT</code>这一项在后面加入 <code>nvidia-drm.modeset=1</code>。 例如这样：</p>
+
+<pre><code class="language-bash">GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash nvidia-drm.modeset=1”
+</code></pre>
+
+<p>更改完成后执行，下面命令，会重新生成grub.cfg。</p>
+
+<pre><code class="language-bash">sudo  grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre>
+
+<h5 id="添加-initramfs-模块">添加 initramfs 模块</h5>
+
+<p>在 <code>/etc/mkinitcpio.conf</code> 中找到 <code>MODULES=</code>这一行在括号的后面加入<code>nvidia nvidia_modeset nvidia_uvm  nvidia_drm</code>。加入之后这行看起来是这样的：</p>
+
+<pre><code class="language-bash">MODULES=(intel_agp i915 nvidia nvidia_modeset nvidia_uvm  nvidia_drm)
+</code></pre>
+
+<p>别忘了重新生成一下 initramfs 执行</p>
+
+<pre><code class="language-bash">sudo mkinitcpio -P
+</code></pre>
+
+<p>当然，每次更新完 n 卡驱动之后你都需要进行这一步，重新生成 initramfs 如果你觉得麻烦可以使用 pacman hook 。<br />
+创建<code>/etc/pacman.d/hooks/nvidia.hook</code>
+内容为</p>
+
+<pre><code>[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+Target=linux
+# Change the linux part above and in the Exec line if a different kernel is used
+
+[Action]
+Description=Update Nvidia module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
+</code></pre>
+
+<p>这样就可以避免每次更新显卡驱动都要做这一步操作了。 （如果你使用了 <code>nvidia-dkms</code> 请把文件中对应项替换）</p>
+
+<h4 id="创建xorg-conf">创建Xorg.conf</h4>
+
+<p>先检查有没有这个文件<code>/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf</code>有的话可以跳过下面的步骤。如果出现找不到显卡可以尝试，加入BUSID指明 n 卡的位置。
+新建一个<code>/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf</code><br />
+内容为</p>
+
+<pre><code class="language-bash">Section &quot;OutputClass&quot;
+    Identifier &quot;intel&quot;
+    MatchDriver &quot;i915&quot;
+    Driver &quot;modesetting&quot;
+EndSection
+
+Section &quot;OutputClass&quot;
+    Identifier &quot;nvidia&quot;
+    MatchDriver &quot;nvidia-drm&quot;
+    Driver &quot;nvidia&quot;
+    Option &quot;AllowEmptyInitialConfiguration&quot;
+    Option &quot;PrimaryGPU&quot; &quot;yes&quot;
+    ModulePath &quot;/usr/lib/nvidia/xorg&quot;
+    ModulePath &quot;/usr/lib/xorg/modules&quot;
+EndSection
+
+</code></pre>
+
+<p>注意这里的 intel 驱动 <strong>必须为</strong> <code>modesetting</code>，否则会产生严重的撕裂，后面的 <code>AllowEmptyInitialConfiguration</code> 是为了让 n 卡在没检测到显示器的时候继续运行，而不是默认的退出。</p>
+
+<h5 id="配置桌面管理器">配置桌面管理器</h5>
+
+<p>这里以SDDM为例，如果你是其他桌面管理器，请参阅<a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus#Display_Managers">这里</a>。如果不配置你将会获得黑屏QwQ。
+编辑<code>/usr/share/sddm/scripts/Xsetup</code>。添加</p>
+
+<pre><code class="language-bash">xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+</code></pre>
+
+<h2 id="0x05-检查3d">0x05 检查3D</h2>
+
+<p>这样你应该就可以正常的使用 N 卡来渲染和 intel 输出了。但还是建议检查一下，安装<code>mesa-demos</code>，然后运行</p>
+
+<pre><code class="language-bash">glxinfo | grep NVIDIA
+</code></pre>
+
+<p>如果看见类似下面的输出，恭喜你成功了。</p>
+
+<pre><code class="language-bash">[marvelous@Vanilla  ~]$ glxinfo | grep NVIDIA
+server glx vendor string: NVIDIA Corporation
+client glx vendor string: NVIDIA Corporation
+OpenGL vendor string: NVIDIA Corporation
+OpenGL core profile version string: 4.6.0 NVIDIA 415.18
+OpenGL core profile shading language version string: 4.60 NVIDIA
+OpenGL version string: 4.6.0 NVIDIA 415.18
+OpenGL shading language version string: 4.60 NVIDIA
+OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 415.18
+</code></pre>
+
+<h2 id="0x06-配置视频硬解">0x06 配置视频硬解</h2>
+
+<p>惠，等等你是不是忘了什么？哦，对视频硬解。在<a href="https://wiki.archlinux.org/index.php/Hardware_video_acceleration">Hardware video acceleration</a>词条下面，你可以找到你显卡支持的硬解类型等信息。</p>
+
+<h5 id="安装并配置">安装并配置</h5>
+
+<p>因为用闭源驱动，所以你只需要安装 <code>nvidia-utils</code>和<code>libva-vdpau-driver</code>就可以了。如果你使用<code>chromium-vaapi</code>的话建议从aur或者cn源里面安装<code>libva-vdpau-driver-chromium</code>，下面假设你启用了cn源，并使用了桌面管理器。</p>
+
+<pre><code class="language-bash">sudo pacman -Syu nvidia-utils libva-vdpau-driver-chromium  vdpauinfo  libva-utils
+</code></pre>
+
+<p>在<code>~/.xprofile</code>中加入</p>
+
+<pre><code class="language-bash">export LIBVA_DRIVER_NAME=vdpau
+export LIBVA_DRIVERS_PATH=/usr/lib/dri/
+export VDPAU_DRIVER=nvidia
+</code></pre>
+
+<h4 id="验证-va-api-工作是否正常">验证 VA-API 工作是否正常</h4>
+
+<p>运行 <code>vainfo</code> 如果看见类似下面的输出则正常：</p>
+
+<pre><code class="language-bash">[marvelous@Vanilla  ~]$ vainfo
+vainfo: VA-API version: 1.3 (libva 2.3.0)
+vainfo: Driver version: Splitted-Desktop Systems VDPAU backend for VA-API - 0.7.4
+vainfo: Supported profile and entrypoints
+      VAProfileMPEG2Simple            :	VAEntrypointVLD
+      VAProfileMPEG2Main              :	VAEntrypointVLD
+      VAProfileMPEG4Simple            :	VAEntrypointVLD
+      VAProfileMPEG4AdvancedSimple    :	VAEntrypointVLD
+      &lt;unknown profile&gt;               :	VAEntrypointVLD
+      VAProfileH264Main               :	VAEntrypointVLD
+      VAProfileH264High               :	VAEntrypointVLD
+      VAProfileVC1Simple              :	VAEntrypointVLD
+      VAProfileVC1Main                :	VAEntrypointVLD
+      VAProfileVC1Advanced            :	VAEntrypointVLD
+</code></pre>
+
+<h4 id="验证-vdpau-工作是否正常">验证 VDPAU 工作是否正常</h4>
+
+<p>运行<code>vdpauinfo</code> 如果看见类似下面的输出则正常：</p>
+
+<pre><code class="language-bash">[marvelous@Vanilla  ~]$ vdpauinfo
+display: :0   screen: 0
+API version: 1
+Information string: NVIDIA VDPAU Driver Shared Library  415.18  Thu Nov 15 21:34:27 CST 2018
+
+Video surface:
+
+name   width height types
+-------------------------------------------
+420     8192  8192  NV12 YV12 
+422     8192  8192  UYVY YUYV 
+
+Decoder capabilities:
+
+name                        level macbs width height
+----------------------------------------------------
+MPEG1                           0 65536  4096  4096
+MPEG2_SIMPLE                    3 65536  4096  4096
+MPEG2_MAIN                      3 65536  4096  4096
+H264_BASELINE                  51 65536  4096  4096
+H264_MAIN                      51 65536  4096  4096
+H264_HIGH                      51 65536  4096  4096
+VC1_SIMPLE                      1  8190  2048  2048
+VC1_MAIN                        2  8190  2048  2048
+VC1_ADVANCED                    4  8190  2048  2048
+MPEG4_PART2_SP                  3  8192  2048  2048
+MPEG4_PART2_ASP                 5  8192  2048  2048
+DIVX4_QMOBILE                   0  8192  2048  2048
+DIVX4_MOBILE                    0  8192  2048  2048
+DIVX4_HOME_THEATER              0  8192  2048  2048
+DIVX4_HD_1080P                  0  8192  2048  2048
+DIVX5_QMOBILE                   0  8192  2048  2048
+DIVX5_MOBILE                    0  8192  2048  2048
+DIVX5_HOME_THEATER              0  8192  2048  2048
+DIVX5_HD_1080P                  0  8192  2048  2048
+H264_CONSTRAINED_BASELINE      51 65536  4096  4096
+H264_EXTENDED                  51 65536  4096  4096
+H264_PROGRESSIVE_HIGH          51 65536  4096  4096
+H264_CONSTRAINED_HIGH          51 65536  4096  4096
+H264_HIGH_444_PREDICTIVE       51 65536  4096  4096
+HEVC_MAIN                      153 262144  8192  8192
+HEVC_MAIN_10                   --- not supported ---
+HEVC_MAIN_STILL                --- not supported ---
+HEVC_MAIN_12                   --- not supported ---
+HEVC_MAIN_444                  --- not supported ---
+
+Output surface:
+
+name              width height nat types
+----------------------------------------------------
+B8G8R8A8         32768 32768    y  Y8U8V8A8 V8U8Y8A8 A4I4 I4A4 A8I8 I8A8 
+R10G10B10A2      32768 32768    y  Y8U8V8A8 V8U8Y8A8 A4I4 I4A4 A8I8 I8A8 
+
+Bitmap surface:
+
+name              width height
+------------------------------
+B8G8R8A8         32768 32768
+R8G8B8A8         32768 32768
+R10G10B10A2      32768 32768
+B10G10R10A2      32768 32768
+A8               32768 32768
+
+Video mixer:
+
+feature name                    sup
+------------------------------------
+DEINTERLACE_TEMPORAL             y
+DEINTERLACE_TEMPORAL_SPATIAL     y
+INVERSE_TELECINE                 y
+NOISE_REDUCTION                  y
+SHARPNESS                        y
+LUMA_KEY                         y
+HIGH QUALITY SCALING - L1        y
+HIGH QUALITY SCALING - L2        -
+HIGH QUALITY SCALING - L3        -
+HIGH QUALITY SCALING - L4        -
+HIGH QUALITY SCALING - L5        -
+HIGH QUALITY SCALING - L6        -
+HIGH QUALITY SCALING - L7        -
+HIGH QUALITY SCALING - L8        -
+HIGH QUALITY SCALING - L9        -
+
+parameter name                  sup      min      max
+-----------------------------------------------------
+VIDEO_SURFACE_WIDTH              y         1     8192
+VIDEO_SURFACE_HEIGHT             y         1     8192
+CHROMA_TYPE                      y  
+LAYERS                           y         0        4
+
+attribute name                  sup      min      max
+-----------------------------------------------------
+BACKGROUND_COLOR                 y  
+CSC_MATRIX                       y  
+NOISE_REDUCTION_LEVEL            y      0.00     1.00
+SHARPNESS_LEVEL                  y     -1.00     1.00
+LUMA_KEY_MIN_LUMA                y  
+LUMA_KEY_MAX_LUMA                y  
+
+</code></pre>
+
+<h4 id="验证-nvdec-是否工作正常">验证 NVDEC 是否工作正常</h4>
+
+<p>使用 <code>mpv</code> 这个播放器播放视频，看log输出中有没有 NVDEC 和错误输出。</p>
+
+<h2 id="0x07-结语">0x07 结语</h2>
+
+<p>如果你照着上面的教程，可以正常的使用了，恭喜你。如果不能，很遗憾，请查阅相关资料，或者到 #archlinux-cn-offtopic 中提问。感谢你从头开始阅读本文，如有疏漏，请联系本人更改。</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://blog.megumifox.com/public/2018/11/24/%E4%B8%80%E4%B8%AA%E5%B0%9D%E8%AF%95/" title="一个尝试">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//megumifox.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+<a href="https://blog.megumifox.com/public/license">license</a>
+
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  OwO看吧是不是很水啊QwQ
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 惠狐之书 written by Megumi_fox.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//megumifox.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="/public/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>
+
