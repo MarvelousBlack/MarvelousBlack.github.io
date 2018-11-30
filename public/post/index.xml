@@ -9,10 +9,29 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 26 Nov 2018 14:50:56 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Nov 2018 20:24:52 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>用hugo搭建一个博客</title>
+      <link>https://blog.megumifox.com/public/2018/11/30/%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 30 Nov 2018 20:24:52 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2018/11/30/%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>距离上次写有一个星期了，嘛，这次就来写写怎么搭个 blog 好了。（不完全笔记
+0x00 准备 工欲善其事必先利其器。搭建一个 blog 你需要准备：
+ 一个空间用来存放你的blog hugo 简单的 markdown 语法知识  0x01 关于hugo和安装 hugo是最受欢迎的开源的静态页面生成器，用go语言书写的。拥有令人令人惊讶的速度和可塑性。可以让你更加专注于写作，而且拥有大量十分好看的主题可选。 那么要怎么安装呢？
+在 archlinux下只需要一句 pacman -Syu hugo就好了。窗户的话，只需要去 官网 下载对应的可执行文件就好了。
+0x02 开始创建并装饰你的网页 创建网页文件 创建一个网页文件很简单只需要
+hugo new site （文件夹名称）  然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。
+安装主题 hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在这里选择一个你喜欢的主题。 注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档 惠狐之书使用的是 hyde-Y 主题，这个主题看起来有点像比特垃圾桶 , 所以下文将以这个主题为示例。
+按照主题写的命令
+$ cd your_site_repo/ $ mkdir themes $ cd themes $ git clone https://github.com/enten/hyde-y  这样就安装好主题了，但还没开始配置
+主配置文件 编辑 config.toml (如果没有则新建）按照下面的模板开始修改。
+# hostname (and path) to the root eg.</description>
+    </item>
     
     <item>
       <title>Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记</title>
