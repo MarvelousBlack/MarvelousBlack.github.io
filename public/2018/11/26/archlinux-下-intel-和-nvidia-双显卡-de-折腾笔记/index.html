@@ -51,7 +51,7 @@
     },
     "datePublished": "2018-11-26",
     "description": "嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。",
-    "wordCount": 832
+    "wordCount": 882
   }
 </script>
 
@@ -181,8 +181,8 @@
 
 
   
-  &middot; Read in about 4 min
-  &middot; (832 Words)
+  &middot; Read in about 5 min
+  &middot; (882 Words)
   <br>
   
 <a class="label" href="https://blog.megumifox.com/public/tags/archlinux">Archlinux</a>
@@ -233,7 +233,7 @@
 
 <h2 id="0x03-正常的进入live-cd">0x03 正常的进入live cd</h2>
 
-<p>我想很多同学，在安装的时候就已经遇到了问题。使用 <code>lspci</code> 之后会发现机器卡死，或者是关机的时候无法关机，更或者在 live cd 加载时候就已经出现了相关的错误提示。这是因为默认 linux 会加载一个叫 <strong>nouveau</strong> 的开源 N 卡驱动这也是出现问题的原因。 你可以 live cd 启动的时候，在选单处按 <code>e</code> 然后在启动选项上添加内核参数 <code>modprobe.blacklist=nouveau</code> 以暂时禁用导致问题的，nouveau 驱动，然后你就可以继续你的安装了。记得装上 Nvidia的闭源驱动哦。 &gt;.&lt;</p>
+<p>我想很多同学，在安装的时候就已经遇到了问题。使用 <code>lspci</code> 之后会发现机器卡死，或者是关机的时候无法关机，更或者在 live cd 加载时候就已经出现了相关的错误提示。这是因为默认 linux 会加载一个叫 <strong>nouveau</strong> 的开源 N 卡驱动这也是出现问题的原因。 你可以 live cd 启动的时候，在选单处按 <code>e</code> 然后在启动选项上添加内核参数 <code>modprobe.blacklist=nouveau</code> 以暂时禁用导致问题的，nouveau 驱动，然后你就可以继续你的安装了。记得装上 Nvidia的闭源驱动哦。 <strong>如果有问题请跳到最下面看补充的内容</strong> &gt;.&lt;</p>
 
 <h2 id="0x04-设置并安装闭源的-nvidia驱动">0x04 设置并安装闭源的 NVIDIA驱动</h2>
 
@@ -516,6 +516,40 @@ LUMA_KEY_MAX_LUMA                y
 <h2 id="0x07-结语">0x07 结语</h2>
 
 <p>如果你照着上面的教程，可以正常的使用了，恭喜你。如果不能，很遗憾，请查阅相关资料，或者到 #archlinux-cn-offtopic 中提问。感谢你从头开始阅读本文，如有疏漏，请联系本人更改。</p>
+
+<h2 id="0x08-补充内容">0x08 补充内容</h2>
+
+<p>在群里问了一下可能还需要一下步骤。于是在这里补充。
+在部分机器中可能在做完0x03中提及的步骤后还会卡死，则需要添加如下语句于内核参数中（添加方法在0x03有写）</p>
+
+<pre><code class="language-file">acpi_osi=! acpi_osi=&quot;windows 2009
+</code></pre>
+
+<p>或者</p>
+
+<pre><code> acpi_os_name=&quot;Microsoft Windows NT&quot;
+</code></pre>
+
+<p>再或者</p>
+
+<pre><code> acpi_osi=&quot;!Windows2012&quot;
+</code></pre>
+
+<p>如果还有可以继续尝试下面关键字</p>
+
+<pre><code>Microsoft Windows NT
+&quot;Microsoft Windows XP&quot;
+&quot;Microsoft Windows 2000&quot;
+&quot;Microsoft Windows 2000.1&quot;
+&quot;Microsoft Windows ME: Millennium Edition&quot;
+&quot;Windows 2001&quot;
+&quot;Windows 2006&quot;
+&quot;Windows 2009&quot;
+&quot;Windows 2012&quot;
+when all that fails, you can even try &quot;Linux&quot;
+</code></pre>
+
+<p>估计就能避免关机还是卡死等问题了。</p>
 
 </div>
 
