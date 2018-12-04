@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.megumifox.com/public/2018/12/04/%E9%97%9C%E6%96%BC%E5%9C%96%E6%9B%B8%E9%A4%A8%E4%BD%94%E5%BA%A7/</loc>
+    <lastmod>2018-12-04T21:53:58+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.megumifox.com/public/2018/11/30/%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</loc>
     <lastmod>2018-11-30T20:24:52+08:00</lastmod>
   </url>
@@ -63,7 +68,7 @@
   
   <url>
     <loc>https://blog.megumifox.com/public/post/</loc>
-    <lastmod>2018-11-30T20:24:52+08:00</lastmod>
+    <lastmod>2018-12-04T21:53:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -86,7 +91,7 @@
   
   <url>
     <loc>https://blog.megumifox.com/public/</loc>
-    <lastmod>2018-11-30T20:24:52+08:00</lastmod>
+    <lastmod>2018-12-04T21:53:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -104,7 +109,13 @@
   
   <url>
     <loc>https://blog.megumifox.com/public/topics/%E7%90%90%E7%A2%8E%E7%9A%84%E4%BA%8B/</loc>
-    <lastmod>2018-11-24T23:29:18+08:00</lastmod>
+    <lastmod>2018-12-04T21:53:58+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</loc>
+    <lastmod>2018-12-04T21:53:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
