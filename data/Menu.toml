@@ -1,0 +1,23 @@
+[posts]
+    Name = "posts"
+    Title = "Show list of posts"
+    URL = "/public/post"
+
+[tags]
+    Name = "tags"
+    Title = "Show list of tags"
+    URL = "/public/tags"
+
+[topics]
+  Name = "topics"
+    Title = "Show list of topics"
+	  URL = "/public/topics"
+
+[friends]
+	Name = "friends"
+	Title= "惠狐的朋友们"
+	URL = "/public/friends"
+
+[about]
+    Name = "about"
+    URL = "/public/about"
