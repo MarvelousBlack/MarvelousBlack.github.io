@@ -16,6 +16,7 @@ draft: false
 - 如何在正常的进入 live cd 
 - 如何设置并安装闭源的 NVIDIA驱动（仅使用n卡渲染然后使用intel输出）
 - 设置 Nvidia 相关的视频硬解加速选项
+- （追加內容）使用 `bumblebee` 進行切換 **與上面內容使用的方法不同上面提及的顯卡加速設置無效** 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。
 
 ## 0x01 开始之前
 - 本文针对的是 Nvida 和 intel 双显卡的笔记本，如果是其他奇怪的配置本文可能不适用。
@@ -43,7 +44,7 @@ draft: false
 ```bash
 sudo pacman -Syu nvidia nvidia-settings xorg-xrandr 
 ```
-如果你需要使用dkms 请把上面的 `nvidia` 替换为 `nvidia-dkms`。如果使用官方内核装`nvidia`就好了。
+如果你需要使用 dkms 请把上面的 `nvidia` 替换为 `nvidia-dkms`。如果使用官方内核装`nvidia`就好了。注：如果是以 root 運行則不需要 sudo。
 
 #### 设置早期KMS启动并启用DMR
 这一步你需要做两件事，添加内核参数和 initramfs 模块。
@@ -314,3 +315,24 @@ Microsoft Windows NT
 when all that fails, you can even try "Linux"
 ```
 估计就能避免关机还是卡死等问题了。
+
+## 0x09 Bumblebee
+引用 Bumblebee FAQ
+
+> Bumblebee 致力于使 NVIDIA Optimus 在 GNU/Linux 系统上可用，实现两块不同的供电配置的显卡同时插入使用，共享同一个 framebuffer。
+
+#### 安裝 Bumblebee
+```
+sudo pacman -Syu bumblebee nvidia nvidia-settings xorg-xrandr mesa bbswitch 
+```
+注：如果使用的是 root 用戶運行，則不需要 sudo 。
+
+要使用 Bumblebee 還要添加你的用戶到 `bumblebee` 組,並且啓用 `bumblebeed.service` 。
+
+```
+sudo gpasswd -a user bumblebee
+systemctl enable bumblebeed.service
+```
+然後重啓。估計就可以用了。其他關於電源管理 `bbswitch` 和其他雜項 請查閱 [wiki](https://wiki.archlinux.org/index.php/Bumblebee) 和相關文檔。
+
+
