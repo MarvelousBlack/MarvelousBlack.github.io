@@ -51,7 +51,7 @@
     },
     "datePublished": "2018-11-26",
     "description": "嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。",
-    "wordCount": 882
+    "wordCount": 948
   }
 </script>
 
@@ -182,7 +182,7 @@
 
   
   &middot; Read in about 5 min
-  &middot; (882 Words)
+  &middot; (948 Words)
   <br>
   
 <a class="label" href="https://blog.megumifox.com/public/tags/archlinux">Archlinux</a>
@@ -208,6 +208,7 @@
 <li>如何在正常的进入 live cd</li>
 <li>如何设置并安装闭源的 NVIDIA驱动（仅使用n卡渲染然后使用intel输出）</li>
 <li>设置 Nvidia 相关的视频硬解加速选项</li>
+<li>（追加內容）使用 <code>bumblebee</code> 進行切換 <strong>與上面內容使用的方法不同上面提及的顯卡加速設置無效</strong> 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。</li>
 </ul>
 
 <h2 id="0x01-开始之前">0x01 开始之前</h2>
@@ -246,7 +247,7 @@
 <pre><code class="language-bash">sudo pacman -Syu nvidia nvidia-settings xorg-xrandr 
 </code></pre>
 
-<p>如果你需要使用dkms 请把上面的 <code>nvidia</code> 替换为 <code>nvidia-dkms</code>。如果使用官方内核装<code>nvidia</code>就好了。</p>
+<p>如果你需要使用 dkms 请把上面的 <code>nvidia</code> 替换为 <code>nvidia-dkms</code>。如果使用官方内核装<code>nvidia</code>就好了。注：如果是以 root 運行則不需要 sudo。</p>
 
 <h4 id="设置早期kms启动并启用dmr">设置早期KMS启动并启用DMR</h4>
 
@@ -550,6 +551,29 @@ when all that fails, you can even try &quot;Linux&quot;
 </code></pre>
 
 <p>估计就能避免关机还是卡死等问题了。</p>
+
+<h2 id="0x09-bumblebee">0x09 Bumblebee</h2>
+
+<p>引用 Bumblebee FAQ</p>
+
+<blockquote>
+<p>Bumblebee 致力于使 NVIDIA Optimus 在 GNU/Linux 系统上可用，实现两块不同的供电配置的显卡同时插入使用，共享同一个 framebuffer。</p>
+</blockquote>
+
+<h4 id="安裝-bumblebee">安裝 Bumblebee</h4>
+
+<pre><code>sudo pacman -Syu bumblebee nvidia nvidia-settings xorg-xrandr mesa bbswitch 
+</code></pre>
+
+<p>注：如果使用的是 root 用戶運行，則不需要 sudo 。</p>
+
+<p>要使用 Bumblebee 還要添加你的用戶到 <code>bumblebee</code> 組,並且啓用 <code>bumblebeed.service</code> 。</p>
+
+<pre><code>sudo gpasswd -a user bumblebee
+systemctl enable bumblebeed.service
+</code></pre>
+
+<p>然後重啓。估計就可以用了。其他關於電源管理 <code>bbswitch</code> 和其他雜項 請查閱 <a href="https://wiki.archlinux.org/index.php/Bumblebee">wiki</a> 和相關文檔。</p>
 
 </div>
 
