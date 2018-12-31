@@ -9,10 +9,22 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Fri, 07 Dec 2018 20:24:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 31 Dec 2018 21:16:33 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>往 x80plus 里面塞 windows 和近期的碎碎念</title>
+      <link>https://blog.megumifox.com/public/2018/12/31/%E5%BE%80-x80plus-%E9%87%8C%E9%9D%A2%E5%A1%9E-windows-%E5%92%8C%E8%BF%91%E6%9C%9F%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+      <pubDate>Mon, 31 Dec 2018 21:16:33 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2018/12/31/%E5%BE%80-x80plus-%E9%87%8C%E9%9D%A2%E5%A1%9E-windows-%E5%92%8C%E8%BF%91%E6%9C%9F%E7%9A%84%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+      <description>先在这里说一声新年快乐啦，估计你看见本文的时候已经是2019年了。blog 大概有两个星期没更过了呢，其实最近也不是太忙的样子，但不知道写些什么，于是就一直拖着啦。
+板子的由来 嘛，我一直都很想搞块寨版来玩玩。平板有很多啊。为什么，要寨版呢？主要是要那个 cpu 啦，那个 cpu 可 x86 的，也就是说，可以在上面跑 win10， linux 。注意是完整的 win10 啊， 不是通过模拟出来的，而 linux 可以直接使用主线内核，而且可玩性非常的高。而且我主要是想用来当作一个终端来用，兼顾康康视频啊，康康网页啊（桌面端的）什么的。而且可以方便的带出去，性能也相对较高（和某些同价位平板来比的话）。但是，我看了差不多3个月的咸鱼，z8300 的板子差不多要 300 多，而 z3735f 这种用的是32位的 efi ，如果装 linux 还要骚操作一下，而且大概要 150 左右，所以一直都没有买。
+直到那一天的到来。那天在#archlinux-cn-offtopic里面聊起寨板， 雨寒说了这么一句，我果断的回了一句50收。下面是群聊记录的截取：
+ArielAxionL · 艾雨寒 🎷, [16.12.18 15:25] 我那個辣雞台電的平板裝了 AOSC OS，之後電池就壞了 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:25] 差不多可以扔了 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:26] [In reply to Megumi_fox (惠)] 真？ ArielAxionL · 艾雨寒 🎷, [16.12.18 15:26] 不帶 sd 卡） Megumi_fox (惠), [16.</description>
+    </item>
     
     <item>
       <title>Wacom Bamboo Slate Review</title>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>杂乱的笔记 on 惠狐之书</title>
-    <link>https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
-    <description>Recent content in 杂乱的笔记 on 惠狐之书</description>
+    <title>Tablet on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/tablet/</link>
+    <description>Recent content in Tablet on 惠狐之书</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
@@ -11,7 +11,7 @@
     <copyright>(c) 2018 惠狐之书 written by Megumi_fox.</copyright>
     <lastBuildDate>Mon, 31 Dec 2018 21:16:33 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.megumifox.com/public/tags/tablet/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -24,25 +24,6 @@
 板子的由来 嘛，我一直都很想搞块寨版来玩玩。平板有很多啊。为什么，要寨版呢？主要是要那个 cpu 啦，那个 cpu 可 x86 的，也就是说，可以在上面跑 win10， linux 。注意是完整的 win10 啊， 不是通过模拟出来的，而 linux 可以直接使用主线内核，而且可玩性非常的高。而且我主要是想用来当作一个终端来用，兼顾康康视频啊，康康网页啊（桌面端的）什么的。而且可以方便的带出去，性能也相对较高（和某些同价位平板来比的话）。但是，我看了差不多3个月的咸鱼，z8300 的板子差不多要 300 多，而 z3735f 这种用的是32位的 efi ，如果装 linux 还要骚操作一下，而且大概要 150 左右，所以一直都没有买。
 直到那一天的到来。那天在#archlinux-cn-offtopic里面聊起寨板， 雨寒说了这么一句，我果断的回了一句50收。下面是群聊记录的截取：
 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:25] 我那個辣雞台電的平板裝了 AOSC OS，之後電池就壞了 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:25] 差不多可以扔了 ArielAxionL · 艾雨寒 🎷, [16.12.18 15:26] [In reply to Megumi_fox (惠)] 真？ ArielAxionL · 艾雨寒 🎷, [16.12.18 15:26] 不帶 sd 卡） Megumi_fox (惠), [16.</description>
-    </item>
-    
-    <item>
-      <title>用hugo搭建一个博客</title>
-      <link>https://blog.megumifox.com/public/2018/11/30/%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Fri, 30 Nov 2018 20:24:52 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/2018/11/30/%E7%94%A8hugo%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>距离上次写有一个星期了，嘛，这次就来写写怎么搭个 blog 好了。（不完全笔记
-0x00 准备 工欲善其事必先利其器。搭建一个 blog 你需要准备：
- 一个空间用来存放你的blog hugo 简单的 markdown 语法知识  0x01 关于hugo和安装 hugo是最受欢迎的开源的静态页面生成器，用go语言书写的。拥有令人令人惊讶的速度和可塑性。可以让你更加专注于写作，而且拥有大量十分好看的主题可选。 那么要怎么安装呢？
-在 archlinux下只需要一句 pacman -Syu hugo就好了。窗户的话，只需要去 官网 下载对应的可执行文件就好了。
-0x02 开始创建并装饰你的网页 创建网页文件 创建一个网页文件很简单只需要
-hugo new site （文件夹名称）  然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。
-安装主题 hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在这里选择一个你喜欢的主题。 注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档 惠狐之书使用的是 hyde-Y 主题，这个主题看起来有点像比特垃圾桶 , 所以下文将以这个主题为示例。
-按照主题写的命令
-$ cd your_site_repo/ $ mkdir themes $ cd themes $ git clone https://github.com/enten/hyde-y  这样就安装好主题了，但还没开始配置
-主配置文件 编辑 config.toml (如果没有则新建）按照下面的模板开始修改。
-# hostname (and path) to the root eg.</description>
     </item>
     
   </channel>
