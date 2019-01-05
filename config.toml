@@ -6,7 +6,7 @@ baseurl = "https://blog.megumifox.com/public/"
 title = "惠狐之书"
 
 # Copyright
-copyright = "(c) 2018 惠狐之书 written by Megumi_fox."
+copyright = "(c) 2018-2019 惠狐之书 written by Megumi_fox."
 
 # Language
 languageCode = "en-EN"
@@ -44,7 +44,7 @@ disqusShortname = "megumifox"
     # You can use markdown here.
     brand = "Megumi fox"
     topline = "A fox called Megumi"
-    footline = "OwO看吧是不是很水啊QwQ"
+    footline = "惠狐之书所有的文章除特别声明外，均使用页脚所指 license。"
 
     # Sidebar position
     # false, true, "left", "right"
