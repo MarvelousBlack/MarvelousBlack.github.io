@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Archlinux on 惠狐之书</title>
-    <link>https://blog.megumifox.com/public/tags/archlinux/</link>
-    <description>Recent content in Archlinux on 惠狐之书</description>
+    <title>Usb Chager on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/usb-chager/</link>
+    <description>Recent content in Usb Chager on 惠狐之书</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
@@ -11,7 +11,7 @@
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
     <lastBuildDate>Thu, 17 Jan 2019 22:16:42 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.megumifox.com/public/tags/archlinux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.megumifox.com/public/tags/usb-chager/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -25,16 +25,6 @@
 X80PLUS(H5C5)  显示：working（xf86-video-intel） 触屏：working (goodix) WiFi：working（存在一定问题）(rt8723bs) 蓝牙：working (rt8723bs) 声卡：working (ALSA) 电源状态：working 充电：working OTG：working SD卡读卡器：Unknown(我手上没卡所以没有测试) 加速的传感器：working(需要修改hwdb文件) 音量按钮：Not working （能检测的到） 屏幕背光调节：working 摄像头：Not working（一个叫 ov2680 的东西，没驱动）  大部分都是开箱即用，不需要什么设置，也就是坑已经被前人踩完了。
 0x01 安装 ArchLinux 和设置 嘛，如何安装 archlinux 这个问题，萌狼已经写过了，所以我在这里就只写和这个板子有关和一些剩下的一些问题。汝如果想看如何安装请看这里,咱可是照着这个做了一遍十分简单易懂。值得注意的是这个平板只有一个 usb 口的说，汝只能选择只充电，或者是只 OTG ，所以要先充满电然后再开始哦。
 网络 咱在上面提到了一件事就是 wifi 是存在问题的，这个 wifi 模块的名字是 rt8723bs 驱动已经包含在了新的 linux 内核中了，但是，我已经用了最新的稳定内核了，但还是遇到了玄学问题。表现的现象是这样的，能够扫描到 wifi 但是连接的话会被拒绝。也就是能扫不能连，这个故障比较玄学换了路由器又可以了。而且我还查看了路由器和平板的log均没有收获遂放弃。但由于我当时没有其他的路由器和网卡，于是只能把手机连上去，用usb共享功能，来完成安装。安装完之后去淘宝买了个usb有线网卡，才想起来咱手上有个 wifi 放大器可以试试，可以连，于是就这样将就着用了。</description>
-    </item>
-    
-    <item>
-      <title>Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记</title>
-      <link>https://blog.megumifox.com/public/2018/11/26/archlinux-%E4%B8%8B-intel-%E5%92%8C-nvidia-%E5%8F%8C%E6%98%BE%E5%8D%A1-de-%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/2018/11/26/archlinux-%E4%B8%8B-intel-%E5%92%8C-nvidia-%E5%8F%8C%E6%98%BE%E5%8D%A1-de-%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
-      <description>嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。默认你是 ArchLinux 用户，如果是其他发行版，请自行变通。
-0x00 本教程的主要内容  如何在正常的进入 live cd 如何设置并安装闭源的 NVIDIA驱动（仅使用n卡渲染然后使用intel输出） 设置 Nvidia 相关的视频硬解加速选项 （追加內容）使用 bumblebee 進行切換 與上面內容使用的方法不同上面提及的顯卡加速設置無效 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。  0x01 开始之前  本文针对的是 Nvida 和 intel 双显卡的笔记本，如果是其他奇怪的配置本文可能不适用。 这个设置使用了 N 卡渲染，所以只能使用 Nvidia ，在N卡渲染的时候，不能再使用 intel 来进行视频硬解。 由于N卡对 wayland 的支持出奇的差，所以这里只使用Xorg。（已经默认你使用并会在之后安装Xorg） 本文适用于有硬线连接外屏，但内屏是连接在 intel 显卡上，且 intel显卡无法关闭。或者是你想用 Nvidia 独显来渲染获得更好的性能的同学。 对于部分搭载了 Nvidia MX150 和 Nvidia 940MX 的笔记本，不推荐使用这种方式。因为这个没有预想中的这么好。更加的耗电，而且这两张卡均不支持 NVDEC 视频硬解，还不如使用核显，提升续航和使用 intel 的 vaapi 视频硬解。所以建议使用 bumblebee 或者使用 nvida-xrun在必要的时候获得更好的性能。 优点是可以获得更好的显示性能和使用和 N 卡直接相连的显示器。缺点是续航大幅度的降低。  0x02 我使用的机器 因为本文是以我的经验作为参看，所以下面先列出我的配置，其余的双卡的机器都差不多。 不是太旧的配置都应该没问题</description>
     </item>
     
   </channel>

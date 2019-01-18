@@ -9,10 +9,23 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 31 Dec 2018 21:16:33 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jan 2019 22:16:42 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>寨板折腾笔记</title>
+      <link>https://blog.megumifox.com/public/2019/01/17/%E5%AF%A8%E6%9D%BF%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</link>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2019/01/17/%E5%AF%A8%E6%9D%BF%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/</guid>
+      <description>emmm， 上次我提到了要给收回来的那块寨版 X80PLUS 装上 ArchLinux ，但是过了好多天都没写，其实我早在几天之前就装好了，但是发生了一些小插曲，于是就拖到了现在。那现在就开始聊一聊发生了什么吧。
+0x00 概况 用 Intel cpu 的寨板基本上是可以安装 ArchLinux 的，但是不是所有的元件都能 work 的，这个要看运气。嘛，我只有一块板，下面先列出我手上这块xx80plus板子安装好之后各个能工作的原件吧。这个平板是个 z8300+2G+32G的常见配置。如果是其他的板子的话，我也不清楚是不是可以用，大家可以先 google 一下。
+X80PLUS(H5C5)  显示：working（xf86-video-intel） 触屏：working (goodix) WiFi：working（存在一定问题）(rt8723bs) 蓝牙：working (rt8723bs) 声卡：working (ALSA) 电源状态：working 充电：working OTG：working SD卡读卡器：Unknown(我手上没卡所以没有测试) 加速的传感器：working(需要修改hwdb文件) 音量按钮：Not working （能检测的到） 屏幕背光调节：working 摄像头：Not working（一个叫 ov2680 的东西，没驱动）  大部分都是开箱即用，不需要什么设置，也就是坑已经被前人踩完了。
+0x01 安装 ArchLinux 和设置 嘛，如何安装 archlinux 这个问题，萌狼已经写过了，所以我在这里就只写和这个板子有关和一些剩下的一些问题。汝如果想看如何安装请看这里,咱可是照着这个做了一遍十分简单易懂。值得注意的是这个平板只有一个 usb 口的说，汝只能选择只充电，或者是只 OTG ，所以要先充满电然后再开始哦。
+网络 咱在上面提到了一件事就是 wifi 是存在问题的，这个 wifi 模块的名字是 rt8723bs 驱动已经包含在了新的 linux 内核中了，但是，我已经用了最新的稳定内核了，但还是遇到了玄学问题。表现的现象是这样的，能够扫描到 wifi 但是连接的话会被拒绝。也就是能扫不能连，这个故障比较玄学换了路由器又可以了。而且我还查看了路由器和平板的log均没有收获遂放弃。但由于我当时没有其他的路由器和网卡，于是只能把手机连上去，用usb共享功能，来完成安装。安装完之后去淘宝买了个usb有线网卡，才想起来咱手上有个 wifi 放大器可以试试，可以连，于是就这样将就着用了。</description>
+    </item>
     
     <item>
       <title>往 x80plus 里面塞 windows 和近期的碎碎念</title>

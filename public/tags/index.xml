@@ -9,7 +9,7 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 26 Nov 2018 14:50:56 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jan 2019 22:16:42 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,7 +17,7 @@
     <item>
       <title>Archlinux</title>
       <link>https://blog.megumifox.com/public/tags/archlinux/</link>
-      <pubDate>Mon, 26 Nov 2018 14:50:56 +0800</pubDate>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/archlinux/</guid>
       <description></description>
@@ -71,9 +71,18 @@
     <item>
       <title>Tablet</title>
       <link>https://blog.megumifox.com/public/tags/tablet/</link>
-      <pubDate>Mon, 31 Dec 2018 21:16:33 +0800</pubDate>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/tablet/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Usb Chager</title>
+      <link>https://blog.megumifox.com/public/tags/usb-chager/</link>
+      <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/usb-chager/</guid>
       <description></description>
     </item>
     
