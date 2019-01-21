@@ -117,8 +117,8 @@ cat /sys/class/dmi/id/modalias
 cat /sys/`udevadm info -q path -n /dev/iio:device0`/../modalias
 ```
 然后参考 [60-sensor-local.hwdb](https://github.com/systemd/systemd/blob/master/hwdb/60-sensor.hwdb)，新增内容写就好了，可以对比我给出来那个文件和相应的字符串，照葫芦画瓢就好了。
-## 3）画面撕裂
-用 modesetting 驱动会导致画面有严重的撕裂，所以这里我们使用`xf86-video-intel`，虽然这个驱动不在被推荐，但这寨板的显卡似乎挺旧的所以也只能用它了。安装 `xf86-video-intel`，然后修改 `/etc/X11/xorg.conf` 写入如下内容
+## 3）画面撕裂（解决不了）
+用 modesetting 驱动在内屏（就是平板的那个屏幕）会看起来有很明显的撕裂相比之下 intel 的那个看起来好点，所以这里我们使用`xf86-video-intel`，虽然这个驱动不在被推荐，但这寨板的显卡似乎挺旧的所以也只能用它了。安装 `xf86-video-intel`，然后修改 `/etc/X11/xorg.conf` 写入如下内容
 ```
 Section "Device"
 	Identifier "intel"
@@ -130,7 +130,8 @@ Section "Device"
 	Option "DRI" "3"
 EndSection
 ```
-画面撕裂的问题会得到解决。
+画面撕裂的问题会得到缓解。  
+**更新：在内屏和外屏的情况下画面都是会出现撕裂。这个问题咱问了一下其他人，好像 atom 用的显卡都是这样的，所以如何取舍就看汝了。而且这样设置在咱使用外屏的输出时，会看见鼠标光标消失的问题，并且伴随绘图不正常。使用 modesetting 不会遇到这个问题。或者上面的 DRI 设置为2也可以解决这个问题，但撕裂始终存在，而且拖动窗口会出现卡顿。**
 ## 4）视频硬解加速
 z8300 cpu性能本身并不是很强，而且视频播放没硬解的话，会很耗电的，于是咱们需要硬解。  安装`libva-intel-driver`然后在`~/.xprofile`中加入
 ```bash
