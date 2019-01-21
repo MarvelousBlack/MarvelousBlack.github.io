@@ -118,7 +118,7 @@ cat /sys/`udevadm info -q path -n /dev/iio:device0`/../modalias
 ```
 然后参考 [60-sensor-local.hwdb](https://github.com/systemd/systemd/blob/master/hwdb/60-sensor.hwdb)，新增内容写就好了，可以对比我给出来那个文件和相应的字符串，照葫芦画瓢就好了。
 ## 3）画面撕裂（解决不了）
-用 modesetting 驱动在内屏（就是平板的那个屏幕）会看起来有很明显的撕裂相比之下 intel 的那个看起来好点，所以这里我们使用`xf86-video-intel`，虽然这个驱动不在被推荐，但这寨板的显卡似乎挺旧的所以也只能用它了。安装 `xf86-video-intel`，然后修改 `/etc/X11/xorg.conf` 写入如下内容
+用 modesetting 驱动在内屏（就是平板的那个屏幕）会看起来有很明显的撕裂,相比之下 intel 的那个看起来好点，所以这里我们使用`xf86-video-intel`，虽然这个驱动不在被推荐，但这寨板的显卡似乎挺旧的所以也只能用它了。安装 `xf86-video-intel`，然后修改 `/etc/X11/xorg.conf` 写入如下内容
 ```
 Section "Device"
 	Identifier "intel"
