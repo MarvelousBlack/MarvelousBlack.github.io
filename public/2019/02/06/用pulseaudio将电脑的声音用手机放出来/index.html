@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>用PulseAudio将电脑的声音用手机放出来  &middot; 惠狐之书</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="Pulseaudio 其实有很多骚操作，那就来说说通过网络用手机播放电脑的声音吧！" />
+
+<meta name="keywords" content="pulseaudio, ">
+
+
+<meta property="og:title" content="用PulseAudio将电脑的声音用手机放出来  &middot; 惠狐之书 ">
+<meta property="og:site_name" content="惠狐之书"/>
+<meta property="og:url" content="https://blog.megumifox.com/public/2019/02/06/%E7%94%A8pulseaudio%E5%B0%86%E7%94%B5%E8%84%91%E7%9A%84%E5%A3%B0%E9%9F%B3%E7%94%A8%E6%89%8B%E6%9C%BA%E6%94%BE%E5%87%BA%E6%9D%A5/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="Pulseaudio 其实有很多骚操作，那就来说说通过网络用手机播放电脑的声音吧！"/>
+<meta property="og:article:published_time" content="2019-02-06T22:30:57&#43;08:00" />
+<meta property="og:article:modified_time" content="2019-02-06T22:30:57&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="pulseaudio">
+    
+  
+
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "用PulseAudio将电脑的声音用手机放出来",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2019-02-06",
+    "description": "Pulseaudio 其实有很多骚操作，那就来说说通过网络用手机播放电脑的声音吧！",
+    "wordCount": 101
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://blog.megumifox.com/public/2019/02/06/%E7%94%A8pulseaudio%E5%B0%86%E7%94%B5%E8%84%91%E7%9A%84%E5%A3%B0%E9%9F%B3%E7%94%A8%E6%89%8B%E6%9C%BA%E6%94%BE%E5%87%BA%E6%9D%A5/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
+<link href="https://blog.megumifox.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.54.0" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/public/css/font-awesome.min.css">
+<link rel="stylesheet" href="/public/css/style.css">
+<link rel="stylesheet" href="/public/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-129670705-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://blog.megumifox.com/public/">
+  Megumi fox
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  A fox called Megumi
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://blog.megumifox.com/public/">home</a>
+
+
+  
+<a href="https://blog.megumifox.com/public/about">about</a>
+
+<a href="https://blog.megumifox.com/public/friends" title="惠狐的朋友们">friends</a>
+
+<a href="https://blog.megumifox.com/public/post" title="Show list of posts">posts</a>
+
+<a href="https://blog.megumifox.com/public/tags" title="Show list of tags">tags</a>
+
+<a href="https://blog.megumifox.com/public/topics" title="Show list of topics">topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:i@megumifox.com">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/MarvelousBlack">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>用PulseAudio将电脑的声音用手机放出来
+</h1>
+
+  <div class="metas">
+<time datetime="2019-02-06">6 Feb, 2019</time>
+
+
+  
+  &middot; Read in about 1 min
+  &middot; (101 Words)
+  <br>
+  
+<a class="label" href="https://blog.megumifox.com/public/tags/pulseaudio">pulseaudio</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p>恩，咱之前啊，在咸鱼上收了一个树霉派1B，是的，一个老旧的版本。那和今天咱要说的题目有什么关系呢？关系大着呢，如果没有这个小玩意，咱也不知道还能这样玩呢。</p>
+
+<h2 id="缘由">缘由</h2>
+
+<p>这个东西，其实咱一开始买回来也不知道用来做什么，直到那天我找到了大量的歌曲存到了U盘，于是想这个东西有音频接口那为什么不直接拿来当个播放器呢？于是熟练的装好了咱最爱的 moc 播放器，插上耳机。额。。。。似乎声音不太对啊，是的，树霉派的音频电路真的很差。汝可能会问，咱为什么不直接用手机播放呢？那是因为啊，咱手机的空间太小了存不下辣么多的歌曲。可咱还是想用这个小东西来做播放器，难道就没有办法了吗？</p>
+
+<h2 id="pulseaudio-over-tcp">PulseAudio Over TCP</h2>
+
+<p>在 linux 上有个叫 pulseaudio 的东西，没错就是它。它可以使用网络来把声音送出去，具体怎么做的汝可以去搜一下 pulseaudio over tcp ，咱也不太清楚。但既然有这么方便的功能，岂不是可以解决上面提到的问题？咱们就开始配置吧。</p>
+
+<h2 id="配置过程">配置过程</h2>
+
+<h3 id="手机端">手机端</h3>
+
+<p>手机这边咱用的是 android 。所以去play士多，直接安装 <a href="https://play.google.com/store/apps/details?id=com.kaytat.simpleprotocolplayer">Simple Protocol Player</a> ，安装好之后可以看见一个十分简单的界面，上面有几个选项这样的。接着咱们只需要修改 ip 和 port 就行了，ip 为汝电脑的 ip ，端口可以取 12345 ，也可以随你喜欢。其他默认就好，如果汝在后面设置好之后发现有些卡顿，还可以适当的调整一下 <code>buffer size</code>。</p>
+
+<h3 id="电脑端">电脑端</h3>
+
+<p>先安装好 pulseaudio ，接着使用<code>pactl list sources short</code>列出源，例如咱是这样的</p>
+
+<pre><code>0	alsa_output.pci-0000_00_1f.3.analog-stereo.monitor	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED
+1	alsa_input.pci-0000_00_1f.3.analog-stereo	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED
+</code></pre>
+
+<p>找到输出的那个，然后输入(假设 source=0，如果不是请参照汝机器将0换为对应数值，port和上面设置的port一样)</p>
+
+<pre><code class="language-bash">pactl load-module module-simple-protocol-tcp source=0 record=true port=12345
+</code></pre>
+
+<p>恩，接着在手机那边点一下那个播放键就可以用了。如果汝还想持久化这个设置，可以修改 <code>/etc/pulse/default.pa</code> 并追加</p>
+
+<pre><code>load-module module-simple-protocol-tcp source=0 record=true port=12345
+</code></pre>
+
+<p>其实就是 pactl 后面那堆东西啦。然后重启一下 pulseaudio 就ok了。</p>
+
+<h3 id="小问题">小问题</h3>
+
+<p>因为咱是用树霉派来播放的，这小东西不带喇叭，没有这个问题。但如果是电脑，估计汝会发现电脑那边也在放歌。那怎么办呢，如果停用这个设备的话，那两边都会没有声音。咱们在这偷个懒，创建一个虚拟设备就好了，根据 <a href="https://unix.stackexchange.com/questions/174379/how-can-i-create-a-virtual-output-in-pulseaudio">这里</a> 用</p>
+
+<pre><code>sudo modprobe snd_aloop
+</code></pre>
+
+<p>添加一个 loopback 设备到 ALSA ， pulseaudio 那边也会看见一个新设备，这样问题就解决了。</p>
+
+<h2 id="后记">后记</h2>
+
+<p>这个操作需要网络环境比较好的情况，不然会一卡一卡的，不过在家里面躺在床上用这个方法听听歌也是足够了。这仅仅是一个小技巧，可以在不想购买新的声卡的情况下，使用 pulseaudio 来转发声音，来避免声卡输出底噪过大之类的问题。也算是一个比较实用的技巧吧。咱听说，隔壁 fc 老师因为没有蓝牙设备，使用树霉派做了音频和 usb 的转发，不知道是怎么做到的呢，好想知道啊。</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://blog.megumifox.com/public/2019/01/17/%E5%AF%A8%E6%9D%BF%E6%8A%98%E8%85%BE%E7%AC%94%E8%AE%B0/" title="寨板折腾笔记">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//megumifox.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+<a href="https://blog.megumifox.com/public/license">license</a>
+
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  惠狐之书所有的文章除特别声明外，均使用页脚所指 license。
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018-2019 惠狐之书 written by Megumi_fox.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//megumifox.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="/public/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>
+

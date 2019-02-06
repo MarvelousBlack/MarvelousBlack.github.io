@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pulseaudio on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/pulseaudio/</link>
+    <description>Recent content in Pulseaudio on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
+    <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
+    <lastBuildDate>Wed, 06 Feb 2019 22:30:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.megumifox.com/public/tags/pulseaudio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>用PulseAudio将电脑的声音用手机放出来</title>
+      <link>https://blog.megumifox.com/public/2019/02/06/%E7%94%A8pulseaudio%E5%B0%86%E7%94%B5%E8%84%91%E7%9A%84%E5%A3%B0%E9%9F%B3%E7%94%A8%E6%89%8B%E6%9C%BA%E6%94%BE%E5%87%BA%E6%9D%A5/</link>
+      <pubDate>Wed, 06 Feb 2019 22:30:57 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2019/02/06/%E7%94%A8pulseaudio%E5%B0%86%E7%94%B5%E8%84%91%E7%9A%84%E5%A3%B0%E9%9F%B3%E7%94%A8%E6%89%8B%E6%9C%BA%E6%94%BE%E5%87%BA%E6%9D%A5/</guid>
+      <description>恩，咱之前啊，在咸鱼上收了一个树霉派1B，是的，一个老旧的版本。那和今天咱要说的题目有什么关系呢？关系大着呢，如果没有这个小玩意，咱也不知道还能这样玩呢。
+缘由 这个东西，其实咱一开始买回来也不知道用来做什么，直到那天我找到了大量的歌曲存到了U盘，于是想这个东西有音频接口那为什么不直接拿来当个播放器呢？于是熟练的装好了咱最爱的 moc 播放器，插上耳机。额。。。。似乎声音不太对啊，是的，树霉派的音频电路真的很差。汝可能会问，咱为什么不直接用手机播放呢？那是因为啊，咱手机的空间太小了存不下辣么多的歌曲。可咱还是想用这个小东西来做播放器，难道就没有办法了吗？
+PulseAudio Over TCP 在 linux 上有个叫 pulseaudio 的东西，没错就是它。它可以使用网络来把声音送出去，具体怎么做的汝可以去搜一下 pulseaudio over tcp ，咱也不太清楚。但既然有这么方便的功能，岂不是可以解决上面提到的问题？咱们就开始配置吧。
+配置过程 手机端 手机这边咱用的是 android 。所以去play士多，直接安装 Simple Protocol Player ，安装好之后可以看见一个十分简单的界面，上面有几个选项这样的。接着咱们只需要修改 ip 和 port 就行了，ip 为汝电脑的 ip ，端口可以取 12345 ，也可以随你喜欢。其他默认就好，如果汝在后面设置好之后发现有些卡顿，还可以适当的调整一下 buffer size。
+电脑端 先安装好 pulseaudio ，接着使用pactl list sources short列出源，例如咱是这样的
+0	alsa_output.pci-0000_00_1f.3.analog-stereo.monitor	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED 1	alsa_input.pci-0000_00_1f.3.analog-stereo	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED  找到输出的那个，然后输入(假设 source=0，如果不是请参照汝机器将0换为对应数值，port和上面设置的port一样)
+pactl load-module module-simple-protocol-tcp source=0 record=true port=12345  恩，接着在手机那边点一下那个播放键就可以用了。如果汝还想持久化这个设置，可以修改 /etc/pulse/default.</description>
+    </item>
+    
+  </channel>
+</rss>
