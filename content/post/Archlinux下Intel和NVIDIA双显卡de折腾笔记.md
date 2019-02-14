@@ -14,7 +14,7 @@ draft: false
 嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。默认你是 ArchLinux 用户，如果是其他发行版，请自行变通。
 ## 0x00 本教程的主要内容
 - 如何在正常的进入 live cd 
-- 如何设置并安装闭源的 NVIDIA驱动（仅使用n卡渲染然后使用intel输出）
+- 如何设置并安装私有 NVIDIA 驱动（仅使用n卡渲染然后使用intel输出）
 - 设置 Nvidia 相关的视频硬解加速选项
 - （追加內容）使用 `bumblebee` 進行切換 **與上面內容使用的方法不同上面提及的顯卡加速設置無效** 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。
 
@@ -34,10 +34,10 @@ draft: false
 - GPU: NVIDIA GeForce GTX 1050 Ti Mobile
 
 ## 0x03 正常的进入live cd
-我想很多同学，在安装的时候就已经遇到了问题。使用 `lspci` 之后会发现机器卡死，或者是关机的时候无法关机，更或者在 live cd 加载时候就已经出现了相关的错误提示。这是因为默认 linux 会加载一个叫 **nouveau** 的开源 N 卡驱动这也是出现问题的原因。 你可以 live cd 启动的时候，在选单处按 `e` 然后在启动选项上添加内核参数 `modprobe.blacklist=nouveau` 以暂时禁用导致问题的，nouveau 驱动，然后你就可以继续你的安装了。记得装上 Nvidia的闭源驱动哦。 **如果有问题请跳到最下面看补充的内容** >.<
+我想很多同学，在安装的时候就已经遇到了问题。使用 `lspci` 之后会发现机器卡死，或者是关机的时候无法关机，更或者在 live cd 加载时候就已经出现了相关的错误提示。这是因为默认 linux 会加载一个叫 **nouveau** 的开源 N 卡驱动这也是出现问题的原因。 你可以 live cd 启动的时候，在选单处按 `e` 然后在启动选项上添加内核参数 `modprobe.blacklist=nouveau` 以暂时禁用导致问题的，nouveau 驱动，然后你就可以继续你的安装了。记得装上 Nvidia 私有驱动哦。 **如果有问题请跳到最下面看补充的内容** >.<
 
-## 0x04 设置并安装闭源的 NVIDIA驱动
-你可能会问，我装好系统之后还需要这样来开机吗？答案是要，在你没有安装 Nvidia 闭源驱动之前，你都需要做这一步，当安装完之后就不需要这一步了，因为闭源驱动在安装的时候会把这个写入文件里面，自动帮你做了这一步处理，你就不需要再每次开机都添加这一条参数了。  
+## 0x04 设置并安装私有 NVIDIA驱动
+你可能会问，我装好系统之后还需要这样来开机吗？答案是要，在你没有安装 Nvidia 私有驱动之前，你都需要做这一步，当安装完之后就不需要这一步了，因为私有驱动在安装的时候会把这个写入文件里面，自动帮你做了这一步处理，你就不需要再每次开机都添加这一条参数了。  
 
 #### 安装NVIDIA 驱动
 这个很简单，只需要使用Arch的~~调教工具~~包管理器，吃豆人。
@@ -46,7 +46,7 @@ sudo pacman -Syu nvidia nvidia-settings xorg-xrandr
 ```
 如果你需要使用 dkms 请把上面的 `nvidia` 替换为 `nvidia-dkms`。如果使用官方内核装`nvidia`就好了。注：如果是以 root 運行則不需要 sudo。
 
-#### 设置早期KMS启动并启用DMR
+#### 设置早期KMS启动并启用DRM
 这一步你需要做两件事，添加内核参数和 initramfs 模块。
 ##### 添加内核参数
 你需要把 `nvidia-drm.modeset=1` 加入 [kernel parameter](https://wiki.archlinux.org/index.php/Kernel_parameters),下面的例子以 systemd-boot 和 GRUB 为例子
@@ -150,7 +150,7 @@ OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 415.18
 ## 0x06 配置视频硬解
 惠，等等你是不是忘了什么？哦，对视频硬解。在[Hardware video acceleration](https://wiki.archlinux.org/index.php/Hardware_video_acceleration)词条下面，你可以找到你显卡支持的硬解类型等信息。  
 ##### 安装并配置
-因为用闭源驱动，所以你只需要安装 `nvidia-utils`和`libva-vdpau-driver`就可以了。如果你使用`chromium-vaapi`的话建议从aur或者cn源里面安装`libva-vdpau-driver-chromium`，下面假设你启用了cn源，并使用了桌面管理器。
+因为用私有驱动，所以你只需要安装 `nvidia-utils`和`libva-vdpau-driver`就可以了。如果你使用`chromium-vaapi`的话建议从aur或者cn源里面安装`libva-vdpau-driver-chromium`，下面假设你启用了cn源，并使用了桌面管理器。
 ```bash
 sudo pacman -Syu nvidia-utils libva-vdpau-driver-chromium  vdpauinfo  libva-utils
 ```
