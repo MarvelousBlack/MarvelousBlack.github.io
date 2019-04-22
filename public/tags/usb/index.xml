@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Usb on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/usb/</link>
+    <description>Recent content in Usb on 惠狐之书</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
+    <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
+    <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
+    <lastBuildDate>Mon, 22 Apr 2019 21:30:30 +0800</lastBuildDate>
+    
+	<atom:link href="https://blog.megumifox.com/public/tags/usb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>關於 USB OTG 的一些思考</title>
+      <link>https://blog.megumifox.com/public/2019/04/22/%E9%97%9C%E6%96%BC-usb-otg-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</link>
+      <pubDate>Mon, 22 Apr 2019 21:30:30 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2019/04/22/%E9%97%9C%E6%96%BC-usb-otg-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/</guid>
+      <description>之前整了個寨版於是就在淘寶上面買了一個據稱可以一遍充電一遍使用 otg 的轉換頭。看了一下結構，於是就在這裏記錄一下。其實咱也不知道咱在說些啥。
+OTG 是個啥？ 根據 wiki 上面的描述, OTG 是個這個東西。
+ USB On-The-Go, often abbreviated to USB OTG or just OTG, is a specification first used in late 2001 that allows USB devices, such as tablets or smartphones, to act as a host, allowing other USB devices, such as USB flash drives, digital cameras, mice or keyboards, to be attached to them. Use of USB OTG allows those devices to switch back and forth between the roles of host and device.</description>
+    </item>
+    
+  </channel>
+</rss>
