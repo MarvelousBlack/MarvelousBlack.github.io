@@ -1,5 +1,6 @@
 # hostname (and path) to the root eg. http://spf13.com/
 baseurl = "https://blog.megumifox.com/public/"
+#baseurl = "https://blog.megumifox.com/"
 
 
 # Site title
