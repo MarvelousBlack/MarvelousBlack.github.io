@@ -8,7 +8,7 @@ tags:
   - 碎碎念
 draft:  false
 ---
-注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。
+~~注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。~~
 
 ## 背景
 前兩天咱還想起咱網費還沒交，快要停網了，於是去交一下。本來也沒什麼事情的，但是，當我在 **Arch Linux** 下打開 **chromium** 打開繳費頁面，它展示了一個手機頁面給咱。嘛，手機就手機頁面嘛，沒什麼問題，趕緊交完就完事了。But，汝覺得就真的這麼簡單就完事了嗎？對沒錯，咱學校的那個繳費頁面只能在電腦端繳費，而手機端確實可以提交訂單，但不能選擇任何一個支付方式，對沒看錯，確實有訂單，但咱就是支付不了。這個還是咱問了一下同學才知道，只有電腦端頁面才能打開，那麼就打開電腦端唄。
@@ -58,3 +58,25 @@ function mobile_device_detect(url) {
 
 ## 後記
 如果有詳細的解決方案可以留言給咱。如果上面的解釋有什麼錯誤的地方也請及時反饋給咱，咱會馬上更正過來，因爲咱也不太懂網頁這些東西。但確實遇到了這樣的問題，於是就先記錄下來了。
+
+---
+## 更新
+十分感謝依雲。在依雲的提示下，咱最後用了 Tampermonkey 新建了一個用戶腳本來解決這個問題，大概是這樣的：
+```
+// ==UserScript==
+// @name         讓我康康網頁版
+// @namespace    http://xxxxxx/
+// @version      0.1
+// @description  讓學校繳費頁面顯示網頁版!
+// @author       Megumifox
+// @match        http://xxxxxx/*
+// @run-at       document-start
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    Object.defineProperty(navigator, 'appVersion', {get: function(){ return '5.0 Linux' }})
+})();
+```
+就是在一開始執行 Object.defineProperty 來修改 navigator.appVersion 的返回值來使得上面的判斷匹配不到 X11 關鍵字，於是就不跳轉手機頁面了。加入`// @run-at       document-start`可以讓腳本儘可能早的加載，使問題解決。最後再一次感謝依雲。
