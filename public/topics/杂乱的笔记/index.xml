@@ -9,10 +9,22 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 22 Apr 2019 21:31:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 12:58:12 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>让我康康电脑版网页</title>
+      <link>https://blog.megumifox.com/public/2019/06/04/%E8%AE%A9%E6%88%91%E5%BA%B7%E5%BA%B7%E7%94%B5%E8%84%91%E7%89%88%E7%BD%91%E9%A1%B5/</link>
+      <pubDate>Tue, 04 Jun 2019 12:58:12 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2019/06/04/%E8%AE%A9%E6%88%91%E5%BA%B7%E5%BA%B7%E7%94%B5%E8%84%91%E7%89%88%E7%BD%91%E9%A1%B5/</guid>
+      <description>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。
+背景 前兩天咱還想起咱網費還沒交，快要停網了，於是去交一下。本來也沒什麼事情的，但是，當我在 Arch Linux 下打開 chromium 打開繳費頁面，它展示了一個手機頁面給咱。嘛，手機就手機頁面嘛，沒什麼問題，趕緊交完就完事了。But，汝覺得就真的這麼簡單就完事了嗎？對沒錯，咱學校的那個繳費頁面只能在電腦端繳費，而手機端確實可以提交訂單，但不能選擇任何一個支付方式，對沒看錯，確實有訂單，但咱就是支付不了。這個還是咱問了一下同學才知道，只有電腦端頁面才能打開，那麼就打開電腦端唄。
+尋找原因 於是咱想，應該是判斷了 UA 於是把 UA 換成了 IE10 的 UA 心想這個應該沒問題吧，刷新之後依舊，這就說明不是靠 UA 做判斷的，但爲了先繳費還是先回到 windows 下繳費，在 win 下用 chrome 打開,居然顯示了正確的電腦端的頁面，說明肯定有些奇怪的東西。於是按下 F12 開始找那堆js看，終於被咱找到了一個叫 common.js 的文件，在這個文件裏面有幾行神奇（真的神奇）的代碼。這就是罪魁禍首。下面是這個文件的截取（註釋不是咱寫的而是本來就有的）：
+//手机页面自动跳转手机版收费平台 function mobile_device_detect(url) { var thisOS = navigator.platform; var os = new Array(&amp;quot;iPhone&amp;quot;, &amp;quot;iPod&amp;quot;, &amp;quot;iPad&amp;quot;, &amp;quot;android&amp;quot;, &amp;quot;Nokia&amp;quot;, &amp;quot;SymbianOS&amp;quot;, &amp;quot;Symbian&amp;quot;, &amp;quot;Windows Phone&amp;quot;, &amp;quot;Phone&amp;quot;, &amp;quot;Linux armv71&amp;quot;, &amp;quot;MAUI&amp;quot;, &amp;quot;UNTRUSTED/1.0&amp;quot;, &amp;quot;Windows CE&amp;quot;, &amp;quot;BlackBerry&amp;quot;, &amp;quot;IEMobile&amp;quot;); for (var i = 0; i &amp;lt; os.length; i++) { if (thisOS.</description>
+    </item>
     
     <item>
       <title>Make Your Kde More Colorful</title>

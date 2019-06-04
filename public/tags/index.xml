@@ -9,10 +9,19 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 22 Apr 2019 21:31:27 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 12:58:12 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>碎碎念</title>
+      <link>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
+      <pubDate>Tue, 04 Jun 2019 12:58:12 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>KDE</title>
@@ -51,7 +60,7 @@
     </item>
     
     <item>
-      <title>archlinux</title>
+      <title>Archlinux</title>
       <link>https://blog.megumifox.com/public/tags/archlinux/</link>
       <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
@@ -74,15 +83,6 @@
       <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/usb-chager/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>碎碎念</title>
-      <link>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</link>
-      <pubDate>Mon, 31 Dec 2018 21:16:33 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5/</guid>
       <description></description>
     </item>
     
