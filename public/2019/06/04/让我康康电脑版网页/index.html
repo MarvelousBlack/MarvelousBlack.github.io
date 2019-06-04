@@ -47,7 +47,7 @@
     },
     "datePublished": "2019-06-04",
     "description": "最近交网费的时候遇到一个神奇的现象，无论咱怎么开都显示手机页面，于是寻找了一下原因接着就写一下。",
-    "wordCount":  182 
+    "wordCount":  236 
   }
 </script>
 
@@ -177,8 +177,8 @@
 
 
   
-  &middot; Read in about 1 min
-  &middot; (182 Words)
+  &middot; Read in about 2 min
+  &middot; (236 Words)
   <br>
   
 <a class="label" href="https://blog.megumifox.com/public/tags/%E7%A2%8E%E7%A2%8E%E5%BF%B5">碎碎念</a>
@@ -192,7 +192,7 @@
   <div class="container content">
   
 
-<p>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。</p>
+<p><del>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。</del></p>
 
 <h2 id="背景">背景</h2>
 
@@ -248,6 +248,31 @@ function mobile_device_detect(url) {
 <h2 id="後記">後記</h2>
 
 <p>如果有詳細的解決方案可以留言給咱。如果上面的解釋有什麼錯誤的地方也請及時反饋給咱，咱會馬上更正過來，因爲咱也不太懂網頁這些東西。但確實遇到了這樣的問題，於是就先記錄下來了。</p>
+
+<hr />
+
+<h2 id="更新">更新</h2>
+
+<p>十分感謝依雲。在依雲的提示下，咱最後用了 Tampermonkey 新建了一個用戶腳本來解決這個問題，大概是這樣的：</p>
+
+<pre><code>// ==UserScript==
+// @name         讓我康康網頁版
+// @namespace    http://xxxxxx/
+// @version      0.1
+// @description  讓學校繳費頁面顯示網頁版!
+// @author       Megumifox
+// @match        http://xxxxxx/*
+// @run-at       document-start
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+    Object.defineProperty(navigator, 'appVersion', {get: function(){ return '5.0 Linux' }})
+})();
+</code></pre>
+
+<p>就是在一開始執行 Object.defineProperty 來修改 navigator.appVersion 的返回值來使得上面的判斷匹配不到 X11 關鍵字，於是就不跳轉手機頁面了。加入<code>// @run-at       document-start</code>可以讓腳本儘可能早的加載，使問題解決。最後再一次感謝依雲。</p>
 
 </div>
 
