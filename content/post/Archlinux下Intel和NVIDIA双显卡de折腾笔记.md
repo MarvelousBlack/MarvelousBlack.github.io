@@ -335,4 +335,10 @@ systemctl enable bumblebeed.service
 ```
 然後重啓。估計就可以用了。其他關於電源管理 `bbswitch` 和其他雜項 請查閱 [wiki](https://wiki.archlinux.org/index.php/Bumblebee) 和相關文檔。
 
+---
+## 参考和引用
 
+- https://wiki.archlinux.org/index.php/NVIDIA_Optimus
+- https://wiki.archlinux.org/index.php/NVIDIA
+- https://devtalk.nvidia.com/default/topic/957814/linux/prime-and-prime-synchronization/  （这里解释为什么会撕裂和 nvidia 那边是怎么解决的。）
+- https://git.archlinux.org/svntogit/packages.git/tree/trunk/nvidia-drm-outputclass.conf?h=packages/nvidia-utils
