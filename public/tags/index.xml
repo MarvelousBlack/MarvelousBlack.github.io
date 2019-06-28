@@ -9,10 +9,28 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Tue, 04 Jun 2019 12:58:12 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2019 11:06:58 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ar9331</title>
+      <link>https://blog.megumifox.com/public/tags/ar9331/</link>
+      <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/ar9331/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>usb</title>
+      <link>https://blog.megumifox.com/public/tags/usb/</link>
+      <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/usb/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>碎碎念</title>
@@ -29,15 +47,6 @@
       <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/kde/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>USB</title>
-      <link>https://blog.megumifox.com/public/tags/usb/</link>
-      <pubDate>Mon, 22 Apr 2019 21:30:30 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/tags/usb/</guid>
       <description></description>
     </item>
     
@@ -60,7 +69,7 @@
     </item>
     
     <item>
-      <title>archlinux</title>
+      <title>Archlinux</title>
       <link>https://blog.megumifox.com/public/tags/archlinux/</link>
       <pubDate>Thu, 17 Jan 2019 22:16:42 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
