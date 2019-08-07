@@ -3,20 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</loc>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.megumifox.com/public/post/</loc>
-    <lastmod>2019-06-28T11:06:58+08:00</lastmod>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.megumifox.com/public/tags/</loc>
-    <lastmod>2019-06-28T11:06:58+08:00</lastmod>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.megumifox.com/public/topics/</loc>
-    <lastmod>2019-06-28T11:06:58+08:00</lastmod>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/tags/i3wm/</loc>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/</loc>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -33,12 +56,6 @@
   
   <url>
     <loc>https://blog.megumifox.com/public/tags/usb/</loc>
-    <lastmod>2019-06-28T11:06:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/</loc>
     <lastmod>2019-06-28T11:06:58+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -75,12 +92,6 @@
   <url>
     <loc>https://blog.megumifox.com/public/2019/04/22/make-your-kde-more-colorful/</loc>
     <lastmod>2019-04-22T21:31:27+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</loc>
-    <lastmod>2019-04-22T21:31:27+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

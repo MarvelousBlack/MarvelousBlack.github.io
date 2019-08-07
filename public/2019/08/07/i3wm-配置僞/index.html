@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>I3wm 配置(僞)  &middot; 惠狐之书</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="emmm，不就是個複製粘貼的事情嗎？" />
+
+<meta name="keywords" content="i3wm, ">
+
+
+<meta property="og:title" content="I3wm 配置(僞)  &middot; 惠狐之书 ">
+<meta property="og:site_name" content="惠狐之书"/>
+<meta property="og:url" content="https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="emmm，不就是個複製粘貼的事情嗎？"/>
+<meta property="og:article:published_time" content="2019-08-07T21:56:00&#43;08:00" />
+<meta property="og:article:modified_time" content="2019-08-07T21:56:00&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="i3wm">
+    
+  
+
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "I3wm 配置(僞)",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2019-08-07",
+    "description": "emmm，不就是個複製粘貼的事情嗎？",
+    "wordCount":  1152 
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
+<link href="https://blog.megumifox.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.56.3" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/public/css/font-awesome.min.css">
+<link rel="stylesheet" href="/public/css/style.css">
+<link rel="stylesheet" href="/public/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-129670705-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://blog.megumifox.com/public/">
+  Megumi fox
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  A fox called Megumi
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://blog.megumifox.com/public/">home</a>
+
+
+  
+<a href="https://blog.megumifox.com/public/about">about</a>
+
+<a href="https://blog.megumifox.com/public/friends" title="惠狐的朋友们">friends</a>
+
+<a href="https://blog.megumifox.com/public/post" title="Show list of posts">posts</a>
+
+<a href="https://blog.megumifox.com/public/tags" title="Show list of tags">tags</a>
+
+<a href="https://blog.megumifox.com/public/topics" title="Show list of topics">topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+  <span class="fa fa-envelope-square"></span></a>
+
+
+
+<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+  <span class="fa fa-github-square"></span></a>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>I3wm 配置(僞)
+</h1>
+
+  <div class="metas">
+<time datetime="2019-08-07">7 Aug, 2019</time>
+
+
+  
+  &middot; Read in about 6 min
+  &middot; (1152 Words)
+  <br>
+  
+<a class="label" href="https://blog.megumifox.com/public/tags/i3wm">i3wm</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  <p>之前提過了 KDE 但實際上咱平時用的是 i3wm，但就像名字說的那樣這個就是個 wm ，窗口管理器，所以別期望 i3 給汝全套的服務。說實話咱也不知道要怎麼寫，那就隨便寫寫吧。以下內容以基本上爲解釋咱的配置文件，汝如果想得到和咱一樣的效果直接複製就好了，不過咱還是建議汝康康不要直接複製。<del>其實這篇東西是用來水的，因爲暫時不知道些什麼，emmm，這不就是複製粘貼p配置文件的事情嗎？有什麼好寫的（摔</del></p>
+
+<p>咱的配置文件在 <a href="https://github.com/MarvelousBlack/Vanilla/blob/Vanilla/i3/.config/i3/config">這裏</a> 汝只需要對照修改汝的 <code>~/.config/i3/config</code> 就好了。下面開始解釋這份文件。</p>
+
+<pre><code>exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
+exec --no-startup-id fcitx
+exec --no-startup-id udiskie -snA&amp;
+exec --no-startup-id sleep 3 &amp;&amp; exec feh --bg-fill background_desktop.png background_desktop.jpg
+exec --no-startup-id compton -CGb --backend glx --paint-on-overlay --glx-no-stencil  --unredir-if-possible
+exec --no-startup-id termite
+exec --no-startup-id kdeconnect-indicator&amp;
+exec --no-startup-id klipper&amp;
+exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unlock-indicator  -i background.png &amp;
+</code></pre>
+
+<p>這一段是啓動項，前文說了 i3 只是一個窗口管理器，有很多東西都需要汝自己去配置，這裏從上倒下依次爲啓動 kde 的 polkit
+驗證的那個東西，也就是在部分需要提權的地方跳出來讓汝輸入密碼的那個框。fcitx 是輸入法， udiskie 是自動掛載 u 盤的小程序，feh 是用來設置壁紙的（爲了方便咱直接吧圖片命名爲 <code>background_desktop.png</code> 和 <code>background_desktop.jpg</code> 並存於家目錄下如果使用的是咱的這份文件，那麼汝需要將汝自己的圖片放到家目錄下並重命名爲這兩個。）compton 混成器，程序的透明等都是他完成的，termite 那個是個終端，咱想開機就直接開個終端，klipper 是剪貼板工具，最後那個是設置 i3lock 爲鎖屏。<br />
+設置焦點跟隨光標</p>
+
+<pre><code>focus_follows_mouse yes
+</code></pre>
+
+<p>設置 mod 鍵爲 super 鍵 就是那個常說 win 鍵。</p>
+
+<pre><code>set $mod Mod4
+</code></pre>
+
+<p>下面是設置截圖使用 import 這個工具和 scrot 來截圖，快捷鍵是 Print 和 <code>$mod+Print</code></p>
+
+<pre><code># Take a screenshot upon pressing $mod+print (select an area)
+bindsym --release Print exec --no-startup-id &quot;import /home/marvelous/latest-screenshot.png &amp;&amp; xclip -selection clipoard -t 'image/png' /home/marvelous/latest-screenshot.png&quot;
+bindsym $mod+Print exec scrot
+
+</code></pre>
+
+<p>設置窗口邊框字體</p>
+
+<pre><code>font pango:Droid Sans Mono 7.3
+</code></pre>
+
+<p>下面就是綁定鍵打開對應的程序了，就不一一寫出來了</p>
+
+<pre><code>bindsym XF86HomePage exec chromium
+bindsym $mod+Return exec termite
+bindsym $mod+t exec thunar
+</code></pre>
+
+<p>按下 <code>$mod+m</code> 窗口透明</p>
+
+<pre><code>bindsym --release $mod+m exec transset-df 0.8
+</code></pre>
+
+<p>設置按住 mod 鍵可以拖動窗口移動和改變大小</p>
+
+<pre><code>floating_modifier $mod
+</code></pre>
+
+<p>使用 <code>$mod+d</code> 呼出應用啓動發射器（咱用的是 j4 ）</p>
+
+<pre><code>bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu=&quot;dmenu -i -fn 'Droid Sans Mono-9'&quot; --term=&quot;xfce4-terminal&quot; --display-binary
+</code></pre>
+
+<p>接着就是改變窗口的焦點和移動窗口用的</p>
+
+<pre><code># change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+bindsym $mod+x [urgent=latest] focus
+
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+</code></pre>
+
+<p>下一次窗口出現所使用的分屏方式 mod+g 是左右分，mod+v 是上下分</p>
+
+<pre><code>bindsym $mod+g split h
+bindsym $mod+v split v
+</code></pre>
+
+<p>全屏的和容器樣式轉換</p>
+
+<pre><code># enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+</code></pre>
+
+<p>開關焦點窗口是否懸浮</p>
+
+<pre><code># toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+</code></pre>
+
+<p>隱藏和顯示窗口</p>
+
+<pre><code>bindsym $mod+minus move scratchpad
+bindsym $mod+plus scratchpad show
+</code></pre>
+
+<p>改變邊框</p>
+
+<pre><code>bindsym $mod+u border none
+bindsym $mod+n border normal
+bindsym $mod+o border 1pixel
+bindsym $mod+b border toggle
+</code></pre>
+
+<p>修改 workspace 名稱，並綁定到對應的顯示器（咱這裏寫死了，汝需要根據汝的需要更改）</p>
+
+<pre><code># Workspace names
+workspace &quot;11&quot; output DP-1
+workspace &quot;12&quot; output DP-1
+workspace &quot;13&quot; output DP-1
+workspace &quot;1&quot; output eDP-1-1
+</code></pre>
+
+<p>切換 workspace</p>
+
+<pre><code># switch to near workspace
+bindsym $mod+Tab workspace next
+bindsym mod1+Tab workspace prev
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+F1 workspace 11
+bindsym $mod+F2 workspace 12
+bindsym $mod+F3 workspace 13
+bindsym $mod+F4 workspace 14
+bindsym $mod+F5 workspace 15
+bindsym $mod+F6 workspace 16
+bindsym $mod+F7 workspace 17
+bindsym $mod+F8 workspace 18
+bindsym $mod+F9 workspace 19
+bindsym $mod+F10 workspace 20
+</code></pre>
+
+<p>移動焦點到對應的 workspace</p>
+
+<pre><code># move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+F1 move container to workspace 11
+bindsym $mod+Shift+F2 move container to workspace 12
+bindsym $mod+Shift+F3 move container to workspace 13
+bindsym $mod+Shift+F4 move container to workspace 14
+bindsym $mod+Shift+F5 move container to workspace 15
+bindsym $mod+Shift+F6 move container to workspace 16
+bindsym $mod+Shift+F7 move container to workspace 17
+bindsym $mod+Shift+F8 move container to workspace 18
+bindsym $mod+Shift+F9 move container to workspace 19
+bindsym $mod+Shift+F10 move container to workspace 20
+
+</code></pre>
+
+<p>設置重新載入配置和i3用的按鍵</p>
+
+<pre><code>bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+</code></pre>
+
+<p>改變窗口大小</p>
+
+<pre><code># resize window (you can also use the mouse for that)
+mode &quot;resize&quot; {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
+        # same bindings, but for the arrow keys and 10
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode &quot;default&quot;
+        bindsym Escape mode &quot;default&quot;
+}
+bindsym $mod+r mode &quot;resize&quot;u
+</code></pre>
+
+<p>設置是否顯示 i3bar</p>
+
+<pre><code>
+# Start i3bar to display a workspace bar (plus the system information i3status
+# i3bar toggle
+bindsym $mod+i bar mode toggle
+# finds out, if available)
+</code></pre>
+
+<p>設置 bar 的顏色等，和使用的命令等等（咱這裏的用一個改過的腳本來顯示bar的，在上面的鏈接中可以找到）</p>
+
+<pre><code>bar {
+
+   status_command ~/.config/i3/net-speed.sh
+   i3bar_command i3bar -t
+   position top
+   tray_output primary
+	colors {
+		statusline #000000
+		background #F4ADD96B
+		separator #2D2D2D
+		focused_workspace #636e88 #285de7 #dedfdg
+		active_workspace #556677 #234567 #56ef67
+		inactive_workspace #636d72 #2d2d2d #dedede
+		urgent_workspace #ffffff #900000 #d23d32
+		}
+
+}
+</code></pre>
+
+<p>設置窗口樣式，顏色之類的。</p>
+
+<pre><code>#---window style---
+
+# new window
+new_window none
+new_float normal
+hide_edge_borders both
+
+# window colors
+#  class                 border   backgr.  text  indicator  child_border
+client.focused          #4c7899  #285577  #ffffff  #2e9ef4   #285577
+client.focused_inactive #81c2d6  #5f676a  #ffffff  #484e50   #0b6e48
+client.unfocused        #c9cabb  #222222  #888888  #292d2e   #222222
+client.urgent           #2f343a  #900000  #ffffff  #199475   #900000
+client.placeholder      #a2b4ba  #0c0c0c  #ffffff  #1793d0   #0c0c0c
+client.background       #82abba
+</code></pre>
+
+<p>設置彈出和讓部分軟體在啓動的時候就是懸浮狀態</p>
+
+<pre><code># popups
+for_window [window_role=&quot;pop-up&quot;] floating enable
+for_window [window_role=&quot;task_dialog&quot;] floating enable
+
+# float programs(find the programs'names in &quot;/usr/share/applictions&quot;)
+for_window [class=&quot;Gpicview&quot;] floating enable
+for_window [class=&quot;mpv&quot;] floating enable
+for_window [class=&quot;Gimp&quot;] floating enable
+for_window [class=&quot;Xarchiver&quot;] floating enable
+for_window [class=&quot;Genymotion&quot;] floating enable
+for_window [class=&quot;VirtualBox&quot;] floating enable
+for_window [class=&quot;shadowsocks-qt5&quot;] floating enable
+for_window [class=&quot;netease-cloud-music&quot;] floating enable
+</code></pre>
+
+<p>固定部分軟體出現的容器</p>
+
+<pre><code>assign [class=&quot;VirtualBox&quot;] 10
+</code></pre>
+
+<p>音量控制</p>
+
+<pre><code>#===volume control===
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer  set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer  set Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+#&amp; amixer set Headphone toggle &amp;amixer set Speaker toggle
+</code></pre>
+
+<p>背光控制</p>
+
+<pre><code>#===balcklight control==
+bindsym $mod+XF86AudioRaiseVolume exec xbacklight +10
+bindsym $mod+XF86AudioLowerVolume exec xbacklight -10
+bindsym XF86MonBrightnessUp exec xbacklight +10
+bindsym XF86MonBrightnessDown exec xbacklight -10
+</code></pre>
+
+<p>電源開關機按鈕</p>
+
+<pre><code>#===power manager===
+set $mode_system select: lock(L) exit(E) reboot(R) poweroff(O) suspend(S) hybrid-sleep(Y) hibernate(H) cancel(Esc)
+bindsym $mod+Shift+e mode &quot;$mode_system&quot;
+mode &quot;$mode_system&quot; {
+    bindsym l exec --no-startup-id i3lock -n -t --ignore-empty-password --no-unlock-indicator  -i background.png  , mode &quot;default&quot;
+   bindsym e exec --no-startup-id i3-msg exit, mode &quot;default&quot;
+   bindsym s exec --no-startup-id systemctl suspend, mode &quot;default&quot;
+   bindsym y exec --no-startup-id systemctl hybrid-sleep, mode &quot;default&quot;
+   bindsym h exec --no-startup-id systemctl hibernate, mode &quot;default&quot;
+   bindsym r exec --no-startup-id systemctl reboot, mode &quot;default&quot;
+   bindsym o exec --no-startup-id systemctl poweroff, mode &quot;default&quot;
+    bindsym Escape mode &quot;default&quot;
+}
+</code></pre>
+
+<p>大概隨便的寫解釋了一下，說是美化整個文件看下來，汝可以動的只有顏色是否有窗邊框等等，沒有多少是可以變動的。咱並不在乎是不是好看，好用就可以了，所以就這樣隨便的用着了。</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://blog.megumifox.com/public/2019/06/28/u-%E7%9B%A4-wifi-%E7%B8%AB%E5%90%88%E9%89%85%E4%BD%9C-ar9331-32g/" title="U 盤 wifi 縫合鉅作 AR9331 32G">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//megumifox.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+<a href="https://blog.megumifox.com/public/license">license</a>
+
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  惠狐之书所有的文章除特别声明外，均使用页脚所指 license。
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018-2019 惠狐之书 written by Megumi_fox.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//megumifox.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="/public/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+  </body>
+</html>
+

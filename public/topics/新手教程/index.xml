@@ -9,10 +9,21 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 22 Apr 2019 21:31:27 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Aug 2019 21:56:00 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>I3wm 配置(僞)</title>
+      <link>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</link>
+      <pubDate>Wed, 07 Aug 2019 21:56:00 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</guid>
+      <description>之前提過了 KDE 但實際上咱平時用的是 i3wm，但就像名字說的那樣這個就是個 wm ，窗口管理器，所以別期望 i3 給汝全套的服務。說實話咱也不知道要怎麼寫，那就隨便寫寫吧。以下內容以基本上爲解釋咱的配置文件，汝如果想得到和咱一樣的效果直接複製就好了，不過咱還是建議汝康康不要直接複製。其實這篇東西是用來水的，因爲暫時不知道些什麼，emmm，這不就是複製粘貼p配置文件的事情嗎？有什麼好寫的（摔
+咱的配置文件在 這裏 汝只需要對照修改汝的 ~/.config/i3/config 就好了。下面開始解釋這份文件。
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 exec --no-startup-id fcitx exec --no-startup-id udiskie -snA&amp;amp; exec --no-startup-id sleep 3 &amp;amp;&amp;amp; exec feh --bg-fill background_desktop.png background_desktop.jpg exec --no-startup-id compton -CGb --backend glx --paint-on-overlay --glx-no-stencil --unredir-if-possible exec --no-startup-id termite exec --no-startup-id kdeconnect-indicator&amp;amp; exec --no-startup-id klipper&amp;amp; exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unlock-indicator -i background.png &amp;amp;  這一段是啓動項，前文說了 i3 只是一個窗口管理器，有很多東西都需要汝自己去配置，這裏從上倒下依次爲啓動 kde 的 polkit 驗證的那個東西，也就是在部分需要提權的地方跳出來讓汝輸入密碼的那個框。fcitx 是輸入法， udiskie 是自動掛載 u 盤的小程序，feh 是用來設置壁紙的（爲了方便咱直接吧圖片命名爲 background_desktop.</description>
+    </item>
     
     <item>
       <title>Make Your Kde More Colorful</title>
