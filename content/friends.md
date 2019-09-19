@@ -7,7 +7,7 @@ draft: false
 
 - [Farseerfc的小窩](https://farseerfc.me/) 专修精修btrfs,职业安装Archlinux的fc教授。
 - [初等記憶體](https://axionl.me/) 自称是个美术生，温柔可爱会做饭写诗de艾雨寒，名句是`初学不看 wiki 安装的人迟早是要还的（x` 
-- [余忆留声机](https://amane.live/) 温柔可爱手速快的皮酱，已经有主了，主是上面那位。`'gim (gtran (gtran Amane Tobiichi))`   
+- [余忆留声机](https://amane.live/) ~~温柔可爱手速快的皮酱，已经有主了，主是上面那位。~~`'gim (gtran (gtran Amane Tobiichi))`   
  ~~我是狐狸啊我不爱吃狗粮~~
 - [Xuanwo's Blog](https://xuanwo.io/) 厲害的後端工程師,圆角圆角圆角，漩涡大大, ~~老婆是加藤惠~~ 。 
 - [Hi! 上天不?](https://a-wing.top/) 新一大大带你上天！ 
@@ -28,7 +28,8 @@ draft: false
 - [Untitled](https://v2bv.net/) 一條鹹魚, 和老鹹魚是不同的品種呢。~~應該也很好吃的說~~
 - [Welcome to wzhd](https://wzhd.org/) 胖次王子幻,目前文章不可见。進去估計可以看見胖次守護進程已啓動。
 - [S. Mementoes](https://shadowrz.github.io/)  佐仓双叶,混亂的想法交織在一起相互連接。
-
+- [喵's StackHarbor](https://alynx.moe/) Arch Linux CN 社區中珍貴的 Gnome 用戶,CS:GO 玩家。
+- [Nick’s Nichijou](https://nichi.co/) 喜歡水裙的大佬。
 
 * * *  
 
