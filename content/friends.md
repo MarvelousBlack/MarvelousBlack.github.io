@@ -30,6 +30,7 @@ draft: false
 - [S. Mementoes](https://shadowrz.github.io/)  佐仓双叶,混亂的想法交織在一起相互連接。
 - [喵's StackHarbor](https://alynx.moe/) Arch Linux CN 社區中珍貴的 Gnome 用戶,CS:GO 玩家。
 - [Nick’s Nichijou](https://nichi.co/) 喜歡水裙的大佬。
+- [瘋魔](https://blog.peven.me/) 看起來是個大佬
 
 * * *  
 
