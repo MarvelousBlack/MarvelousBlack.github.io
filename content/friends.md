@@ -31,6 +31,7 @@ draft: false
 - [喵's StackHarbor](https://alynx.moe/) Arch Linux CN 社區中珍貴的 Gnome 用戶,CS:GO 玩家。
 - [Nick’s Nichijou](https://nichi.co/) 喜歡水裙的大佬。
 - [瘋魔](https://blog.peven.me/) 看起來是個大佬
+- [本格异想录](https://astrianzheng.cn/) 音油大佬
 
 * * *  
 
