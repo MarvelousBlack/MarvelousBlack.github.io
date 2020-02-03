@@ -17,6 +17,7 @@ draft: false
 - 如何设置并安装私有 NVIDIA 驱动（仅使用n卡渲染然后使用intel输出）
 - 设置 Nvidia 相关的视频硬解加速选项
 - （追加內容）使用 `bumblebee` 進行切換 **與上面內容使用的方法不同上面提及的顯卡加速設置無效** 請要按照此方法的同學，在閱讀完 0x03 正常的进入live cd 之後，直接拖動滑條，看最下面 0x09 bumblebee 。
+- （追加內容）目前有新的 nvidia-prime 的配置方案，這個可以使你在需要的時候使用 n 卡，而一般的時候使用 intel 核顯。是一個比 bumblebee 更好用的方案，配置過程可以見依雲的 blog -> [傳送門](https://blog.lilydjwg.me/2019/9/3/nvidia-prime-setup.214768.html)
 
 ## 0x01 开始之前
 - 本文针对的是 Nvida 和 intel 双显卡的笔记本，如果是其他奇怪的配置本文可能不适用。
@@ -98,7 +99,7 @@ Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /
 这样就可以避免每次更新显卡驱动都要做这一步操作了。 （如果你使用了 `nvidia-dkms` 请把文件中对应项替换）
 
 #### 创建Xorg.conf
-先检查有没有这个文件`/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf`有的话可以跳过下面的步骤。如果出现找不到显卡可以尝试，加入BUSID指明 n 卡的位置。
+~~先检查有没有这个文件`/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf`有的话可以跳过下面的步骤。~~ (因爲在新的 nvidia 包中 `/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf` 去除了 `Option "PrimaryGPU" "yes"` 所以必須要手動創建配置文件。) 如果出现找不到显卡可以尝试，加入BUSID指明 n 卡的位置。
 新建一个`/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf`  
 内容为
 ```bash
@@ -154,6 +155,8 @@ OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 415.18
 ```bash
 sudo pacman -Syu nvidia-utils libva-vdpau-driver-chromium  vdpauinfo  libva-utils
 ```
+注：在cn源裏面有一個叫 `libva-vdpau-driver-vp9` 的包，代替上面的 `libva-vdpau-driver-chromium` 可以使 chromium 使用 nvidia 的 VP9 硬解。  
+
 在`~/.xprofile`中加入
 ```bash
 export LIBVA_DRIVER_NAME=vdpau

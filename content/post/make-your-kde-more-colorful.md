@@ -5,8 +5,10 @@ description: "想要想某個桌面一樣自動根據顏色變化的 KDE 嗎？�
 topics:
   - 新手教程
   - 杂乱的笔记
+  - 軟體推薦
 tags:
   - KDE
+  - 軟體推薦
 draft:  false
 ---
 想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 [kcm-colorful](https://github.com/IsoaSFlus/kcm-colorful) 的小程序吧！先放張我自己的桌面截圖吧。

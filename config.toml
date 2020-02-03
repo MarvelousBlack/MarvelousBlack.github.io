@@ -87,3 +87,6 @@ disqusShortname = "megumifox"
     plainIdAnchors = true
     extensions = []
     extensionmask = []
+
+[markupp.goldmark.renderer]
+   unsafe = true
