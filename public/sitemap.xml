@@ -3,32 +3,57 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.megumifox.com/public/tags/mpv/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/post/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/2020/02/03/qliveplayer-%E7%94%A8-mpv-%E7%9C%8B%E7%9B%B4%E6%92%AD%E7%9A%84%E5%A5%BD%E5%8A%A9%E6%89%8B/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/tags/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/topics/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</loc>
+    <lastmod>2020-02-03T19:25:48+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.megumifox.com/public/tags/i3wm/</loc>
     <lastmod>2019-08-07T21:56:00+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</loc>
-    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/post/</loc>
-    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/tags/</loc>
-    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/topics/</loc>
-    <lastmod>2019-08-07T21:56:00+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/</loc>
     <lastmod>2019-08-07T21:56:00+08:00</lastmod>
   </url>
   
@@ -49,11 +74,6 @@
   
   <url>
     <loc>https://blog.megumifox.com/public/tags/usb/</loc>
-    <lastmod>2019-06-28T11:06:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-06-28T11:06:58+08:00</lastmod>
   </url>
   
@@ -79,16 +99,6 @@
   
   <url>
     <loc>https://blog.megumifox.com/public/2019/04/22/make-your-kde-more-colorful/</loc>
-    <lastmod>2019-04-22T21:31:27+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</loc>
-    <lastmod>2019-04-22T21:31:27+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</loc>
     <lastmod>2019-04-22T21:31:27+08:00</lastmod>
   </url>
   

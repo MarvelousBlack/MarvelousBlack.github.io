@@ -8,11 +8,29 @@
     <language>en-EN</language>
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
-    <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Wed, 07 Aug 2019 21:56:00 +0800</lastBuildDate>
+    <copyright>(c) 2018-2020 惠狐之书 written by Megumi_fox.</copyright>
+    <lastBuildDate>Mon, 03 Feb 2020 19:25:48 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mpv</title>
+      <link>https://blog.megumifox.com/public/tags/mpv/</link>
+      <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/mpv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>軟體推薦</title>
+      <link>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</link>
+      <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>i3wm</title>
@@ -56,15 +74,6 @@
       <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/kde/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>軟體推薦</title>
-      <link>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</link>
-      <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</guid>
       <description></description>
     </item>
     
