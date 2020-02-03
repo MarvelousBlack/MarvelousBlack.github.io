@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blog on 惠狐之书</title>
@@ -25,10 +25,10 @@
  一个空间用来存放你的blog hugo 简单的 markdown 语法知识  0x01 关于hugo和安装 hugo是最受欢迎的开源的静态页面生成器，用go语言书写的。拥有令人令人惊讶的速度和可塑性。可以让你更加专注于写作，而且拥有大量十分好看的主题可选。 那么要怎么安装呢？
 在 archlinux下只需要一句 pacman -Syu hugo就好了。窗户的话，只需要去 官网 下载对应的可执行文件就好了。
 0x02 开始创建并装饰你的网页 创建网页文件 创建一个网页文件很简单只需要
-hugo new site （文件夹名称）  然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。
+hugo new site （文件夹名称） 然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。
 安装主题 hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在这里选择一个你喜欢的主题。 注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档 惠狐之书使用的是 hyde-Y 主题，这个主题看起来有点像比特垃圾桶 , 所以下文将以这个主题为示例。
 按照主题写的命令
-$ cd your_site_repo/ $ mkdir themes $ cd themes $ git clone https://github.com/enten/hyde-y  这样就安装好主题了，但还没开始配置
+$ cd your_site_repo/ $ mkdir themes $ cd themes $ git clone https://github.com/enten/hyde-y 这样就安装好主题了，但还没开始配置
 主配置文件 编辑 config.toml (如果没有则新建）按照下面的模板开始修改。
 # hostname (and path) to the root eg.</description>
     </item>

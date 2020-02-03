@@ -14,7 +14,7 @@
 
 <meta name="description" content="想要想某個桌面一樣自動根據顏色變化的 KDE 嗎？那就跟着做吧。" />
 
-<meta name="keywords" content="KDE, ">
+<meta name="keywords" content="KDE, 軟體推薦, ">
 
 
 <meta property="og:title" content="Make Your Kde More Colorful  &middot; 惠狐之书 ">
@@ -31,6 +31,8 @@
   
     
 <meta property="og:article:tag" content="KDE">
+    
+<meta property="og:article:tag" content="軟體推薦">
     
   
 
@@ -58,7 +60,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.58.2" />
+<meta name="generator" content="Hugo 0.63.2" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -183,6 +185,8 @@
   
 <a class="label" href="https://blog.megumifox.com/public/tags/kde">KDE</a>
 
+<a class="label" href="https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6">軟體推薦</a>
+
 
 
 </div>
@@ -190,22 +194,17 @@
 </header>
 
   <div class="container content">
-  
-
-<p>想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 <a href="https://github.com/IsoaSFlus/kcm-colorful">kcm-colorful</a> 的小程序吧！先放張我自己的桌面截圖吧。
-<img src="/public/pic/make-your-kde-more-colorful.png" alt="make-your-kde-more-colorful" /></p>
-
+  <p>想要跟隨畫布顏色變化的kde桌面嗎？那麼就快來用這個叫 <a href="https://github.com/IsoaSFlus/kcm-colorful">kcm-colorful</a> 的小程序吧！先放張我自己的桌面截圖吧。
+<img src="/public/pic/make-your-kde-more-colorful.png" alt="make-your-kde-more-colorful"></p>
 <h2 id="軟件介紹和食用方法">軟件介紹和食用方法</h2>
-
-<p>這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：<br />
-<img src="/public/pic/make-your-kde-more-colorful1.png" alt="make-your-kde-more-colorful1" />
+<p>這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：<br>
+<img src="/public/pic/make-your-kde-more-colorful1.png" alt="make-your-kde-more-colorful1">
 方便你直觀的直接選取備用顏色和看見你的壁紙。當然這個界面已經支持暗色主題了。汝可能發現了咱這裏的預覽圖和咱的壁紙不一樣啊，那是因爲咱有兩個顯示器，而兩個顯示器設置的壁紙不一樣於是這裏顯示的就是另一個顯示器的壁紙了。那咱就沒法選了另一張圖了啊，先別慌，作者還提供了一個叫 <code>kcmcolorfulhelper</code> 這個名字的 cli 工具用於這種情況的處理。讓咱們先看看幫助吧</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ kcmcolorfulhelper -h
 
-<pre><code class="language-bash">[marvelous@Vanilla  ~]$ kcmcolorfulhelper -h
+Usage: kcmcolorfulhelper <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
 
-Usage: kcmcolorfulhelper [options]
-
-Helper for kcm-colorful.
+Helper <span style="color:#66d9ef">for</span> kcm-colorful.
 
 Project address: https://github.com/IsoaSFlus/kcm-colorful
 
@@ -217,29 +216,21 @@ Options:
 
   -p, --picture &lt;file&gt;     Picture to extract color.
 
-  -c, --color &lt;colorcode&gt;  Set color manually, eg: #1234ef.
+  -c, --color &lt;colorcode&gt;  Set color manually, eg: <span style="color:#75715e">#1234ef.</span>
 
-  -s, --set-as-wallpaper   Set picture specified by &quot;-p&quot; as wallpaper.
+  -s, --set-as-wallpaper   Set picture specified by <span style="color:#e6db74">&#34;-p&#34;</span> as wallpaper.
 
   -d, --debug              Show debug info.
 
   -n, --number &lt;int&gt;       Select the Nth color in candidate list. Default is
 
                            1.
-</code></pre>
-
-<p>使用上也很簡單，直接加 <code>-p</code> 和圖片就好了，會自動應用可以順便加上 <code>-s</code> 一次性把畫布也設置上。</p>
-
+</code></pre></div><p>使用上也很簡單，直接加 <code>-p</code> 和圖片就好了，會自動應用可以順便加上 <code>-s</code> 一次性把畫布也設置上。</p>
 <h2 id="安裝">安裝</h2>
-
 <p>這個就簡單了，如果添加了 CN 源，汝可以直接</p>
-
-<pre><code class="language-bash">sudo pacman -S kcm-colorful-git
-</code></pre>
-
-<p>如果沒有，那麼汝還能從 aur 中找到這個包安裝。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S kcm-colorful-git
+</code></pre></div><p>如果沒有，那麼汝還能從 aur 中找到這個包安裝。
 抱歉，我不是 Arch 。 沒事，咱們還能手動安裝啊。</p>
-
 <pre><code>git clone --recursive https://github.com/IsoaSFlus/kcm-colorful.git
 cd kcm-colorful
 mkdir build
@@ -248,16 +239,10 @@ cmake ../
 make
 sudo make install
 #Then set your plasma desktop theme to &quot;Colorful&quot; for best experience.
-</code></pre>
-
-<h2 id="後續配置">後續配置</h2>
-
+</code></pre><h2 id="後續配置">後續配置</h2>
 <p>好了，配置好了怎麼似乎有些不太一樣啊，因爲上面只是說了用法和安裝並沒有說怎麼配置啊。首先在 KDE <code>系统设置-&gt;桌面行为-&gt;桌面特效</code>，找到“模糊”项并使能。之後打開 <code>系统设置-&gt;工作空间主题-&gt;桌面主题</code>，设置主题为<code>Colorful</code>。恩，估計汝已經可以看見效果了，如果需要像上面的截圖那樣那就需要繼續調整了。安裝 <a href="https://github.com/alex47/BreezeBlurred">BreezeBlurred</a> 這個主題，CN源也對這個主題打包了，名字可能有一點點變化，汝可以搜索一下。接着 <code>系统设置-&gt;应用程序风格-&gt;窗口装饰</code> 找到一個叫微風的主題，那個預覽圖透明的那個，打開設置一下透明度就完成了。這一步的圖文教程可以在<a href="https://github.com/IsoaSFlus/kcm-colorful/blob/master/README.md">戳這裏</a>找到。</p>
-
-<hr />
-
+<hr>
 <h4 id="引用以及參考">引用以及參考</h4>
-
 <p><a href="https://github.com/IsoaSFlus/kcm-colorful">https://github.com/IsoaSFlus/kcm-colorful</a></p>
 
 </div>
@@ -335,7 +320,7 @@ sudo make install
   
 <div class="container copyright">
   
-  &copy; 2018-2019 惠狐之书 written by Megumi_fox.
+  (c) 2018-2019 惠狐之书 written by Megumi_fox.
 
 
 </div>

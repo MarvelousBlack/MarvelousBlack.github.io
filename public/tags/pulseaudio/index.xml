@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pulseaudio on 惠狐之书</title>
@@ -25,8 +25,9 @@
 PulseAudio Over TCP 在 linux 上有个叫 pulseaudio 的东西，没错就是它。它可以使用网络来把声音送出去，具体怎么做的汝可以去搜一下 pulseaudio over tcp ，咱也不太清楚。但既然有这么方便的功能，岂不是可以解决上面提到的问题？咱们就开始配置吧。
 配置过程 手机端 手机这边咱用的是 android 。所以去play士多，直接安装 Simple Protocol Player ，安装好之后可以看见一个十分简单的界面，上面有几个选项这样的。接着咱们只需要修改 ip 和 port 就行了，ip 为汝电脑的 ip ，端口可以取 12345 ，也可以随你喜欢。其他默认就好，如果汝在后面设置好之后发现有些卡顿，还可以适当的调整一下 buffer size。
 电脑端 先安装好 pulseaudio ，接着使用pactl list sources short列出源，例如咱是这样的
-0	alsa_output.pci-0000_00_1f.3.analog-stereo.monitor	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED 1	alsa_input.pci-0000_00_1f.3.analog-stereo	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED  找到输出的那个，然后输入(假设 source=0，如果不是请参照汝机器将0换为对应数值，port和上面设置的port一样)
-pactl load-module module-simple-protocol-tcp source=0 record=true port=12345  恩，接着在手机那边点一下那个播放键就可以用了。如果汝还想持久化这个设置，可以修改 /etc/pulse/default.</description>
+0	alsa_output.pci-0000_00_1f.3.analog-stereo.monitor	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED 1	alsa_input.pci-0000_00_1f.3.analog-stereo	module-alsa-card.c	s16le 2ch 48000Hz	SUSPENDED 找到输出的那个，然后输入(假设 source=0，如果不是请参照汝机器将0换为对应数值，port和上面设置的port一样)
+pactl load-module module-simple-protocol-tcp source=0 record=true port=12345 恩，接着在手机那边点一下那个播放键就可以用了。如果汝还想持久化这个设置，可以修改 /etc/pulse/default.pa 并追加
+load-module module-simple-protocol-tcp source=0 record=true port=12345 其实就是 pactl 后面那堆东西啦。然后重启一下 pulseaudio 就ok了。</description>
     </item>
     
   </channel>

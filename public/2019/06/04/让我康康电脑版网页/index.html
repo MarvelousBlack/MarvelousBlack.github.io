@@ -58,7 +58,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.58.2" />
+<meta name="generator" content="Hugo 0.63.2" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -190,18 +190,11 @@
 </header>
 
   <div class="container content">
-  
-
-<p><del>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。</del></p>
-
+  <p><del>注：其實咱也不知道要怎麼解決這個問題，如果有詳細的解決方案可以留言給咱。感激不盡。</del></p>
 <h2 id="背景">背景</h2>
-
 <p>前兩天咱還想起咱網費還沒交，快要停網了，於是去交一下。本來也沒什麼事情的，但是，當我在 <strong>Arch Linux</strong> 下打開 <strong>chromium</strong> 打開繳費頁面，它展示了一個手機頁面給咱。嘛，手機就手機頁面嘛，沒什麼問題，趕緊交完就完事了。But，汝覺得就真的這麼簡單就完事了嗎？對沒錯，咱學校的那個繳費頁面只能在電腦端繳費，而手機端確實可以提交訂單，但不能選擇任何一個支付方式，對沒看錯，確實有訂單，但咱就是支付不了。這個還是咱問了一下同學才知道，只有電腦端頁面才能打開，那麼就打開電腦端唄。</p>
-
 <h2 id="尋找原因">尋找原因</h2>
-
 <p>於是咱想，應該是判斷了 UA 於是把 UA 換成了 IE10 的 UA 心想這個應該沒問題吧，刷新之後依舊，這就說明不是靠 UA 做判斷的，但爲了先繳費還是先回到 windows 下繳費，在 win 下用 chrome 打開,居然顯示了正確的電腦端的頁面，說明肯定有些奇怪的東西。於是按下 F12 開始找那堆js看，終於被咱找到了一個叫 <code>common.js</code> 的文件，在這個文件裏面有幾行神奇（真的神奇）的代碼。這就是罪魁禍首。下面是這個文件的截取（註釋不是咱寫的而是本來就有的）：</p>
-
 <pre><code>//手机页面自动跳转手机版收费平台
 function mobile_device_detect(url) {
 	var thisOS = navigator.platform;
@@ -235,26 +228,16 @@ function mobile_device_detect(url) {
 		return false;
 	}
 }
-</code></pre>
-
-<p>這是啥噢，還記得咱前面加粗了 linux 嗎？對沒錯這個代碼真的是坑人，有 linux 關鍵字下面還判斷了一下 x11 。誰告訴汝 X11 是 UC 瀏覽器！！！X11是個啥東東？可以康康<a href="https://en.wikipedia.org/wiki/X_Window_System">wiki</a> 是這個東西：</p>
-
+</code></pre><p>這是啥噢，還記得咱前面加粗了 linux 嗎？對沒錯這個代碼真的是坑人，有 linux 關鍵字下面還判斷了一下 x11 。誰告訴汝 X11 是 UC 瀏覽器！！！X11是個啥東東？可以康康<a href="https://en.wikipedia.org/wiki/X_Window_System">wiki</a> 是這個東西：</p>
 <blockquote>
 <p>The X Window System (X11, or simply X) is a windowing system for bitmap displays, common on Unix-like operating systems.</p>
 </blockquote>
-
 <p>也就是說，在一般的 linux 桌面環境下，只要瀏覽器給出了正確的值，基本上都會被這個判斷爲手機頁面。但這個支付網頁的手機頁面跟本就不能用的，因爲最最最最基本的功能都沒有，這個手機頁面只能看，沒法支付啊。咱還看了一下這個文件有兩個地址<code>http://xxxxxx/js/common.js</code>和<code>http://xxxxxx/NetWorkUI/js/common.js</code>（因爲某些原因咱用 xxxxxx 代替了原有的域名），而且這文件上面還有一些其他的函數是頁面需要的，因此不能直接的將整個 js 文件屏蔽掉。真的麻煩惹，而調用這個函數的js是直接嵌在 html 中的，於是頁面加載的時候就開始跳轉了，油猴似乎沒辦法對付這種情況，咱還想不到有什麼辦法可以跳過這個噁心的代碼。</p>
-
 <h2 id="後記">後記</h2>
-
 <p>如果有詳細的解決方案可以留言給咱。如果上面的解釋有什麼錯誤的地方也請及時反饋給咱，咱會馬上更正過來，因爲咱也不太懂網頁這些東西。但確實遇到了這樣的問題，於是就先記錄下來了。</p>
-
-<hr />
-
+<hr>
 <h2 id="更新">更新</h2>
-
 <p>十分感謝依雲。在依雲的提示下，咱最後用了 Tampermonkey 新建了一個用戶腳本來解決這個問題，大概是這樣的：</p>
-
 <pre><code>// ==UserScript==
 // @name         讓我康康網頁版
 // @namespace    http://xxxxxx/
@@ -270,9 +253,7 @@ function mobile_device_detect(url) {
     'use strict';
     Object.defineProperty(navigator, 'appVersion', {get: function(){ return '5.0 Linux' }})
 })();
-</code></pre>
-
-<p>就是在一開始執行 Object.defineProperty 來修改 navigator.appVersion 的返回值來使得上面的判斷匹配不到 X11 關鍵字，於是就不跳轉手機頁面了。加入<code>// @run-at       document-start</code>可以讓腳本儘可能早的加載，使問題解決。最後再一次感謝依雲。</p>
+</code></pre><p>就是在一開始執行 Object.defineProperty 來修改 navigator.appVersion 的返回值來使得上面的判斷匹配不到 X11 關鍵字，於是就不跳轉手機頁面了。加入<code>// @run-at       document-start</code>可以讓腳本儘可能早的加載，使問題解決。最後再一次感謝依雲。</p>
 
 </div>
 
@@ -349,7 +330,7 @@ function mobile_device_detect(url) {
   
 <div class="container copyright">
   
-  &copy; 2018-2019 惠狐之书 written by Megumi_fox.
+  (c) 2018-2019 惠狐之书 written by Megumi_fox.
 
 
 </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 惠狐之书</title>
@@ -33,7 +33,7 @@
     </item>
     
     <item>
-      <title>USB</title>
+      <title>usb</title>
       <link>https://blog.megumifox.com/public/tags/usb/</link>
       <pubDate>Fri, 28 Jun 2019 11:06:58 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
@@ -56,6 +56,15 @@
       <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/tags/kde/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>軟體推薦</title>
+      <link>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</link>
+      <pubDate>Mon, 22 Apr 2019 21:31:27 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/tags/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</guid>
       <description></description>
     </item>
     

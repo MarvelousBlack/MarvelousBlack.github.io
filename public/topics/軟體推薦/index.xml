@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>KDE on 惠狐之书</title>
-    <link>https://blog.megumifox.com/public/tags/kde/</link>
-    <description>Recent content in KDE on 惠狐之书</description>
+    <title>軟體推薦 on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</link>
+    <description>Recent content in 軟體推薦 on 惠狐之书</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
@@ -11,7 +11,7 @@
     <copyright>(c) 2018-2019 惠狐之书 written by Megumi_fox.</copyright>
     <lastBuildDate>Mon, 22 Apr 2019 21:31:27 +0800</lastBuildDate>
     
-	<atom:link href="https://blog.megumifox.com/public/tags/kde/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
