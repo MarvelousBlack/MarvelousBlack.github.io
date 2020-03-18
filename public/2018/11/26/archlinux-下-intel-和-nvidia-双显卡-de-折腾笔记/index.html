@@ -62,7 +62,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.63.2" />
+<meta name="generator" content="Hugo 0.67.1" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -241,12 +241,12 @@
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">options root<span style="color:#f92672">=</span>/dev/sda2 quiet splash nvidia-drm.modeset<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 </code></pre></div><h6 id="grub">GRUB</h6>
 <p>修改 <code>/etc/default/grub</code> 找到 <code>GRUB_CMDLINE_LINUX_DEFAULT</code>这一项在后面加入 <code>nvidia-drm.modeset=1</code>。 例如这样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">quiet splash nvidia-drm.modeset=1”
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;quiet splash nvidia-drm.modeset=1”
 </span></code></pre></div><p>更改完成后执行，下面命令，会重新生成grub.cfg。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo  grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre></div><h5 id="添加-initramfs-模块">添加 initramfs 模块</h5>
 <p>在 <code>/etc/mkinitcpio.conf</code> 中找到 <code>MODULES=</code>这一行在括号的后面加入<code>nvidia nvidia_modeset nvidia_uvm  nvidia_drm</code>。加入之后这行看起来是这样的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">MODULES<span style="color:#f92672">=</span><span style="color:#f92672">(</span>intel_agp i915 nvidia nvidia_modeset nvidia_uvm  nvidia_drm<span style="color:#f92672">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">MODULES<span style="color:#f92672">=(</span>intel_agp i915 nvidia nvidia_modeset nvidia_uvm  nvidia_drm<span style="color:#f92672">)</span>
 </code></pre></div><p>别忘了重新生成一下 initramfs 执行</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkinitcpio -P
 </code></pre></div><p>当然，每次更新完 n 卡驱动之后你都需要进行这一步，重新生成 initramfs 如果你觉得麻烦可以使用 pacman hook 。<br>
