@@ -7,8 +7,6 @@ draft: false
 
 - [Farseerfc的小窩](https://farseerfc.me/) 专修精修btrfs,职业安装Archlinux的fc教授。
 - [初等記憶體](https://axionl.me/) 自称是个美术生，温柔可爱会做饭写诗de艾雨寒，名句是`初学不看 wiki 安装的人迟早是要还的（x` 
-- [余忆留声机](https://amane.live/) ~~温柔可爱手速快的皮酱，已经有主了，主是上面那位。~~`'gim (gtran (gtran Amane Tobiichi))`   
- ~~我是狐狸啊我不爱吃狗粮~~
 - [Xuanwo's Blog](https://xuanwo.io/) 厲害的後端工程師,圆角圆角圆角，漩涡大大, ~~老婆是加藤惠~~ 。 
 - [Hi! 上天不?](https://a-wing.top/) 新一大大带你上天！ 
 - [正品大猫 狮子 自由港](https://bigcat.ee) 忘记续费的大猫
