@@ -9,10 +9,32 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2020 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Mon, 20 Jul 2020 16:43:59 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 04 Sep 2020 18:27:22 +0800</lastBuildDate>
     
 	<atom:link href="https://blog.megumifox.com/public/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>忻風隨身 PM2.5 檢測儀開箱和拆解</title>
+      <link>https://blog.megumifox.com/public/2020/09/04/%E5%BF%BB%E9%A2%A8%E9%9A%A8%E8%BA%AB-pm2.5-%E6%AA%A2%E6%B8%AC%E5%84%80%E9%96%8B%E7%AE%B1%E5%92%8C%E6%8B%86%E8%A7%A3/</link>
+      <pubDate>Fri, 04 Sep 2020 18:27:22 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2020/09/04/%E5%BF%BB%E9%A2%A8%E9%9A%A8%E8%BA%AB-pm2.5-%E6%AA%A2%E6%B8%AC%E5%84%80%E9%96%8B%E7%AE%B1%E5%92%8C%E6%8B%86%E8%A7%A3/</guid>
+      <description>喫個飯？
+忍住！要省錢
+買個衣服？
+忍住！要省錢
+換個手機？
+忍住！要省錢
+來買電子垃圾！ 來來來！多少錢
+  0x00 買 一大早起來看見有人發了一個神祕鏈接給咱，咱一看隨身 pm2.5 檢測儀，而且還只需要12元一個。擺明了是那種陳年的貨，連接用的 app 都是年久失修的那種，賣這麼低就是當電子垃圾賣的嘛。看了一下評價，好東西，這裏面的傳感器要70一個。嘛，之前就打算買一個這種傳感器來康康，馬上下單了兩個。咱沒有空氣淨化機，所以說實話這東西其實並沒多大用處。但後面弄了一下才發現賣汝12元都是虧了。忻風隨身 PM2.5 檢測儀這個名字太長了，在咱購買的那家 X 寶店鋪的評論，下面有人把這東西當成自行車車燈使用，於是下文將此檢測設備稱爲自行車車燈，簡稱車燈。
+0x01 開箱 過了幾天車燈就到了咱的手上了。包裝是這樣的，兩個都是白色的。這部分咱就只放圖了。開機之後那個圈會亮燈，看燈就可以知道空氣pm2.5大概的狀態了。值得一提的是這個是使用是激光進行測定，所以這東西適合家用或者當一個玩具，數值可能沒那麼的準確，但確實可以在一定的程度上反應汝周圍的空氣質量。 0x02 拆 車燈沒有螺絲口，都是卡扣，直接拿個敲棒翹就是了。用力滑一圈就打開了。 然後看見傳感器和電池直接放在一個架子上，架子也是用東西卡住，直接壓一下抽出來既可。 在拔掉了電池和傳感器後就可以看見主板了。可以看見是一個 nRF51822 的藍牙芯片。 卸掉板上的螺絲，就可以把正面的按鈕拆下來了，把主板反過來可以看見一排的 LED。 好這就是全部了。因爲傳感器還要用所以傳感器就不拆了。
+0x03 獲取數據 嘛，那個 app 和之前一樣，咱是不敢用的了，既然它是藍牙的那麼就說明咱們可以拿到數據了。那麼直接拿電腦連接，先不管有沒有加密，先試試可以拿到什麼再說。掃描的時候可以發現這個車燈，沒有像之前米家的那個一樣使用廣播，那就直接連吧。（順便記錄一下使用方法，免得下次又忘了）
+直接使用電腦連過去，那麼就直接用工具 bluetoothctl 。(下面和 mac 地址有關的將被替換爲 xx）。
+先進行掃描，然後估計可以發現這麼一個 device
+Device C2:FD:DA:xx:xx:xx 测霾单品 然後鏈接它，接着提示符會變爲[测霾单品]#，並且噴出一大堆內容。接着使用menu gatt進入 submenu。
+[测霾单品]# menu gatt Menu gatt: Available commands: ------------------- list-attributes [dev/local] List attributes select-attribute &amp;lt;attribute/UUID&amp;gt; Select attribute attribute-info [attribute/UUID] Select attribute read [offset] Read attribute value write &amp;lt;data=xx xx .</description>
+    </item>
     
     <item>
       <title>從小米溫溼度計2(LYWSD03MMC)記錄數據</title>
