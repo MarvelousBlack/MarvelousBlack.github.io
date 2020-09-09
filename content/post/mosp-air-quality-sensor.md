@@ -194,11 +194,54 @@ Notify started
 等一下，這怎麼還不是最終的呢。對沒錯，如果只是湊合着用那大可不必繼續搞下去，甚至汝可以用那個 app 直接看。但是，咱前面說了這東西 12 元買給汝都虧了。這車燈其實 ble dfu 沒有驗證簽名，這是某個裙友告訴咱的。對，汝沒有聽錯 dfu 沒有簽名！這得感謝廠商，沒有使用簽名。換句話說就是，只要咱們能隨便的刷自己的固件，而且刷的辦法十分簡單就是用工具從藍牙把固件傳上去就是了。接下來只要搞清楚對應的 pin 之間的關係，那麼就可以直接重寫整個固件，這意味着可玩性大大大大的提高。當然咱也是第一次接觸這個 nRF51822 芯片，也要慢慢學，因此有沒有下一篇就不清楚了，但目前湊合用的話就到這裏了爲止了。如果汝想接入那個 home assistant 的話，可以等羣裏面的大佬把協議整理出來之後按照格式寫一下就接近去就好了，但目前咱只能做到這裏。（咱可能會更新附上對應的鏈接）。以上大概就是這一次撿垃圾的做了的事情，感謝汝看到最後。
 
 ## 0x05 更新
-測了一下，08 09 10 腳是連着那 led 的，估計你補藍色的 led  和缺的元件就有 RGB 了，然後上面四個焊盤，正對着芯片的方向看從左到右是 swclk swdio gnd 3.3V 。
+~~測了一下，08 09 10 腳是連着那 led 的，估計你補藍色的 led  和缺的元件就有 RGB 了，然後上面四個焊盤，正對着芯片的方向看從左到右是 swclk swdio gnd 3.3V 。~~ 順便提一句，在折騰時候發現咱買了兩個，但這兩個的 mac 地址的前3位不是固定的。
+### 網頁艾爬爬
+上面提到了那個 app 已經年久失修了，服務器也登錄不上了。甚至在更新這一段話(2020-09-09)的時候，產品背面的下載鏈接也失效了。但是，在九月( @septs )的努力下，有一個網頁版本的 app 替代品，這個網頁實現了 app 裏面幾乎所有的功能，包括 X 寶評論說的那個壞掉的間隔檢測。  
+https://nicelabs.github.io/mops-vida-pm-watchdog/  
+具體用起來可以見下圖。  
+![mops_webapp.jpg](/public/pic/mops_webapp.jpg)
+只需要裝個 chromium 或者 chrome 就可以使用了。Android 上是可以直接使用的。至於 Linux 下面這裏提一下，WEB Bluetooth 遇到的一些問題。  
+首先汝要解決的問題是汝的用戶不需要特權就可以訪問到 ble ，至於怎麼做這個就要去搜一下就知道了（請不要使用 root 權限運行瀏覽器 ！）。接着需要打開 `chrome://flags/#enable-experimental-web-platform-features` 這個一項，如果不打開的話，當你點擊連接的時候是不會有什麼反應的。在做好這兩件事之後應該就是，開箱即用了。至於還有個坑就是一旦配對過之後可能會搜不到，這時候只需要在 bluetoothctl 裏面 remove 一下那個車燈就好了。
+
+### PINOUT
+這裏寫出部分，具體可以看整理後的 [PINOUT.md](https://github.com/NiceLabs/mops-vida-pm-watchdog/blob/master/docs/PINOUT.md)
+#### SWD
+![mops_swd.jpg](/public/pic/mops_swd.jpg)
+
+#### LED
+|     PIN | Note                     |
+| ------: | ------------------------ |
+| `P0.10` | Red leds in the circle   |
+| `P0.09` | Green leds in the circle |
+| `P0.22` | Bluetooth status         |
+| `P0.21` | Power status             |
+
+#### Sensor TX & TR
+|     PIN | Note   |
+| ------: | ------ |
+| `P0.05` | PMS Tx |
+| `P0.04` | PMS Rx |
+
+### PROTOCOL
+九月把 protocol 都弄出來了在這裏 [protocol-design.md](https://github.com/NiceLabs/mops-vida-pm-watchdog/blob/master/docs/protocol-design.md)。如果不理解其實汝可以打開上面提到的網頁然後連車燈然後用 wireshark 來抓藍牙看看，對着看就懂了。
+具體咱也懶得寫了，舉個例子上面拿到了一段這樣的返回。
+```
+  aa 50 06 00 20 00 00 d1 01 d4 f1 02 d1 01 d4 f1  .P.. ...........
+  50                                               P
+```
+對着那個文檔，咱們可以知道回包的第一位 aa 表示的是 Magic Header ，第二位 50 表示的是信息類型那麼就對着看 50 表示的是什麼， 50 是 Update Packet ， 那個第三位 06 ，對着看就知道表示後面返回來的 Sensor 的數據了。  
+基於前面提到的，如果想接入 home assistant 之類的軟體的話，有了這份 protocol 就可以開始寫了。因爲咱不需要這個所以就不寫了。
+
+### 個人折騰遇到的問題
+- 鏈接調試器的時候要把 usb 連上提供電源，不然可能會連不上。
+- 在 dump flash 的時候發現了這個芯片的程序有讀保護，dump 出來的數據全爲 0x00 。搜了一下發現有一篇 [NRF51822 code readout protection bypass a how to](https://www.pentestpartners.com/security-blog/nrf51822-code-readout-protection-bypass-a-how-to/)。利用 pc 和 r3 寄存器一點一點的將 flash 裏面的內容讀出來，挺有意思的可以去康康。
 
 ---
 ## 參考文章以及鏈接
-無（可能後續會添加）
+~~無（可能後續會添加）~~
+- https://nicelabs.github.io/mops-vida-pm-watchdog/
+- https://github.com/NiceLabs/mops-vida-pm-watchdog/blob/master/docs/protocol-design.md
+- https://www.pentestpartners.com/security-blog/nrf51822-code-readout-protection-bypass-a-how-to/
 
 
 
