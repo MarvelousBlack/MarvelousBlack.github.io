@@ -6,6 +6,7 @@ draft: false
 这里是惠狐的朋友们：  
 
 - [Farseerfc的小窩](https://farseerfc.me/) 专修精修btrfs,职业安装Archlinux的fc教授。
+- [Pyon Pyon Today](https://pyonpyon.today/) 是有很多老婆 ~~(塑料小人)~~ 的卡夫，Blog 內有高清大圖。
 - [初等記憶體](https://axionl.me/) 自称是个美术生，温柔可爱会做饭写诗de艾雨寒，名句是`初学不看 wiki 安装的人迟早是要还的（x` 
 - [Xuanwo's Blog](https://xuanwo.io/) 厲害的後端工程師,圆角圆角圆角，漩涡大大, ~~老婆是加藤惠~~ 。 
 - [Hi! 上天不?](https://a-wing.top/) 新一大大带你上天！ 
