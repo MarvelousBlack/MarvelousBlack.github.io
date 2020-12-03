@@ -9,11 +9,7 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2020 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Wed, 07 Aug 2019 21:56:00 +0800</lastBuildDate>
-    
-	<atom:link href="https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Aug 2019 21:56:00 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>I3wm 配置(僞)</title>
       <link>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</link>
