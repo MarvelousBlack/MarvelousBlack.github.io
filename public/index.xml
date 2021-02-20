@@ -9,7 +9,19 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2020 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Fri, 04 Sep 2020 18:27:22 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jan 2021 12:56:34 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>車燈（忻風隨身 PM2.5 檢測儀）折騰筆記</title>
+      <link>https://blog.megumifox.com/public/2021/01/27/%E8%BB%8A%E7%87%88%E5%BF%BB%E9%A2%A8%E9%9A%A8%E8%BA%AB-pm2.5-%E6%AA%A2%E6%B8%AC%E5%84%80%E6%8A%98%E9%A8%B0%E7%AD%86%E8%A8%98/</link>
+      <pubDate>Wed, 27 Jan 2021 12:56:34 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/2021/01/27/%E8%BB%8A%E7%87%88%E5%BF%BB%E9%A2%A8%E9%9A%A8%E8%BA%AB-pm2.5-%E6%AA%A2%E6%B8%AC%E5%84%80%E6%8A%98%E9%A8%B0%E7%AD%86%E8%A8%98/</guid>
+      <description>A,距離上一片應該過去好幾個月了，重寫這車燈是不太可能的了，咱是不太想繼續弄了，現在最多只是做到了，把數據發回和電量顯示，這已經滿足咱的日常需求了，所以可能就不會繼續弄下去。而且隔壁羣友已經重新畫了塊pcb,把主控換成了esp8266，燈換成了 R! G！ B！ (炫彩車燈）,甚至還把上面的巨大按鈕換成了某智能燈的開關，做到了半夜起牀也不怕找不到按鈕，所以重寫也沒什麼意義了。 那這篇東西就是講咱折騰這玩意遇到的問題，當然都是一些很簡單的問題，但最近沒什麼可以水，那就把這個寫一些吧。
+0x01 點燈 之前提到了車燈這個東西是用的主控是 nRF51822 , 而開發這個最快的方法是使用 SDK 進行開發。恩，配置好環境，先點個燈,找到裏面的示例文件， make 然後刷入。誒，怎麼還是黑的什麼反應都沒有。仔細的閱讀了 SDK 的文檔之後發現有下面的一段話。
+ Enabling support for a board To enable support for an older Nordic Semiconductor board or a custom board, you must include a define statement for the board that you want to use before you compile the code.
+  According to the define statement, the suitable board support file is selected. The board support file defines the peripherals, thus the location of LEDs and buttons, for the selected platform.</description>
+    </item>
+    
     <item>
       <title>忻風隨身 PM2.5 檢測儀開箱和拆解</title>
       <link>https://blog.megumifox.com/public/2020/09/04/%E5%BF%BB%E9%A2%A8%E9%9A%A8%E8%BA%AB-pm2.5-%E6%AA%A2%E6%B8%AC%E5%84%80%E9%96%8B%E7%AE%B1%E5%92%8C%E6%8B%86%E8%A7%A3/</link>
