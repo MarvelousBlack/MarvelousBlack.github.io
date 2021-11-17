@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -208,19 +208,19 @@
 <h2 id="0x02-开始创建并装饰你的网页">0x02 开始创建并装饰你的网页</h2>
 <h3 id="创建网页文件">创建网页文件</h3>
 <p>创建一个网页文件很简单只需要</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site （文件夹名称）
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site （文件夹名称）
 </code></pre></div><p>然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。</p>
 <h3 id="安装主题">安装主题</h3>
 <p>hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在<a href="https://themes.gohugo.io/">这里</a>选择一个你喜欢的主题。 <strong>注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档</strong> 惠狐之书使用的是 hyde-Y 主题，<del>这个主题看起来有点像比特垃圾桶</del> , 所以下文将以这个主题为示例。<br>
 按照主题写的命令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd your_site_repo/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd your_site_repo/
 $ mkdir themes
 $ cd themes
 $ git clone https://github.com/enten/hyde-y
 </code></pre></div><p>这样就安装好主题了，但还没开始配置</p>
 <h4 id="主配置文件">主配置文件</h4>
 <p>编辑 <code>config.toml</code> (如果没有则新建）按照下面的模板开始修改。</p>
-<pre><code class="language-file" data-lang="file"># hostname (and path) to the root eg. http://spf13.com/
+<pre tabindex="0"><code class="language-file" data-lang="file"># hostname (and path) to the root eg. http://spf13.com/
 baseurl = &quot;http://www.example.com&quot;
 
 # Site title
@@ -311,7 +311,7 @@ disqusShortname = &quot;your_disqus_shortname&quot;
 </code></pre><p>上面都有注释就不解释了。接着是配置侧边栏。</p>
 <h4 id="侧边栏">侧边栏</h4>
 <p>创建<code>data/Menu.toml</code>这个文件，下面是示例（不需要删掉就好了</p>
-<pre><code>[about]
+<pre tabindex="0"><code>[about]
     Name = &quot;About&quot;
     URL = &quot;/about&quot;
 
@@ -326,22 +326,22 @@ disqusShortname = &quot;your_disqus_shortname&quot;
     URL = &quot;/tags&quot;
 </code></pre><h4 id="页脚链接">页脚链接</h4>
 <p>创建<code>data/FootMenu.toml</code>不需要可以跳过这一步</p>
-<pre><code>[license]
+<pre tabindex="0"><code>[license]
     Name = &quot;license&quot;
     URL = &quot;/license&quot;
 </code></pre><h4 id="完整页面">完整页面</h4>
 <p>接着是创建刚刚侧边栏的 about 和页脚的 license 了。</p>
-<pre><code>$hugo new about.md
+<pre tabindex="0"><code>$hugo new about.md
 $hugo new license.md
 </code></pre><p>然后进入 <code>content</code> 目录编辑刚刚创建的两个文件。文件里面使用 markdown 语法。关于 markdown 的语法，请自行谷歌。</p>
 <h4 id="网页图标">网页图标</h4>
 <p>这个主题支持 favicon 只需要放入 <code>static/favicon.png</code> 和 <code>static/touch-icon-144-precomposed.png</code> 这两个文件就好了。</p>
 <h2 id="0x03-开始写作">0x03 开始写作</h2>
 <p>创建新的文章只需要使用</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new post/xxx.md
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new post/xxx.md
 </code></pre></div><p>这样就会自动创建一个新文件，接着你需要编辑<code>content/post/</code>下面刚刚创建的文件。开始愉快的写文章吧！<br>
 你可能需要添加一些 tag 之类的，这个很简单只需要在文件一开始写成像下面这样：</p>
-<pre><code class="language-file" data-lang="file">---
+<pre tabindex="0"><code class="language-file" data-lang="file">---
 title: &quot;用hugo搭建一个博客&quot;
 date: 2018-11-30T20:24:52+08:00
 description: &quot;blog 刚刚建起来，那就记录一下建立的过程吧。&quot;
@@ -357,11 +357,11 @@ draft:  false
 <h2 id="0x04-预览和生成站点">0x04 预览和生成站点</h2>
 <h4 id="预览">预览</h4>
 <p>预览的话只需要</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo server -D
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo server -D
 </code></pre></div><p>这样就可以在自己的机器上预览文章的效果了</p>
 <h4 id="生成">生成</h4>
 <p>生成的话命令就更简单了</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo
 </code></pre></div><p>最后生成的文件在 <code>public/</code> 下面。</p>
 <h2 id="0x05-发布最后一步">0x05 发布（最后一步）</h2>
 <p>发布的话你只需要把，这一个 <code>public</code> 文件夹里面的内容全部复制到你空间对应的地方就好了。</p>

@@ -62,7 +62,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -214,7 +214,7 @@
 可以看見開發板上面有兩個單色的 LED 燈和一個 5050 <strong>RGB</strong> 燈。單色的 LED 接在了 IO 18 和 IO 19 上，5050 RGB 的顏色接在 IO 3 4 5 上， LDO 用的是 AMS1117-3.3 , 串口使用的是 CH340C。</p>
 <h2 id="0x02-上電">0x02 上電</h2>
 <p>由於模塊咱沒有底板也懶得焊接，所以留着日後使用。直接拿開發板插電腦。先找個簡單的例子少進去，按照 <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/get-started/index.html">esp32c3/get-started</a> 的步驟，設置好環境然後燒錄就好了。然後打開 monitor 看見輸出：</p>
-<pre><code>Restarting now.
+<pre tabindex="0"><code>Restarting now.
 x���ESP-ROM:esp32c3-20200918
 Build:Sep 18 2020
 rst:0xc (RTC_SW_CPU_RST),boot:0xc (SPI_FAST_FLASH_BOOT)
@@ -272,10 +272,10 @@ Restarting in 9 seconds...
 Restarting in 8 seconds...
 </code></pre><p>這個是 idf4.3 編譯之後的輸出。當時還試了一下藍牙發現缺少頭文件，於是就算了。<br>
 過了幾天之後咱找到個風水好一點的地方把 SDK 更新了一下。然後直接燒進去，然後可以看見</p>
-<pre><code>E (38) boot_comm: This chip is revision 2 but the application is configured for minimum revision 3. Can't run.
+<pre tabindex="0"><code>E (38) boot_comm: This chip is revision 2 but the application is configured for minimum revision 3. Can't run.
 </code></pre><p>對的，咱買的是工程樣品，芯片的版本是2,這裏要改一下編譯設置。在 menuconfig ，找到 component config 然後進入 ESP32C3 specific 把 minimal version 改成2 就好了。</p>
 <p>下面是 hello_world 例程的輸出：</p>
-<pre><code>�ESP-ROM:esp32c3-20200918
+<pre tabindex="0"><code>�ESP-ROM:esp32c3-20200918
 Build:Sep 18 2020
 rst:0x1 (POWERON),boot:0xc (SPI_FAST_FLASH_BOOT)
 SPIWP:0xee
@@ -339,7 +339,7 @@ Restarting in 1 seconds...
 Restarting in 0 seconds...
 Restarting now.
 </code></pre><p>下面是 hci/ble_adv_scan_combined 例程的輸出（MAC地址已經刪除）：</p>
-<pre><code>--- idf_monitor on /dev/ttyUSB0 115200 ---
+<pre tabindex="0"><code>--- idf_monitor on /dev/ttyUSB0 115200 ---
 --- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H ---
 ESP-ROM:esp32c3-20200918
 Build:Sep 18 2020

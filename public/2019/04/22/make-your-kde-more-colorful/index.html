@@ -60,7 +60,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -200,7 +200,7 @@
 <p>這個咱的一個朋友，三頭怪寫的，軟體的描述是根据当前的壁纸改变KDE Plasma的颜色。正如你在上面所看到的那樣整個界面都是根據畫布的顏色配置出來的，咱這裏的畫布是粉色的於是就可以看見其他地方都是粉色的。爲了方便使用這個有這麼一個界面：<br>
 <img src="/public/pic/make-your-kde-more-colorful1.png" alt="make-your-kde-more-colorful1">
 方便你直觀的直接選取備用顏色和看見你的壁紙。當然這個界面已經支持暗色主題了。汝可能發現了咱這裏的預覽圖和咱的壁紙不一樣啊，那是因爲咱有兩個顯示器，而兩個顯示器設置的壁紙不一樣於是這裏顯示的就是另一個顯示器的壁紙了。那咱就沒法選了另一張圖了啊，先別慌，作者還提供了一個叫 <code>kcmcolorfulhelper</code> 這個名字的 cli 工具用於這種情況的處理。讓咱們先看看幫助吧</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ kcmcolorfulhelper -h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ kcmcolorfulhelper -h
 
 Usage: kcmcolorfulhelper <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
 
@@ -228,10 +228,10 @@ Options:
 </code></pre></div><p>使用上也很簡單，直接加 <code>-p</code> 和圖片就好了，會自動應用可以順便加上 <code>-s</code> 一次性把畫布也設置上。</p>
 <h2 id="安裝">安裝</h2>
 <p>這個就簡單了，如果添加了 CN 源，汝可以直接</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S kcm-colorful-git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S kcm-colorful-git
 </code></pre></div><p>如果沒有，那麼汝還能從 aur 中找到這個包安裝。
 抱歉，我不是 Arch 。 沒事，咱們還能手動安裝啊。</p>
-<pre><code>git clone --recursive https://github.com/IsoaSFlus/kcm-colorful.git
+<pre tabindex="0"><code>git clone --recursive https://github.com/IsoaSFlus/kcm-colorful.git
 cd kcm-colorful
 mkdir build
 cd ./build

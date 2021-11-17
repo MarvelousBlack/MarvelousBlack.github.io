@@ -58,7 +58,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -197,7 +197,7 @@
 <p>正如那个软件的描述所说这是一个用Electron 写的手写输入法。它十分巧妙的利用了 google translate 的手写识别，从而做到了比较高的识别率。为什么说巧妙的利用了呢？ 汝用过 google translate 的话就会发现那个手写识别只在那个网页有效，但用了这个汝可以在其他地方使用。而且这里利用到了触摸板，不要以为触摸板的移动是相对的就认为这个是个相对输入设备，其实人家是绝对定位的啦，部分人可能见过有人用触摸板来玩 osu！吧。对，因为部分的触摸板是绝对定位，所以可以做到和手写笔差不多的光标移动。而且手写输入法不要求压感，于是就可以用来做手写输入。</p>
 <h2 id="安装和配置">安装和配置</h2>
 <p>arch 的话直接用 cn 源里面那个就好了，可是要用这个输入法需要配置许多的东西。先将汝添加到 <code>input</code> 组里面，然后开始配置触摸板，修改 <code>/opt/google-chinese-handwriting-ime/config.js</code>。运行 <code>evtest</code> 选择你的触摸板找到最左上角和最右下角的坐标，然后修改对应的 <code>touchpad_support.touchpad_coords.max.x</code>和<code>touchpad_support.touchpad_coords.max.y</code> 数字可以适当的调整一下，咱当时测试的时候发现这个数值要比测出来的大好多才能正常的工作，所以调整到汝适合的大小。还要将如下字段中的 null 换成对应的设备数字。</p>
-<pre><code>    preferred_device_id: {
+<pre tabindex="0"><code>    preferred_device_id: {
       xinput: null,
       dev_event: null
     },

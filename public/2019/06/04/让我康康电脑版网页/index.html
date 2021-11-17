@@ -58,7 +58,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -195,7 +195,7 @@
 <p>前兩天咱還想起咱網費還沒交，快要停網了，於是去交一下。本來也沒什麼事情的，但是，當我在 <strong>Arch Linux</strong> 下打開 <strong>chromium</strong> 打開繳費頁面，它展示了一個手機頁面給咱。嘛，手機就手機頁面嘛，沒什麼問題，趕緊交完就完事了。But，汝覺得就真的這麼簡單就完事了嗎？對沒錯，咱學校的那個繳費頁面只能在電腦端繳費，而手機端確實可以提交訂單，但不能選擇任何一個支付方式，對沒看錯，確實有訂單，但咱就是支付不了。這個還是咱問了一下同學才知道，只有電腦端頁面才能打開，那麼就打開電腦端唄。</p>
 <h2 id="尋找原因">尋找原因</h2>
 <p>於是咱想，應該是判斷了 UA 於是把 UA 換成了 IE10 的 UA 心想這個應該沒問題吧，刷新之後依舊，這就說明不是靠 UA 做判斷的，但爲了先繳費還是先回到 windows 下繳費，在 win 下用 chrome 打開,居然顯示了正確的電腦端的頁面，說明肯定有些奇怪的東西。於是按下 F12 開始找那堆js看，終於被咱找到了一個叫 <code>common.js</code> 的文件，在這個文件裏面有幾行神奇（真的神奇）的代碼。這就是罪魁禍首。下面是這個文件的截取（註釋不是咱寫的而是本來就有的）：</p>
-<pre><code>//手机页面自动跳转手机版收费平台
+<pre tabindex="0"><code>//手机页面自动跳转手机版收费平台
 function mobile_device_detect(url) {
 	var thisOS = navigator.platform;
 	var os = new Array(&quot;iPhone&quot;, &quot;iPod&quot;, &quot;iPad&quot;, &quot;android&quot;, &quot;Nokia&quot;,
@@ -238,7 +238,7 @@ function mobile_device_detect(url) {
 <hr>
 <h2 id="更新">更新</h2>
 <p>十分感謝依雲。在依雲的提示下，咱最後用了 Tampermonkey 新建了一個用戶腳本來解決這個問題，大概是這樣的：</p>
-<pre><code>// ==UserScript==
+<pre tabindex="0"><code>// ==UserScript==
 // @name         讓我康康網頁版
 // @namespace    http://xxxxxx/
 // @version      0.1

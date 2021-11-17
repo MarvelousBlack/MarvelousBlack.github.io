@@ -58,7 +58,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -204,14 +204,14 @@ To enable support for an older Nordic Semiconductor board or a custom board, you
 <p>Depending on the device on the legacy board, you might need to change the memory layout. For example, all nRF51 examples assume that you are using the 32 kB variant of nRF51, so if you are using a variant with 16 kB RAM, you must decrease the size of IRAM1 by 16 kB (0x4000 in hex). In Keil, click Project &gt; Options for Target &lsquo;&hellip;&rsquo; and modify the values for &ldquo;Read/Write Memory Area&rdquo;. For GCC, change the linked *.ld file in the Makefile.</p>
 </blockquote>
 <p>根據 SDK 裏面的描述，也就是 nRF51 有多個型號，而示例文件假定使用的是 32kB 的版本，如果是使用的是 16kB 的版本則需要修改地址的位置。查看數據手冊， nRF51822 有 AA 和 AC 版本， 車燈上面的是 AA 是最低配的，只有 16 kB 的 RAM 。因此需要修改 ld 文件。把 MEMORY 這段修改爲下面這樣。重新 make 然後 flash ，終於把燈點起來了。不得不說這車燈，用的乞丐版的 nRF51822 的內存實在是太小了！</p>
-<pre><code>MEMORY
+<pre tabindex="0"><code>MEMORY
 {
   FLASH (rx) : ORIGIN = 0x1b000, LENGTH = 0x25000
   RAM (rwx) :  ORIGIN = 0x20001fe8, LENGTH = 0x2018
 }
 </code></pre><h1 id="0x02-ble">0x02 BLE</h1>
 <p>燈點起來了，那再試試藍牙點燈，打開示例文件修改好 ld 文件， make ，flash ！ 怎麼又黑了，找了一下，是停在了藍牙初始化。搜了一下，發現了另一個硬件的差異。在上一篇的文章裏面可以中在高清大圖中，可以看見這個芯片的 P0.26 P0.27 兩個腳鏈接到了空焊盤上了，這兩個腳從數據手冊中看是用於鏈接一個外部的 32.768kHz 的晶振用的。看代碼註釋知道 SoftDevice 需要低頻時鐘，因此需要用到一個 32.768 kHz 的時鐘，而 SDK 的示例默認使用的是外部時鐘。爲了確認官方開發板上是有這個外部晶振了，咱特地搜了一下官方開發版的圖，發現確實是有這個晶振的。所以咱們用默認的代碼去使用這個車燈不存在外部的晶振，當然起不來。知道有這個問題就簡單了，因爲拿到手的時候這個藍牙是可以使用的，那麼就說明有辦法解決這個問題。翻數據手冊，可以使用內部時鐘，因此修改對應的 config 頭文件，把 NRF_CLOCK_LFCLKSRC.source 改爲 NRF_CLOCK_LF_CLK_RC 像下面這個。</p>
-<pre><code>// Low frequency clock source to be used by the SoftDevice
+<pre tabindex="0"><code>// Low frequency clock source to be used by the SoftDevice
 #ifdef S210
 #define NRF_CLOCK_LFCLKSRC      NRF_CLOCK_LFCLKSRC_XTAL_20_PPM
 #else

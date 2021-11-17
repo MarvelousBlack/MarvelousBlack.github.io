@@ -58,7 +58,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.83.1" />
+<meta name="generator" content="Hugo 0.89.3" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -229,9 +229,9 @@
 <p>嘛，那個 app 和之前一樣，咱是不敢用的了，既然它是藍牙的那麼就說明咱們可以拿到數據了。那麼直接拿電腦連接，先不管有沒有加密，先試試可以拿到什麼再說。掃描的時候可以發現這個車燈，沒有像之前米家的那個一樣使用廣播，那就直接連吧。（順便記錄一下使用方法，免得下次又忘了）<br>
 直接使用電腦連過去，那麼就直接用工具 <code>bluetoothctl</code> 。(下面和 mac 地址有關的將被替換爲 xx）。<br>
 先進行掃描，然後估計可以發現這麼一個 device</p>
-<pre><code>Device C2:FD:DA:xx:xx:xx 测霾单品
+<pre tabindex="0"><code>Device C2:FD:DA:xx:xx:xx 测霾单品
 </code></pre><p>然後鏈接它，接着提示符會變爲<code>[测霾单品]#</code>，並且噴出一大堆內容。接着使用<code>menu gatt</code>進入 submenu。</p>
-<pre><code>[测霾单品]# menu gatt
+<pre tabindex="0"><code>[测霾单品]# menu gatt
 Menu gatt:
 Available commands:
 -------------------
@@ -264,7 +264,7 @@ help                                              Display help about this progra
 export                                            Print environment variables
 [测霾单品]#
 </code></pre><p>鍵入<code>list-attributes</code>後可以看見</p>
-<pre><code>Primary Service (Handle 0x0009)
+<pre tabindex="0"><code>Primary Service (Handle 0x0009)
 	/org/bluez/hci0/dev_C2_FD_DA_XX_XX_XX/service0008
 	00001801-0000-1000-8000-00805f9b34fb
 	Generic Attribute Profile
@@ -321,7 +321,7 @@ Characteristic (Handle 0x8248)
 	6e400002-b5a3-f393-e0a9-e50e24dcca9e
 	Nordic UART TX
 </code></pre><p>接着<code>select-attribute 6e400003-b5a3-f393-e0a9-e50e24dcca9e</code>和戳一下,就可以看見返回的值。</p>
-<pre><code>[测霾单品]# select-attribute 6e400003-b5a3-f393-e0a9-e50e24dcca9e
+<pre tabindex="0"><code>[测霾单品]# select-attribute 6e400003-b5a3-f393-e0a9-e50e24dcca9e
 [测霾单品:/service0017/char0018]# notify on
 [CHG] Attribute /org/bluez/hci0/dev_C2_FD_DA_XX_XX_XX/service0017/char0018 Notifying: yes
 Notify started
@@ -421,7 +421,7 @@ Notify started
 <h3 id="protocol">PROTOCOL</h3>
 <p>九月把 protocol 都弄出來了在這裏 <a href="https://github.com/NiceLabs/mops-vida-pm-watchdog/blob/master/docs/protocol-design.md">protocol-design.md</a>。如果不理解其實汝可以打開上面提到的網頁然後連車燈然後用 wireshark 來抓藍牙看看，對着看就懂了。
 具體咱也懶得寫了，舉個例子上面拿到了一段這樣的返回。</p>
-<pre><code>  aa 50 06 00 20 00 00 d1 01 d4 f1 02 d1 01 d4 f1  .P.. ...........
+<pre tabindex="0"><code>  aa 50 06 00 20 00 00 d1 01 d4 f1 02 d1 01 d4 f1  .P.. ...........
   50                                               P
 </code></pre><p>對着那個文檔，咱們可以知道回包的第一位 aa 表示的是 Magic Header ，第二位 50 表示的是信息類型那麼就對着看 50 表示的是什麼， 50 是 Update Packet ， 那個第三位 06 ，對着看就知道表示後面返回來的 Sensor 的數據了。<br>
 基於前面提到的，如果想接入 home assistant 之類的軟體的話，有了這份 protocol 就可以開始寫了。因爲咱不需要這個所以就不寫了。</p>
