@@ -13,6 +13,7 @@ draft: false
 - [正品大猫 狮子 自由港](https://bigcat.ee) 忘记续费的大猫
 - [约伊兹的萌狼乡手札](https://blog.yoitsu.moe/) 萌狼，说起来我好像是她的食物。（逃 
 - [Bruce Z Non-Sense Blog](https://blog.brucezhang.cf) 不撸死兔兔，撸不死兔兔。
+- [QianQian's Blog](https://wwyqianqian.github.io/) 千千千千千千！
 - [OriginCode 札記](https://origincode.github.io/) 源码酱，初中生。是个大佬。 
 - [Typeblog](https://en.typeblog.net/) 彼得大大，超萌的彼得！
 - [依云's Blog](https://blog.lilydjwg.me/) 百合仙子，#archlinuxcn 社區管理者之一。
