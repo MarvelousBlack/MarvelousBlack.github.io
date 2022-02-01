@@ -9,11 +9,20 @@
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2022 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Tue, 04 May 2021 10:26:47 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/topics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Feb 2022 20:33:39 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/topics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>新手教程</title>
+      <link>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate>
+      <author>i@megumifox.com (Megumi_fox)</author>
+      <guid>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>杂乱的笔记</title>
       <link>https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/</link>
-      <pubDate>Tue, 04 May 2021 10:26:47 +0800</pubDate>
+      <pubDate>Tue, 01 Feb 2022 20:33:39 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/topics/%E6%9D%82%E4%B9%B1%E7%9A%84%E7%AC%94%E8%AE%B0/</guid>
       <description></description>
@@ -25,15 +34,6 @@
       <pubDate>Mon, 03 Feb 2020 19:25:48 +0800</pubDate>
       <author>i@megumifox.com (Megumi_fox)</author>
       <guid>https://blog.megumifox.com/public/topics/%E8%BB%9F%E9%AB%94%E6%8E%A8%E8%96%A6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>新手教程</title>
-      <link>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</link>
-      <pubDate>Wed, 07 Aug 2019 21:56:00 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/topics/%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8B/</guid>
       <description></description>
     </item>
     

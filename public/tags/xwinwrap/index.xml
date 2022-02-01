@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>i3wm on 惠狐之书</title>
-    <link>https://blog.megumifox.com/public/tags/i3wm/</link>
-    <description>Recent content in i3wm on 惠狐之书</description>
+    <title>xwinwrap on 惠狐之书</title>
+    <link>https://blog.megumifox.com/public/tags/xwinwrap/</link>
+    <description>Recent content in xwinwrap on 惠狐之书</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>i@megumifox.com (Megumi_fox)</managingEditor>
     <webMaster>i@megumifox.com (Megumi_fox)</webMaster>
     <copyright>(c) 2018-2022 惠狐之书 written by Megumi_fox.</copyright>
-    <lastBuildDate>Tue, 01 Feb 2022 20:33:39 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/tags/i3wm/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Feb 2022 20:33:39 +0800</lastBuildDate><atom:link href="https://blog.megumifox.com/public/tags/xwinwrap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>i3wm 下使用視頻動壁紙（帶硬件加速）</title>
       <link>https://blog.megumifox.com/public/2022/02/01/i3wm-%E4%B8%8B%E4%BD%BF%E7%94%A8%E8%A6%96%E9%A0%BB%E5%8B%95%E5%A3%81%E7%B4%99%E5%B8%B6%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/</link>
@@ -27,17 +27,6 @@
 xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &amp;quot;https://www.youtube.com/watch?v=n9w_hZkbfoo&amp;quot; （注：因爲 youtube-dl 下載太慢這裏使用 youtube-dl 的一個 fork yt-dlp[2]）
 如果你是要播放本地視頻，那麼改爲：
 xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no $VIDEO_PATH 在終端中跑完，看見沒問題就可以把這命令扔到 i3wm 的 config 下隨 i3 啓動了。</description>
-    </item>
-    
-    <item>
-      <title>I3wm 配置(僞)</title>
-      <link>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</link>
-      <pubDate>Wed, 07 Aug 2019 21:56:00 +0800</pubDate>
-      <author>i@megumifox.com (Megumi_fox)</author>
-      <guid>https://blog.megumifox.com/public/2019/08/07/i3wm-%E9%85%8D%E7%BD%AE%E5%83%9E/</guid>
-      <description>之前提過了 KDE 但實際上咱平時用的是 i3wm，但就像名字說的那樣這個就是個 wm ，窗口管理器，所以別期望 i3 給汝全套的服務。說實話咱也不知道要怎麼寫，那就隨便寫寫吧。以下內容以基本上爲解釋咱的配置文件，汝如果想得到和咱一樣的效果直接複製就好了，不過咱還是建議汝康康不要直接複製。其實這篇東西是用來水的，因爲暫時不知道些什麼，emmm，這不就是複製粘貼p配置文件的事情嗎？有什麼好寫的（摔
-咱的配置文件在 這裏 汝只需要對照修改汝的 ~/.config/i3/config 就好了。下面開始解釋這份文件。
-exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1 exec --no-startup-id fcitx exec --no-startup-id udiskie -snA&amp;amp; exec --no-startup-id sleep 3 &amp;amp;&amp;amp; exec feh --bg-fill background_desktop.png background_desktop.jpg exec --no-startup-id compton -CGb --backend glx --paint-on-overlay --glx-no-stencil --unredir-if-possible exec --no-startup-id termite exec --no-startup-id kdeconnect-indicator&amp;amp; exec --no-startup-id klipper&amp;amp; exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unlock-indicator -i background.png &amp;amp; 這一段是啓動項，前文說了 i3 只是一個窗口管理器，有很多東西都需要汝自己去配置，這裏從上倒下依次爲啓動 kde 的 polkit 驗證的那個東西，也就是在部分需要提權的地方跳出來讓汝輸入密碼的那個框。fcitx 是輸入法， udiskie 是自動掛載 u 盤的小程序，feh 是用來設置壁紙的（爲了方便咱直接吧圖片命名爲 background_desktop.</description>
     </item>
     
   </channel>
