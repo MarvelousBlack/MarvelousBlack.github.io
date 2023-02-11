@@ -14,8 +14,8 @@ draft: false
 - [约伊兹的萌狼乡手札](https://blog.yoitsu.moe/) 萌狼，说起来我好像是她的食物。（逃 
 - [Bruce Z Non-Sense Blog](https://blog.brucezhang.cf) 不撸死兔兔，撸不死兔兔。
 - [QianQian's Blog](https://wwyqianqian.github.io/) 千千千千千千！
-- [OriginCode 札記](https://origincode.github.io/) 源码酱，初中生。是个大佬。 
-- [Typeblog](https://en.typeblog.net/) 彼得大大，超萌的彼得！
+- [OriginCode 札記](https://blog.origincode.me) 源码酱，初中生。是个大佬。 
+- [Typeblog](https://typeblog.net/) 彼得大大，超萌的彼得！
 - [依云's Blog](https://blog.lilydjwg.me/) 百合仙子，#archlinuxcn 社區管理者之一。
 - [VOID001'S WOWO](https://void-shana.moe/) 頭像是夏娜，/dev/horo 絕讚開發中。
 - [Goddess Unknown](https://nir.moe/) 黑动图老师的碎碎念。
@@ -34,6 +34,7 @@ draft: false
 - [本格异想录](https://astrianzheng.cn/) 音油大佬
 - [Hello from Junde Yhi](https://www.yhi.moe/) 小以以，AOSC 開發者。
 - [H3arn](https://h3a.moe/) -> “我会常记先生好，我会常想南山幽。” w 
+- [烧饼吹水铺](https://feng.moe/) 👋 得闲来吹水~
 
 * * *  
 

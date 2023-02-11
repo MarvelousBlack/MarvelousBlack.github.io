@@ -7,7 +7,7 @@ baseurl = "https://blog.megumifox.com/public/"
 title = "惠狐之书"
 
 # Copyright
-copyright = "(c) 2018-2022 惠狐之书 written by Megumi_fox."
+copyright = "(c) 2018-2023 惠狐之书 written by Megumi_fox."
 
 # Language
 languageCode = "en-EN"
