@@ -45,7 +45,7 @@
     "headline": "往 x80plus 里面塞 windows 和近期的碎碎念",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2018-12-31",
     "description": "在这篇文章写的时候已经是2018年的最后的一天了呢，先说一声新年快乐。本来安装 windows 没什么好写的，但这个板子上我还是遇到了问题，所以还是写一下吧。",
@@ -60,7 +60,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -70,7 +69,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -131,12 +130,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -238,7 +237,7 @@ ArielAxionL · 艾雨寒 🎷, [16.12.18 15:27]
 <h2 id="刷-win10">刷 win10</h2>
 <p>嘛，本来是没什么好写的，一切都安装教程说写，什么重启两次啊什么的。but ，出现了意想不到的情况。 镜像写不进去。提示出现了无法创建 recover 分区云云，重试了两三次都失败。于是，我用 diskpart 看了一下，好像没变动。于是 google 搜了一下只发现一个双系统改成单 android 的，好像没啥用是吧。不，我注意到一件事情，这个单 android 刷入的时候改动了 gpt 分区表，也就是分区变了，也许 gpt 分区的变动导致了官方提供的 win 的那个全自动的恢复出错。于是，在考虑到咱不需要再 android 之后，直接在恢复的环境下，使用 diskpart 重新分区。删除全部分区，下面是操作的步骤记录。<br>
 先是出现提示像下面这句，xxxxxx那些可能会不同于是我在这里这样写。</p>
-<pre tabindex="0"><code>&quot;Faild to make xxxxxxxxxxxx&quot;
+<pre tabindex="0"><code>&#34;Faild to make xxxxxxxxxxxx&#34;
 </code></pre><p>接着在那个恢复环境里面里面输入<code>DISKPART</code>于是可以看见：</p>
 <pre tabindex="0"><code>DISKPRAT&gt;
 </code></pre><p>依次输入</p>
@@ -289,7 +288,8 @@ exit
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -309,6 +309,7 @@ exit
 
 
 </div>
+
 
 </footer>
 
@@ -338,7 +339,7 @@ exit
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

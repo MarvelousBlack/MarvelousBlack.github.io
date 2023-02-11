@@ -45,7 +45,7 @@
     "headline": "用hugo搭建一个博客",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2018-11-30",
     "description": "blog 刚刚建起来，那就记录一下建立的过程吧。",
@@ -60,7 +60,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -70,7 +69,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -131,12 +130,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -208,92 +207,92 @@
 <h2 id="0x02-开始创建并装饰你的网页">0x02 开始创建并装饰你的网页</h2>
 <h3 id="创建网页文件">创建网页文件</h3>
 <p>创建一个网页文件很简单只需要</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site （文件夹名称）
-</code></pre></div><p>然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site （文件夹名称）
+</span></span></code></pre></div><p>然后你就可以在当前的工作目录下找到一个你刚刚新建的文件夹。</p>
 <h3 id="安装主题">安装主题</h3>
 <p>hugo生成的默认目录是不带主题的，这挺适合我这种喜欢自己配置的。进入刚刚创建的目录，在<a href="https://themes.gohugo.io/">这里</a>选择一个你喜欢的主题。 <strong>注意：每个主题都是不一样的，请仔细阅读对应主题的 readme 文档</strong> 惠狐之书使用的是 hyde-Y 主题，<del>这个主题看起来有点像比特垃圾桶</del> , 所以下文将以这个主题为示例。<br>
 按照主题写的命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd your_site_repo/
-$ mkdir themes
-$ cd themes
-$ git clone https://github.com/enten/hyde-y
-</code></pre></div><p>这样就安装好主题了，但还没开始配置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cd your_site_repo/
+</span></span><span style="display:flex;"><span>$ mkdir themes
+</span></span><span style="display:flex;"><span>$ cd themes
+</span></span><span style="display:flex;"><span>$ git clone https://github.com/enten/hyde-y
+</span></span></code></pre></div><p>这样就安装好主题了，但还没开始配置</p>
 <h4 id="主配置文件">主配置文件</h4>
 <p>编辑 <code>config.toml</code> (如果没有则新建）按照下面的模板开始修改。</p>
 <pre tabindex="0"><code class="language-file" data-lang="file"># hostname (and path) to the root eg. http://spf13.com/
-baseurl = &quot;http://www.example.com&quot;
+baseurl = &#34;http://www.example.com&#34;
 
 # Site title
-title = &quot;sitename&quot;
+title = &#34;sitename&#34;
 
 # Copyright
-copyright = &quot;(c) 2015 yourname.&quot;
+copyright = &#34;(c) 2015 yourname.&#34;
 
 # Language
-languageCode = &quot;en-EN&quot;
+languageCode = &#34;en-EN&#34;
 
 # Metadata format
-# &quot;yaml&quot;, &quot;toml&quot;, &quot;json&quot;
-metaDataFormat = &quot;yaml&quot;
+# &#34;yaml&#34;, &#34;toml&#34;, &#34;json&#34;
+metaDataFormat = &#34;yaml&#34;
 
 # Theme to use (located in /themes/THEMENAME/)
-theme = &quot;hyde-y&quot;
+theme = &#34;hyde-y&#34;
 
 # Pagination
 paginate = 10
-paginatePath = &quot;page&quot;
+paginatePath = &#34;page&#34;
 
 # Enable Disqus integration
-disqusShortname = &quot;your_disqus_shortname&quot;
+disqusShortname = &#34;your_disqus_shortname&#34;
 
 [permalinks]
-    post = &quot;/:year/:month/:day/:slug/&quot;
-    code = &quot;/:slug/&quot;
+    post = &#34;/:year/:month/:day/:slug/&#34;
+    code = &#34;/:slug/&#34;
 
 [taxonomies]
-    tag = &quot;tags&quot;
-    topic = &quot;topics&quot;
+    tag = &#34;tags&#34;
+    topic = &#34;topics&#34;
 
 [author]
-    name = &quot;yourname&quot;
-    email = &quot;yourname@example.com&quot;
+    name = &#34;yourname&#34;
+    email = &#34;yourname@example.com&#34;
 
 #
 # All parameters below here are optional and can be mixed and matched.
 #
 [params]
     # You can use markdown here.
-    brand = &quot;foobar&quot;
-    topline = &quot;few words about your site&quot;
-    footline = &quot;code with &lt;i class='fa fa-heart'&gt;&lt;/i&gt;&quot;
+    brand = &#34;foobar&#34;
+    topline = &#34;few words about your site&#34;
+    footline = &#34;code with &lt;i class=&#39;fa fa-heart&#39;&gt;&lt;/i&gt;&#34;
 
     # Sidebar position
-    # false, true, &quot;left&quot;, &quot;right&quot;
-    sidebar = &quot;left&quot;
+    # false, true, &#34;left&#34;, &#34;right&#34;
+    sidebar = &#34;left&#34;
 
     # Text for the top menu link, which goes the root URL for the site.
-    # Default (if omitted) is &quot;Home&quot;.
-    home = &quot;home&quot;
+    # Default (if omitted) is &#34;Home&#34;.
+    home = &#34;home&#34;
 
     # Select a syntax highight for highlight.js
     # Check the static/css/highlight directory for options.
     # Leave unset to fall back to default hugo highlighter instead of highlight.js
-    highlight = &quot;default&quot;
+    highlight = &#34;default&#34;
 
     # Google Analytics.
-    googleAnalytics = &quot;Your Google Analytics tracking code&quot;
+    googleAnalytics = &#34;Your Google Analytics tracking code&#34;
 
     # Sidebar social links.
-    github = &quot;enten/hugo-boilerplate&quot; # Your Github profile ID
-    bitbucket = &quot;&quot; # Your Bitbucket profile ID
-    linkedin = &quot;&quot; # Your LinkedIn profile ID (from public URL)
-    googleplus = &quot;&quot; # Your Google+ profile ID
-    facebook = &quot;&quot; # Your Facebook profile ID
-    twitter = &quot;&quot; # Your Twitter profile ID
-    youtube = &quot;&quot;  # Your Youtube channel ID
-    flattr = &quot;&quot;  # populate with your flattr uid
-    flickr = &quot;&quot; # Your Flickr profile ID
-    vimeo = &quot;&quot; # Your Vimeo profile ID
+    github = &#34;enten/hugo-boilerplate&#34; # Your Github profile ID
+    bitbucket = &#34;&#34; # Your Bitbucket profile ID
+    linkedin = &#34;&#34; # Your LinkedIn profile ID (from public URL)
+    googleplus = &#34;&#34; # Your Google+ profile ID
+    facebook = &#34;&#34; # Your Facebook profile ID
+    twitter = &#34;&#34; # Your Twitter profile ID
+    youtube = &#34;&#34;  # Your Youtube channel ID
+    flattr = &#34;&#34;  # populate with your flattr uid
+    flickr = &#34;&#34; # Your Flickr profile ID
+    vimeo = &#34;&#34; # Your Vimeo profile ID
 
     # Sidebar RSS link: will only show up if there is a RSS feed
     # associated with the current page
@@ -307,28 +306,27 @@ disqusShortname = &quot;your_disqus_shortname&quot;
     plainIdAnchors = true
     extensions = []
     extensionmask = []
-
 </code></pre><p>上面都有注释就不解释了。接着是配置侧边栏。</p>
 <h4 id="侧边栏">侧边栏</h4>
 <p>创建<code>data/Menu.toml</code>这个文件，下面是示例（不需要删掉就好了</p>
 <pre tabindex="0"><code>[about]
-    Name = &quot;About&quot;
-    URL = &quot;/about&quot;
+    Name = &#34;About&#34;
+    URL = &#34;/about&#34;
 
 [posts]
-    Name = &quot;Posts&quot;
-    Title = &quot;Show list of posts&quot;
-    URL = &quot;/post&quot;
+    Name = &#34;Posts&#34;
+    Title = &#34;Show list of posts&#34;
+    URL = &#34;/post&#34;
 
 [tags]
-    Name = &quot;Tags&quot;
-    Title = &quot;Show list of tags&quot;
-    URL = &quot;/tags&quot;
+    Name = &#34;Tags&#34;
+    Title = &#34;Show list of tags&#34;
+    URL = &#34;/tags&#34;
 </code></pre><h4 id="页脚链接">页脚链接</h4>
 <p>创建<code>data/FootMenu.toml</code>不需要可以跳过这一步</p>
 <pre tabindex="0"><code>[license]
-    Name = &quot;license&quot;
-    URL = &quot;/license&quot;
+    Name = &#34;license&#34;
+    URL = &#34;/license&#34;
 </code></pre><h4 id="完整页面">完整页面</h4>
 <p>接着是创建刚刚侧边栏的 about 和页脚的 license 了。</p>
 <pre tabindex="0"><code>$hugo new about.md
@@ -338,13 +336,13 @@ $hugo new license.md
 <p>这个主题支持 favicon 只需要放入 <code>static/favicon.png</code> 和 <code>static/touch-icon-144-precomposed.png</code> 这两个文件就好了。</p>
 <h2 id="0x03-开始写作">0x03 开始写作</h2>
 <p>创建新的文章只需要使用</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new post/xxx.md
-</code></pre></div><p>这样就会自动创建一个新文件，接着你需要编辑<code>content/post/</code>下面刚刚创建的文件。开始愉快的写文章吧！<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo new post/xxx.md
+</span></span></code></pre></div><p>这样就会自动创建一个新文件，接着你需要编辑<code>content/post/</code>下面刚刚创建的文件。开始愉快的写文章吧！<br>
 你可能需要添加一些 tag 之类的，这个很简单只需要在文件一开始写成像下面这样：</p>
 <pre tabindex="0"><code class="language-file" data-lang="file">---
-title: &quot;用hugo搭建一个博客&quot;
+title: &#34;用hugo搭建一个博客&#34;
 date: 2018-11-30T20:24:52+08:00
-description: &quot;blog 刚刚建起来，那就记录一下建立的过程吧。&quot;
+description: &#34;blog 刚刚建起来，那就记录一下建立的过程吧。&#34;
 topics:
   - 新手教程
   - 杂乱的笔记
@@ -357,12 +355,12 @@ draft:  false
 <h2 id="0x04-预览和生成站点">0x04 预览和生成站点</h2>
 <h4 id="预览">预览</h4>
 <p>预览的话只需要</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo server -D
-</code></pre></div><p>这样就可以在自己的机器上预览文章的效果了</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo server -D
+</span></span></code></pre></div><p>这样就可以在自己的机器上预览文章的效果了</p>
 <h4 id="生成">生成</h4>
 <p>生成的话命令就更简单了</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo
-</code></pre></div><p>最后生成的文件在 <code>public/</code> 下面。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ hugo
+</span></span></code></pre></div><p>最后生成的文件在 <code>public/</code> 下面。</p>
 <h2 id="0x05-发布最后一步">0x05 发布（最后一步）</h2>
 <p>发布的话你只需要把，这一个 <code>public</code> 文件夹里面的内容全部复制到你空间对应的地方就好了。</p>
 <h2 id="0x06-剩下的事情">0x06 剩下的事情</h2>
@@ -394,7 +392,8 @@ draft:  false
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -414,6 +413,7 @@ draft:  false
 
 
 </div>
+
 
 </footer>
 
@@ -443,7 +443,7 @@ draft:  false
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

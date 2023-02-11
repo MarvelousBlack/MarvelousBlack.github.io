@@ -43,7 +43,7 @@
     "headline": "I3wm 配置(僞)",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2019-08-07",
     "description": "emmm，不就是個複製粘貼的事情嗎？",
@@ -58,7 +58,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -68,7 +67,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -129,12 +128,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -209,9 +208,8 @@ exec --no-startup-id xss-lock -- i3lock -n -t --ignore-empty-password --no-unloc
 <pre tabindex="0"><code>set $mod Mod4
 </code></pre><p>下面是設置截圖使用 import 這個工具和 scrot 來截圖，快捷鍵是 Print 和 <code>$mod+Print</code></p>
 <pre tabindex="0"><code># Take a screenshot upon pressing $mod+print (select an area)
-bindsym --release Print exec --no-startup-id &quot;import /home/marvelous/latest-screenshot.png &amp;&amp; xclip -selection clipoard -t 'image/png' /home/marvelous/latest-screenshot.png&quot;
+bindsym --release Print exec --no-startup-id &#34;import /home/marvelous/latest-screenshot.png &amp;&amp; xclip -selection clipoard -t &#39;image/png&#39; /home/marvelous/latest-screenshot.png&#34;
 bindsym $mod+Print exec scrot
-
 </code></pre><p>設置窗口邊框字體</p>
 <pre tabindex="0"><code>font pango:Droid Sans Mono 7.3
 </code></pre><p>下面就是綁定鍵打開對應的程序了，就不一一寫出來了</p>
@@ -223,7 +221,7 @@ bindsym $mod+t exec thunar
 </code></pre><p>設置按住 mod 鍵可以拖動窗口移動和改變大小</p>
 <pre tabindex="0"><code>floating_modifier $mod
 </code></pre><p>使用 <code>$mod+d</code> 呼出應用啓動發射器（咱用的是 j4 ）</p>
-<pre tabindex="0"><code>bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu=&quot;dmenu -i -fn 'Droid Sans Mono-9'&quot; --term=&quot;xfce4-terminal&quot; --display-binary
+<pre tabindex="0"><code>bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu=&#34;dmenu -i -fn &#39;Droid Sans Mono-9&#39;&#34; --term=&#34;xfce4-terminal&#34; --display-binary
 </code></pre><p>接着就是改變窗口的焦點和移動窗口用的</p>
 <pre tabindex="0"><code># change focus
 bindsym $mod+h focus left
@@ -280,10 +278,10 @@ bindsym $mod+o border 1pixel
 bindsym $mod+b border toggle
 </code></pre><p>修改 workspace 名稱，並綁定到對應的顯示器（咱這裏寫死了，汝需要根據汝的需要更改）</p>
 <pre tabindex="0"><code># Workspace names
-workspace &quot;11&quot; output DP-1
-workspace &quot;12&quot; output DP-1
-workspace &quot;13&quot; output DP-1
-workspace &quot;1&quot; output eDP-1-1
+workspace &#34;11&#34; output DP-1
+workspace &#34;12&#34; output DP-1
+workspace &#34;13&#34; output DP-1
+workspace &#34;1&#34; output eDP-1-1
 </code></pre><p>切換 workspace</p>
 <pre tabindex="0"><code># switch to near workspace
 bindsym $mod+Tab workspace next
@@ -331,13 +329,12 @@ bindsym $mod+Shift+F7 move container to workspace 17
 bindsym $mod+Shift+F8 move container to workspace 18
 bindsym $mod+Shift+F9 move container to workspace 19
 bindsym $mod+Shift+F10 move container to workspace 20
-
 </code></pre><p>設置重新載入配置和i3用的按鍵</p>
 <pre tabindex="0"><code>bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 </code></pre><p>改變窗口大小</p>
 <pre tabindex="0"><code># resize window (you can also use the mouse for that)
-mode &quot;resize&quot; {
+mode &#34;resize&#34; {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -356,10 +353,10 @@ mode &quot;resize&quot; {
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
-        bindsym Return mode &quot;default&quot;
-        bindsym Escape mode &quot;default&quot;
+        bindsym Return mode &#34;default&#34;
+        bindsym Escape mode &#34;default&#34;
 }
-bindsym $mod+r mode &quot;resize&quot;u
+bindsym $mod+r mode &#34;resize&#34;u
 </code></pre><p>設置是否顯示 i3bar</p>
 <pre tabindex="0"><code>
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -402,20 +399,20 @@ client.placeholder      #a2b4ba  #0c0c0c  #ffffff  #1793d0   #0c0c0c
 client.background       #82abba
 </code></pre><p>設置彈出和讓部分軟體在啓動的時候就是懸浮狀態</p>
 <pre tabindex="0"><code># popups
-for_window [window_role=&quot;pop-up&quot;] floating enable
-for_window [window_role=&quot;task_dialog&quot;] floating enable
+for_window [window_role=&#34;pop-up&#34;] floating enable
+for_window [window_role=&#34;task_dialog&#34;] floating enable
 
-# float programs(find the programs'names in &quot;/usr/share/applictions&quot;)
-for_window [class=&quot;Gpicview&quot;] floating enable
-for_window [class=&quot;mpv&quot;] floating enable
-for_window [class=&quot;Gimp&quot;] floating enable
-for_window [class=&quot;Xarchiver&quot;] floating enable
-for_window [class=&quot;Genymotion&quot;] floating enable
-for_window [class=&quot;VirtualBox&quot;] floating enable
-for_window [class=&quot;shadowsocks-qt5&quot;] floating enable
-for_window [class=&quot;netease-cloud-music&quot;] floating enable
+# float programs(find the programs&#39;names in &#34;/usr/share/applictions&#34;)
+for_window [class=&#34;Gpicview&#34;] floating enable
+for_window [class=&#34;mpv&#34;] floating enable
+for_window [class=&#34;Gimp&#34;] floating enable
+for_window [class=&#34;Xarchiver&#34;] floating enable
+for_window [class=&#34;Genymotion&#34;] floating enable
+for_window [class=&#34;VirtualBox&#34;] floating enable
+for_window [class=&#34;shadowsocks-qt5&#34;] floating enable
+for_window [class=&#34;netease-cloud-music&#34;] floating enable
 </code></pre><p>固定部分軟體出現的容器</p>
-<pre tabindex="0"><code>assign [class=&quot;VirtualBox&quot;] 10
+<pre tabindex="0"><code>assign [class=&#34;VirtualBox&#34;] 10
 </code></pre><p>音量控制</p>
 <pre tabindex="0"><code>#===volume control===
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer  set Master 5%+ unmute
@@ -431,16 +428,16 @@ bindsym XF86MonBrightnessDown exec xbacklight -10
 </code></pre><p>電源開關機按鈕</p>
 <pre tabindex="0"><code>#===power manager===
 set $mode_system select: lock(L) exit(E) reboot(R) poweroff(O) suspend(S) hybrid-sleep(Y) hibernate(H) cancel(Esc)
-bindsym $mod+Shift+e mode &quot;$mode_system&quot;
-mode &quot;$mode_system&quot; {
-    bindsym l exec --no-startup-id i3lock -n -t --ignore-empty-password --no-unlock-indicator  -i background.png  , mode &quot;default&quot;
-   bindsym e exec --no-startup-id i3-msg exit, mode &quot;default&quot;
-   bindsym s exec --no-startup-id systemctl suspend, mode &quot;default&quot;
-   bindsym y exec --no-startup-id systemctl hybrid-sleep, mode &quot;default&quot;
-   bindsym h exec --no-startup-id systemctl hibernate, mode &quot;default&quot;
-   bindsym r exec --no-startup-id systemctl reboot, mode &quot;default&quot;
-   bindsym o exec --no-startup-id systemctl poweroff, mode &quot;default&quot;
-    bindsym Escape mode &quot;default&quot;
+bindsym $mod+Shift+e mode &#34;$mode_system&#34;
+mode &#34;$mode_system&#34; {
+    bindsym l exec --no-startup-id i3lock -n -t --ignore-empty-password --no-unlock-indicator  -i background.png  , mode &#34;default&#34;
+   bindsym e exec --no-startup-id i3-msg exit, mode &#34;default&#34;
+   bindsym s exec --no-startup-id systemctl suspend, mode &#34;default&#34;
+   bindsym y exec --no-startup-id systemctl hybrid-sleep, mode &#34;default&#34;
+   bindsym h exec --no-startup-id systemctl hibernate, mode &#34;default&#34;
+   bindsym r exec --no-startup-id systemctl reboot, mode &#34;default&#34;
+   bindsym o exec --no-startup-id systemctl poweroff, mode &#34;default&#34;
+    bindsym Escape mode &#34;default&#34;
 }
 </code></pre><p>大概隨便的寫解釋了一下，說是美化整個文件看下來，汝可以動的只有顏色是否有窗邊框等等，沒有多少是可以變動的。咱並不在乎是不是好看，好用就可以了，所以就這樣隨便的用着了。</p>
 
@@ -470,7 +467,8 @@ mode &quot;$mode_system&quot; {
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -490,6 +488,7 @@ mode &quot;$mode_system&quot; {
 
 
 </div>
+
 
 </footer>
 
@@ -519,7 +518,7 @@ mode &quot;$mode_system&quot; {
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

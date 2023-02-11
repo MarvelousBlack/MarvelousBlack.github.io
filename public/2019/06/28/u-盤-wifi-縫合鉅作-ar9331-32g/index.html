@@ -45,7 +45,7 @@
     "headline": "U 盤 wifi 縫合鉅作 AR9331 32G",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2019-06-28",
     "description": "說是 U 盤和 wifi 的縫合鉅作，實際上就是個十分便宜，從x寶淘回來的辣雞。",
@@ -60,7 +60,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -70,7 +69,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -131,12 +130,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -222,24 +221,24 @@ U盤嘛，容量是正常的,但這個盤到手的時候是空的，就是連分
 <h1 id="0x06-探索">0x06 探索</h1>
 <p>前面提到了十分好奇他是怎麼工作的，於是摸索了一下。前文提到了這個可以想起和品勝可能是同一個方案，於是直接 telnet 進去。從裙友處搞來登錄用戶和密碼。用戶爲 <code>root</code> 密碼 <code>buzhidao</code> 。 對，沒錯密碼就是不知道。汝密碼是啥？不知道。什麼不知道？我說密碼就是不知道的拼音。= =<br>
 之後咱們就可以看見</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">BusyBox v1.19.3 <span style="color:#f92672">(</span>2013-07-26 14:33:40 CST<span style="color:#f92672">)</span> built-in shell <span style="color:#f92672">(</span>ash<span style="color:#f92672">)</span>
-Enter <span style="color:#e6db74">&#39;help&#39;</span> <span style="color:#66d9ef">for</span> a list of built-in commands.
-
-  _______                     ________        __
- |       |.-----.-----.-----.|  |  |  |.----.|  |_
- |   -   <span style="color:#f92672">||</span>  _  |  -__|     <span style="color:#f92672">||</span>  |  |  <span style="color:#f92672">||</span>   _<span style="color:#f92672">||</span>   _|
- |_______<span style="color:#f92672">||</span>   __|_____|__|__<span style="color:#f92672">||</span>________<span style="color:#f92672">||</span>__|  |____|
-          |__| W I R E L E S S   F R E E D O M
- ATTITUDE ADJUSTMENT <span style="color:#f92672">(</span>bleeding edge, r93<span style="color:#f92672">)</span> ----------
-  * 1/4 oz Vodka      Pour all ingredients into mixing
-  * 1/4 oz Gin        tin with ice, strain into glass.
-  * 1/4 oz Amaretto
-  * 1/4 oz Triple sec
-  * 1/4 oz Peach schnapps
-  * 1/4 oz Sour mix
-  * <span style="color:#ae81ff">1</span> splash Cranberry juice
- -----------------------------------------------------
-</code></pre></div><p>上古 openwrt 的提示，摸索了一下發現和品勝那個差不多，燈和 reset 是一樣的，直接刷品勝的固件好了。貼一下 dmesg 吧。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>BusyBox v1.19.3 <span style="color:#f92672">(</span>2013-07-26 14:33:40 CST<span style="color:#f92672">)</span> built-in shell <span style="color:#f92672">(</span>ash<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Enter <span style="color:#e6db74">&#39;help&#39;</span> <span style="color:#66d9ef">for</span> a list of built-in commands.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  _______                     ________        __
+</span></span><span style="display:flex;"><span> |       |.-----.-----.-----.|  |  |  |.----.|  |_
+</span></span><span style="display:flex;"><span> |   -   <span style="color:#f92672">||</span>  _  |  -__|     <span style="color:#f92672">||</span>  |  |  <span style="color:#f92672">||</span>   _<span style="color:#f92672">||</span>   _|
+</span></span><span style="display:flex;"><span> |_______<span style="color:#f92672">||</span>   __|_____|__|__<span style="color:#f92672">||</span>________<span style="color:#f92672">||</span>__|  |____|
+</span></span><span style="display:flex;"><span>          |__| W I R E L E S S   F R E E D O M
+</span></span><span style="display:flex;"><span> ATTITUDE ADJUSTMENT <span style="color:#f92672">(</span>bleeding edge, r93<span style="color:#f92672">)</span> ----------
+</span></span><span style="display:flex;"><span>  * 1/4 oz Vodka      Pour all ingredients into mixing
+</span></span><span style="display:flex;"><span>  * 1/4 oz Gin        tin with ice, strain into glass.
+</span></span><span style="display:flex;"><span>  * 1/4 oz Amaretto
+</span></span><span style="display:flex;"><span>  * 1/4 oz Triple sec
+</span></span><span style="display:flex;"><span>  * 1/4 oz Peach schnapps
+</span></span><span style="display:flex;"><span>  * 1/4 oz Sour mix
+</span></span><span style="display:flex;"><span>  * <span style="color:#ae81ff">1</span> splash Cranberry juice
+</span></span><span style="display:flex;"><span> -----------------------------------------------------
+</span></span></code></pre></div><p>上古 openwrt 的提示，摸索了一下發現和品勝那個差不多，燈和 reset 是一樣的，直接刷品勝的固件好了。貼一下 dmesg 吧。<br>
 <a href="https://fars.ee/QVMv">插電腦 dmesg</a> <a href="https://fars.ee/qmsT">不插電腦 dmesg</a><br>
 沒區別，其實也就是有沒有掛盤的區別和<code>wifi_udisk_timer 22status</code> 後面的數字不同，但咱不懂是啥。先順手刷個 breed 進去和備份一下，直接 dd 到 u 盤就好了， breed 直接 mtd write 就好了。然後從 U 盤把備份等拉回電腦。恩，不是提到了他是插電腦 ar9331 是找不到設備的嗎？這個做法很簡單，用一個 USB switch 來選通就好了，仔細找找可以發現一個 7227 的芯片，這個就是 USB switch 。接着就是判斷和選擇誰鏈接了。這就解釋了之前提出的問題，怎麼一起讀盤？ 選擇就好了，此時只有一個設備可以讀盤也就解決了這個問題，不會同時存在兩個 host 同時讀盤。在這個過程中咱找到了另一個設備，也是類似的東西，一個叫 <a href="https://openwrt.org/toh/zsun/wifi-card-reader">Zsun wifi card reader</a> 的東西，也是有個讀卡器和一個 USB 選通，於是咱猜是相同的做法。接着爲了找到這塊板子上的 gpio 口，咱編譯了一個品勝的刷了（直接 sysupgrade ）進去。emmm，很快咱們就知道了<code>GPIO20</code>判斷是不是插了電腦，沒插爲0,插了爲1。接着<code>GPIO22</code>控制選通芯片，讀卡器連電腦爲0,連 ar9331 的時候爲1。默認的時候是連電腦的。這個也同時解釋了，爲什麼插到電腦上一開始會提示設備鏈接，設備斷開，來回一次的情況了。恩，目前大概就做到這裏。下面是下面是刷入後的截圖：<br>
 <img src="/public/pic/ar9331-32g5.png" alt="ar9331-32G5"></p>
@@ -272,7 +271,8 @@ Enter <span style="color:#e6db74">&#39;help&#39;</span> <span style="color:#66d9
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -292,6 +292,7 @@ Enter <span style="color:#e6db74">&#39;help&#39;</span> <span style="color:#66d9
 
 
 </div>
+
 
 </footer>
 
@@ -321,7 +322,7 @@ Enter <span style="color:#e6db74">&#39;help&#39;</span> <span style="color:#66d9
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

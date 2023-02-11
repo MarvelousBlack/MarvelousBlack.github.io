@@ -43,7 +43,7 @@
     "headline": "让我康康电脑版网页",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2019-06-04",
     "description": "最近交网费的时候遇到一个神奇的现象，无论咱怎么开都显示手机页面，于是寻找了一下原因接着就写一下。",
@@ -58,7 +58,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -68,7 +67,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -129,12 +128,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -198,16 +197,16 @@
 <pre tabindex="0"><code>//手机页面自动跳转手机版收费平台
 function mobile_device_detect(url) {
 	var thisOS = navigator.platform;
-	var os = new Array(&quot;iPhone&quot;, &quot;iPod&quot;, &quot;iPad&quot;, &quot;android&quot;, &quot;Nokia&quot;,
-			&quot;SymbianOS&quot;, &quot;Symbian&quot;, &quot;Windows Phone&quot;, &quot;Phone&quot;, &quot;Linux armv71&quot;,
-			&quot;MAUI&quot;, &quot;UNTRUSTED/1.0&quot;, &quot;Windows CE&quot;, &quot;BlackBerry&quot;, &quot;IEMobile&quot;);
+	var os = new Array(&#34;iPhone&#34;, &#34;iPod&#34;, &#34;iPad&#34;, &#34;android&#34;, &#34;Nokia&#34;,
+			&#34;SymbianOS&#34;, &#34;Symbian&#34;, &#34;Windows Phone&#34;, &#34;Phone&#34;, &#34;Linux armv71&#34;,
+			&#34;MAUI&#34;, &#34;UNTRUSTED/1.0&#34;, &#34;Windows CE&#34;, &#34;BlackBerry&#34;, &#34;IEMobile&#34;);
 	for (var i = 0; i &lt; os.length; i++) {
 		if (thisOS.match(os[i])) {
 			window.location = url;
 		}
 	}
 	// 因为相当部分的手机系统不知道信息,这里是做临时性特殊辨认
-	if (navigator.platform.indexOf('iPad') != -1) {
+	if (navigator.platform.indexOf(&#39;iPad&#39;) != -1) {
 		window.location = url;
 	}
 	// 做这一部分是因为Android手机的内核也是Linux
@@ -250,8 +249,8 @@ function mobile_device_detect(url) {
 // ==/UserScript==
 
 (function() {
-    'use strict';
-    Object.defineProperty(navigator, 'appVersion', {get: function(){ return '5.0 Linux' }})
+    &#39;use strict&#39;;
+    Object.defineProperty(navigator, &#39;appVersion&#39;, {get: function(){ return &#39;5.0 Linux&#39; }})
 })();
 </code></pre><p>就是在一開始執行 Object.defineProperty 來修改 navigator.appVersion 的返回值來使得上面的判斷匹配不到 X11 關鍵字，於是就不跳轉手機頁面了。加入<code>// @run-at       document-start</code>可以讓腳本儘可能早的加載，使問題解決。最後再一次感謝依雲。</p>
 
@@ -281,7 +280,8 @@ function mobile_device_detect(url) {
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -301,6 +301,7 @@ function mobile_device_detect(url) {
 
 
 </div>
+
 
 </footer>
 
@@ -330,7 +331,7 @@ function mobile_device_detect(url) {
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

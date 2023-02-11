@@ -47,7 +47,7 @@
     "headline": "寨板折腾笔记",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2019-01-17",
     "description": "嘛，好久没更新了，今天就来水一篇。顺便把上次说的坑填一下。",
@@ -62,7 +62,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,7 +71,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -133,12 +132,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -228,12 +227,12 @@
 <p>编辑<code>/etc/locale.conf</code> 加入<code>LANG=en_US.UTF-8</code>就 ok 了</p>
 <h4 id="安装并设置输入法环境变量">安装并设置输入法环境变量</h4>
 <p>安装输入法，</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># pacman -Syu fcitx-im</span>
-</code></pre></div><p>咱准备用SDDM 所以修改<code>～/.xprofile</code>加入如下三行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export GTK_IM_MODULE<span style="color:#f92672">=</span>fcitx
-export QT_IM_MODULE<span style="color:#f92672">=</span>fcitx
-export XMODIFIERS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@im=fcitx&#34;</span>
-</code></pre></div><h1 id="0x02-对平板的处理">0x02 对平板的处理</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># pacman -Syu fcitx-im</span>
+</span></span></code></pre></div><p>咱准备用SDDM 所以修改<code>～/.xprofile</code>加入如下三行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export GTK_IM_MODULE<span style="color:#f92672">=</span>fcitx
+</span></span><span style="display:flex;"><span>export QT_IM_MODULE<span style="color:#f92672">=</span>fcitx
+</span></span><span style="display:flex;"><span>export XMODIFIERS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@im=fcitx&#34;</span>
+</span></span></code></pre></div><h1 id="0x02-对平板的处理">0x02 对平板的处理</h1>
 <p>按照上面的操作装是装好了，但这可是一块平板啊。咱要用触屏，屏幕旋转。于是为了体验咱装上了 kde(
 <del>咱才不告诉你，我在平板上装上了i3wm，并且日用呢</del></p>
 <h2 id="1-虚拟键盘">1) 虚拟键盘</h2>
@@ -242,63 +241,63 @@ export XMODIFIERS<span style="color:#f92672">=</span><span style="color:#e6db74"
 <p>我用了 SDDM ，所以这部分的虚拟键盘我用了 <code>extra/qt5-virtualkeyboard</code> 。先安装 qt5-virtualkeyboard，然后我们修改 <code>/etc/sddm.conf</code>这个配置文件。在<code>[General]</code>下面加入</p>
 <pre tabindex="0"><code>InputMethod=qtvirtualkeyboard
 </code></pre><p>改完之后大概是这样的</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /etc/sddm.conf
-<span style="color:#f92672">[</span>Autologin<span style="color:#f92672">]</span>
-Relogin<span style="color:#f92672">=</span>false
-Session<span style="color:#f92672">=</span>
-User<span style="color:#f92672">=</span>
-
-<span style="color:#f92672">[</span>General<span style="color:#f92672">]</span>
-HaltCommand<span style="color:#f92672">=</span>/usr/bin/systemctl poweroff
-RebootCommand<span style="color:#f92672">=</span>/usr/bin/systemctl reboot
-InputMethod<span style="color:#f92672">=</span>qtvirtualkeyboard
-
-<span style="color:#f92672">[</span>Theme<span style="color:#f92672">]</span>
-Current<span style="color:#f92672">=</span>breeze
-CursorTheme<span style="color:#f92672">=</span>Adwaita
-
-<span style="color:#f92672">[</span>Users<span style="color:#f92672">]</span>
-MaximumUid<span style="color:#f92672">=</span><span style="color:#ae81ff">60000</span>
-MinimumUid<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>
-</code></pre></div><h4 id="日常部分">日常部分</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /etc/sddm.conf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Autologin<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Relogin<span style="color:#f92672">=</span>false
+</span></span><span style="display:flex;"><span>Session<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>User<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>General<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>HaltCommand<span style="color:#f92672">=</span>/usr/bin/systemctl poweroff
+</span></span><span style="display:flex;"><span>RebootCommand<span style="color:#f92672">=</span>/usr/bin/systemctl reboot
+</span></span><span style="display:flex;"><span>InputMethod<span style="color:#f92672">=</span>qtvirtualkeyboard
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Theme<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>Current<span style="color:#f92672">=</span>breeze
+</span></span><span style="display:flex;"><span>CursorTheme<span style="color:#f92672">=</span>Adwaita
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Users<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>MaximumUid<span style="color:#f92672">=</span><span style="color:#ae81ff">60000</span>
+</span></span><span style="display:flex;"><span>MinimumUid<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>
+</span></span></code></pre></div><h4 id="日常部分">日常部分</h4>
 <p>嘛，上面提到了 qtvirtualkeyboard 这个这么好用的虚拟键盘，为什么我们登录之后就不用了呢？那是因为他是个输入法，我们不能用 fcitx 了，我需要 fcitx 来输入中文。于是我们在这里使用 <code>community/onboard</code>。装好之后启动就是了，开箱即用。</p>
 <h2 id="2屏幕旋转">2）屏幕旋转</h2>
 <p>咱说了为了方便使用 kde 那么屏幕旋转咱们也要用配套的。安装 <code>iio-sensor-proxy-git</code> and <code>kded-rotation-git</code>，然后注销就好了。这两个包在 archlinuxcn 的仓库可以找到，兔兔已经帮咱们打好了，咱们就不需要从 aur 编译安装了。装好之后好像有什么不对劲的地方啊，是的，方向不对。这时候咱们需要补底裤了，为什么要补底裤？因为汝已经把她卖掉了（梗来自于systemd）。 咱们需要创建 <code>/etc/udev/hwdb.d/61-sensor-local.hwdb</code>并且按照格式填入对应的内容。下面是咱板子的：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /etc/udev/hwdb.d/61-sensor-local.hwdb
-sensor:modalias:acpi:KIOX000A*:dmi:*:svnTECLAST:pnDefaultstring:*
- ACCEL_MOUNT_MATRIX<span style="color:#f92672">=</span>0, 1, 0; 1, 0, 0; 0, 0, <span style="color:#ae81ff">1</span>
-</code></pre></div><p>然后执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemd-hwdb update
-udevadm trigger -v -p DEVNAME<span style="color:#f92672">=</span>/dev/iio:deviceXXX
-</code></pre></div><p>ok，方向正常了。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /etc/udev/hwdb.d/61-sensor-local.hwdb
+</span></span><span style="display:flex;"><span>sensor:modalias:acpi:KIOX000A*:dmi:*:svnTECLAST:pnDefaultstring:*
+</span></span><span style="display:flex;"><span> ACCEL_MOUNT_MATRIX<span style="color:#f92672">=</span>0, 1, 0; 1, 0, 0; 0, 0, <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>然后执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>systemd-hwdb update
+</span></span><span style="display:flex;"><span>udevadm trigger -v -p DEVNAME<span style="color:#f92672">=</span>/dev/iio:deviceXXX
+</span></span></code></pre></div><p>ok，方向正常了。<br>
 如果是其他的设备呢？如果底裤自带的 <code>60-sensor-local.hwdb</code> 文件有就不需要了，而且理论上已经是正常的了。咱当时就是没有这个匹配上的。根据 systemd 给出的方法，查看对应的字符串</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /sys/class/dmi/id/modalias
-dmi:bvn:bvrH5C5_A1:bd01/28/2016:svnTECLAST:pnDefaultstring:pvrDefaultstring:rvnAMICorporation:rnCherryTrailCR:rvrDefaultstring:cvnDefaultstring:ct3:cvrDefaultstring:
-<span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /sys/<span style="color:#e6db74">`</span>udevadm info -q path -n /dev/iio:device0<span style="color:#e6db74">`</span>/../modalias
-acpi:KIOX000A:KIOX000A:
-</code></pre></div><p>对就是 这两条</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /sys/class/dmi/id/modalias
-cat /sys/<span style="color:#e6db74">`</span>udevadm info -q path -n /dev/iio:device0<span style="color:#e6db74">`</span>/../modalias
-</code></pre></div><p>然后参考 <a href="https://github.com/systemd/systemd/blob/master/hwdb/60-sensor.hwdb">60-sensor-local.hwdb</a>，新增内容写就好了，可以对比我给出来那个文件和相应的字符串，照葫芦画瓢就好了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /sys/class/dmi/id/modalias
+</span></span><span style="display:flex;"><span>dmi:bvn:bvrH5C5_A1:bd01/28/2016:svnTECLAST:pnDefaultstring:pvrDefaultstring:rvnAMICorporation:rnCherryTrailCR:rvrDefaultstring:cvnDefaultstring:ct3:cvrDefaultstring:
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Horo-SSH  ~<span style="color:#f92672">]</span>$ cat /sys/<span style="color:#e6db74">`</span>udevadm info -q path -n /dev/iio:device0<span style="color:#e6db74">`</span>/../modalias
+</span></span><span style="display:flex;"><span>acpi:KIOX000A:KIOX000A:
+</span></span></code></pre></div><p>对就是 这两条</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /sys/class/dmi/id/modalias
+</span></span><span style="display:flex;"><span>cat /sys/<span style="color:#e6db74">`</span>udevadm info -q path -n /dev/iio:device0<span style="color:#e6db74">`</span>/../modalias
+</span></span></code></pre></div><p>然后参考 <a href="https://github.com/systemd/systemd/blob/master/hwdb/60-sensor.hwdb">60-sensor-local.hwdb</a>，新增内容写就好了，可以对比我给出来那个文件和相应的字符串，照葫芦画瓢就好了。</p>
 <h2 id="3画面撕裂解决不了">3）画面撕裂（解决不了）</h2>
 <p>用 modesetting 驱动在内屏（就是平板的那个屏幕）会看起来有很明显的撕裂,相比之下 intel 的那个看起来好点，所以这里我们使用<code>xf86-video-intel</code>，虽然这个驱动不在被推荐，但这寨板的显卡似乎挺旧的所以也只能用它了。安装 <code>xf86-video-intel</code>，然后修改 <code>/etc/X11/xorg.conf</code> 写入如下内容</p>
-<pre tabindex="0"><code>Section &quot;Device&quot;
-	Identifier &quot;intel&quot;
-	Driver &quot;intel&quot;
-	BusID &quot;PCI:0:2:0&quot;
-	Option &quot;AccelMethod&quot; &quot;sna&quot;
-	Option &quot;TearFree&quot; &quot;True&quot;
-	Option &quot;Tiling&quot; &quot;True&quot;
-	Option &quot;DRI&quot; &quot;3&quot;
+<pre tabindex="0"><code>Section &#34;Device&#34;
+	Identifier &#34;intel&#34;
+	Driver &#34;intel&#34;
+	BusID &#34;PCI:0:2:0&#34;
+	Option &#34;AccelMethod&#34; &#34;sna&#34;
+	Option &#34;TearFree&#34; &#34;True&#34;
+	Option &#34;Tiling&#34; &#34;True&#34;
+	Option &#34;DRI&#34; &#34;3&#34;
 EndSection
 </code></pre><p>画面撕裂的问题会得到缓解。<br>
 <strong>更新：在内屏和外屏的情况下画面都是会出现撕裂。这个问题咱问了一下其他人，好像 atom 用的显卡都是这样的，所以如何取舍就看汝了。而且这样设置在咱使用外屏的输出时，会看见鼠标光标消失的问题，并且伴随绘图不正常。使用 modesetting 也会遇到这个问题。而上面的配置中把 DRI 设置2可以解决这个问题，但撕裂始终存在，而且拖动窗口会出现卡顿。</strong></p>
 <h2 id="4视频硬解加速">4）视频硬解加速</h2>
 <p>z8300 cpu性能本身并不是很强，而且视频播放没硬解的话，会很耗电的，于是咱们需要硬解。  安装<code>libva-intel-driver</code>然后在<code>~/.xprofile</code>中加入</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export LIBVA_DRIVER_NAME<span style="color:#f92672">=</span>i965
-export LIBVA_DRIVERS_PATH<span style="color:#f92672">=</span>/usr/lib/dri/
-export VDPAU_DRIVER<span style="color:#f92672">=</span>va_gl
-</code></pre></div><p>并推荐安装<code>archlinuxcn/chromium-vaapi</code>，可以在使用 chromium 看b站的视频的时候，可以直接使用硬解。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export LIBVA_DRIVER_NAME<span style="color:#f92672">=</span>i965
+</span></span><span style="display:flex;"><span>export LIBVA_DRIVERS_PATH<span style="color:#f92672">=</span>/usr/lib/dri/
+</span></span><span style="display:flex;"><span>export VDPAU_DRIVER<span style="color:#f92672">=</span>va_gl
+</span></span></code></pre></div><p>并推荐安装<code>archlinuxcn/chromium-vaapi</code>，可以在使用 chromium 看b站的视频的时候，可以直接使用硬解。</p>
 <h1 id="0x03-插曲">0x03 插曲</h1>
 <p>汝看上面的描述其实也没什么，很快就可以搞定了。但由于寨板还是寨板由于做工设计等问题，咱在使用的过程中啊，平板唯一的usb口上有一个黑色的小东西击穿了。也就是说，这块平板不能充电和使用otg了！！！如图：</p>
 <p><img src="/public/pic/things-about-x80plus-1.jpg" alt="pic1"></p>
@@ -337,7 +336,8 @@ export VDPAU_DRIVER<span style="color:#f92672">=</span>va_gl
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -357,6 +357,7 @@ export VDPAU_DRIVER<span style="color:#f92672">=</span>va_gl
 
 
 </div>
+
 
 </footer>
 
@@ -386,7 +387,7 @@ export VDPAU_DRIVER<span style="color:#f92672">=</span>va_gl
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

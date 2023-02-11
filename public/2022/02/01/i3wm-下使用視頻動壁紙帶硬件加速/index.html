@@ -47,7 +47,7 @@
     "headline": "i3wm 下使用視頻動壁紙（帶硬件加速）",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2022-02-01",
     "description": "無聊的時候整了一下視頻動他壁紙。那是真的無聊，畢竟我也不喜歡這種花哨的東西，雖然說資源就是拿來浪費的（x",
@@ -62,7 +62,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,7 +71,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -133,12 +132,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -208,7 +207,7 @@
 舉個例子：<br>
 我的屏幕大小是 3440 x 1440 ，使用 <a href="https://www.youtube.com/watch?v=n9w_hZkbfoo">這個視頻</a> 作爲動態壁紙<br>
 命令如下:（參數就看你需求改就是了這裏只是演示一下）</p>
-<pre tabindex="0"><code>xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &quot;https://www.youtube.com/watch?v=n9w_hZkbfoo&quot;
+<pre tabindex="0"><code>xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no --script-opts=ytdl_hook-ytdl_path=yt-dlp &#34;https://www.youtube.com/watch?v=n9w_hZkbfoo&#34;
 </code></pre><p>（注：因爲 youtube-dl 下載太慢這裏使用 youtube-dl 的一個 fork <code>yt-dlp</code>[2]）<br>
 如果你是要播放本地視頻，那麼改爲：</p>
 <pre tabindex="0"><code>xwinwrap -g 3440x1440 -ni -s -nf -b -un -ov -fdt -argb -- mpv -wid WID --ao=null --loop=inf --stop-screensaver=no $VIDEO_PATH
@@ -244,7 +243,8 @@
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -264,6 +264,7 @@
 
 
 </div>
+
 
 </footer>
 
@@ -293,7 +294,7 @@
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

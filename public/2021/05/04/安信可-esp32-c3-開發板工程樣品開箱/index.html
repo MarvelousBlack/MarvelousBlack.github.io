@@ -47,7 +47,7 @@
     "headline": "安信可 ESP32-C3 開發板工程樣品開箱",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2021-05-04",
     "description": "淘寶上搜了一下發現有就下單了，等了十幾天終於到手了。",
@@ -62,7 +62,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,7 +71,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -133,12 +132,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -272,7 +271,7 @@ Restarting in 9 seconds...
 Restarting in 8 seconds...
 </code></pre><p>這個是 idf4.3 編譯之後的輸出。當時還試了一下藍牙發現缺少頭文件，於是就算了。<br>
 過了幾天之後咱找到個風水好一點的地方把 SDK 更新了一下。然後直接燒進去，然後可以看見</p>
-<pre tabindex="0"><code>E (38) boot_comm: This chip is revision 2 but the application is configured for minimum revision 3. Can't run.
+<pre tabindex="0"><code>E (38) boot_comm: This chip is revision 2 but the application is configured for minimum revision 3. Can&#39;t run.
 </code></pre><p>對的，咱買的是工程樣品，芯片的版本是2,這裏要改一下編譯設置。在 menuconfig ，找到 component config 然後進入 ESP32C3 specific 把 minimal version 改成2 就好了。</p>
 <p>下面是 hello_world 例程的輸出：</p>
 <pre tabindex="0"><code>�ESP-ROM:esp32c3-20200918
@@ -410,7 +409,7 @@ I (2455) BLE_ADV_SCAN: Event opcode 0x06 success.
 I (2455) BLE_ADV_SCAN: BLE Advertise, cmd_sent: 3
 I (3455) BLE_ADV_SCAN: controller rcv pkt ready
 I (3455) BLE_ADV_SCAN: Event opcode 0x08 success.
-I (3455) BLE_ADV_SCAN: Starting BLE advertising with name &quot;ESP-BLE-1&quot;
+I (3455) BLE_ADV_SCAN: Starting BLE advertising with name &#34;ESP-BLE-1&#34;
 I (3455) BLE_ADV_SCAN: BLE Advertise, cmd_sent: 4
 I (4465) BLE_ADV_SCAN: controller rcv pkt ready
 I (4465) BLE_ADV_SCAN: Event opcode 0x0a success.
@@ -470,7 +469,8 @@ RSSI: -88dB
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -490,6 +490,7 @@ RSSI: -88dB
 
 
 </div>
+
 
 </footer>
 
@@ -519,7 +520,7 @@ RSSI: -88dB
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>

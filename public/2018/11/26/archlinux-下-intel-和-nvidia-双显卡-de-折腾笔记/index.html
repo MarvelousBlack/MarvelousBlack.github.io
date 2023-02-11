@@ -47,7 +47,7 @@
     "headline": "Archlinux 下 Intel 和 NVIDIA 双显卡 de 折腾笔记",
     "author": {
       "@type": "Person",
-      "name": "http://profiles.google.com/+?rel=author"
+      "name": "Megumi_fox"
     },
     "datePublished": "2018-11-26",
     "description": "嘛，许多在笔记本安装Arch的小白都会遇到双显卡的问题，经常在群里问。刚刚好我也遇到过于是便有了下文。",
@@ -62,7 +62,6 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.megumifox.com/touch-icon-144-precomposed.png">
 <link href="https://blog.megumifox.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.92.0" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -72,7 +71,7 @@
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/public/css/font-awesome.min.css">
 <link rel="stylesheet" href="/public/css/style.css">
-<link rel="stylesheet" href="/public/css/highlight/default.css">
+<link rel="stylesheet" href="/css/highlight/default.css">
 
   
   
@@ -133,12 +132,12 @@
 
 <div class="container nav secondary no-print">
   
-<a id="contact-link-email" class="contact_link" aria-label="Email" href="mailto:i@megumifox.com">
+<a id="contact-link-email" class="contact_link" rel="me" aria-label="Email" href="mailto:i@megumifox.com">
   <span class="fa fa-envelope-square"></span></a>
 
 
 
-<a id="contact-link-github" class="contact_link" aria-label="Github" href="https://github.com/MarvelousBlack">
+<a id="contact-link-github" class="contact_link" rel="me" aria-label="Github" href="https://github.com/MarvelousBlack">
   <span class="fa fa-github-square"></span></a>
 
 
@@ -229,8 +228,8 @@
 <p>你可能会问，我装好系统之后还需要这样来开机吗？答案是要，在你没有安装 Nvidia 私有驱动之前，你都需要做这一步，当安装完之后就不需要这一步了，因为私有驱动在安装的时候会把这个写入文件里面，自动帮你做了这一步处理，你就不需要再每次开机都添加这一条参数了。</p>
 <h4 id="安装nvidia-驱动">安装NVIDIA 驱动</h4>
 <p>这个很简单，只需要使用Arch的<del>调教工具</del>包管理器，吃豆人。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu nvidia nvidia-settings xorg-xrandr 
-</code></pre></div><p>如果你需要使用 dkms 请把上面的 <code>nvidia</code> 替换为 <code>nvidia-dkms</code>。如果使用官方内核装<code>nvidia</code>就好了。注：如果是以 root 運行則不需要 sudo。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -Syu nvidia nvidia-settings xorg-xrandr 
+</span></span></code></pre></div><p>如果你需要使用 dkms 请把上面的 <code>nvidia</code> 替换为 <code>nvidia-dkms</code>。如果使用官方内核装<code>nvidia</code>就好了。注：如果是以 root 運行則不需要 sudo。</p>
 <h4 id="设置早期kms启动并启用drm">设置早期KMS启动并启用DRM</h4>
 <p>这一步你需要做两件事，添加内核参数和 initramfs 模块。</p>
 <h5 id="添加内核参数">添加内核参数</h5>
@@ -238,18 +237,18 @@
 <strong>请不要直接复制，这只是个例子</strong></p>
 <h6 id="systemd-boot">systemd-boot</h6>
 <p>修改<code>/boot/loader/entries/arch.conf</code>，在<code>options</code>后面加入<code>nvidia-drm.modeset=1</code>。 例如这样：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">options root<span style="color:#f92672">=</span>/dev/sda2 quiet splash nvidia-drm.modeset<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
-</code></pre></div><h6 id="grub">GRUB</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>options root<span style="color:#f92672">=</span>/dev/sda2 quiet splash nvidia-drm.modeset<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h6 id="grub">GRUB</h6>
 <p>修改 <code>/etc/default/grub</code> 找到 <code>GRUB_CMDLINE_LINUX_DEFAULT</code>这一项在后面加入 <code>nvidia-drm.modeset=1</code>。 例如这样：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;quiet splash nvidia-drm.modeset=1”
-</span></code></pre></div><p>更改完成后执行，下面命令，会重新生成grub.cfg。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo  grub-mkconfig -o /boot/grub/grub.cfg
-</code></pre></div><h5 id="添加-initramfs-模块">添加 initramfs 模块</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GRUB_CMDLINE_LINUX_DEFAULT<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;quiet splash nvidia-drm.modeset=1”
+</span></span></span></code></pre></div><p>更改完成后执行，下面命令，会重新生成grub.cfg。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo  grub-mkconfig -o /boot/grub/grub.cfg
+</span></span></code></pre></div><h5 id="添加-initramfs-模块">添加 initramfs 模块</h5>
 <p>在 <code>/etc/mkinitcpio.conf</code> 中找到 <code>MODULES=</code>这一行在括号的后面加入<code>nvidia nvidia_modeset nvidia_uvm  nvidia_drm</code>。加入之后这行看起来是这样的：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">MODULES<span style="color:#f92672">=(</span>intel_agp i915 nvidia nvidia_modeset nvidia_uvm  nvidia_drm<span style="color:#f92672">)</span>
-</code></pre></div><p>别忘了重新生成一下 initramfs 执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo mkinitcpio -P
-</code></pre></div><p>当然，每次更新完 n 卡驱动之后你都需要进行这一步，重新生成 initramfs 如果你觉得麻烦可以使用 pacman hook 。<br>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>MODULES<span style="color:#f92672">=(</span>intel_agp i915 nvidia nvidia_modeset nvidia_uvm  nvidia_drm<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>别忘了重新生成一下 initramfs 执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo mkinitcpio -P
+</span></span></code></pre></div><p>当然，每次更新完 n 卡驱动之后你都需要进行这一步，重新生成 initramfs 如果你觉得麻烦可以使用 pacman hook 。<br>
 创建<code>/etc/pacman.d/hooks/nvidia.hook</code>
 内容为</p>
 <pre tabindex="0"><code>[Trigger]
@@ -266,197 +265,195 @@ Description=Update Nvidia module in initcpio
 Depends=mkinitcpio
 When=PostTransaction
 NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
+Exec=/bin/sh -c &#39;while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P&#39;
 </code></pre><p>这样就可以避免每次更新显卡驱动都要做这一步操作了。 （如果你使用了 <code>nvidia-dkms</code> 请把文件中对应项替换）</p>
 <h4 id="创建xorgconf">创建Xorg.conf</h4>
 <p><del>先检查有没有这个文件<code>/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf</code>有的话可以跳过下面的步骤。</del> (因爲在新的 nvidia 包中 <code>/usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf</code> 去除了 <code>Option &quot;PrimaryGPU&quot; &quot;yes&quot;</code> 所以必須要手動創建配置文件。) 如果出现找不到显卡可以尝试，加入BUSID指明 n 卡的位置。
 新建一个<code>/etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf</code><br>
 内容为</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Section <span style="color:#e6db74">&#34;OutputClass&#34;</span>
-    Identifier <span style="color:#e6db74">&#34;intel&#34;</span>
-    MatchDriver <span style="color:#e6db74">&#34;i915&#34;</span>
-    Driver <span style="color:#e6db74">&#34;modesetting&#34;</span>
-EndSection
-
-Section <span style="color:#e6db74">&#34;OutputClass&#34;</span>
-    Identifier <span style="color:#e6db74">&#34;nvidia&#34;</span>
-    MatchDriver <span style="color:#e6db74">&#34;nvidia-drm&#34;</span>
-    Driver <span style="color:#e6db74">&#34;nvidia&#34;</span>
-    Option <span style="color:#e6db74">&#34;AllowEmptyInitialConfiguration&#34;</span>
-    Option <span style="color:#e6db74">&#34;PrimaryGPU&#34;</span> <span style="color:#e6db74">&#34;yes&#34;</span>
-    ModulePath <span style="color:#e6db74">&#34;/usr/lib/nvidia/xorg&#34;</span>
-    ModulePath <span style="color:#e6db74">&#34;/usr/lib/xorg/modules&#34;</span>
-EndSection
-
-</code></pre></div><p>注意这里的 intel 驱动 <strong>必须为</strong> <code>modesetting</code>，否则会产生严重的撕裂，后面的 <code>AllowEmptyInitialConfiguration</code> 是为了让 n 卡在没检测到显示器的时候继续运行，而不是默认的退出。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Section <span style="color:#e6db74">&#34;OutputClass&#34;</span>
+</span></span><span style="display:flex;"><span>    Identifier <span style="color:#e6db74">&#34;intel&#34;</span>
+</span></span><span style="display:flex;"><span>    MatchDriver <span style="color:#e6db74">&#34;i915&#34;</span>
+</span></span><span style="display:flex;"><span>    Driver <span style="color:#e6db74">&#34;modesetting&#34;</span>
+</span></span><span style="display:flex;"><span>EndSection
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Section <span style="color:#e6db74">&#34;OutputClass&#34;</span>
+</span></span><span style="display:flex;"><span>    Identifier <span style="color:#e6db74">&#34;nvidia&#34;</span>
+</span></span><span style="display:flex;"><span>    MatchDriver <span style="color:#e6db74">&#34;nvidia-drm&#34;</span>
+</span></span><span style="display:flex;"><span>    Driver <span style="color:#e6db74">&#34;nvidia&#34;</span>
+</span></span><span style="display:flex;"><span>    Option <span style="color:#e6db74">&#34;AllowEmptyInitialConfiguration&#34;</span>
+</span></span><span style="display:flex;"><span>    Option <span style="color:#e6db74">&#34;PrimaryGPU&#34;</span> <span style="color:#e6db74">&#34;yes&#34;</span>
+</span></span><span style="display:flex;"><span>    ModulePath <span style="color:#e6db74">&#34;/usr/lib/nvidia/xorg&#34;</span>
+</span></span><span style="display:flex;"><span>    ModulePath <span style="color:#e6db74">&#34;/usr/lib/xorg/modules&#34;</span>
+</span></span><span style="display:flex;"><span>EndSection
+</span></span></code></pre></div><p>注意这里的 intel 驱动 <strong>必须为</strong> <code>modesetting</code>，否则会产生严重的撕裂，后面的 <code>AllowEmptyInitialConfiguration</code> 是为了让 n 卡在没检测到显示器的时候继续运行，而不是默认的退出。</p>
 <h5 id="配置桌面管理器">配置桌面管理器</h5>
 <p>这里以SDDM为例，如果你是其他桌面管理器，请参阅<a href="https://wiki.archlinux.org/index.php/NVIDIA_Optimus#Display_Managers">这里</a>。如果不配置你将会获得黑屏QwQ。
 编辑<code>/usr/share/sddm/scripts/Xsetup</code>。添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">xrandr --setprovideroutputsource modesetting NVIDIA-0
-xrandr --auto
-</code></pre></div><h2 id="0x05-检查3d">0x05 检查3D</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>xrandr --setprovideroutputsource modesetting NVIDIA-0
+</span></span><span style="display:flex;"><span>xrandr --auto
+</span></span></code></pre></div><h2 id="0x05-检查3d">0x05 检查3D</h2>
 <p>这样你应该就可以正常的使用 N 卡来渲染和 intel 输出了。但还是建议检查一下，安装<code>mesa-demos</code>，然后运行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">glxinfo | grep NVIDIA
-</code></pre></div><p>如果看见类似下面的输出，恭喜你成功了。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ glxinfo | grep NVIDIA
-server glx vendor string: NVIDIA Corporation
-client glx vendor string: NVIDIA Corporation
-OpenGL vendor string: NVIDIA Corporation
-OpenGL core profile version string: 4.6.0 NVIDIA 415.18
-OpenGL core profile shading language version string: 4.60 NVIDIA
-OpenGL version string: 4.6.0 NVIDIA 415.18
-OpenGL shading language version string: 4.60 NVIDIA
-OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 415.18
-</code></pre></div><h2 id="0x06-配置视频硬解">0x06 配置视频硬解</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>glxinfo | grep NVIDIA
+</span></span></code></pre></div><p>如果看见类似下面的输出，恭喜你成功了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ glxinfo | grep NVIDIA
+</span></span><span style="display:flex;"><span>server glx vendor string: NVIDIA Corporation
+</span></span><span style="display:flex;"><span>client glx vendor string: NVIDIA Corporation
+</span></span><span style="display:flex;"><span>OpenGL vendor string: NVIDIA Corporation
+</span></span><span style="display:flex;"><span>OpenGL core profile version string: 4.6.0 NVIDIA 415.18
+</span></span><span style="display:flex;"><span>OpenGL core profile shading language version string: 4.60 NVIDIA
+</span></span><span style="display:flex;"><span>OpenGL version string: 4.6.0 NVIDIA 415.18
+</span></span><span style="display:flex;"><span>OpenGL shading language version string: 4.60 NVIDIA
+</span></span><span style="display:flex;"><span>OpenGL ES profile version string: OpenGL ES 3.2 NVIDIA 415.18
+</span></span></code></pre></div><h2 id="0x06-配置视频硬解">0x06 配置视频硬解</h2>
 <p>惠，等等你是不是忘了什么？哦，对视频硬解。在<a href="https://wiki.archlinux.org/index.php/Hardware_video_acceleration">Hardware video acceleration</a>词条下面，你可以找到你显卡支持的硬解类型等信息。</p>
 <h5 id="安装并配置">安装并配置</h5>
 <p>因为用私有驱动，所以你只需要安装 <code>nvidia-utils</code>和<code>libva-vdpau-driver</code>就可以了。如果你使用<code>chromium-vaapi</code>的话建议从aur或者cn源里面安装<code>libva-vdpau-driver-chromium</code>，下面假设你启用了cn源，并使用了桌面管理器。</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu nvidia-utils libva-vdpau-driver-chromium  vdpauinfo  libva-utils
-</code></pre></div><p>注：在cn源裏面有一個叫 <code>libva-vdpau-driver-vp9</code> 的包，代替上面的 <code>libva-vdpau-driver-chromium</code> 可以使 chromium 使用 nvidia 的 VP9 硬解。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo pacman -Syu nvidia-utils libva-vdpau-driver-chromium  vdpauinfo  libva-utils
+</span></span></code></pre></div><p>注：在cn源裏面有一個叫 <code>libva-vdpau-driver-vp9</code> 的包，代替上面的 <code>libva-vdpau-driver-chromium</code> 可以使 chromium 使用 nvidia 的 VP9 硬解。</p>
 <p>在<code>~/.xprofile</code>中加入</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export LIBVA_DRIVER_NAME<span style="color:#f92672">=</span>vdpau
-export LIBVA_DRIVERS_PATH<span style="color:#f92672">=</span>/usr/lib/dri/
-export VDPAU_DRIVER<span style="color:#f92672">=</span>nvidia
-</code></pre></div><h4 id="验证-va-api-工作是否正常">验证 VA-API 工作是否正常</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>export LIBVA_DRIVER_NAME<span style="color:#f92672">=</span>vdpau
+</span></span><span style="display:flex;"><span>export LIBVA_DRIVERS_PATH<span style="color:#f92672">=</span>/usr/lib/dri/
+</span></span><span style="display:flex;"><span>export VDPAU_DRIVER<span style="color:#f92672">=</span>nvidia
+</span></span></code></pre></div><h4 id="验证-va-api-工作是否正常">验证 VA-API 工作是否正常</h4>
 <p>运行 <code>vainfo</code> 如果看见类似下面的输出则正常：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ vainfo
-vainfo: VA-API version: 1.3 <span style="color:#f92672">(</span>libva 2.3.0<span style="color:#f92672">)</span>
-vainfo: Driver version: Splitted-Desktop Systems VDPAU backend <span style="color:#66d9ef">for</span> VA-API - 0.7.4
-vainfo: Supported profile and entrypoints
-      VAProfileMPEG2Simple            :	VAEntrypointVLD
-      VAProfileMPEG2Main              :	VAEntrypointVLD
-      VAProfileMPEG4Simple            :	VAEntrypointVLD
-      VAProfileMPEG4AdvancedSimple    :	VAEntrypointVLD
-      &lt;unknown profile&gt;               :	VAEntrypointVLD
-      VAProfileH264Main               :	VAEntrypointVLD
-      VAProfileH264High               :	VAEntrypointVLD
-      VAProfileVC1Simple              :	VAEntrypointVLD
-      VAProfileVC1Main                :	VAEntrypointVLD
-      VAProfileVC1Advanced            :	VAEntrypointVLD
-</code></pre></div><h4 id="验证-vdpau-工作是否正常">验证 VDPAU 工作是否正常</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ vainfo
+</span></span><span style="display:flex;"><span>vainfo: VA-API version: 1.3 <span style="color:#f92672">(</span>libva 2.3.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>vainfo: Driver version: Splitted-Desktop Systems VDPAU backend <span style="color:#66d9ef">for</span> VA-API - 0.7.4
+</span></span><span style="display:flex;"><span>vainfo: Supported profile and entrypoints
+</span></span><span style="display:flex;"><span>      VAProfileMPEG2Simple            :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileMPEG2Main              :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileMPEG4Simple            :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileMPEG4AdvancedSimple    :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      &lt;unknown profile&gt;               :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileH264Main               :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileH264High               :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileVC1Simple              :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileVC1Main                :	VAEntrypointVLD
+</span></span><span style="display:flex;"><span>      VAProfileVC1Advanced            :	VAEntrypointVLD
+</span></span></code></pre></div><h4 id="验证-vdpau-工作是否正常">验证 VDPAU 工作是否正常</h4>
 <p>运行<code>vdpauinfo</code> 如果看见类似下面的输出则正常：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ vdpauinfo
-display: :0   screen: <span style="color:#ae81ff">0</span>
-API version: <span style="color:#ae81ff">1</span>
-Information string: NVIDIA VDPAU Driver Shared Library  415.18  Thu Nov <span style="color:#ae81ff">15</span> 21:34:27 CST <span style="color:#ae81ff">2018</span>
-
-Video surface:
-
-name   width height types
--------------------------------------------
-<span style="color:#ae81ff">420</span>     <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">8192</span>  NV12 YV12 
-<span style="color:#ae81ff">422</span>     <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">8192</span>  UYVY YUYV 
-
-Decoder capabilities:
-
-name                        level macbs width height
-----------------------------------------------------
-MPEG1                           <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-MPEG2_SIMPLE                    <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-MPEG2_MAIN                      <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_BASELINE                  <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_MAIN                      <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_HIGH                      <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-VC1_SIMPLE                      <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">8190</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-VC1_MAIN                        <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">8190</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-VC1_ADVANCED                    <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">8190</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-MPEG4_PART2_SP                  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-MPEG4_PART2_ASP                 <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX4_QMOBILE                   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX4_MOBILE                    <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX4_HOME_THEATER              <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX4_HD_1080P                  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX5_QMOBILE                   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX5_MOBILE                    <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX5_HOME_THEATER              <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-DIVX5_HD_1080P                  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
-H264_CONSTRAINED_BASELINE      <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_EXTENDED                  <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_PROGRESSIVE_HIGH          <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_CONSTRAINED_HIGH          <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-H264_HIGH_444_PREDICTIVE       <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
-HEVC_MAIN                      <span style="color:#ae81ff">153</span> <span style="color:#ae81ff">262144</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">8192</span>
-HEVC_MAIN_10                   --- not supported ---
-HEVC_MAIN_STILL                --- not supported ---
-HEVC_MAIN_12                   --- not supported ---
-HEVC_MAIN_444                  --- not supported ---
-
-Output surface:
-
-name              width height nat types
-----------------------------------------------------
-B8G8R8A8         <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>    y  Y8U8V8A8 V8U8Y8A8 A4I4 I4A4 A8I8 I8A8 
-R10G10B10A2      <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>    y  Y8U8V8A8 V8U8Y8A8 A4I4 I4A4 A8I8 I8A8 
-
-Bitmap surface:
-
-name              width height
-------------------------------
-B8G8R8A8         <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
-R8G8B8A8         <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
-R10G10B10A2      <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
-B10G10R10A2      <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
-A8               <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
-
-Video mixer:
-
-feature name                    sup
-------------------------------------
-DEINTERLACE_TEMPORAL             y
-DEINTERLACE_TEMPORAL_SPATIAL     y
-INVERSE_TELECINE                 y
-NOISE_REDUCTION                  y
-SHARPNESS                        y
-LUMA_KEY                         y
-HIGH QUALITY SCALING - L1        y
-HIGH QUALITY SCALING - L2        -
-HIGH QUALITY SCALING - L3        -
-HIGH QUALITY SCALING - L4        -
-HIGH QUALITY SCALING - L5        -
-HIGH QUALITY SCALING - L6        -
-HIGH QUALITY SCALING - L7        -
-HIGH QUALITY SCALING - L8        -
-HIGH QUALITY SCALING - L9        -
-
-parameter name                  sup      min      max
------------------------------------------------------
-VIDEO_SURFACE_WIDTH              y         <span style="color:#ae81ff">1</span>     <span style="color:#ae81ff">8192</span>
-VIDEO_SURFACE_HEIGHT             y         <span style="color:#ae81ff">1</span>     <span style="color:#ae81ff">8192</span>
-CHROMA_TYPE                      y  
-LAYERS                           y         <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">4</span>
-
-attribute name                  sup      min      max
------------------------------------------------------
-BACKGROUND_COLOR                 y  
-CSC_MATRIX                       y  
-NOISE_REDUCTION_LEVEL            y      0.00     1.00
-SHARPNESS_LEVEL                  y     -1.00     1.00
-LUMA_KEY_MIN_LUMA                y  
-LUMA_KEY_MAX_LUMA                y  
-
-</code></pre></div><h4 id="验证-nvdec-是否工作正常">验证 NVDEC 是否工作正常</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>marvelous@Vanilla  ~<span style="color:#f92672">]</span>$ vdpauinfo
+</span></span><span style="display:flex;"><span>display: :0   screen: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>API version: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Information string: NVIDIA VDPAU Driver Shared Library  415.18  Thu Nov <span style="color:#ae81ff">15</span> 21:34:27 CST <span style="color:#ae81ff">2018</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Video surface:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>name   width height types
+</span></span><span style="display:flex;"><span>-------------------------------------------
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">420</span>     <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">8192</span>  NV12 YV12 
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">422</span>     <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">8192</span>  UYVY YUYV 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Decoder capabilities:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>name                        level macbs width height
+</span></span><span style="display:flex;"><span>----------------------------------------------------
+</span></span><span style="display:flex;"><span>MPEG1                           <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>MPEG2_SIMPLE                    <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>MPEG2_MAIN                      <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_BASELINE                  <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_MAIN                      <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_HIGH                      <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>VC1_SIMPLE                      <span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">8190</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>VC1_MAIN                        <span style="color:#ae81ff">2</span>  <span style="color:#ae81ff">8190</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>VC1_ADVANCED                    <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">8190</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>MPEG4_PART2_SP                  <span style="color:#ae81ff">3</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>MPEG4_PART2_ASP                 <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX4_QMOBILE                   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX4_MOBILE                    <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX4_HOME_THEATER              <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX4_HD_1080P                  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX5_QMOBILE                   <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX5_MOBILE                    <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX5_HOME_THEATER              <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>DIVX5_HD_1080P                  <span style="color:#ae81ff">0</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">2048</span>  <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>H264_CONSTRAINED_BASELINE      <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_EXTENDED                  <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_PROGRESSIVE_HIGH          <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_CONSTRAINED_HIGH          <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>H264_HIGH_444_PREDICTIVE       <span style="color:#ae81ff">51</span> <span style="color:#ae81ff">65536</span>  <span style="color:#ae81ff">4096</span>  <span style="color:#ae81ff">4096</span>
+</span></span><span style="display:flex;"><span>HEVC_MAIN                      <span style="color:#ae81ff">153</span> <span style="color:#ae81ff">262144</span>  <span style="color:#ae81ff">8192</span>  <span style="color:#ae81ff">8192</span>
+</span></span><span style="display:flex;"><span>HEVC_MAIN_10                   --- not supported ---
+</span></span><span style="display:flex;"><span>HEVC_MAIN_STILL                --- not supported ---
+</span></span><span style="display:flex;"><span>HEVC_MAIN_12                   --- not supported ---
+</span></span><span style="display:flex;"><span>HEVC_MAIN_444                  --- not supported ---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Output surface:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>name              width height nat types
+</span></span><span style="display:flex;"><span>----------------------------------------------------
+</span></span><span style="display:flex;"><span>B8G8R8A8         <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>    y  Y8U8V8A8 V8U8Y8A8 A4I4 I4A4 A8I8 I8A8 
+</span></span><span style="display:flex;"><span>R10G10B10A2      <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>    y  Y8U8V8A8 V8U8Y8A8 A4I4 I4A4 A8I8 I8A8 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Bitmap surface:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>name              width height
+</span></span><span style="display:flex;"><span>------------------------------
+</span></span><span style="display:flex;"><span>B8G8R8A8         <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
+</span></span><span style="display:flex;"><span>R8G8B8A8         <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
+</span></span><span style="display:flex;"><span>R10G10B10A2      <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
+</span></span><span style="display:flex;"><span>B10G10R10A2      <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
+</span></span><span style="display:flex;"><span>A8               <span style="color:#ae81ff">32768</span> <span style="color:#ae81ff">32768</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Video mixer:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>feature name                    sup
+</span></span><span style="display:flex;"><span>------------------------------------
+</span></span><span style="display:flex;"><span>DEINTERLACE_TEMPORAL             y
+</span></span><span style="display:flex;"><span>DEINTERLACE_TEMPORAL_SPATIAL     y
+</span></span><span style="display:flex;"><span>INVERSE_TELECINE                 y
+</span></span><span style="display:flex;"><span>NOISE_REDUCTION                  y
+</span></span><span style="display:flex;"><span>SHARPNESS                        y
+</span></span><span style="display:flex;"><span>LUMA_KEY                         y
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L1        y
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L2        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L3        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L4        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L5        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L6        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L7        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L8        -
+</span></span><span style="display:flex;"><span>HIGH QUALITY SCALING - L9        -
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>parameter name                  sup      min      max
+</span></span><span style="display:flex;"><span>-----------------------------------------------------
+</span></span><span style="display:flex;"><span>VIDEO_SURFACE_WIDTH              y         <span style="color:#ae81ff">1</span>     <span style="color:#ae81ff">8192</span>
+</span></span><span style="display:flex;"><span>VIDEO_SURFACE_HEIGHT             y         <span style="color:#ae81ff">1</span>     <span style="color:#ae81ff">8192</span>
+</span></span><span style="display:flex;"><span>CHROMA_TYPE                      y  
+</span></span><span style="display:flex;"><span>LAYERS                           y         <span style="color:#ae81ff">0</span>        <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>attribute name                  sup      min      max
+</span></span><span style="display:flex;"><span>-----------------------------------------------------
+</span></span><span style="display:flex;"><span>BACKGROUND_COLOR                 y  
+</span></span><span style="display:flex;"><span>CSC_MATRIX                       y  
+</span></span><span style="display:flex;"><span>NOISE_REDUCTION_LEVEL            y      0.00     1.00
+</span></span><span style="display:flex;"><span>SHARPNESS_LEVEL                  y     -1.00     1.00
+</span></span><span style="display:flex;"><span>LUMA_KEY_MIN_LUMA                y  
+</span></span><span style="display:flex;"><span>LUMA_KEY_MAX_LUMA                y  
+</span></span></code></pre></div><h4 id="验证-nvdec-是否工作正常">验证 NVDEC 是否工作正常</h4>
 <p>使用 <code>mpv</code> 这个播放器播放视频，看log输出中有没有 NVDEC 和错误输出。</p>
 <h2 id="0x07-结语">0x07 结语</h2>
 <p>如果你照着上面的教程，可以正常的使用了，恭喜你。如果不能，很遗憾，请查阅相关资料，或者到 #archlinux-cn-offtopic 中提问。感谢你从头开始阅读本文，如有疏漏，请联系本人更改。</p>
 <h2 id="0x08-补充内容">0x08 补充内容</h2>
 <p>在群里问了一下可能还需要一下步骤。于是在这里补充。
 在部分机器中可能在做完0x03中提及的步骤后还会卡死，则需要添加如下语句于内核参数中（添加方法在0x03有写）</p>
-<pre tabindex="0"><code class="language-file" data-lang="file">acpi_osi=! acpi_osi=&quot;windows 2009&quot;
+<pre tabindex="0"><code class="language-file" data-lang="file">acpi_osi=! acpi_osi=&#34;windows 2009&#34;
 </code></pre><p>或者</p>
-<pre tabindex="0"><code> acpi_os_name=&quot;Microsoft Windows NT&quot;
+<pre tabindex="0"><code> acpi_os_name=&#34;Microsoft Windows NT&#34;
 </code></pre><p>再或者</p>
-<pre tabindex="0"><code> acpi_osi=&quot;!Windows2012&quot;
+<pre tabindex="0"><code> acpi_osi=&#34;!Windows2012&#34;
 </code></pre><p>如果还有可以继续尝试下面关键字</p>
 <pre tabindex="0"><code>Microsoft Windows NT
-&quot;Microsoft Windows XP&quot;
-&quot;Microsoft Windows 2000&quot;
-&quot;Microsoft Windows 2000.1&quot;
-&quot;Microsoft Windows ME: Millennium Edition&quot;
-&quot;Windows 2001&quot;
-&quot;Windows 2006&quot;
-&quot;Windows 2009&quot;
-&quot;Windows 2012&quot;
-when all that fails, you can even try &quot;Linux&quot;
+&#34;Microsoft Windows XP&#34;
+&#34;Microsoft Windows 2000&#34;
+&#34;Microsoft Windows 2000.1&#34;
+&#34;Microsoft Windows ME: Millennium Edition&#34;
+&#34;Windows 2001&#34;
+&#34;Windows 2006&#34;
+&#34;Windows 2009&#34;
+&#34;Windows 2012&#34;
+when all that fails, you can even try &#34;Linux&#34;
 </code></pre><p>估计就能避免关机还是卡死等问题了。</p>
 <h2 id="0x09-bumblebee">0x09 Bumblebee</h2>
 <p>引用 Bumblebee FAQ</p>
@@ -505,7 +502,8 @@ systemctl enable bumblebeed.service
 
 </div>
 
-  <div class="container comments">
+  
+<div class="container comments">
   <h2>Comments</h2>
   
 <div id="disqus_thread"></div>
@@ -525,6 +523,7 @@ systemctl enable bumblebeed.service
 
 
 </div>
+
 
 </footer>
 
@@ -554,7 +553,7 @@ systemctl enable bumblebeed.service
   
 <div class="container copyright">
   
-  (c) 2018-2022 惠狐之书 written by Megumi_fox.
+  (c) 2018-2023 惠狐之书 written by Megumi_fox.
 
 
 </div>
