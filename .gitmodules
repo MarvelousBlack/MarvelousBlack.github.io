@@ -1,3 +1,3 @@
-[submodule "hyde-y"]
-	path = themes/hyde-y
-	url = https://github.com/MarvelousBlack/hyde-y
+[submodule "themes/archie"]
+	path = themes/archie
+	url = https://github.com/athul/archie.git

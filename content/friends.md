@@ -21,7 +21,6 @@ draft: false
 - [Goddess Unknown](https://nir.moe/) 黑动图老师的碎碎念。
 - [icebox](https://quininer.github.io/) 奎宁，密码学大佬，同时也是#archlinux-cn-offtopic里面的起名专家。
 - [FiveYellowMice's Blog](https://fiveyellowmice.com/) 五黄鼠，~~是食物的说~~，是个中二少年，同时也是技术大佬。
-- [南浦月](https://blog.nanpuyue.com) 乔姐姐，是个大佬。直播玩游戏很棒呢。
 - [Kiri](https://kirikira.moe/) kiri: 这个人很懒，没有什么介绍.
 - [JuniX Blog](https://junyixu.github.io/) 據他本人描述：不想成为像上面几位一样的大佬的小白不是好小白～ （嘛，希望他能快速的成長起來吧。
 - [脫毛貓](https://tomcat.one/blog/) 脫毛貓，tomcat。

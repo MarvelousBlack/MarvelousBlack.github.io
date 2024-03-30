@@ -2,82 +2,103 @@
 baseurl = "https://blog.megumifox.com/public/"
 #baseurl = "https://blog.megumifox.com/"
 
-
 # Site title
 title = "惠狐之书"
 
 # Copyright
-copyright = "(c) 2018-2023 惠狐之书 written by Megumi_fox."
+copyright = "© 惠狐之书"
 
 # Language
-languageCode = "en-EN"
+languageCode = "zh-Hant"
 
 # Metadata format
 # "yaml", "toml", "json"
 metaDataFormat = "yaml"
 
 # Theme to use (located in /themes/THEMENAME/)
-theme = "hyde-y"
+theme = "archie"
 
 # Pagination
-paginate = 10
-paginatePath = "page"
+paginate = 5
 
 # Enable Disqus integration
 disqusShortname = "megumifox"
 
+# Code Highlight
+pygmentsstyle = "monokai"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+
 [permalinks]
-    post = "/:year/:month/:day/:slug/"
-    code = "/:slug/"
+    post = "/:filename/"
+    code = "/:filename/"
 
 [taxonomies]
     tag = "tags"
     topic = "topics"
 
-[author]
-    name = "Megumi_fox"
-    email = "i@megumifox.com"
-
 #
 # All parameters below here are optional and can be mixed and matched.
 #
 [params]
+    mode="auto" # color-mode → light,dark,toggle or auto
+    useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
+    subtitle = "一只叫惠的小狐狸的探索故事。"
+    mathjax = true # enable MathJax support
+    katex = false # enable KaTeX support
+
     # You can use markdown here.
     brand = "Megumi fox"
-    topline = "A fox called Megumi"
     footline = "惠狐之书所有的文章除特别声明外，均使用页脚所指 license。"
-
-    # Sidebar position
-    # false, true, "left", "right"
-    sidebar = "left"
 
     # Text for the top menu link, which goes the root URL for the site.
     # Default (if omitted) is "Home".
     home = "home"
 
-    # Select a syntax highight for highlight.js
-    # Check the static/css/highlight directory for options.
-    # Leave unset to fall back to default hugo highlighter instead of highlight.js
-    highlight = "default"
-
     # Google Analytics.
-    googleAnalytics = "UA-129670705-1"
+    googleAnalytics = "G-HM61C25V9Q"
 
-    # Sidebar social links.
-    github = "MarvelousBlack" # Your Github profile ID
-    bitbucket = "" # Your Bitbucket profile ID
-    linkedin = "" # Your LinkedIn profile ID (from public URL)
-    googleplus = "" # Your Google+ profile ID
-    facebook = "" # Your Facebook profile ID
-    twitter = "" # Your Twitter profile ID
-    youtube = ""  # Your Youtube channel ID
-    flattr = ""  # populate with your flattr uid
-    flickr = "" # Your Flickr profile ID
-    vimeo = "" # Your Vimeo profile ID
+[params.author]
+    email = 'i@megumifox.com'
+    name = 'Megumifox'
 
-    # Sidebar RSS link: will only show up if there is a RSS feed
-    # associated with the current page
-    rss = true
+[[params.social]]
+    title = "rss"
+    icon = "rss" # themify icon : https://themify.me/themify-icons
+    url = "/public/index.xml"
+
+[[params.social]]
+    title = "github"
+    icon = "github" # themify icon : https://themify.me/themify-icons
+    url = "https://github.com/MarvelousBlack"
+
+# Main menu Items
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "All posts"
+    url = "/posts"
+    weight = 2
+
+[[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 3
+
+[[menu.main]]
+    name = "Topics"
+    url = "/topics"
+    weight = 2
+
+[[menu.main]]
+    name = "Friends"
+    url = "/friends"
+    weight = 5
 
 [blackfriday]
     angledQuotes = true
