@@ -29,6 +29,8 @@ pygmentsstyle = "monokai"
 pygmentscodefences = true
 pygmentscodefencesguesssyntax = true
 
+# Google Analytics.
+googleAnalytics = "G-HM61C25V9Q"
 
 [permalinks]
     post = "/:filename/"
@@ -42,10 +44,10 @@ pygmentscodefencesguesssyntax = true
 # All parameters below here are optional and can be mixed and matched.
 #
 [params]
-    mode="auto" # color-mode → light,dark,toggle or auto
+    mode="toggle" # color-mode → light,dark,toggle or auto
     useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
     subtitle = "一只叫惠的小狐狸的探索故事。"
-    mathjax = true # enable MathJax support
+    mathjax = false # enable MathJax support
     katex = false # enable KaTeX support
 
     # You can use markdown here.
@@ -55,9 +57,6 @@ pygmentscodefencesguesssyntax = true
     # Text for the top menu link, which goes the root URL for the site.
     # Default (if omitted) is "Home".
     home = "home"
-
-    # Google Analytics.
-    googleAnalytics = "G-HM61C25V9Q"
 
 [params.author]
     email = 'i@megumifox.com'
